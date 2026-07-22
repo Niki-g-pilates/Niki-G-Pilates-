@@ -1,0 +1,329 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Niki G Pilates & Massage Therapy</title>
+  <style>
+    :root {
+      --primary: #4A6B5D;
+      --accent: #D4A373;
+      --bg-light: #F9F8F6;
+      --text-dark: #2B2D42;
+      --text-light: #6C757D;
+      --white: #FFFFFF;
+      --font-heading: 'Georgia', serif;
+      --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3b554a;
+    }
+
+    .hero {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: linear-gradient(rgba(74, 107, 93, 0.05), rgba(74, 107, 93, 0.15));
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      color: var(--text-light);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+      margin: 0.5rem auto 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      border: 1px solid #eaeaea;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-family: var(--font-heading);
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .massage-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .massage-table th, .massage-table td {
+      padding: 1rem 1.5rem;
+      text-align: left;
+    }
+
+    .massage-table th {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .massage-table tr:nth-child(even) {
+      background-color: #f4f3f0;
+    }
+
+    footer {
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">NIKI G PILATES</a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#classes">Pilates Classes</a></li>
+          <li><a href="#massage">Massage Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Mindful Movement & Restorative Care</h1>
+    <p>Strengthen your body with personalized Pilates classes and restore your balance through professional massage therapy.</p>
+    <a href="#classes" class="btn">View Classes & Booking</a>
+  </section>
+
+  <section id="classes" class="container">
+    <h2 class="section-title">Pilates Classes</h2>
+    <div class="grid">
+      
+      <div class="card">
+        <div>
+          <h3>Group Pilates Class</h3>
+          <p>Join a supportive, small group setting focused on core strength, mobility, flexibility, and proper alignment for all fitness levels.</p>
+        </div>
+        <div>
+          <div class="price-tag">Mat Classes</div>
+          <a href="#contact" class="btn">Book Class</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>1:1 Private Pilates Session</h3>
+          <p>Tailored specifically to your unique goals, posture needs, or injury rehabilitation. Get individualized focus and form guidance.</p>
+        </div>
+        <div>
+          <div class="price-tag">Personalized Training</div>
+          <a href="#contact" class="btn">Inquire Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>Online Pilates Class</h3>
+          <p>Enjoy guided movement from the comfort of your home with clear instruction and virtual form adjustments.</p>
+        </div>
+        <div>
+          <div class="price-tag">Virtual Live</div>
+          <a href="#contact" class="btn">Join Virtually</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="massage" style="background-color: #f2f0ec;">
+    <div class="container">
+      <h2 class="section-title">Massage Therapy Services</h2>
+      <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem auto; color: var(--text-light);">
+        Therapeutic massage treatment designed to relieve tension, reduce pain, improve circulation, and enhance your overall well-being.
+      </p>
+
+      <table class="massage-table">
+        <thead>
+          <tr>
+            <th>Treatment</th>
+            <th>Duration</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Deep Tissue / Sports Massage</td>
+            <td>30 Mins</td>
+            <td>Contact for Rate</td>
+          </tr>
+          <tr>
+            <td>Relaxation & Restorative Massage</td>
+            <td>60 Mins</td>
+            <td>Contact for Rate</td>
+          </tr>
+          <tr>
+            <td>Full Body Massage Therapy</td>
+            <td>90 Mins</td>
+            <td>Contact for Rate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contact" class="container" style="text-align: center;">
+    <h2 class="section-title">Get In Touch</h2>
+    <p style="margin-bottom: 1.5rem;">Have questions about class schedules, 1:1 bookings, or massage availability?</p>
+    <a href="mailto:nikigpilates@gmail.com" class="btn">Email Niki G Pilates</a>
+  </section>
+
+  <footer>
+    <p>&copy; Niki G Pilates & Massage Therapy. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
