@@ -343,7 +343,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       display: none;
       justify-content: center;
       align-items: center;
@@ -356,13 +356,15 @@
       padding: 2rem;
       border-radius: 12px;
       width: 100%;
-      max-width: 450px;
+      max-width: 550px;
+      max-height: 90vh;
+      overflow-y: auto;
       position: relative;
     }
 
     .modal h3 {
       font-family: var(--font-family) !important;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: var(--text-dark);
       margin-bottom: 0.3rem;
@@ -372,29 +374,71 @@
       font-family: var(--font-family) !important;
       color: var(--text-muted);
       font-size: 0.88rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.2rem 0 0.6rem 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .form-group label {
       display: block;
       font-family: var(--font-family) !important;
-      font-size: 0.85rem;
-      margin-bottom: 0.3rem;
+      font-size: 0.82rem;
+      margin-bottom: 0.25rem;
       font-weight: 600;
       color: var(--text-dark);
     }
 
-    .form-group input {
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group textarea {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.65rem;
       border: 1px solid var(--border-color);
       border-radius: 6px;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-family: var(--font-family) !important;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 60px;
+    }
+
+    /* Checkbox Styling */
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      margin-top: 0.2rem;
+      accent-color: var(--primary);
+      width: 16px;
+      height: 16px;
+    }
+
+    .checkbox-group label {
+      font-size: 0.82rem;
+      color: var(--text-dark);
+      font-weight: 400;
+      line-height: 1.3;
     }
 
     .form-note {
@@ -502,7 +546,7 @@
           <div class="card-price">£12</div>
           <div class="card-savings">&nbsp;</div>
         </div>
-        <button class="btn btn-outline" onclick="openModal('Single Mat Pilates Class (£12)')">Book Single Class</button>
+        <button class="btn btn-outline" onclick="openModal('single')">Book Single Class (£12)</button>
       </div>
 
       <!-- 6-Week Block -->
@@ -514,7 +558,7 @@
           <div class="card-price">£60</div>
           <div class="card-savings">Save £12 (£10 / class)</div>
         </div>
-        <button class="btn" onclick="openModal('6-Week Mat Pilates Block (£60)')">Book 6-Week Course</button>
+        <button class="btn" onclick="openModal('block')">Book 6-Week Course (£60)</button>
       </div>
 
     </div>
@@ -556,33 +600,100 @@
     </div>
   </section>
 
-  <!-- Booking Pop-Up Modal -->
+  <!-- Booking & Health Waiver Modal -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h3 id="modalTitle">Book Your Spot</h3>
-      <p id="modalSubtitle">📍 West Park Primary School (Wednesdays @ 6:30 PM)</p>
+      <h3 id="modalTitle">Book Your Pilates Class</h3>
+      <p>📍 West Park Primary School (Wednesdays @ 6:30 PM)</p>
       
       <form id="bookingForm" onsubmit="handleFormSubmit(event)">
         
-        <!-- Interactive Wednesday Calendar -->
+        <!-- STEP 1: DATE SELECTION -->
+        <div class="form-section-title">1. Select Class Date</div>
         <div class="form-group">
-          <label for="bookingDate">Select Start Date (Wednesdays Only)</label>
+          <label for="bookingDate">Start Date (Wednesdays Only)</label>
           <input type="date" id="bookingDate" required onchange="validateWednesday(this)">
-          <div class="form-note">⏰ Class time: 6:30 PM (50 mins)</div>
+          <div class="form-note">⏰ Class time: 6:30 PM (50 minutes)</div>
         </div>
 
+        <!-- STEP 2: PERSONAL DETAILS -->
+        <div class="form-section-title">2. Contact & Personal Info</div>
         <div class="form-group">
-          <label for="fullName">Full Name</label>
+          <label for="fullName">Full Name *</label>
           <input type="text" id="fullName" placeholder="Jane Doe" required>
         </div>
-        
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="jane@example.com" required>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="jane@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" placeholder="07123 456789" required>
+          </div>
         </div>
 
-        <button type="submit" class="btn" style="margin-top: 0.5rem;">Confirm Reservation</button>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+          <div class="form-group">
+            <label for="dob">Date of Birth *</label>
+            <input type="date" id="dob" required>
+          </div>
+          <div class="form-group">
+            <label for="emergency">Emergency Contact (Name & Tel) *</label>
+            <input type="text" id="emergency" placeholder="John Doe - 07987 654321" required>
+          </div>
+        </div>
+
+        <!-- STEP 3: HEALTH WAIVER (PAR-Q) -->
+        <div class="form-section-title">3. Health & Medical Waiver</div>
+        <p style="font-size: 0.8rem; margin-bottom: 0.8rem;">Please check any boxes below that apply to you:</p>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="q1">
+          <label for="q1">Heart condition, chest pain, or high/low blood pressure</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="q2">
+          <label for="q2">Back, joint, or bone pain (e.g., slipped disc, sciatica, shoulder issues)</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="q3">
+          <label for="q3">Recent surgery, injury, or hospitalization in the last 12 months</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="q4">
+          <label for="q4">Currently pregnant, or given birth in the last 12 months</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="q5">
+          <label for="q5">Dizziness, loss of balance, or fainting during/after exercise</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="q6">
+          <label for="q6">Asthma, breathing difficulties, or other chronic conditions</label>
+        </div>
+
+        <div class="form-group" style="margin-top: 0.6rem;">
+          <label for="healthNotes">If you checked any boxes above, please briefly explain:</label>
+          <textarea id="healthNotes" placeholder="e.g., Lower back tightness, mild asthma, etc."></textarea>
+        </div>
+
+        <!-- DECLARATION -->
+        <div class="checkbox-group" style="margin-top: 1rem; background: #F4EFEA; padding: 0.8rem; border-radius: 6px;">
+          <input type="checkbox" id="declaration" required>
+          <label for="declaration" style="font-weight: 500; font-size: 0.78rem;">
+            I confirm that the health information provided is accurate. I participate voluntarily at my own risk and will inform the instructor of any changes prior to future classes. *
+          </label>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn" style="margin-top: 1.2rem;">Proceed to Secure Payment</button>
       </form>
     </div>
   </div>
@@ -592,31 +703,42 @@
     <p>&copy; 2026 Niki G Pilates & Sports Massage. All rights reserved.</p>
   </footer>
 
-  <!-- Modal & Calendar Script -->
+  <!-- Modal, Calendar & Payment Script -->
   <script>
     const modal = document.getElementById('bookingModal');
     const modalTitle = document.getElementById('modalTitle');
+    const submitBtn = document.getElementById('submitBtn');
     const dateInput = document.getElementById('bookingDate');
 
-    let currentOption = '';
+    let bookingType = 'single'; // 'single' (£12) or 'block' (£60)
 
-    // Function to calculate the next upcoming Wednesday
+    // REPLACE THESE LINKS WITH YOUR FREE STRIPE / SQUARE PAYMENT LINKS WHEN READY
+    const PAYMENT_LINKS = {
+      single: "https://buy.stripe.com/your-single-class-link-here", // £12
+      block: "https://buy.stripe.com/your-6-week-block-link-here"   // £60
+    };
+
     function getNextWednesday() {
       const today = new Date();
       const dayOfWeek = today.getDay(); // 0 = Sun, 3 = Wed
       let daysUntilWednesday = (3 - dayOfWeek + 7) % 7;
-      if (daysUntilWednesday === 0) daysUntilWednesday = 7; // default to next week if today is Wednesday
+      if (daysUntilWednesday === 0) daysUntilWednesday = 7;
       
       const nextWed = new Date(today);
       nextWed.setDate(today.getDate() + daysUntilWednesday);
       return nextWed.toISOString().split('T')[0];
     }
 
-    function openModal(optionName) {
-      currentOption = optionName;
-      modalTitle.innerText = `Book: ${optionName}`;
+    function openModal(type) {
+      bookingType = type;
+      if (type === 'single') {
+        modalTitle.innerText = "Book: Single Drop-In Class (£12)";
+        submitBtn.innerText = "Proceed to Payment (£12)";
+      } else {
+        modalTitle.innerText = "Book: 6-Week Pilates Block (£60)";
+        submitBtn.innerText = "Proceed to Payment (£60)";
+      }
       
-      // Set min date to today and default value to next Wednesday
       const today = new Date().toISOString().split('T')[0];
       dateInput.setAttribute('min', today);
       dateInput.value = getNextWednesday();
@@ -624,12 +746,9 @@
       modal.style.display = 'flex';
     }
 
-    // Restrict selected dates to Wednesdays (Day 3)
     function validateWednesday(input) {
       if (!input.value) return;
       const selectedDate = new Date(input.value);
-      
-      // UTC day calculation to prevent timezone offset issues
       const day = new Date(selectedDate.getTime() + selectedDate.getTimezoneOffset() * 60000).getDay();
       
       if (day !== 3) {
@@ -645,14 +764,22 @@
 
     function handleFormSubmit(event) {
       event.preventDefault();
+      
       const name = document.getElementById('fullName').value;
       const dateVal = document.getElementById('bookingDate').value;
-      
-      // Format date for display in confirmation
       const dateObj = new Date(dateVal);
       const formattedDate = dateObj.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
-      alert(`Thank you, ${name}!\n\nYour request for ${currentOption} starting on ${formattedDate} at 6:30 PM (West Park Primary School) has been received.\n\nNiki will send you a confirmation email shortly.`);
+      alert(`Thank you, ${name}!\n\nYour details and health waiver have been saved.\n\nClicking OK will now take you to the card checkout page to complete your reservation for ${formattedDate}.`);
+
+      // If you haven't added your Stripe links yet, it alerts. Otherwise, it redirects to card checkout.
+      const targetPaymentUrl = PAYMENT_LINKS[bookingType];
+      if (targetPaymentUrl.includes("your-")) {
+        alert("Note: Once you add your free Stripe/Square link into the code, this will automatically redirect directly to the card payment screen!");
+      } else {
+        window.location.href = targetPaymentUrl;
+      }
+
       closeModal();
     }
 
