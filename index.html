@@ -8,7 +8,7 @@
   <!-- Google Fonts: Montserrat Only -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -28,6 +28,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: var(--font-family) !important;
     }
 
     html {
@@ -35,7 +36,7 @@
     }
 
     body {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       background-color: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.7;
@@ -61,7 +62,7 @@
     }
 
     .logo {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 1.3rem;
       color: var(--primary);
       text-decoration: none;
@@ -83,7 +84,7 @@
       letter-spacing: 0.5px;
       transition: color 0.3s ease;
       text-transform: uppercase;
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
     }
 
     nav a:hover {
@@ -122,8 +123,8 @@
     }
 
     .hero-overlay h1 {
-      font-family: var(--font-family);
-      font-size: 2.5rem;
+      font-family: var(--font-family) !important;
+      font-size: 2.3rem;
       font-weight: 700;
       letter-spacing: 3px;
       margin-bottom: 0.5rem;
@@ -131,8 +132,8 @@
     }
 
     .hero-overlay p {
-      font-family: var(--font-family);
-      font-size: 1.1rem;
+      font-family: var(--font-family) !important;
+      font-size: 1rem;
       font-weight: 400;
       letter-spacing: 1px;
     }
@@ -145,7 +146,7 @@
     }
 
     .section-title {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 2rem;
       font-weight: 600;
       color: var(--text-dark);
@@ -165,7 +166,7 @@
     }
 
     .sub-heading {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       text-align: center;
       color: var(--primary-dark);
       font-weight: 600;
@@ -185,7 +186,7 @@
     }
 
     .content-box p {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       color: var(--text-muted);
       margin-bottom: 1.2rem;
       font-size: 0.98rem;
@@ -204,7 +205,7 @@
       border: none;
       border-radius: 25px;
       text-decoration: none;
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-weight: 600;
       font-size: 0.9rem;
       letter-spacing: 0.5px;
@@ -265,7 +266,7 @@
       right: 20px;
       background: var(--primary);
       color: white;
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 1px;
@@ -275,7 +276,7 @@
     }
 
     .card-title {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
@@ -283,14 +284,14 @@
     }
 
     .card-meta {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 1rem;
     }
 
     .card-price {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 2rem;
       font-weight: 700;
       color: var(--primary);
@@ -298,7 +299,7 @@
     }
 
     .card-savings {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 0.85rem;
       color: var(--secondary);
       font-weight: 600;
@@ -321,7 +322,7 @@
     }
 
     .testimonial-card p {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-style: italic;
       color: var(--text-muted);
       font-size: 0.95rem;
@@ -329,7 +330,7 @@
     }
 
     .testimonial-author {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-weight: 600;
       color: var(--primary);
       font-size: 0.9rem;
@@ -360,7 +361,7 @@
     }
 
     .modal h3 {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--text-dark);
@@ -368,7 +369,7 @@
     }
 
     .modal p {
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       color: var(--text-muted);
       font-size: 0.88rem;
       margin-bottom: 1.5rem;
@@ -380,7 +381,7 @@
 
     .form-group label {
       display: block;
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
       font-size: 0.85rem;
       margin-bottom: 0.3rem;
       font-weight: 600;
@@ -393,7 +394,14 @@
       border: 1px solid var(--border-color);
       border-radius: 6px;
       font-size: 1rem;
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--primary-dark);
+      margin-top: 0.25rem;
+      font-weight: 500;
     }
 
     .close-btn {
@@ -415,7 +423,7 @@
       text-align: center;
       font-size: 0.85rem;
       margin-top: 2rem;
-      font-family: var(--font-family);
+      font-family: var(--font-family) !important;
     }
 
     @media (max-width: 768px) {
@@ -494,7 +502,7 @@
           <div class="card-price">£12</div>
           <div class="card-savings">&nbsp;</div>
         </div>
-        <button class="btn btn-outline" onclick="openModal('Single Mat Pilates Class (£12)', 'Wednesdays @ 6:30 PM (West Park Primary School)')">Book Single Class</button>
+        <button class="btn btn-outline" onclick="openModal('Single Mat Pilates Class (£12)')">Book Single Class</button>
       </div>
 
       <!-- 6-Week Block -->
@@ -506,7 +514,7 @@
           <div class="card-price">£60</div>
           <div class="card-savings">Save £12 (£10 / class)</div>
         </div>
-        <button class="btn" onclick="openModal('6-Week Mat Pilates Block (£60)', 'Wednesdays @ 6:30 PM (West Park Primary School)')">Book 6-Week Course</button>
+        <button class="btn" onclick="openModal('6-Week Mat Pilates Block (£60)')">Book 6-Week Course</button>
       </div>
 
     </div>
@@ -553,9 +561,17 @@
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">&times;</button>
       <h3 id="modalTitle">Book Your Spot</h3>
-      <p id="modalSubtitle">Please enter your details to confirm.</p>
+      <p id="modalSubtitle">📍 West Park Primary School (Wednesdays @ 6:30 PM)</p>
       
       <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+        
+        <!-- Interactive Wednesday Calendar -->
+        <div class="form-group">
+          <label for="bookingDate">Select Start Date (Wednesdays Only)</label>
+          <input type="date" id="bookingDate" required onchange="validateWednesday(this)">
+          <div class="form-note">⏰ Class time: 6:30 PM (50 mins)</div>
+        </div>
+
         <div class="form-group">
           <label for="fullName">Full Name</label>
           <input type="text" id="fullName" placeholder="Jane Doe" required>
@@ -576,16 +592,50 @@
     <p>&copy; 2026 Niki G Pilates & Sports Massage. All rights reserved.</p>
   </footer>
 
-  <!-- Modal Script -->
+  <!-- Modal & Calendar Script -->
   <script>
     const modal = document.getElementById('bookingModal');
     const modalTitle = document.getElementById('modalTitle');
-    const modalSubtitle = document.getElementById('modalSubtitle');
+    const dateInput = document.getElementById('bookingDate');
 
-    function openModal(optionName, classTime) {
+    let currentOption = '';
+
+    // Function to calculate the next upcoming Wednesday
+    function getNextWednesday() {
+      const today = new Date();
+      const dayOfWeek = today.getDay(); // 0 = Sun, 3 = Wed
+      let daysUntilWednesday = (3 - dayOfWeek + 7) % 7;
+      if (daysUntilWednesday === 0) daysUntilWednesday = 7; // default to next week if today is Wednesday
+      
+      const nextWed = new Date(today);
+      nextWed.setDate(today.getDate() + daysUntilWednesday);
+      return nextWed.toISOString().split('T')[0];
+    }
+
+    function openModal(optionName) {
+      currentOption = optionName;
       modalTitle.innerText = `Book: ${optionName}`;
-      modalSubtitle.innerText = `Class: ${classTime}`;
+      
+      // Set min date to today and default value to next Wednesday
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+      dateInput.value = getNextWednesday();
+      
       modal.style.display = 'flex';
+    }
+
+    // Restrict selected dates to Wednesdays (Day 3)
+    function validateWednesday(input) {
+      if (!input.value) return;
+      const selectedDate = new Date(input.value);
+      
+      // UTC day calculation to prevent timezone offset issues
+      const day = new Date(selectedDate.getTime() + selectedDate.getTimezoneOffset() * 60000).getDay();
+      
+      if (day !== 3) {
+        alert('Classes at West Park Primary School are held on Wednesdays only at 6:30 PM. Please select a Wednesday.');
+        input.value = getNextWednesday();
+      }
     }
 
     function closeModal() {
@@ -596,7 +646,13 @@
     function handleFormSubmit(event) {
       event.preventDefault();
       const name = document.getElementById('fullName').value;
-      alert(`Thank you, ${name}! Your booking request for West Park Primary School (Wednesdays @ 6:30 PM) has been received. Niki will send you a confirmation email shortly.`);
+      const dateVal = document.getElementById('bookingDate').value;
+      
+      // Format date for display in confirmation
+      const dateObj = new Date(dateVal);
+      const formattedDate = dateObj.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+      alert(`Thank you, ${name}!\n\nYour request for ${currentOption} starting on ${formattedDate} at 6:30 PM (West Park Primary School) has been received.\n\nNiki will send you a confirmation email shortly.`);
       closeModal();
     }
 
