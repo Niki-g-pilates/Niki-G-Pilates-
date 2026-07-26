@@ -5,31 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NIKI G PILATES | Pilates for Every Body, Tailored to Your Needs</title>
   
-  <!-- Google Fonts: Montserrat Only -->
+  <!-- Google Fonts: Playfair Display (Headings) & Montserrat (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* EARTHY BOTANICAL PALETTE */
-      --primary: #C26D53;          /* Warm Terracotta / Clay */
-      --primary-dark: #A0523C;     /* Deep Rust */
-      --secondary: #788A72;        /* Muted Sage / Eucalyptus */
-      --bg-light: #F7F4EE;         /* Soft Warm Linen */
-      --card-bg: #FFFFFF;          /* Soft White Card */
-      --text-dark: #2B2825;        /* Soft Charcoal */
-      --text-muted: #615C56;       /* Warm Earthy Slate */
-      --border-color: #E6E0D6;     /* Gentle Organic Border */
+      /* REFERENCE IMAGE COLOR PALETTE */
+      --primary-rose: #D8A7A1;      /* Soft Dusty Pink Banner */
+      --primary-dark: #2D3748;      /* Deep Charcoal Slate for Text & Buttons */
+      --bg-stone: #F5F2EE;          /* Light Warm Beige Background */
+      --card-bg: #FFFFFF;           /* Soft White */
+      --text-muted: #5A6578;        /* Soft Charcoal Slate */
+      --border-color: #E2DCD5;      /* Subtle Neutral Border */
       
-      --font-family: 'Montserrat', -apple-system, sans-serif;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Montserrat', -apple-system, sans-serif;
+      --font-script: 'Alex Brush', cursive;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: var(--font-family) !important;
     }
 
     html {
@@ -37,11 +36,11 @@
     }
 
     body {
-      font-family: var(--font-family) !important;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      line-height: 1.75;
-      font-weight: 400;
+      font-family: var(--font-body);
+      background-color: var(--bg-stone);
+      color: var(--primary-dark);
+      line-height: 1.8;
+      font-weight: 300;
     }
 
     /* Navigation */
@@ -63,12 +62,11 @@
     }
 
     .logo {
-      font-family: var(--font-family) !important;
-      font-size: 1.25rem;
-      color: var(--primary);
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--primary-dark);
       text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-weight: 400;
     }
 
     nav ul {
@@ -79,23 +77,23 @@
 
     nav a {
       text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      font-size: 0.82rem;
-      letter-spacing: 0.8px;
-      transition: color 0.3s ease;
+      color: var(--primary-dark);
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 1.2px;
+      transition: opacity 0.3s ease;
       text-transform: uppercase;
-      font-family: var(--font-family) !important;
+      font-family: var(--font-body);
     }
 
     nav a:hover {
-      color: var(--primary);
+      opacity: 0.6;
     }
 
     /* Banner Image Strip */
     .hero-image-banner {
       width: 100%;
-      height: 380px;
+      height: 420px;
       position: relative;
       overflow: hidden;
     }
@@ -105,6 +103,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      filter: brightness(0.85);
     }
 
     .hero-overlay {
@@ -113,7 +112,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(43, 40, 37, 0.45);
+      background: rgba(45, 55, 72, 0.4);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -124,93 +123,109 @@
     }
 
     .hero-overlay h1 {
-      font-family: var(--font-family) !important;
-      font-size: 2.3rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+      font-family: var(--font-heading);
+      font-size: 2.6rem;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.8rem;
     }
 
     .hero-overlay p {
-      font-family: var(--font-family) !important;
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 1px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.8px;
+      max-width: 600px;
     }
 
     /* Container layout */
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 4.5rem 2rem;
     }
 
     .section-title {
-      font-family: var(--font-family) !important;
-      font-size: 1.9rem;
-      font-weight: 600;
-      color: var(--text-dark);
+      font-family: var(--font-heading);
+      font-size: 2.1rem;
+      font-weight: 300;
+      color: var(--primary-dark);
       text-align: center;
       margin-bottom: 2.5rem;
-      position: relative;
       letter-spacing: 1px;
     }
 
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 2px;
-      background: var(--secondary);
-      margin: 0.8rem auto 0 auto;
-    }
-
     .sub-heading {
-      font-family: var(--font-family) !important;
+      font-family: var(--font-body);
       text-align: center;
-      color: var(--secondary);
-      font-weight: 600;
+      color: var(--primary-dark);
+      font-weight: 400;
       margin-top: -1.8rem;
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
+      margin-bottom: 2.5rem;
+      font-size: 0.88rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     /* Content Cards / Text Blocks */
     .content-box {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2.5rem;
+      border-radius: 0px;
+      padding: 3rem;
       margin-bottom: 2.5rem;
-      box-shadow: 0 4px 18px rgba(120, 138, 114, 0.06);
     }
 
     .content-box p {
-      font-family: var(--font-family) !important;
+      font-family: var(--font-body);
       color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      font-size: 0.98rem;
+      margin-bottom: 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 300;
     }
 
     .content-box p:last-child {
       margin-bottom: 0;
     }
 
-    /* Buttons */
+    /* Rose Callout Block (Matches Image) */
+    .rose-banner-block {
+      background-color: var(--primary-rose);
+      color: var(--primary-dark);
+      text-align: center;
+      padding: 3.5rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .rose-banner-block h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+
+    .rose-banner-block p {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 1.8rem auto;
+    }
+
+    /* Reference Style Minimalist Button */
     .btn {
       display: inline-block;
-      background-color: var(--primary);
-      color: #FFFFFF;
-      padding: 0.85rem 1.8rem;
-      border: none;
-      border-radius: 25px;
+      background-color: var(--card-bg);
+      color: var(--primary-dark);
+      border: 1px solid var(--primary-dark);
+      padding: 0.8rem 2rem;
+      border-radius: 0px;
       text-decoration: none;
-      font-family: var(--font-family) !important;
-      font-weight: 600;
-      font-size: 0.88rem;
-      letter-spacing: 0.5px;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       cursor: pointer;
       text-align: center;
       transition: all 0.3s ease;
@@ -219,95 +234,88 @@
 
     .btn:hover {
       background-color: var(--primary-dark);
-      transform: translateY(-1px);
+      color: #FFFFFF;
     }
 
-    .btn-outline {
+    .btn-dark {
+      background-color: var(--primary-dark);
+      color: #FFFFFF;
+      border: 1px solid var(--primary-dark);
+    }
+
+    .btn-dark:hover {
       background-color: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-
-    .btn-outline:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-1px);
+      color: var(--primary-dark);
     }
 
     /* PRICING & BOOKING GRID */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 1.8rem;
       margin-top: 2rem;
     }
 
     .pricing-card {
       background: var(--card-bg);
-      border-radius: 16px;
-      padding: 2rem 1.5rem;
+      border-radius: 0px;
+      padding: 2.5rem 1.8rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 4px 16px rgba(120, 138, 114, 0.06);
       border: 1px solid var(--border-color);
       position: relative;
-      transition: transform 0.25 ease, box-shadow 0.25s ease;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(120, 138, 114, 0.12);
     }
 
     .pricing-card.featured {
-      border: 2px solid var(--primary);
+      border: 1px solid var(--primary-dark);
+      background: #FAF7F5;
     }
 
     .badge {
       position: absolute;
       top: -12px;
       right: 20px;
-      background: var(--secondary);
-      color: white;
-      font-family: var(--font-family) !important;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      background: var(--primary-rose);
+      color: var(--primary-dark);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       padding: 4px 12px;
-      border-radius: 12px;
     }
 
     .card-title {
-      font-family: var(--font-family) !important;
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 300;
       margin-bottom: 0.5rem;
-      color: var(--text-dark);
+      color: var(--primary-dark);
     }
 
     .card-meta {
-      font-family: var(--font-family) !important;
+      font-family: var(--font-body);
       color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
     }
 
     .card-price {
-      font-family: var(--font-family) !important;
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: var(--primary);
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--primary-dark);
       margin-bottom: 0.25rem;
     }
 
     .card-savings {
-      font-family: var(--font-family) !important;
-      font-size: 0.85rem;
-      color: var(--secondary);
-      font-weight: 600;
-      margin-bottom: 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 1.8rem;
     }
 
     /* Testimonials */
@@ -319,25 +327,28 @@
 
     .testimonial-card {
       background: var(--card-bg);
-      border-left: 4px solid var(--secondary);
-      padding: 1.8rem;
-      border-radius: 0 12px 12px 0;
-      box-shadow: 0 4px 15px rgba(120, 138, 114, 0.06);
+      border: 1px solid var(--border-color);
+      padding: 2.2rem;
+      border-radius: 0px;
     }
 
     .testimonial-card p {
-      font-family: var(--font-family) !important;
+      font-family: var(--font-heading);
       font-style: italic;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
     }
 
     .testimonial-author {
-      font-family: var(--font-family) !important;
-      font-weight: 600;
-      color: var(--primary);
-      font-size: 0.88rem;
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     /* Booking Modal Overlay */
@@ -347,8 +358,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(43, 40, 37, 0.65);
-      backdrop-filter: blur(2px);
+      background: rgba(45, 55, 72, 0.6);
       display: none;
       justify-content: center;
       align-items: center;
@@ -358,53 +368,55 @@
 
     .modal {
       background: var(--card-bg);
-      padding: 2.2rem;
-      border-radius: 16px;
+      padding: 2.5rem;
+      border-radius: 0px;
       width: 100%;
       max-width: 550px;
       max-height: 90vh;
       overflow-y: auto;
       position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border: 1px solid var(--border-color);
     }
 
     .modal h3 {
-      font-family: var(--font-family) !important;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text-dark);
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--primary-dark);
       margin-bottom: 0.3rem;
     }
 
     .modal p {
-      font-family: var(--font-family) !important;
+      font-family: var(--font-body);
       color: var(--text-muted);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       margin-bottom: 1.2rem;
+      font-weight: 300;
     }
 
     .form-section-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin: 1.2rem 0 0.6rem 0;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--primary-dark);
+      margin: 1.4rem 0 0.8rem 0;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 0.3rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
 
     .form-group {
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
     }
 
     .form-group label {
       display: block;
-      font-family: var(--font-family) !important;
-      font-size: 0.82rem;
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      margin-bottom: 0.3rem;
+      font-weight: 400;
+      color: var(--primary-dark);
+      letter-spacing: 0.5px;
     }
 
     .form-group input[type="text"],
@@ -413,12 +425,13 @@
     .form-group input[type="date"],
     .form-group textarea {
       width: 100%;
-      padding: 0.7rem;
+      padding: 0.75rem;
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-family: var(--font-family) !important;
-      background-color: var(--bg-light);
+      border-radius: 0px;
+      font-size: 0.88rem;
+      font-family: var(--font-body);
+      background-color: #FAFAFA;
+      font-weight: 300;
     }
 
     .form-group textarea {
@@ -436,23 +449,23 @@
 
     .checkbox-group input[type="checkbox"] {
       margin-top: 0.2rem;
-      accent-color: var(--primary);
-      width: 16px;
-      height: 16px;
+      accent-color: var(--primary-dark);
+      width: 15px;
+      height: 15px;
     }
 
     .checkbox-group label {
-      font-size: 0.82rem;
-      color: var(--text-dark);
-      font-weight: 400;
-      line-height: 1.35;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 300;
+      line-height: 1.4;
     }
 
     .form-note {
-      font-size: 0.78rem;
-      color: var(--secondary);
+      font-size: 0.75rem;
+      color: var(--text-muted);
       margin-top: 0.25rem;
-      font-weight: 600;
+      font-weight: 300;
     }
 
     .close-btn {
@@ -468,13 +481,16 @@
 
     /* Footer */
     footer {
-      background: var(--text-dark);
-      color: var(--bg-light);
-      padding: 3rem 2rem;
+      background: var(--primary-dark);
+      color: var(--bg-stone);
+      padding: 3.5rem 2rem;
       text-align: center;
-      font-size: 0.85rem;
-      margin-top: 2rem;
-      font-family: var(--font-family) !important;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 3rem;
+      font-family: var(--font-body);
+      font-weight: 300;
     }
 
     @media (max-width: 768px) {
@@ -484,11 +500,11 @@
       }
 
       .hero-overlay h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
       .hero-image-banner {
-        height: 260px;
+        height: 300px;
       }
     }
   </style>
@@ -498,7 +514,7 @@
   <!-- Navigation -->
   <header>
     <div class="nav-container">
-      <a href="#home" class="logo">NIKI G PILATES</a>
+      <a href="#home" class="logo">Niki G Pilates</a>
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
@@ -515,14 +531,14 @@
   <section id="home" class="hero-image-banner">
     <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Group Pilates Class">
     <div class="hero-overlay">
-      <h1>NIKI G PILATES</h1>
-      <p>Pilates for Every Body, Tailored to Your Needs</p>
+      <h1>Feel Good In The Body You Live In</h1>
+      <p>Physiotherapist-led Pilates and tailored movement designed to deepen your connection to your body.</p>
     </div>
   </section>
 
   <!-- Welcome / Bio Section -->
   <section id="welcome" class="container">
-    <h2 class="section-title">Welcome to Niki G Pilates</h2>
+    <h2 class="section-title">You Belong At Niki G Pilates</h2>
     <div class="content-box">
       <p>I am trained in the APPI Pilates method, a physiotherapist-designed approach used worldwide in hospitals and healthcare settings to support rehabilitation and recovery.</p>
       <p>I previously worked as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London, where I taught Pilates-based exercise to both groups and individuals as part of their rehabilitation. It was there that I discovered my love for helping people move better through exercise, which led me to complete my APPI Pilates Instructor training.</p>
@@ -531,8 +547,15 @@
     </div>
   </section>
 
+  <!-- Dusty Rose Accent Banner Block (Matching Image) -->
+  <section class="rose-banner-block">
+    <h3>Share The Gift Of Movement</h3>
+    <p>Reserve your spot or join our upcoming weekly sessions in Goring-by-Sea.</p>
+    <a href="#booking" class="btn" style="width: auto; display: inline-block;">Explore Classes</a>
+  </section>
+
   <!-- Classes & Interactive Booking Section -->
-  <section id="booking" class="container" style="padding-top: 0;">
+  <section id="booking" class="container">
     <h2 class="section-title">Classes & Booking</h2>
     <p class="sub-heading">📍 West Park Primary School, Goring-by-Sea &bull; Wednesdays @ 6:30 PM (50 mins)</p>
     
@@ -553,7 +576,7 @@
           <div class="card-price">£12</div>
           <div class="card-savings">&nbsp;</div>
         </div>
-        <button class="btn btn-outline" onclick="openModal('single')">Book Single Class (£12)</button>
+        <button class="btn" onclick="openModal('single')">Book Single Class (£12)</button>
       </div>
 
       <!-- 6-Week Block -->
@@ -565,7 +588,7 @@
           <div class="card-price">£60</div>
           <div class="card-savings">Save £12 (£10 / class)</div>
         </div>
-        <button class="btn" onclick="openModal('block')">Book 6-Week Course (£60)</button>
+        <button class="btn btn-dark" onclick="openModal('block')">Book 6-Week Course (£60)</button>
       </div>
 
     </div>
@@ -591,16 +614,16 @@
 
   <!-- Testimonials -->
   <section id="testimonials" class="container" style="padding-top: 0;">
-    <h2 class="section-title">Testimonials</h2>
+    <h2 class="section-title">Client Stories</h2>
     <div class="testimonial-grid">
       
       <div class="testimonial-card">
-        <p>"I have been taking Pilates classes with Niki for over two years in person and via zoom. She is brilliant. I came to Pilates late in life to help a back injury and it has improved immeasurably. Also recently I had a problem with my piriformis muscle and Niki put together a targeted exercise plan I could do daily which improved the condition within a month. Highly recommend her classes and a lovely genuine person."</p>
+        <p>"I have been taking Pilates classes with Niki for over two years in person and via zoom. She is brilliant. I came to Pilates late in life to help a back injury and it has improved immeasurably."</p>
         <div class="testimonial-author">— Sue, Hove</div>
       </div>
 
       <div class="testimonial-card">
-        <p>"I had a sports massage, Niki was amazing, she asked about the pressure, and got it perfectly!! She really got into the painful areas and realeased my tension, she was very friendly and attentive. Will definitely be going back!!"</p>
+        <p>"I had a sports massage, Niki was amazing, she asked about the pressure, and got it perfectly!! She really got into the painful areas and released my tension."</p>
         <div class="testimonial-author">— Elysia, Brighton</div>
       </div>
 
@@ -693,14 +716,14 @@
         </div>
 
         <!-- DECLARATION -->
-        <div class="checkbox-group" style="margin-top: 1rem; background: #EFEADF; padding: 0.8rem; border-radius: 8px;">
+        <div class="checkbox-group" style="margin-top: 1rem; background: #FAF7F5; padding: 0.8rem; border: 1px solid var(--border-color);">
           <input type="checkbox" id="declaration" required>
-          <label for="declaration" style="font-weight: 500; font-size: 0.78rem;">
+          <label for="declaration" style="font-size: 0.75rem;">
             I confirm that the health information provided is accurate. I participate voluntarily at my own risk and will inform the instructor of any changes prior to future classes. *
           </label>
         </div>
 
-        <button type="submit" id="submitBtn" class="btn" style="margin-top: 1.2rem;">Proceed to Secure Payment</button>
+        <button type="submit" id="submitBtn" class="btn btn-dark" style="margin-top: 1.2rem;">Proceed to Secure Payment</button>
       </form>
     </div>
   </div>
