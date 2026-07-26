@@ -13,7 +13,7 @@
   <style>
     :root {
       /* THEME COLOR PALETTE */
-      --primary-rose: #D8A7A1;      /* Soft Dusty Pink Banner */
+      --primary-rose: #D8A7A1;      /* Soft Dusty Pink Banner & Logo */
       --primary-dark: #2D3748;      /* Deep Charcoal Slate */
       --bg-stone: #F5F2EE;          /* Light Warm Beige */
       --card-bg: #FFFFFF;           /* Soft White Background */
@@ -63,10 +63,11 @@
       align-items: center;
     }
 
+    /* UPDATED: LOGO COLOR TO DUSTY ROSE */
     .logo {
       font-family: var(--font-script);
       font-size: 2.2rem;
-      color: var(--primary-dark);
+      color: var(--primary-rose);
       text-decoration: none;
       font-weight: 700;
     }
@@ -152,10 +153,10 @@
       visibility: visible;
     }
 
-    /* HERO BANNER IMAGE (TEXT CENTERED, NO LOGO TEXT OVERLAY) */
+    /* HERO BANNER IMAGE */
     .hero-image-banner {
       width: 100%;
-      height: 420px;
+      height: 480px;
       position: relative;
       overflow: hidden;
     }
@@ -164,8 +165,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      filter: brightness(0.85);
+      object-position: center 30%;
+      filter: brightness(0.9);
     }
 
     .hero-overlay {
@@ -174,7 +175,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(45, 55, 72, 0.45);
+      background: rgba(45, 55, 72, 0.35);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -191,7 +192,7 @@
       max-width: 700px;
       line-height: 1.6;
       margin: 0 auto;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
     }
 
     /* FULL WIDTH SECTION STRIPS */
@@ -580,7 +581,7 @@
         font-size: 1.1rem;
       }
       .hero-image-banner {
-        height: 320px;
+        height: 350px;
       }
       .section-strip {
         padding: 3rem 1.2rem;
@@ -593,9 +594,10 @@
   <!-- HEADER -->
   <header>
     <div class="nav-container">
+      <!-- LOGO (DUSTY PINK) -->
       <a href="#home" class="logo">Niki G Pilates</a>
       
-      <!-- 3 HORIZONTAL LINES MENU BUTTON AT TOP RIGHT -->
+      <!-- MENU TOGGLE -->
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
         <span></span>
         <span></span>
@@ -616,15 +618,16 @@
     </ul>
   </nav>
 
-  <!-- BANNER IMAGE AT TOP OF HOME (NO LOGO TEXT, CENTERED SUBTEXT ONLY) -->
+  <!-- BANNER IMAGE (UPDATED TO MERMAID STRETCH IMAGE) -->
   <section id="home" class="hero-image-banner">
-    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Group Pilates Class">
+    <!-- Replace 'niki-mermaid-stretch.jpg' with the filename or web URL of your image -->
+    <img src="niki-mermaid-stretch.jpg" alt="Niki G Pilates Mermaid Stretch">
     <div class="hero-overlay">
       <p>Physiotherapist-led Pilates and tailored movement designed to deepen your connection to your body.</p>
     </div>
   </section>
 
-  <!-- STRIP 1: WELCOME (Warm Stone Background) -->
+  <!-- STRIP 1: WELCOME -->
   <section class="section-strip strip-stone">
     <div class="strip-content text-center">
       <h2 class="section-title">WELCOME</h2>
@@ -634,7 +637,7 @@
     </div>
   </section>
 
-  <!-- STRIP 2: CLASSES & BOOKING (Clean White Background) -->
+  <!-- STRIP 2: CLASSES & BOOKING -->
   <section id="booking" class="section-strip strip-white">
     <div class="strip-content">
       <h2 class="section-title">Classes & Booking</h2>
@@ -673,7 +676,7 @@
     </div>
   </section>
 
-  <!-- STRIP 3: ABOUT NIKI (Dusty Rose Accent Strip) -->
+  <!-- STRIP 3: ABOUT NIKI -->
   <section id="about-niki" class="section-strip strip-rose">
     <div class="strip-content">
       <h2 class="section-title">Clinical Expertise & Mindful Movement</h2>
@@ -685,7 +688,7 @@
     </div>
   </section>
 
-  <!-- STRIP 4: WHY PILATES WORKS FOR EVERY BODY (Warm Stone Strip) -->
+  <!-- STRIP 4: WHY PILATES -->
   <section id="why-pilates" class="section-strip strip-stone">
     <div class="strip-content">
       <h2 class="section-title">Why Pilates Works for Every Body</h2>
@@ -710,7 +713,7 @@
     </div>
   </section>
 
-  <!-- STRIP 5: SPORTS MASSAGE (Deep Charcoal Dark Strip) -->
+  <!-- STRIP 5: SPORTS MASSAGE -->
   <section id="massage" class="section-strip strip-dark">
     <div class="strip-content text-center">
       <div class="profile-img-container">
@@ -722,7 +725,7 @@
     </div>
   </section>
 
-  <!-- STRIP 6: TESTIMONIALS (Clean White Strip) -->
+  <!-- STRIP 6: TESTIMONIALS -->
   <section id="testimonials" class="section-strip strip-white">
     <div class="strip-content">
       <h2 class="section-title">Client Stories</h2>
@@ -843,7 +846,6 @@
 
   <!-- SCRIPTS -->
   <script>
-    // TOP RIGHT MENU (3 HORIZONTAL LINES) TOGGLE
     const menuToggle = document.getElementById('menuToggle');
     const sideNav = document.getElementById('sideNav');
     const navOverlay = document.getElementById('navOverlay');
@@ -863,7 +865,6 @@
       });
     });
 
-    // MODAL & PAYMENT LOGIC
     const modal = document.getElementById('bookingModal');
     const modalTitle = document.getElementById('modalTitle');
     const submitBtn = document.getElementById('submitBtn');
