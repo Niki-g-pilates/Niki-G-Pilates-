@@ -3,28 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIKI G PILATES | Pilates for Every Body, Tailored to Your Needs</title>
+  <title>Homepage | Mindful Movement & Pilates</title>
   
-  <!-- Google Fonts: Playfair Display (Headings) & Montserrat (Body) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* COLOR PALETTE */
-      --primary-rose: #D8A7A1;      /* Soft Dusty Pink Banner */
-      --primary-dark: #2D3748;      /* Deep Charcoal Slate for Text & Dark Strips */
-      --bg-stone: #F5F2EE;          /* Light Warm Beige Background */
-      --card-bg: #FFFFFF;           /* Soft White Strip Background */
-      --text-dark: #2D3748;         /* Deep Slate Text */
-      --text-muted: #5A6578;        /* Soft Charcoal Slate */
-      --text-light: #F5F2EE;        /* Light Text for Dark Backgrounds */
-      --border-color: #E2DCD5;      /* Subtle Neutral Border */
-      
+      --primary-dark: #2D3748;
+      --bg-light: #FAFAFA;
+      --accent-rose: #D8A7A1;
+      --text-main: #333333;
+      --text-muted: #666666;
+      --border-color: #E2E2E2;
       --font-heading: 'Playfair Display', Georgia, serif;
-      --font-body: 'Montserrat', -apple-system, sans-serif;
-      --font-script: 'Alex Brush', cursive;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
@@ -33,896 +28,298 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: var(--font-body);
-      color: var(--text-dark);
-      line-height: 1.8;
-      font-weight: 300;
-      background-color: var(--bg-stone);
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      line-height: 1.7;
     }
 
-    /* Navigation Header */
+    /* HEADER */
     header {
-      background: #FFFFFF;
+      background-color: #FFFFFF;
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
-      z-index: 900;
+      z-index: 1000;
+      padding: 1.2rem 2rem;
     }
 
-    .nav-container {
-      max-width: 1100px;
+    .header-container {
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 2rem;
-      position: relative;
     }
 
-    .logo {
-      font-family: var(--font-script);
-      font-size: 2.2rem;
+    /* Logo / Site Name */
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
       color: var(--primary-dark);
       text-decoration: none;
-      font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    /* Mobile Menu Hamburger Toggle (Horizontal Lines) */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
-      background: transparent;
+    /* MENU - 3 HORIZONTAL LINES AT TOP RIGHT */
+    .menu-button {
+      background: none;
       border: none;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 22px;
       padding: 0;
-      z-index: 1000;
+      z-index: 1100;
     }
 
-    .menu-toggle span {
+    .menu-button span {
+      display: block;
       width: 100%;
       height: 3px;
       background-color: var(--primary-dark);
       border-radius: 2px;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease-in-out;
     }
 
-    nav ul {
+    /* SIDE NAVIGATION MENU (DRAWER) */
+    .side-nav {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100vh;
+      background-color: #FFFFFF;
+      box-shadow: -4px 0 15px rgba(0,0,0,0.1);
       display: flex;
+      flex-direction: column;
+      padding: 6rem 2.5rem 2rem 2.5rem;
+      transition: right 0.4s ease;
+      z-index: 1050;
+    }
+
+    .side-nav.open {
+      right: 0;
+    }
+
+    .side-nav ul {
       list-style: none;
+      display: flex;
+      flex-direction: column;
       gap: 1.8rem;
     }
 
-    nav a {
+    .side-nav a {
       text-decoration: none;
       color: var(--primary-dark);
+      font-size: 1rem;
       font-weight: 600;
-      font-size: 0.78rem;
       letter-spacing: 1.2px;
-      transition: opacity 0.3s ease;
       text-transform: uppercase;
-      font-family: var(--font-body);
+      transition: color 0.3s ease;
     }
 
-    nav a:hover {
-      opacity: 0.6;
+    .side-nav a:hover {
+      color: var(--accent-rose);
     }
 
-    /* Hero Banner Image Strip */
-    .hero-image-banner {
-      width: 100%;
-      height: 420px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-image-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: brightness(0.85);
-    }
-
-    .hero-overlay {
-      position: absolute;
+    .nav-overlay {
+      position: fixed;
       top: 0;
       left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1040;
+    }
+
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* BANNER IMAGE WITH CENTERED TEXT (NO OVERLAY LOGO TEXT) */
+    .hero-banner {
+      position: relative;
       width: 100%;
-      height: 100%;
-      background: rgba(45, 55, 72, 0.4);
+      height: 480px;
+      background-image: linear-gradient(rgba(45, 55, 72, 0.45), rgba(45, 55, 72, 0.45)), 
+                        url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
       text-align: center;
       padding: 2rem;
     }
 
-    .hero-overlay p {
-      font-family: var(--font-body);
-      font-size: 1.2rem;
+    .hero-banner-content {
+      max-width: 750px;
+      color: #FFFFFF;
+    }
+
+    .hero-banner-content p {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
       font-weight: 400;
-      letter-spacing: 1px;
-      max-width: 680px;
-      line-height: 1.6;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
       margin: 0 auto;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
-    /* Full Width Section Strips */
-    .section-strip {
-      width: 100%;
-      padding: 4.5rem 1.5rem;
-    }
-
-    /* Color Variations for Strips */
-    .strip-stone {
-      background-color: var(--bg-stone);
-      color: var(--text-dark);
-    }
-
-    .strip-white {
-      background-color: #FFFFFF;
-      color: var(--text-dark);
-    }
-
-    .strip-rose {
-      background-color: var(--primary-rose);
-      color: var(--primary-dark);
-    }
-
-    .strip-dark {
-      background-color: var(--primary-dark);
-      color: var(--text-light);
-    }
-
-    /* Inner Container to align content nicely */
-    .strip-content {
+    /* CONTENT SECTIONS */
+    .container {
       max-width: 850px;
       margin: 0 auto;
-    }
-
-    .strip-content.text-center {
+      padding: 4rem 1.5rem;
       text-align: center;
     }
 
-    /* Section Headings */
     .section-title {
       font-family: var(--font-heading);
       font-size: 2.2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 2rem;
-      letter-spacing: 1px;
-    }
-
-    .strip-dark .section-title {
-      color: #FFFFFF;
-    }
-
-    .sub-heading {
-      font-family: var(--font-body);
-      text-align: center;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
       font-weight: 600;
-      margin-top: -1.2rem;
-      margin-bottom: 2rem;
-      font-size: 0.88rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
     }
 
-    /* Typography inside strips */
-    .strip-content p {
-      margin-bottom: 1.4rem;
-      font-size: 0.98rem;
-      font-weight: 300;
+    .profile-img-container {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 2rem auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
-    .strip-content p:last-child {
-      margin-bottom: 0;
-    }
-
-    .strip-content h3 {
-      font-family: var(--font-heading);
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-top: 2rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .strip-dark h3 {
-      color: #FFFFFF;
-    }
-
-    .highlight-box {
-      border-left: 3px solid var(--primary-dark);
-      padding: 1.5rem 0 1.5rem 1.5rem;
-      margin-top: 2rem;
-      background: rgba(0, 0, 0, 0.02);
-    }
-
-    .highlight-box h4 {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background-color: #FFFFFF;
-      color: var(--primary-dark);
-      border: 1px solid var(--primary-dark);
-      padding: 0.8rem 2rem;
-      border-radius: 0px;
-      text-decoration: none;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 0.75rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-
-    .btn:hover {
-      background-color: var(--primary-dark);
-      color: #FFFFFF;
-    }
-
-    .btn-dark {
-      background-color: var(--primary-dark);
-      color: #FFFFFF;
-      border: 1px solid var(--primary-dark);
-    }
-
-    .btn-dark:hover {
-      background-color: transparent;
-      color: var(--primary-dark);
-    }
-
-    /* Pricing & Booking Grid */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      margin-top: 2rem;
-    }
-
-    .pricing-card {
-      background: #FFFFFF;
-      border-radius: 0px;
-      padding: 2.2rem 1.8rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid var(--border-color);
-      position: relative;
-    }
-
-    .pricing-card.featured {
-      border: 1px solid var(--primary-dark);
-      background: #FAF7F5;
-    }
-
-    .badge {
-      position: absolute;
-      top: -12px;
-      right: 20px;
-      background: var(--primary-rose);
-      color: var(--primary-dark);
-      font-family: var(--font-body);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-    }
-
-    .card-title {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--primary-dark);
-    }
-
-    .card-meta {
-      font-family: var(--font-body);
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      font-weight: 300;
-      margin-bottom: 1.2rem;
-    }
-
-    .card-price {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.25rem;
-    }
-
-    .card-savings {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-bottom: 1.8rem;
-    }
-
-    /* Testimonials Grid */
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      margin-top: 1.5rem;
-    }
-
-    .testimonial-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      padding: 2.2rem;
-      border-radius: 0px;
-    }
-
-    .testimonial-card p {
-      font-family: var(--font-heading);
-      font-style: italic;
-      color: var(--primary-dark);
-      font-size: 1rem;
-      font-weight: 400;
-      margin-bottom: 1.2rem;
-      line-height: 1.6;
-    }
-
-    .testimonial-author {
-      font-family: var(--font-body);
-      font-weight: 600;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* Booking Modal Overlay */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
+    .profile-img-container img {
       width: 100%;
       height: 100%;
-      background: rgba(45, 55, 72, 0.6);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      z-index: 2000;
+      object-fit: cover;
     }
 
-    .modal {
-      background: #FFFFFF;
-      padding: 2.5rem;
-      border-radius: 0px;
-      width: 100%;
-      max-width: 550px;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      border: 1px solid var(--border-color);
-      color: var(--text-dark);
-    }
-
-    .modal h3 {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.3rem;
-    }
-
-    .modal p {
-      font-family: var(--font-body);
+    .body-text {
+      font-size: 1.05rem;
       color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       font-weight: 300;
+      line-height: 1.8;
     }
 
-    .form-section-title {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--primary-dark);
-      margin: 1.4rem 0 0.8rem 0;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.3rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-      color: var(--primary-dark);
-      letter-spacing: 0.5px;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="tel"],
-    .form-group input[type="date"],
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: 0px;
-      font-size: 0.88rem;
-      font-family: var(--font-body);
-      background-color: #FAFAFA;
-      font-weight: 300;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      height: 60px;
-    }
-
-    /* Checkbox Styling */
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .checkbox-group input[type="checkbox"] {
-      margin-top: 0.2rem;
-      accent-color: var(--primary-dark);
-      width: 15px;
-      height: 15px;
-    }
-
-    .checkbox-group label {
-      font-size: 0.8rem;
-      color: var(--primary-dark);
-      font-weight: 300;
-      line-height: 1.4;
-    }
-
-    .form-note {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-      font-weight: 300;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1.2rem;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    /* Footer */
     footer {
-      background: #1A202C;
-      color: var(--bg-stone);
-      padding: 3rem 2rem;
+      background-color: var(--primary-dark);
+      color: #FFFFFF;
       text-align: center;
-      font-size: 0.78rem;
+      padding: 2.5rem 1rem;
+      font-size: 0.85rem;
       letter-spacing: 1px;
-      text-transform: uppercase;
-      font-family: var(--font-body);
-      font-weight: 400;
     }
 
-    /* Responsive Navigation & Mobile Menu */
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex; /* Show 3 horizontal lines on mobile */
+      .hero-banner {
+        height: 360px;
       }
-
-      nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #FFFFFF;
-        border-bottom: 1px solid var(--border-color);
-        padding: 1.5rem 0;
+      .hero-banner-content p {
+        font-size: 1.25rem;
       }
-
-      nav.active {
-        display: block;
-      }
-
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.2rem;
-      }
-
-      .hero-overlay p {
-        font-size: 1rem;
-      }
-
-      .hero-image-banner {
-        height: 320px;
-      }
-
-      .section-strip {
-        padding: 3rem 1.2rem;
+      .section-title {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- HEADER -->
   <header>
-    <div class="nav-container">
-      <a href="#home" class="logo">Niki G Pilates</a>
+    <div class="header-container">
+      <a href="#" class="brand-logo">NIKI G PILATES</a>
       
-      <!-- Hamburger Menu Lines -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <!-- MENU BUTTON (3 HORIZONTAL LINES AT TOP RIGHT) -->
+      <button class="menu-button" id="menuBtn" aria-label="Open Menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-
-      <nav id="navMenu">
-        <ul>
-          <li><a href="#home" onclick="closeNav()">Home</a></li>
-          <li><a href="#booking" onclick="closeNav()">Classes & Booking</a></li>
-          <li><a href="#about-niki" onclick="closeNav()">About Niki</a></li>
-          <li><a href="#massage" onclick="closeNav()">Sports Massage</a></li>
-          <li><a href="#testimonials" onclick="closeNav()">Testimonials</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
-  <!-- Banner Image Strip at Top of Home -->
-  <section id="home" class="hero-image-banner">
-    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Group Pilates Class">
-    <div class="hero-overlay">
+  <!-- OVERLAY & SLIDE-OUT MENU -->
+  <div class="nav-overlay" id="navOverlay"></div>
+  <nav class="side-nav" id="sideNav">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#massage">Massage Services</a></li>
+      <li><a href="#booking">Classes & Booking</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO BANNER (Centered text, no overlay logo) -->
+  <section class="hero-banner" id="home">
+    <div class="hero-banner-content">
       <p>Physiotherapist-led Pilates and tailored movement designed to deepen your connection to your body.</p>
     </div>
   </section>
 
-  <!-- STRIP 1: WELCOME (Warm Stone Background) -->
-  <section class="section-strip strip-stone">
-    <div class="strip-content text-center">
-      <h2 class="section-title">WELCOME</h2>
-      <p>I'm passionate about helping people feel stronger, healthier and more confident through Pilates. Whether you're new to Pilates or looking to progress, you'll find a welcoming, supportive environment where everyone is encouraged to move at their own pace.</p>
-      <p>I'm trained in the APPI Pilates method, a physiotherapist-designed approach used in healthcare settings to support rehabilitation and recovery. I previously worked as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, where I taught Pilates-based exercise as part of rehabilitation programmes.</p>
-      <p>Alongside my APPI qualification, I'm also trained in Reformer Pilates and pre and postnatal Pilates. By combining clinical experience with a supportive teaching style, my goal is to help you build strength, improve confidence and move better in everyday life.</p>
-    </div>
+  <!-- WELCOME / HOMEPAGE CONTENT -->
+  <section class="container" id="welcome">
+    <h2 class="section-title">Welcome</h2>
+    <p class="body-text">
+      I am passionate about helping people feel stronger, healthier, and more confident through movement. Whether you are new to Pilates or looking to progress your practice, you will find a welcoming, supportive environment tailored to your individual needs.
+    </p>
   </section>
 
-  <!-- STRIP 2: CLASSES & BOOKING (Clean White Background) -->
-  <section id="booking" class="section-strip strip-white">
-    <div class="strip-content">
-      <h2 class="section-title">Classes & Booking</h2>
-      <p class="sub-heading">📍 West Park Primary School, Goring-by-Sea &bull; Wednesdays @ 6:30 PM (50 mins)</p>
-
-      <p class="text-center" style="max-width: 750px; margin: 0 auto 2rem auto; text-align: center;">
-        Enjoy a 50-minute reset after a busy day—whether on childcare duty or at a desk—leaving you calm, strong, and centered. This session focuses on full-body strengthening and toning, improving flexibility and posture, and building core stability, pelvic floor health, and breath awareness through mindful movement.
-      </p>
-
-      <!-- Booking Options Grid -->
-      <div class="pricing-grid">
-
-        <!-- Single Drop-In -->
-        <div class="pricing-card">
-          <div>
-            <h3 class="card-title">Single Drop-In</h3>
-            <p class="card-meta">Book a single session to try it out or drop in whenever suits you.</p>
-            <div class="card-price">£12</div>
-            <div class="card-savings">&nbsp;</div>
-          </div>
-          <button class="btn" onclick="openModal('single')">Book Single Class (£12)</button>
-        </div>
-
-        <!-- 6-Week Block -->
-        <div class="pricing-card featured">
-          <span class="badge">Best Value</span>
-          <div>
-            <h3 class="card-title">6-Week Block</h3>
-            <p class="card-meta">Reserve your place every week and build a consistent practice.</p>
-            <div class="card-price">£60</div>
-            <div class="card-savings">Save £12 (£10 / class)</div>
-          </div>
-          <button class="btn btn-dark" onclick="openModal('block')">Book 6-Week Course (£60)</button>
-        </div>
-
-      </div>
+  <!-- MASSAGE SERVICES SECTION -->
+  <section class="container" id="massage" style="border-top: 1px solid var(--border-color);">
+    <div class="profile-img-container">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" alt="Massage Therapy">
     </div>
+    <h2 class="section-title">Massage Services</h2>
+    <p class="body-text">
+      I am a certified Level 3 Sports & Remedial massage therapist. I have worked both freelance and in Physiotherapy clinics treating both clinical and general populations with a range of muscular-related disorders.
+    </p>
+    <p class="body-text">
+      Using a wide range of targeted techniques, I help reduce discomfort, improve mobility, and promote optimal recovery.
+    </p>
   </section>
 
-  <!-- STRIP 3: ABOUT NIKI (Dusty Rose Accent Strip) -->
-  <section id="about-niki" class="section-strip strip-rose">
-    <div class="strip-content">
-      <h2 class="section-title">Clinical Expertise & Mindful Movement</h2>
-      <p>Hi, I’m Niki! My journey into Pilates began during my time as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London. Working in a clinical environment, I taught both individual and group Pilates sessions as a core part of patient rehabilitation—and saw firsthand how targeted, mindful movement can completely transform recovery, posture, and quality of life.</p>
-      
-      <p>Driven by this passion, I completed my formal training in the <strong>APPI Pilates method</strong>—a world-renowned, physiotherapist-designed approach used extensively throughout healthcare settings. To offer a comprehensive movement experience, I went on to specialize further in <strong>Reformer Pilates</strong> and <strong>Pre & Postnatal Pilates</strong>, allowing me to safely support clients through every stage of life and physical transition.</p>
-
-      <p>By combining a strong clinical background with a supportive, individual-focused teaching style, I bridge the gap between healthcare and everyday fitness. Whether you are recovering from an injury, managing daily stiffness, supporting your body through pregnancy, or looking to build core strength and confidence, I’m here to guide you every step of the way.</p>
-    </div>
-  </section>
-
-  <!-- STRIP 4: WHY PILATES WORKS FOR EVERY BODY (Warm Stone Strip) -->
-  <section id="why-pilates" class="section-strip strip-stone">
-    <div class="strip-content">
-      <h2 class="section-title">Why Pilates Works for Every Body</h2>
-      <p>Pilates is one of the most versatile and inclusive movement practices available. Designed to be adaptable to any fitness level, it meets you exactly where you are—helping you build resilience, restore vitality, and move with grace.</p>
-      
-      <h3>Restore & Protect Your Spine</h3>
-      <p>Hours spent at desks, behind wheels, or staring at screens take a toll on our posture. Pilates gently decompresses the spine, corrects postural slumping, and strengthens the deep stabilizing muscles that keep you standing tall and pain-free.</p>
-
-      <h3>Clinical Pain Relief & Injury Recovery</h3>
-      <p>Recommended by healthcare professionals and the NHS, Pilates provides a safe environment to heal. By addressing the root cause of muscle tightness and weakness, it effectively resolves issues like back stiffness, frozen shoulder, RSI, and joint wear-and-tear.</p>
-
-      <h3>Low-Impact, High-Reward Conditioning</h3>
-      <p>Unlike high-intensity workouts that place heavy stress on your joints, Pilates delivers powerful full-body conditioning through controlled, deliberate movements. It tones long, lean muscles while remaining gentle on your body.</p>
-
-      <h3>A Mental & Physical Reset</h3>
-      <p>By focusing on controlled breathing and precision, Pilates acts as an active form of mindful meditation. It breaks the cycle of daily stress, lowers tension, and leaves you feeling clear, centered, and re-energized.</p>
-
-      <div class="highlight-box">
-        <h4>My Personal Journey</h4>
-        <p>Having personally relied on Pilates to recover from the physical toll of desk work and a major biking shoulder injury, I bring a deeply empathetic and clinical perspective to every class. Whether you are taking your very first step into movement or recovering from an injury, you will find a supportive space tailored to your needs.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- STRIP 5: SPORTS MASSAGE (Deep Charcoal Dark Strip) -->
-  <section id="massage" class="section-strip strip-dark">
-    <div class="strip-content text-center">
-      <h2 class="section-title">Sports Massage</h2>
-      <p>I am a certified Level 3 Sports & Remedial massage therapist! With my experience in freelance work across Brighton and London, I specialize in addressing muscular-related disorders to alleviate discomfort, prevent injuries, and aid in the recovery process.</p>
-      <p>Let's work together to enhance your well-being and promote optimal musculoskeletal health.</p>
-    </div>
-  </section>
-
-  <!-- STRIP 6: TESTIMONIALS (Clean White Strip) -->
-  <section id="testimonials" class="section-strip strip-white">
-    <div class="strip-content">
-      <h2 class="section-title">Client Stories</h2>
-      <div class="testimonial-grid">
-        
-        <div class="testimonial-card">
-          <p>"I have been taking Pilates classes with Niki for over two years in person and via zoom. She is brilliant. I came to Pilates late in life to help a back injury and it has improved immeasurably."</p>
-          <div class="testimonial-author">— Sue, Hove</div>
-        </div>
-
-        <div class="testimonial-card">
-          <p>"I had a sports massage, Niki was amazing, she asked about the pressure, and got it perfectly!! She really got into the painful areas and released my tension."</p>
-          <div class="testimonial-author">— Elysia, Brighton</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Booking & Health Waiver Modal -->
-  <div class="modal-overlay" id="bookingModal">
-    <div class="modal">
-      <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h3 id="modalTitle">Book Your Pilates Class</h3>
-      <p>📍 West Park Primary School (Wednesdays @ 6:30 PM)</p>
-      
-      <form id="bookingForm" onsubmit="handleFormSubmit(event)">
-        
-        <!-- STEP 1: DATE SELECTION -->
-        <div class="form-section-title">1. Select Class Date</div>
-        <div class="form-group">
-          <label for="bookingDate">Start Date (Wednesdays Only)</label>
-          <input type="date" id="bookingDate" required onchange="validateWednesday(this)">
-          <div class="form-note">⏰ Class time: 6:30 PM (50 minutes)</div>
-        </div>
-
-        <!-- STEP 2: PERSONAL DETAILS -->
-        <div class="form-section-title">2. Contact & Personal Info</div>
-        <div class="form-group">
-          <label for="fullName">Full Name *</label>
-          <input type="text" id="fullName" placeholder="Jane Doe" required>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" placeholder="jane@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number *</label>
-            <input type="tel" id="phone" placeholder="07123 456789" required>
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
-          <div class="form-group">
-            <label for="dob">Date of Birth *</label>
-            <input type="date" id="dob" required>
-          </div>
-          <div class="form-group">
-            <label for="emergency">Emergency Contact (Name & Tel) *</label>
-            <input type="text" id="emergency" placeholder="John Doe - 07987 654321" required>
-          </div>
-        </div>
-
-        <!-- STEP 3: HEALTH WAIVER (PAR-Q) -->
-        <div class="form-section-title">3. Health & Medical Waiver</div>
-        <p style="font-size: 0.8rem; margin-bottom: 0.8rem;">Please check any boxes below that apply to you:</p>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="q1">
-          <label for="q1">Heart condition, chest pain, or high/low blood pressure</label>
-        </div>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="q2">
-          <label for="q2">Back, joint, or bone pain (e.g., slipped disc, sciatica, shoulder issues)</label>
-        </div>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="q3">
-          <label for="q3">Recent surgery, injury, or hospitalization in the last 12 months</label>
-        </div>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="q4">
-          <label for="q4">Currently pregnant, or given birth in the last 12 months</label>
-        </div>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="q5">
-          <label for="q5">Dizziness, loss of balance, or fainting during/after exercise</label>
-        </div>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="q6">
-          <label for="q6">Asthma, breathing difficulties, or other chronic conditions</label>
-        </div>
-
-        <div class="form-group" style="margin-top: 0.6rem;">
-          <label for="healthNotes">If you checked any boxes above, please briefly explain:</label>
-          <textarea id="healthNotes" placeholder="e.g., Lower back tightness, mild asthma, etc."></textarea>
-        </div>
-
-        <!-- DECLARATION -->
-        <div class="checkbox-group" style="margin-top: 1rem; background: #FAF7F5; padding: 0.8rem; border: 1px solid var(--border-color);">
-          <input type="checkbox" id="declaration" required>
-          <label for="declaration" style="font-size: 0.75rem;">
-            I confirm that the health information provided is accurate. I participate voluntarily at my own risk and will inform the instructor of any changes prior to future classes. *
-          </label>
-        </div>
-
-        <button type="submit" id="submitBtn" class="btn btn-dark" style="margin-top: 1.2rem;">Proceed to Secure Payment</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Niki G Pilates & Sports Massage. All rights reserved.</p>
+    <p>&copy; 2026 Niki G Pilates & Movement. All Rights Reserved.</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- JAVASCRIPT FOR TOP-RIGHT MENU -->
   <script>
-    // Navigation Toggle JS
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
+    const menuBtn = document.getElementById('menuBtn');
+    const sideNav = document.getElementById('sideNav');
+    const navOverlay = document.getElementById('navOverlay');
 
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+    function toggleMenu() {
+      sideNav.classList.toggle('open');
+      navOverlay.classList.toggle('active');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu on link click
+    document.querySelectorAll('.side-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        sideNav.classList.remove('open');
+        navOverlay.classList.remove('active');
+      });
     });
-
-    function closeNav() {
-      navMenu.classList.remove('active');
-    }
-
-    // Modal, Calendar & Payment Script
-    const modal = document.getElementById('bookingModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const submitBtn = document.getElementById('submitBtn');
-    const dateInput = document.getElementById('bookingDate');
-
-    let bookingType = 'single'; 
-
-    const PAYMENT_LINKS = {
-      single: "https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602", 
-      block: "https://buy.stripe.com/4gM14pc5T9i84UbfCY7N600"       
-    };
-
-    function getNextWednesday() {
-      const today = new Date();
-      const dayOfWeek = today.getDay(); 
-      let daysUntilWednesday = (3 - dayOfWeek + 7) % 7;
-      if (daysUntilWednesday === 0) daysUntilWednesday = 7;
-      
-      const nextWed = new Date(today);
-      nextWed.setDate(today.getDate() + daysUntilWednesday);
-      return nextWed.toISOString().split('T')[0];
-    }
-
-    function openModal(type) {
-      bookingType = type;
-      if (type === 'single') {
-        modalTitle.innerText = "Book: Single Drop-In Class (£12)";
-        submitBtn.innerText = "Proceed to Payment (£12)";
-      } else {
-        modalTitle.innerText = "Book: 6-Week Pilates Block (£60)";
-        submitBtn.innerText = "Proceed to Payment (£60)";
-      }
-      
-      const today = new Date().toISOString().split('T')[0];
-      dateInput.setAttribute('min', today);
-      dateInput.value = getNextWednesday();
-      
-      modal.style.display = 'flex';
-    }
-
-    function validateWednesday(input) {
-      if (!input.value) return;
-      const selectedDate = new Date(input.value);
-      const day = new Date(selectedDate.getTime() + selectedDate.getTimezoneOffset() * 60000).getDay();
-      
-      if (day !== 3) {
-        alert('Classes at West Park Primary School are held on Wednesdays only at 6:30 PM. Please select a Wednesday.');
-        input.value = getNextWednesday();
-      }
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-      document.getElementById('bookingForm').reset();
-    }
-
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      
-      const name = document.getElementById('fullName').value;
-      const dateVal = document.getElementById('bookingDate').value;
-      const dateObj = new Date(dateVal);
-      const formattedDate = dateObj.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-
-      alert(`Thank you, ${name}!\n\nYour details and health waiver have been saved.\n\nClicking OK will take you directly to the payment page for ${formattedDate}.`);
-
-      const targetPaymentUrl = PAYMENT_LINKS[bookingType];
-      window.location.href = targetPaymentUrl;
-
-      closeModal();
-    }
-
-    window.onclick = function(event) {
-      if (event.target === modal) {
-        closeModal();
-      }
-    }
   </script>
 
 </body>
