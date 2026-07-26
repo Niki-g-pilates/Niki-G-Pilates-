@@ -8,7 +8,7 @@
   <!-- Google Fonts: Playfair Display (Headings) & Montserrat (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -66,7 +66,7 @@
       font-size: 2.2rem;
       color: var(--primary-dark);
       text-decoration: none;
-      font-weight: 400;
+      font-weight: 700;
     }
 
     nav ul {
@@ -78,7 +78,7 @@
     nav a {
       text-decoration: none;
       color: var(--primary-dark);
-      font-weight: 400;
+      font-weight: 600;
       font-size: 0.78rem;
       letter-spacing: 1.2px;
       transition: opacity 0.3s ease;
@@ -125,7 +125,7 @@
     .hero-overlay h1 {
       font-family: var(--font-heading);
       font-size: 2.6rem;
-      font-weight: 300;
+      font-weight: 700;
       letter-spacing: 1.5px;
       margin-bottom: 0.8rem;
     }
@@ -133,7 +133,7 @@
     .hero-overlay p {
       font-family: var(--font-body);
       font-size: 0.95rem;
-      font-weight: 300;
+      font-weight: 400;
       letter-spacing: 0.8px;
       max-width: 600px;
     }
@@ -145,10 +145,11 @@
       padding: 4.5rem 2rem;
     }
 
+    /* Bold Section Title */
     .section-title {
       font-family: var(--font-heading);
       font-size: 2.1rem;
-      font-weight: 300;
+      font-weight: 700;
       color: var(--primary-dark);
       text-align: center;
       margin-bottom: 2.5rem;
@@ -159,7 +160,7 @@
       font-family: var(--font-body);
       text-align: center;
       color: var(--primary-dark);
-      font-weight: 400;
+      font-weight: 600;
       margin-top: -1.8rem;
       margin-bottom: 2.5rem;
       font-size: 0.88rem;
@@ -188,7 +189,36 @@
       margin-bottom: 0;
     }
 
-    /* Rose Callout Block (Matches Image) */
+    /* Subheadings inside Content Boxes */
+    .content-box h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-top: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .content-box h3:first-child {
+      margin-top: 0;
+    }
+
+    .personal-journey-box {
+      background-color: #FAF7F5;
+      border-left: 3px solid var(--primary-dark);
+      padding: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .personal-journey-box h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Rose Callout Block */
     .rose-banner-block {
       background-color: var(--primary-rose);
       color: var(--primary-dark);
@@ -200,14 +230,14 @@
     .rose-banner-block h3 {
       font-family: var(--font-heading);
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: 700;
       margin-bottom: 1.2rem;
     }
 
     .rose-banner-block p {
       font-family: var(--font-body);
       font-size: 0.95rem;
-      font-weight: 300;
+      font-weight: 400;
       max-width: 600px;
       margin: 0 auto 1.8rem auto;
     }
@@ -222,7 +252,7 @@
       border-radius: 0px;
       text-decoration: none;
       font-family: var(--font-body);
-      font-weight: 400;
+      font-weight: 600;
       font-size: 0.75rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -280,7 +310,7 @@
       color: var(--primary-dark);
       font-family: var(--font-body);
       font-size: 0.65rem;
-      font-weight: 400;
+      font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       padding: 4px 12px;
@@ -289,7 +319,7 @@
     .card-title {
       font-family: var(--font-heading);
       font-size: 1.4rem;
-      font-weight: 300;
+      font-weight: 700;
       margin-bottom: 0.5rem;
       color: var(--primary-dark);
     }
@@ -305,7 +335,7 @@
     .card-price {
       font-family: var(--font-heading);
       font-size: 2.2rem;
-      font-weight: 300;
+      font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 0.25rem;
     }
@@ -314,7 +344,7 @@
       font-family: var(--font-body);
       font-size: 0.8rem;
       color: var(--text-muted);
-      font-weight: 400;
+      font-weight: 500;
       margin-bottom: 1.8rem;
     }
 
@@ -337,14 +367,14 @@
       font-style: italic;
       color: var(--primary-dark);
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 1.2rem;
       line-height: 1.6;
     }
 
     .testimonial-author {
       font-family: var(--font-body);
-      font-weight: 400;
+      font-weight: 600;
       color: var(--text-muted);
       font-size: 0.78rem;
       letter-spacing: 1px;
@@ -381,7 +411,7 @@
     .modal h3 {
       font-family: var(--font-heading);
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 0.3rem;
     }
@@ -396,7 +426,7 @@
 
     .form-section-title {
       font-size: 0.78rem;
-      font-weight: 400;
+      font-weight: 600;
       color: var(--primary-dark);
       margin: 1.4rem 0 0.8rem 0;
       border-bottom: 1px solid var(--border-color);
@@ -414,7 +444,7 @@
       font-family: var(--font-body);
       font-size: 0.78rem;
       margin-bottom: 0.3rem;
-      font-weight: 400;
+      font-weight: 600;
       color: var(--primary-dark);
       letter-spacing: 0.5px;
     }
@@ -490,7 +520,7 @@
       text-transform: uppercase;
       margin-top: 3rem;
       font-family: var(--font-body);
-      font-weight: 300;
+      font-weight: 400;
     }
 
     @media (max-width: 768px) {
@@ -547,7 +577,7 @@
     </div>
   </section>
 
-  <!-- Dusty Rose Accent Banner Block (Matching Image) -->
+  <!-- Dusty Rose Accent Banner Block -->
   <section class="rose-banner-block">
     <h3>Share The Gift Of Movement</h3>
     <p>Reserve your spot or join our upcoming weekly sessions in Goring-by-Sea.</p>
@@ -594,12 +624,28 @@
     </div>
   </section>
 
-  <!-- Why Choose Pilates Section -->
+  <!-- Expanded Why Choose Pilates Section -->
   <section id="why-pilates" class="container" style="padding-top: 0;">
-    <h2 class="section-title">Why Choose Pilates?</h2>
+    <h2 class="section-title">Why Pilates Works for Every Body</h2>
     <div class="content-box">
-      <p>For years, Pilates has been a trusted remedy for back pain, endorsed by the NHS for recovery and prevention. Its effectiveness extends beyond back pain to address various muscular disorders like shoulder pain, impingement syndrome, frozen shoulder, RSI, and other musculoskeletal issues. Pilates serves not only as a solution but also as a preventive measure, fostering better posture, strength, and a pain-free lifestyle.</p>
-      <p>By incorporating a series of strengthening and stretching exercises, Pilates corrects muscular imbalances. As a former desk worker who experienced the consequences of poor posture, including aching shoulders and RSI, I discovered the transformative benefits of regular Pilates practice. It also played a crucial role in my rehabilitation after a biking accident that resulted in a shoulder injury.</p>
+      <p>Pilates is one of the most versatile and inclusive movement practices available. Designed to be adaptable to any fitness level, it meets you exactly where you are—helping you build resilience, restore vitality, and move with grace.</p>
+      
+      <h3>Restore & Protect Your Spine</h3>
+      <p>Hours spent at desks, behind wheels, or staring at screens take a toll on our posture. Pilates gently decompresses the spine, corrects postural slumping, and strengthens the deep stabilizing muscles that keep you standing tall and pain-free.</p>
+
+      <h3>Clinical Pain Relief & Injury Recovery</h3>
+      <p>Recommended by healthcare professionals and the NHS, Pilates provides a safe environment to heal. By addressing the root cause of muscle tightness and weakness, it effectively resolves issues like back stiffness, frozen shoulder, RSI, and joint wear-and-tear.</p>
+
+      <h3>Low-Impact, High-Reward Conditioning</h3>
+      <p>Unlike high-intensity workouts that place heavy stress on your joints, Pilates delivers powerful full-body conditioning through controlled, deliberate movements. It tones long, lean muscles while remaining gentle on your body.</p>
+
+      <h3>A Mental & Physical Reset</h3>
+      <p>By focusing on controlled breathing and precision, Pilates acts as an active form of mindful meditation. It breaks the cycle of daily stress, lowers tension, and leaves you feeling clear, centered, and re-energized.</p>
+
+      <div class="personal-journey-box">
+        <h4>My Personal Journey</h4>
+        <p>Having personally relied on Pilates to recover from the physical toll of desk work and a major biking shoulder injury, I bring a deeply empathetic and clinical perspective to every class. Whether you are taking your very first step into movement or recovering from an injury, you will find a supportive space tailored to your needs.</p>
+      </div>
     </div>
   </section>
 
