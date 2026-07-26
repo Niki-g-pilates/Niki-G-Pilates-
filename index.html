@@ -14,10 +14,12 @@
     :root {
       /* COLOR PALETTE */
       --primary-rose: #D8A7A1;      /* Soft Dusty Pink Banner */
-      --primary-dark: #2D3748;      /* Deep Charcoal Slate for Text & Buttons */
+      --primary-dark: #2D3748;      /* Deep Charcoal Slate for Text & Dark Strips */
       --bg-stone: #F5F2EE;          /* Light Warm Beige Background */
-      --card-bg: #FFFFFF;           /* Soft White */
+      --card-bg: #FFFFFF;           /* Soft White Strip Background */
+      --text-dark: #2D3748;         /* Deep Slate Text */
       --text-muted: #5A6578;        /* Soft Charcoal Slate */
+      --text-light: #F5F2EE;        /* Light Text for Dark Backgrounds */
       --border-color: #E2DCD5;      /* Subtle Neutral Border */
       
       --font-heading: 'Playfair Display', Georgia, serif;
@@ -37,15 +39,15 @@
 
     body {
       font-family: var(--font-body);
-      background-color: var(--bg-stone);
-      color: var(--primary-dark);
+      color: var(--text-dark);
       line-height: 1.8;
       font-weight: 300;
+      background-color: var(--bg-stone);
     }
 
     /* Navigation */
     header {
-      background: var(--card-bg);
+      background: #FFFFFF;
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
@@ -138,114 +140,109 @@
       max-width: 600px;
     }
 
-    /* Container Layout */
-    .container {
-      max-width: 900px;
+    /* Full Width Section Strips */
+    .section-strip {
+      width: 100%;
+      padding: 4.5rem 1.5rem;
+    }
+
+    /* Color Variations for Strips */
+    .strip-stone {
+      background-color: var(--bg-stone);
+      color: var(--text-dark);
+    }
+
+    .strip-white {
+      background-color: #FFFFFF;
+      color: var(--text-dark);
+    }
+
+    .strip-rose {
+      background-color: var(--primary-rose);
+      color: var(--primary-dark);
+    }
+
+    .strip-dark {
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+    }
+
+    /* Inner Container to align content nicely */
+    .strip-content {
+      max-width: 850px;
       margin: 0 auto;
-      padding: 3rem 2rem 1.5rem 2rem;
+    }
+
+    .strip-content.text-center {
+      text-align: center;
     }
 
     /* Section Headings */
     .section-title {
       font-family: var(--font-heading);
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      color: var(--primary-dark);
       text-align: center;
       margin-bottom: 2rem;
       letter-spacing: 1px;
+    }
+
+    .strip-dark .section-title {
+      color: #FFFFFF;
     }
 
     .sub-heading {
       font-family: var(--font-body);
       text-align: center;
-      color: var(--primary-dark);
       font-weight: 600;
       margin-top: -1.2rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       font-size: 0.88rem;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    /* Content Cards / Text Blocks */
-    .content-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 0px;
-      padding: 2.5rem 3rem;
-      margin-bottom: 2rem;
-    }
-
-    .content-box p {
-      font-family: var(--font-body);
-      color: var(--text-muted);
+    /* Typography inside strips */
+    .strip-content p {
       margin-bottom: 1.4rem;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-weight: 300;
     }
 
-    .content-box p:last-child {
+    .strip-content p:last-child {
       margin-bottom: 0;
     }
 
-    /* Subheadings inside Content Boxes */
-    .content-box h3 {
+    .strip-content h3 {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      color: var(--primary-dark);
-      margin-top: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .content-box h3:first-child {
-      margin-top: 0;
-    }
-
-    .personal-journey-box {
-      background-color: #FAF7F5;
-      border-left: 3px solid var(--primary-dark);
-      padding: 1.8rem;
       margin-top: 2rem;
+      margin-bottom: 0.6rem;
     }
 
-    .personal-journey-box h4 {
+    .strip-dark h3 {
+      color: #FFFFFF;
+    }
+
+    .highlight-box {
+      border-left: 3px solid var(--primary-dark);
+      padding: 1.5rem 0 1.5rem 1.5rem;
+      margin-top: 2rem;
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .highlight-box h4 {
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--primary-dark);
       margin-bottom: 0.5rem;
     }
 
-    /* Rose Accent Banner Block */
-    .rose-banner-block {
-      background-color: var(--primary-rose);
-      color: var(--primary-dark);
-      text-align: center;
-      padding: 3rem 2rem;
-      margin: 1.5rem 0 2.5rem 0;
-    }
-
-    .rose-banner-block h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .rose-banner-block p {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 400;
-      max-width: 600px;
-      margin: 0 auto 1.5rem auto;
-    }
-
-    /* Minimalist Buttons */
+    /* Buttons */
     .btn {
       display: inline-block;
-      background-color: var(--card-bg);
+      background-color: #FFFFFF;
       color: var(--primary-dark);
       border: 1px solid var(--primary-dark);
       padding: 0.8rem 2rem;
@@ -283,11 +280,11 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.8rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
 
     .pricing-card {
-      background: var(--card-bg);
+      background: #FFFFFF;
       border-radius: 0px;
       padding: 2.2rem 1.8rem;
       display: flex;
@@ -348,15 +345,16 @@
       margin-bottom: 1.8rem;
     }
 
-    /* Testimonials */
+    /* Testimonials Grid */
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.8rem;
+      margin-top: 1.5rem;
     }
 
     .testimonial-card {
-      background: var(--card-bg);
+      background: #FFFFFF;
       border: 1px solid var(--border-color);
       padding: 2.2rem;
       border-radius: 0px;
@@ -397,7 +395,7 @@
     }
 
     .modal {
-      background: var(--card-bg);
+      background: #FFFFFF;
       padding: 2.5rem;
       border-radius: 0px;
       width: 100%;
@@ -406,6 +404,7 @@
       overflow-y: auto;
       position: relative;
       border: 1px solid var(--border-color);
+      color: var(--text-dark);
     }
 
     .modal h3 {
@@ -511,14 +510,13 @@
 
     /* Footer */
     footer {
-      background: var(--primary-dark);
+      background: #1A202C;
       color: var(--bg-stone);
-      padding: 3.5rem 2rem;
+      padding: 3rem 2rem;
       text-align: center;
       font-size: 0.78rem;
       letter-spacing: 1px;
       text-transform: uppercase;
-      margin-top: 3rem;
       font-family: var(--font-body);
       font-weight: 400;
     }
@@ -535,6 +533,10 @@
 
       .hero-image-banner {
         height: 320px;
+      }
+
+      .section-strip {
+        padding: 3rem 1.2rem;
       }
     }
   </style>
@@ -566,59 +568,60 @@
     </div>
   </section>
 
-  <!-- CENTERED WELCOME SECTION -->
-  <section class="container" style="padding-bottom: 0;">
-    <h2 class="section-title">WELCOME</h2>
-    <div class="content-box" style="text-align: center;">
+  <!-- STRIP 1: WELCOME (Warm Stone Background) -->
+  <section class="section-strip strip-stone">
+    <div class="strip-content text-center">
+      <h2 class="section-title">WELCOME</h2>
       <p>I'm passionate about helping people feel stronger, healthier and more confident through Pilates. Whether you're new to Pilates or looking to progress, you'll find a welcoming, supportive environment where everyone is encouraged to move at their own pace.</p>
       <p>I'm trained in the APPI Pilates method, a physiotherapist-designed approach used in healthcare settings to support rehabilitation and recovery. I previously worked as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, where I taught Pilates-based exercise as part of rehabilitation programmes.</p>
       <p>Alongside my APPI qualification, I'm also trained in Reformer Pilates and pre and postnatal Pilates. By combining clinical experience with a supportive teaching style, my goal is to help you build strength, improve confidence and move better in everyday life.</p>
     </div>
   </section>
 
-  <!-- Classes & Interactive Booking Section -->
-  <section id="booking" class="container">
-    <h2 class="section-title">Classes & Booking</h2>
-    <p class="sub-heading">📍 West Park Primary School, Goring-by-Sea &bull; Wednesdays @ 6:30 PM (50 mins)</p>
+  <!-- STRIP 2: CLASSES & BOOKING (Clean White Background) -->
+  <section id="booking" class="section-strip strip-white">
+    <div class="strip-content">
+      <h2 class="section-title">Classes & Booking</h2>
+      <p class="sub-heading">📍 West Park Primary School, Goring-by-Sea &bull; Wednesdays @ 6:30 PM (50 mins)</p>
 
-    <!-- SHORT CLASS DESCRIPTION -->
-    <div class="content-box" style="text-align: center; margin-bottom: 1.5rem; padding: 1.8rem 2rem;">
-      <p style="margin-bottom: 0;">Enjoy a 50-minute reset after a busy day—whether on childcare duty or at a desk—leaving you calm, strong, and centered. This session focuses on full-body strengthening and toning, improving flexibility and posture, and building core stability, pelvic floor health, and breath awareness through mindful movement.</p>
-    </div>
+      <p class="text-center" style="max-width: 750px; margin: 0 auto 2rem auto; text-align: center;">
+        Enjoy a 50-minute reset after a busy day—whether on childcare duty or at a desk—leaving you calm, strong, and centered. This session focuses on full-body strengthening and toning, improving flexibility and posture, and building core stability, pelvic floor health, and breath awareness through mindful movement.
+      </p>
 
-    <!-- Booking Options Grid -->
-    <div class="pricing-grid">
+      <!-- Booking Options Grid -->
+      <div class="pricing-grid">
 
-      <!-- Single Drop-In -->
-      <div class="pricing-card">
-        <div>
-          <h3 class="card-title">Single Drop-In</h3>
-          <p class="card-meta">Book a single session to try it out or drop in whenever suits you.</p>
-          <div class="card-price">£12</div>
-          <div class="card-savings">&nbsp;</div>
+        <!-- Single Drop-In -->
+        <div class="pricing-card">
+          <div>
+            <h3 class="card-title">Single Drop-In</h3>
+            <p class="card-meta">Book a single session to try it out or drop in whenever suits you.</p>
+            <div class="card-price">£12</div>
+            <div class="card-savings">&nbsp;</div>
+          </div>
+          <button class="btn" onclick="openModal('single')">Book Single Class (£12)</button>
         </div>
-        <button class="btn" onclick="openModal('single')">Book Single Class (£12)</button>
-      </div>
 
-      <!-- 6-Week Block -->
-      <div class="pricing-card featured">
-        <span class="badge">Best Value</span>
-        <div>
-          <h3 class="card-title">6-Week Block</h3>
-          <p class="card-meta">Reserve your place every week and build a consistent practice.</p>
-          <div class="card-price">£60</div>
-          <div class="card-savings">Save £12 (£10 / class)</div>
+        <!-- 6-Week Block -->
+        <div class="pricing-card featured">
+          <span class="badge">Best Value</span>
+          <div>
+            <h3 class="card-title">6-Week Block</h3>
+            <p class="card-meta">Reserve your place every week and build a consistent practice.</p>
+            <div class="card-price">£60</div>
+            <div class="card-savings">Save £12 (£10 / class)</div>
+          </div>
+          <button class="btn btn-dark" onclick="openModal('block')">Book 6-Week Course (£60)</button>
         </div>
-        <button class="btn btn-dark" onclick="openModal('block')">Book 6-Week Course (£60)</button>
-      </div>
 
+      </div>
     </div>
   </section>
 
-  <!-- About Niki / Bio Section -->
-  <section id="about-niki" class="container" style="padding-top: 1rem;">
-    <h2 class="section-title">Clinical Expertise & Mindful Movement</h2>
-    <div class="content-box">
+  <!-- STRIP 3: ABOUT NIKI (Dusty Rose Accent Strip) -->
+  <section id="about-niki" class="section-strip strip-rose">
+    <div class="strip-content">
+      <h2 class="section-title">Clinical Expertise & Mindful Movement</h2>
       <p>Hi, I’m Niki! My journey into Pilates began during my time as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London. Working in a clinical environment, I taught both individual and group Pilates sessions as a core part of patient rehabilitation—and saw firsthand how targeted, mindful movement can completely transform recovery, posture, and quality of life.</p>
       
       <p>Driven by this passion, I completed my formal training in the <strong>APPI Pilates method</strong>—a world-renowned, physiotherapist-designed approach used extensively throughout healthcare settings. To offer a comprehensive movement experience, I went on to specialize further in <strong>Reformer Pilates</strong> and <strong>Pre & Postnatal Pilates</strong>, allowing me to safely support clients through every stage of life and physical transition.</p>
@@ -627,17 +630,10 @@
     </div>
   </section>
 
-  <!-- Dusty Rose Accent Banner Block -->
-  <section class="rose-banner-block">
-    <h3>Share The Gift Of Movement</h3>
-    <p>Reserve your spot or join our upcoming weekly sessions in Goring-by-Sea.</p>
-    <a href="#booking" class="btn" style="width: auto; display: inline-block;">Explore Classes</a>
-  </section>
-
-  <!-- Expanded Why Choose Pilates Section -->
-  <section id="why-pilates" class="container" style="padding-top: 0;">
-    <h2 class="section-title">Why Pilates Works for Every Body</h2>
-    <div class="content-box">
+  <!-- STRIP 4: WHY PILATES WORKS FOR EVERY BODY (Warm Stone Strip) -->
+  <section id="why-pilates" class="section-strip strip-stone">
+    <div class="strip-content">
+      <h2 class="section-title">Why Pilates Works for Every Body</h2>
       <p>Pilates is one of the most versatile and inclusive movement practices available. Designed to be adaptable to any fitness level, it meets you exactly where you are—helping you build resilience, restore vitality, and move with grace.</p>
       
       <h3>Restore & Protect Your Spine</h3>
@@ -652,37 +648,39 @@
       <h3>A Mental & Physical Reset</h3>
       <p>By focusing on controlled breathing and precision, Pilates acts as an active form of mindful meditation. It breaks the cycle of daily stress, lowers tension, and leaves you feeling clear, centered, and re-energized.</p>
 
-      <div class="personal-journey-box">
+      <div class="highlight-box">
         <h4>My Personal Journey</h4>
         <p>Having personally relied on Pilates to recover from the physical toll of desk work and a major biking shoulder injury, I bring a deeply empathetic and clinical perspective to every class. Whether you are taking your very first step into movement or recovering from an injury, you will find a supportive space tailored to your needs.</p>
       </div>
     </div>
   </section>
 
-  <!-- Sports Massage Section -->
-  <section id="massage" class="container" style="padding-top: 0;">
-    <h2 class="section-title">Sports Massage</h2>
-    <div class="content-box">
+  <!-- STRIP 5: SPORTS MASSAGE (Deep Charcoal Dark Strip) -->
+  <section id="massage" class="section-strip strip-dark">
+    <div class="strip-content text-center">
+      <h2 class="section-title">Sports Massage</h2>
       <p>I am a certified Level 3 Sports & Remedial massage therapist! With my experience in freelance work across Brighton and London, I specialize in addressing muscular-related disorders to alleviate discomfort, prevent injuries, and aid in the recovery process.</p>
       <p>Let's work together to enhance your well-being and promote optimal musculoskeletal health.</p>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section id="testimonials" class="container" style="padding-top: 0;">
-    <h2 class="section-title">Client Stories</h2>
-    <div class="testimonial-grid">
-      
-      <div class="testimonial-card">
-        <p>"I have been taking Pilates classes with Niki for over two years in person and via zoom. She is brilliant. I came to Pilates late in life to help a back injury and it has improved immeasurably."</p>
-        <div class="testimonial-author">— Sue, Hove</div>
-      </div>
+  <!-- STRIP 6: TESTIMONIALS (Clean White Strip) -->
+  <section id="testimonials" class="section-strip strip-white">
+    <div class="strip-content">
+      <h2 class="section-title">Client Stories</h2>
+      <div class="testimonial-grid">
+        
+        <div class="testimonial-card">
+          <p>"I have been taking Pilates classes with Niki for over two years in person and via zoom. She is brilliant. I came to Pilates late in life to help a back injury and it has improved immeasurably."</p>
+          <div class="testimonial-author">— Sue, Hove</div>
+        </div>
 
-      <div class="testimonial-card">
-        <p>"I had a sports massage, Niki was amazing, she asked about the pressure, and got it perfectly!! She really got into the painful areas and released my tension."</p>
-        <div class="testimonial-author">— Elysia, Brighton</div>
-      </div>
+        <div class="testimonial-card">
+          <p>"I had a sports massage, Niki was amazing, she asked about the pressure, and got it perfectly!! She really got into the painful areas and released my tension."</p>
+          <div class="testimonial-author">— Elysia, Brighton</div>
+        </div>
 
+      </div>
     </div>
   </section>
 
