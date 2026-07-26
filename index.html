@@ -712,10 +712,10 @@
 
     let bookingType = 'single'; // 'single' (£12) or 'block' (£60)
 
-    // REPLACE THESE LINKS WITH YOUR FREE STRIPE / SQUARE PAYMENT LINKS WHEN READY
+    // YOUR STRIPE LINKS ARE STORED HERE:
     const PAYMENT_LINKS = {
-      single: "https://buy.stripe.com/your-single-class-link-here", // £12
-      block: "https://buy.stripe.com/your-6-week-block-link-here"   // £60
+      single: "https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602", // Live £12 Link Active!
+      block: "https://buy.stripe.com/4gM14pc5T9i84UbfCY7N600"       // Live £60 Link Active!
     };
 
     function getNextWednesday() {
@@ -770,15 +770,10 @@
       const dateObj = new Date(dateVal);
       const formattedDate = dateObj.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
-      alert(`Thank you, ${name}!\n\nYour details and health waiver have been saved.\n\nClicking OK will now take you to the card checkout page to complete your reservation for ${formattedDate}.`);
+      alert(`Thank you, ${name}!\n\nYour details and health waiver have been saved.\n\nClicking OK will take you directly to the payment page for ${formattedDate}.`);
 
-      // If you haven't added your Stripe links yet, it alerts. Otherwise, it redirects to card checkout.
       const targetPaymentUrl = PAYMENT_LINKS[bookingType];
-      if (targetPaymentUrl.includes("your-")) {
-        alert("Note: Once you add your free Stripe/Square link into the code, this will automatically redirect directly to the card payment screen!");
-      } else {
-        window.location.href = targetPaymentUrl;
-      }
+      window.location.href = targetPaymentUrl;
 
       closeModal();
     }
