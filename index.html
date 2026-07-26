@@ -12,7 +12,7 @@
 
   <style>
     :root {
-      /* REFERENCE IMAGE COLOR PALETTE */
+      /* COLOR PALETTE */
       --primary-rose: #D8A7A1;      /* Soft Dusty Pink Banner */
       --primary-dark: #2D3748;      /* Deep Charcoal Slate for Text & Buttons */
       --bg-stone: #F5F2EE;          /* Light Warm Beige Background */
@@ -90,7 +90,7 @@
       opacity: 0.6;
     }
 
-    /* Banner Image Strip */
+    /* Hero Banner Image Strip */
     .hero-image-banner {
       width: 100%;
       height: 420px;
@@ -122,12 +122,13 @@
       padding: 1rem;
     }
 
+    /* Updated Heading Text Across Image */
     .hero-overlay h1 {
       font-family: var(--font-heading);
-      font-size: 2.6rem;
+      font-size: 3rem;
       font-weight: 700;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
     }
 
     .hero-overlay p {
@@ -138,21 +139,21 @@
       max-width: 600px;
     }
 
-    /* Container layout */
+    /* Container Layout Shifted Up */
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 4.5rem 2rem;
+      padding: 3rem 2rem 2rem 2rem; /* Reduced top padding */
     }
 
-    /* Bold Section Title */
+    /* Section Headings */
     .section-title {
       font-family: var(--font-heading);
       font-size: 2.1rem;
       font-weight: 700;
       color: var(--primary-dark);
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       letter-spacing: 1px;
     }
 
@@ -161,8 +162,8 @@
       text-align: center;
       color: var(--primary-dark);
       font-weight: 600;
-      margin-top: -1.8rem;
-      margin-bottom: 2.5rem;
+      margin-top: -1.2rem;
+      margin-bottom: 2rem;
       font-size: 0.88rem;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -173,7 +174,7 @@
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 0px;
-      padding: 3rem;
+      padding: 2.5rem 3rem;
       margin-bottom: 2.5rem;
     }
 
@@ -218,20 +219,20 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Rose Callout Block */
+    /* Rose Accent Banner Block */
     .rose-banner-block {
       background-color: var(--primary-rose);
       color: var(--primary-dark);
       text-align: center;
-      padding: 3.5rem 2rem;
-      margin: 2rem 0;
+      padding: 3rem 2rem;
+      margin: 1.5rem 0 2.5rem 0;
     }
 
     .rose-banner-block h3 {
       font-family: var(--font-heading);
       font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .rose-banner-block p {
@@ -239,10 +240,10 @@
       font-size: 0.95rem;
       font-weight: 400;
       max-width: 600px;
-      margin: 0 auto 1.8rem auto;
+      margin: 0 auto 1.5rem auto;
     }
 
-    /* Reference Style Minimalist Button */
+    /* Minimalist Buttons */
     .btn {
       display: inline-block;
       background-color: var(--card-bg);
@@ -278,18 +279,18 @@
       color: var(--primary-dark);
     }
 
-    /* PRICING & BOOKING GRID */
+    /* Pricing & Booking Grid */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.8rem;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
 
     .pricing-card {
       background: var(--card-bg);
       border-radius: 0px;
-      padding: 2.5rem 1.8rem;
+      padding: 2.2rem 1.8rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -530,11 +531,11 @@
       }
 
       .hero-overlay h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
       .hero-image-banner {
-        height: 300px;
+        height: 320px;
       }
     }
   </style>
@@ -548,8 +549,8 @@
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#welcome">About</a></li>
           <li><a href="#booking">Classes & Booking</a></li>
+          <li><a href="#welcome">About</a></li>
           <li><a href="#massage">Sports Massage</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
         </ul>
@@ -557,34 +558,17 @@
     </div>
   </header>
 
-  <!-- Image Banner Strip at Top of Home -->
+  <!-- Banner Image Strip at Top of Home -->
   <section id="home" class="hero-image-banner">
     <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Group Pilates Class">
     <div class="hero-overlay">
-      <h1>Feel Good In The Body You Live In</h1>
+      <!-- Title updated to Niki G Pilates -->
+      <h1>Niki G Pilates</h1>
       <p>Physiotherapist-led Pilates and tailored movement designed to deepen your connection to your body.</p>
     </div>
   </section>
 
-  <!-- Welcome / Bio Section -->
-  <section id="welcome" class="container">
-    <h2 class="section-title">You Belong At Niki G Pilates</h2>
-    <div class="content-box">
-      <p>I am trained in the APPI Pilates method, a physiotherapist-designed approach used worldwide in hospitals and healthcare settings to support rehabilitation and recovery.</p>
-      <p>I previously worked as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London, where I taught Pilates-based exercise to both groups and individuals as part of their rehabilitation. It was there that I discovered my love for helping people move better through exercise, which led me to complete my APPI Pilates Instructor training.</p>
-      <p>I then went on to retrain in Reformer Pilates, and have also completed my pre and postnatal Pilates training, allowing me to support clients through different stages of life and movement.</p>
-      <p>By combining my clinical experience with my passion for teaching, I offer a unique and supportive approach to Pilates — helping you build strength, confidence and move better in everyday life.</p>
-    </div>
-  </section>
-
-  <!-- Dusty Rose Accent Banner Block -->
-  <section class="rose-banner-block">
-    <h3>Share The Gift Of Movement</h3>
-    <p>Reserve your spot or join our upcoming weekly sessions in Goring-by-Sea.</p>
-    <a href="#booking" class="btn" style="width: auto; display: inline-block;">Explore Classes</a>
-  </section>
-
-  <!-- Classes & Interactive Booking Section -->
+  <!-- Shifted Up: Classes & Interactive Booking Section -->
   <section id="booking" class="container">
     <h2 class="section-title">Classes & Booking</h2>
     <p class="sub-heading">📍 West Park Primary School, Goring-by-Sea &bull; Wednesdays @ 6:30 PM (50 mins)</p>
@@ -622,6 +606,25 @@
       </div>
 
     </div>
+  </section>
+
+  <!-- Welcome / Bio Section (Elaborated Option 2) -->
+  <section id="welcome" class="container" style="padding-top: 1rem;">
+    <h2 class="section-title">Clinical Expertise & Mindful Movement</h2>
+    <div class="content-box">
+      <p>Hi, I’m Niki! My journey into Pilates began during my time as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London. Working in a clinical environment, I taught both individual and group Pilates sessions as a core part of patient rehabilitation—and saw firsthand how targeted, mindful movement can completely transform recovery, posture, and quality of life.</p>
+      
+      <p>Driven by this passion, I completed my formal training in the <strong>APPI Pilates method</strong>—a world-renowned, physiotherapist-designed approach used extensively throughout healthcare settings. To offer a comprehensive movement experience, I went on to specialize further in <strong>Reformer Pilates</strong> and <strong>Pre & Postnatal Pilates</strong>, allowing me to safely support clients through every stage of life and physical transition.</p>
+
+      <p>By combining a strong clinical background with a supportive, individual-focused teaching style, I bridge the gap between healthcare and everyday fitness. Whether you are recovering from an injury, managing daily stiffness, supporting your body through pregnancy, or looking to build core strength and confidence, I’m here to guide you every step of the way.</p>
+    </div>
+  </section>
+
+  <!-- Dusty Rose Accent Banner Block -->
+  <section class="rose-banner-block">
+    <h3>Share The Gift Of Movement</h3>
+    <p>Reserve your spot or join our upcoming weekly sessions in Goring-by-Sea.</p>
+    <a href="#booking" class="btn" style="width: auto; display: inline-block;">Explore Classes</a>
   </section>
 
   <!-- Expanded Why Choose Pilates Section -->
@@ -786,17 +789,16 @@
     const submitBtn = document.getElementById('submitBtn');
     const dateInput = document.getElementById('bookingDate');
 
-    let bookingType = 'single'; // 'single' (£12) or 'block' (£60)
+    let bookingType = 'single'; 
 
-    // YOUR STRIPE LINKS ARE STORED HERE:
     const PAYMENT_LINKS = {
-      single: "https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602", // Live £12 Link
-      block: "https://buy.stripe.com/4gM14pc5T9i84UbfCY7N600"       // Live £60 Link
+      single: "https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602", 
+      block: "https://buy.stripe.com/4gM14pc5T9i84UbfCY7N600"       
     };
 
     function getNextWednesday() {
       const today = new Date();
-      const dayOfWeek = today.getDay(); // 0 = Sun, 3 = Wed
+      const dayOfWeek = today.getDay(); 
       let daysUntilWednesday = (3 - dayOfWeek + 7) % 7;
       if (daysUntilWednesday === 0) daysUntilWednesday = 7;
       
