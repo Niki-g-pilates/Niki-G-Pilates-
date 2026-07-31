@@ -19,6 +19,34 @@
           Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine! This class offers a welcoming space for all abilities. I provide <strong>personalised attention</strong> so you always feel like you're learning, progressing, and getting the most out of every class.
         </p>
       </div>
+
+      <!-- Pricing Section -->
+      <div class="pricing-section">
+        <h3>Class Pricing</h3>
+        <div class="pricing-grid">
+          
+          <div class="price-card highlight">
+            <span class="price-tag-label">New Clients</span>
+            <h4>First Class</h4>
+            <p class="price">£8</p>
+            <p class="price-desc">Try your first 50-minute session</p>
+          </div>
+
+          <div class="price-card">
+            <h4>Drop-In</h4>
+            <p class="price">£12</p>
+            <p class="price-desc">Single class pass with flexible booking</p>
+          </div>
+
+          <div class="price-card">
+            <h4>6-Week Block</h4>
+            <p class="price">£65</p>
+            <p class="price-desc">Save on a 6-week consecutive pass</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
     <!-- Call to Action Buttons -->
@@ -85,7 +113,7 @@
     border-left: 4px solid #d4a373;
     padding: 16px 20px;
     border-radius: 0 8px 8px 0;
-    margin: 24px 0;
+    margin: 24px 0 32px 0;
   }
 
   .highlight-box p {
@@ -93,10 +121,78 @@
     color: #2d3748;
   }
 
+  /* Pricing Styles */
+  .pricing-section {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid #eef2f5;
+  }
+
+  .pricing-section h3 {
+    font-size: 1.3rem;
+    color: #1a202c;
+    margin-bottom: 16px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .price-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px 15px;
+    text-align: center;
+    position: relative;
+  }
+
+  .price-card.highlight {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+
+  .price-tag-label {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2e7d6b;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
+
+  .price-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #1e293b;
+  }
+
+  .price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2e7d6b;
+    margin: 0 0 6px 0;
+  }
+
+  .price-desc {
+    font-size: 0.85rem !important;
+    color: #64748b !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Buttons */
   .cta-group {
     display: flex;
     gap: 15px;
-    margin-top: 30px;
+    margin-top: 32px;
     flex-wrap: wrap;
   }
 
@@ -129,7 +225,11 @@
     background-color: #e8f4f0;
   }
 
-  @media (max-width: 600px) {
+  /* Mobile Responsive */
+  @media (max-width: 650px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
     .class-card {
       padding: 24px;
     }
