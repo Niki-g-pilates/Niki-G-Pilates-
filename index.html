@@ -620,7 +620,7 @@
       <h3 id="modalTitle">Select Date & Time</h3>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;">All-Levels Mat Pilates (50 Mins)</p>
       
-      <form id="bookingForm" onsubmit="event.preventDefault(); alert('Booking confirmed! Redirecting to payment...'); closeModal();">
+      <form id="bookingForm" onsubmit="event.preventDefault(); alert('Redirecting to calendar...'); closeModal();">
         <div class="form-group">
           <label for="pass-type">Selected Option</label>
           <select id="pass-type">
@@ -638,16 +638,6 @@
         <div class="form-group">
           <label for="booking-time">Time Slot</label>
           <input type="text" id="booking-time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
-        </div>
-
-        <div class="form-group">
-          <label for="name">Full Name *</label>
-          <input type="text" id="name" required placeholder="Jane Doe">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" required placeholder="jane@example.com">
         </div>
 
         <button type="submit" class="btn btn-dark">Proceed to Calendar Booking</button>
