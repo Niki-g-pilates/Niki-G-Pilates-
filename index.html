@@ -259,7 +259,7 @@
       line-height: 1.7;
     }
 
-    /* 3-COLUMN CLICKABLE PRICING GRID */
+    /* PRICING GRID */
     .pricing-heading {
       font-family: var(--font-heading);
       font-size: 1.4rem;
@@ -378,15 +378,18 @@
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; border-radius: 4px; }
     .form-group textarea { height: 100px; resize: vertical; }
 
-    /* FORM SECTION DIVIDERS IN MODAL */
-    .modal-section-title {
+    /* FORM STEP HEADINGS IN MODAL */
+    .step-heading {
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--primary-dark);
-      margin: 1.5rem 0 0.8rem 0;
-      padding-bottom: 0.3rem;
-      border-bottom: 1px solid var(--border-color);
+      margin: 1.6rem 0 0.8rem 0;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--primary-rose);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .radio-group {
@@ -412,7 +415,7 @@
       padding: 1rem;
       border-radius: 4px;
       font-size: 0.78rem;
-      max-height: 120px;
+      max-height: 110px;
       overflow-y: auto;
       margin-bottom: 0.8rem;
       color: var(--text-muted);
@@ -423,7 +426,7 @@
       display: flex;
       align-items: flex-start;
       gap: 0.6rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .checkbox-group input[type="checkbox"] {
@@ -433,12 +436,13 @@
     }
 
     .checkbox-group label {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       text-transform: none;
       letter-spacing: 0;
       color: var(--text-dark);
       line-height: 1.4;
       cursor: pointer;
+      font-weight: 500;
     }
 
     /* SOCIAL MEDIA SECTION */
@@ -450,11 +454,11 @@
     .social-icon-btn:hover { background: var(--primary-rose); border-color: var(--primary-rose); color: #FFFFFF; transform: translateY(-3px); }
     .social-icon-btn svg { width: 26px; height: 26px; fill: currentColor; }
 
-    /* MODAL & CALENDAR SELECTOR */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.6); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
-    .modal { background: #FFFFFF; padding: 2.5rem; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border-color); color: var(--text-dark); border-radius: 6px; }
-    .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.3rem; }
-    .close-btn { position: absolute; top: 1rem; right: 1.2rem; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
+    /* MODAL OVERLAY */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
+    .modal { background: #FFFFFF; padding: 2.5rem; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border-color); color: var(--text-dark); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .modal h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.2rem; }
+    .close-btn { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; }
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
@@ -671,18 +675,40 @@
     </div>
   </section>
 
-  <!-- BOOKING CALENDAR MODAL WITH FULL HEALTH WAIVER -->
+  <!-- BOOKING CALENDAR MODAL (STRICT ORDER OF STEPS) -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h3 id="modalTitle">Select Date & Details</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;">All-Levels Mat Pilates (50 Mins)</p>
+      <h3>Class Booking & Health Waiver</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">All-Levels Mat Pilates (50 Mins)</p>
       
       <form id="bookingForm">
         
-        <!-- SECTION 1: PERSONAL CONTACT DETAILS -->
-        <div class="modal-section-title">1. Contact Information</div>
-        
+        <!-- STEP 1: PAYMENT OPTION -->
+        <div class="step-heading">Step 1: Payment Option</div>
+        <div class="form-group">
+          <label for="pass-type">Select Class Pass *</label>
+          <select id="pass-type" required>
+            <option value="First Class - £8">First Class — £8</option>
+            <option value="Drop-In - £12">Drop-In — £12</option>
+            <option value="6-Week Block - £65">6-Week Block — £65</option>
+          </select>
+        </div>
+
+        <!-- STEP 2: DATE & TIME -->
+        <div class="step-heading">Step 2: Date & Time</div>
+        <div class="form-group">
+          <label for="booking-date">Choose Class Date *</label>
+          <input type="date" id="booking-date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="booking-time">Time Slot</label>
+          <input type="text" id="booking-time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
+        </div>
+
+        <!-- STEP 3: PERSONAL INFORMATION -->
+        <div class="step-heading">Step 3: Personal Information</div>
         <div class="form-group">
           <label for="booking-name">Full Name *</label>
           <input type="text" id="booking-name" required placeholder="Jane Doe">
@@ -698,33 +724,11 @@
           <input type="tel" id="booking-phone" required placeholder="07123 456789">
         </div>
 
-        <!-- SECTION 2: CLASS & DATE SELECTION -->
-        <div class="modal-section-title">2. Class & Booking Date</div>
+        <!-- STEP 4: BRIEF HEALTH QUESTIONS -->
+        <div class="step-heading">Step 4: Brief Health Questions</div>
 
         <div class="form-group">
-          <label for="pass-type">Selected Pass Option</label>
-          <select id="pass-type">
-            <option value="First Class - £8">First Class — £8</option>
-            <option value="Drop-In - £12">Drop-In — £12</option>
-            <option value="6-Week Block - £65">6-Week Block — £65</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="booking-date">Choose Class Date *</label>
-          <input type="date" id="booking-date" required>
-        </div>
-
-        <div class="form-group">
-          <label for="booking-time">Time Slot</label>
-          <input type="text" id="booking-time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
-        </div>
-
-        <!-- SECTION 3: MEDICAL SCREENING -->
-        <div class="modal-section-title">3. Health Screening</div>
-
-        <div class="form-group">
-          <label>Do you have any injuries, joint, or spinal issues? *</label>
+          <label>1. Any injuries, joint, or spinal issues? *</label>
           <div class="radio-group">
             <label><input type="radio" name="injuries" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
             <label><input type="radio" name="injuries" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
@@ -733,11 +737,11 @@
 
         <div class="form-group" id="injuries-details-group" style="display: none;">
           <label for="injuries-details">Please describe your injury or condition:</label>
-          <textarea id="injuries-details" placeholder="E.g., lower back tightness, recovering from shoulder injury..."></textarea>
+          <textarea id="injuries-details" placeholder="E.g., lower back stiffness, recovering from shoulder injury..."></textarea>
         </div>
 
         <div class="form-group">
-          <label>High blood pressure, heart condition, or dizziness? *</label>
+          <label>2. High blood pressure, heart condition, or dizziness? *</label>
           <div class="radio-group">
             <label><input type="radio" name="heart" value="No" checked> No</label>
             <label><input type="radio" name="heart" value="Yes"> Yes</label>
@@ -745,19 +749,16 @@
         </div>
 
         <div class="form-group">
-          <label>Are you pregnant or given birth in last 12 weeks? *</label>
+          <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
           <div class="radio-group">
             <label><input type="radio" name="pregnant" value="No" checked> No</label>
             <label><input type="radio" name="pregnant" value="Yes"> Yes</label>
           </div>
         </div>
 
-        <!-- SECTION 4: EMERGENCY CONTACT -->
-        <div class="modal-section-title">4. Emergency Contact</div>
-
         <div class="form-group">
           <label for="emerg-name">Emergency Contact Name *</label>
-          <input type="text" id="emerg-name" required placeholder="John Doe (Partner / Relative)">
+          <input type="text" id="emerg-name" required placeholder="John Doe">
         </div>
 
         <div class="form-group">
@@ -765,20 +766,21 @@
           <input type="tel" id="emerg-phone" required placeholder="07987 654321">
         </div>
 
-        <!-- SECTION 5: HEALTH WAIVER CONSENT -->
-        <div class="modal-section-title">5. Liability & Waiver Declaration</div>
+        <!-- STEP 5: TICK THE WAIVER -->
+        <div class="step-heading">Step 5: Health Waiver Consent</div>
 
         <div class="form-group">
           <div class="waiver-box">
-            By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves risk of injury, and I confirm that I am in suitable health to participate. I agree to inform the instructor prior to the start of class of any changes to my health, pregnancy, or injuries.
+            By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury, and I confirm that I am in suitable physical health to participate. I agree to inform the instructor before class of any changes to my physical condition, pregnancy, or injuries.
           </div>
           <div class="checkbox-group">
             <input type="checkbox" id="waiver-agree" required>
-            <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above.</label>
+            <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-dark">Proceed to Payment</button>
+        <!-- STEP 6: REDIRECT TO PAYMENT -->
+        <button type="submit" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Proceed to Payment &rarr;</button>
       </form>
     </div>
   </div>
@@ -788,6 +790,7 @@
   </footer>
 
   <script>
+    // NAVIGATION CONTROLS
     const menuToggle = document.getElementById('menuToggle');
     const sideNav = document.getElementById('sideNav');
     const navOverlay = document.getElementById('navOverlay');
@@ -829,14 +832,14 @@
       document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
     }
 
-    // FORM SUBMISSION & DIRECT STRIPE REDIRECT LOGIC
+    // FORM SUBMISSION & STRIPE PAYMENT REDIRECT
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const email = document.getElementById('booking-email').value;
       const passType = document.getElementById('pass-type').value;
 
-      // YOUR EXACT STRIPE PAYMENT LINKS
+      // STRIPE LINKS MATCHING PASS TYPE
       const stripeLinks = {
         'First Class - £8': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
         'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
@@ -846,10 +849,10 @@
       const targetUrl = stripeLinks[passType];
 
       if (targetUrl) {
-        // Redirect directly to Stripe Checkout with email pre-filled
+        // PRE-FILL USER'S EMAIL ON STRIPE CHECKOUT PAGE
         window.location.href = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
       } else {
-        alert('Stripe link missing. Please check your setup.');
+        alert('Stripe URL missing. Please verify link setup.');
       }
     });
   </script>
