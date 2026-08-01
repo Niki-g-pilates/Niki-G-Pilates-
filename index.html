@@ -378,10 +378,41 @@
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; }
     .form-group textarea { height: 120px; resize: vertical; }
 
-    .info-block { margin-bottom: 2rem; }
-    .info-block h3 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--primary-dark); }
-    .info-block p, .info-block a { color: var(--text-muted); font-size: 0.95rem; text-decoration: none; }
-    .info-block a:hover { color: var(--primary-rose); }
+    /* HEALTH WAIVER BOX STYLING */
+    .waiver-box {
+      background: #FAFAFA;
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      max-height: 110px;
+      overflow-y: auto;
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+      cursor: pointer;
+    }
+
+    .checkbox-group label {
+      font-size: 0.75rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--text-dark);
+      line-height: 1.4;
+      cursor: pointer;
+    }
 
     /* SOCIAL MEDIA SECTION */
     .social-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
@@ -439,7 +470,7 @@
     </ul>
   </nav>
 
-  <!-- HERO BANNER (OPTION 3 OVERLAY) -->
+  <!-- HERO BANNER -->
   <section id="home" class="hero-image-banner">
     <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Inclusive mat Pilates session">
     <div class="hero-overlay">
@@ -478,7 +509,7 @@
       <h2 class="pricing-heading">Class Pricing</h2>
 
       <div class="pricing-grid-3">
-        <!-- FIRST CLASS (£8) - CLICKABLE -->
+        <!-- FIRST CLASS (£8) -->
         <div class="pricing-card-3 featured" onclick="selectAndBook('First Class - £8')">
           <span class="top-badge">New Clients</span>
           <div class="card-3-title">First Class</div>
@@ -487,7 +518,7 @@
           <span class="click-hint">Click to Book Calendar &rarr;</span>
         </div>
 
-        <!-- DROP-IN (£12) - CLICKABLE -->
+        <!-- DROP-IN (£12) -->
         <div class="pricing-card-3" onclick="selectAndBook('Drop-In - £12')">
           <div class="card-3-title">Drop-In</div>
           <div class="card-3-price">£12</div>
@@ -495,7 +526,7 @@
           <span class="click-hint">Click to Book Calendar &rarr;</span>
         </div>
 
-        <!-- 6-WEEK BLOCK (£65) - CLICKABLE -->
+        <!-- 6-WEEK BLOCK (£65) -->
         <div class="pricing-card-3" onclick="selectAndBook('6-Week Block - £65')">
           <div class="card-3-title">6-Week Block</div>
           <div class="card-3-price">£65</div>
@@ -613,14 +644,27 @@
     </div>
   </section>
 
-  <!-- BOOKING CALENDAR MODAL -->
+  <!-- BOOKING CALENDAR MODAL WITH RESTORED NAME, EMAIL & HEALTH WAIVER -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h3 id="modalTitle">Select Date & Time</h3>
+      <h3 id="modalTitle">Select Date & Details</h3>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;">All-Levels Mat Pilates (50 Mins)</p>
       
-      <form id="bookingForm" onsubmit="event.preventDefault(); alert('Redirecting to calendar...'); closeModal();">
+      <form id="bookingForm">
+        <!-- RESTORED: NAME -->
+        <div class="form-group">
+          <label for="booking-name">Full Name *</label>
+          <input type="text" id="booking-name" required placeholder="Jane Doe">
+        </div>
+
+        <!-- RESTORED: EMAIL -->
+        <div class="form-group">
+          <label for="booking-email">Email Address *</label>
+          <input type="email" id="booking-email" required placeholder="jane@example.com">
+        </div>
+
+        <!-- CLASS OPTION SELECTOR -->
         <div class="form-group">
           <label for="pass-type">Selected Option</label>
           <select id="pass-type">
@@ -630,17 +674,31 @@
           </select>
         </div>
 
+        <!-- DATE SELECTOR -->
         <div class="form-group">
-          <label for="booking-date">Choose Wednesday Class Date *</label>
+          <label for="booking-date">Choose Class Date *</label>
           <input type="date" id="booking-date" required>
         </div>
 
+        <!-- TIME SLOT -->
         <div class="form-group">
           <label for="booking-time">Time Slot</label>
           <input type="text" id="booking-time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
         </div>
 
-        <button type="submit" class="btn btn-dark">Proceed to Calendar Booking</button>
+        <!-- RESTORED: HEALTH WAIVER SECTION -->
+        <div class="form-group">
+          <label>Health Waiver & Consent *</label>
+          <div class="waiver-box">
+            By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that exercise carries inherent risk, and I confirm I am in good health to participate. Please inform the instructor before class if you have any injuries, spinal conditions, or medical developments.
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="waiver-agree" required>
+            <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement.</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Proceed to Payment</button>
       </form>
     </div>
   </div>
@@ -686,6 +744,37 @@
     function closeModal() {
       document.getElementById('bookingModal').style.display = 'none';
     }
+
+    // FORM SUBMISSION & STRIPE REDIRECT LOGIC
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('booking-name').value;
+      const email = document.getElementById('booking-email').value;
+      const passType = document.getElementById('pass-type').value;
+      const date = document.getElementById('booking-date').value;
+
+      // YOUR STRIPE PAYMENT LINKS
+      // Replace the placeholder URLs below with your exact Stripe Payment Links:
+      const stripeLinks = {
+        'First Class - £8': 'https://buy.stripe.com/YOUR_FIRST_CLASS_LINK',
+        'Drop-In - £12': 'https://buy.stripe.com/YOUR_DROP_IN_LINK',
+        '6-Week Block - £65': 'https://buy.stripe.com/YOUR_6_WEEK_BLOCK_LINK'
+      };
+
+      const targetUrl = stripeLinks[passType];
+
+      // REDIRECT LOGIC
+      if (targetUrl && !targetUrl.includes('YOUR_')) {
+        // Option A: Prefill Stripe email automatically if your Stripe Checkout link supports it
+        const redirectUrl = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
+        window.location.href = redirectUrl;
+      } else {
+        // Fallback message if Stripe links haven't been pasted into the JS array above
+        alert(`Thank you, ${name}! Redirecting to payment... (Note: Replace Stripe URLs in script tag)`);
+        closeModal();
+      }
+    });
   </script>
 
 </body>
