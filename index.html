@@ -156,7 +156,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(45, 55, 72, 0.45);
+      background: rgba(45, 55, 72, 0.5);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -165,15 +165,29 @@
       padding: 2rem;
     }
 
-    .hero-overlay p {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      max-width: 700px;
-      line-height: 1.6;
+    .hero-content {
+      max-width: 850px;
       margin: 0 auto;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+      line-height: 1.25;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin: 0 auto;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      color: #F5F2EE;
     }
 
     /* SECTIONS */
@@ -387,10 +401,11 @@
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
     @media (max-width: 768px) {
+      .hero-title { font-size: 1.7rem; }
+      .hero-subtitle { font-size: 0.85rem; }
+      .hero-image-banner { height: 360px; }
       .pricing-grid-3 { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
-      .hero-overlay p { font-size: 1.1rem; }
-      .hero-image-banner { height: 350px; }
       .section-strip { padding: 3rem 1.2rem; }
       .action-buttons-container { flex-direction: column; }
     }
@@ -424,11 +439,14 @@
     </ul>
   </nav>
 
-  <!-- HERO BANNER -->
+  <!-- HERO BANNER (OPTION 3 OVERLAY) -->
   <section id="home" class="hero-image-banner">
     <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Inclusive mat Pilates session">
     <div class="hero-overlay">
-      <p>Clinically informed movement designed to help you move better, build core strength, and feel balanced.</p>
+      <div class="hero-content">
+        <h1 class="hero-title">Strength, Posture & Wellbeing</h1>
+        <p class="hero-subtitle">A Welcoming Space for Every Body & Every Ability</p>
+      </div>
     </div>
   </section>
 
