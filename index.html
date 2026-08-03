@@ -259,7 +259,7 @@
       line-height: 1.7;
     }
 
-    /* PRICING GRID */
+    /* PRICING GRID (2-COLUMN LAYOUT) */
     .pricing-heading {
       font-family: var(--font-heading);
       font-size: 1.4rem;
@@ -269,36 +269,36 @@
       color: var(--primary-dark);
     }
 
-    .pricing-grid-3 {
+    .pricing-grid-2 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
       margin-bottom: 2rem;
     }
 
-    .pricing-card-3 {
+    .pricing-card-2 {
       background: #F8F9FA;
       border: 2px solid #E9ECEF;
       border-radius: 6px;
-      padding: 1.2rem 0.8rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 130px;
+      min-height: 140px;
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
     }
 
-    .pricing-card-3:hover {
+    .pricing-card-2:hover {
       transform: translateY(-4px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.08);
       border-color: var(--accent-green);
     }
 
-    .pricing-card-3.featured {
+    .pricing-card-2.featured {
       background: var(--bg-green-light);
       border-color: var(--accent-green);
     }
@@ -318,23 +318,23 @@
       white-space: nowrap;
     }
 
-    .card-3-title {
-      font-size: 0.8rem;
+    .card-2-title {
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 0.3rem;
     }
 
-    .card-3-price {
+    .card-2-price {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 0.4rem;
     }
 
-    .card-3-sub {
-      font-size: 0.68rem;
+    .card-2-sub {
+      font-size: 0.72rem;
       color: #6C757D;
       line-height: 1.3;
     }
@@ -466,7 +466,7 @@
       .hero-title { font-size: 1.7rem; }
       .hero-subtitle { font-size: 0.85rem; }
       .hero-image-banner { height: 360px; }
-      .pricing-grid-3 { grid-template-columns: 1fr; }
+      .pricing-grid-2 { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
       .section-strip { padding: 3rem 1.2rem; }
       .action-buttons-container { flex-direction: column; }
@@ -539,29 +539,21 @@
 
       <h2 class="pricing-heading">Class Pricing</h2>
 
-      <div class="pricing-grid-3">
-        <!-- FIRST CLASS (£8) -->
-        <div class="pricing-card-3 featured" onclick="selectAndBook('First Class - £8')">
-          <span class="top-badge">New Clients</span>
-          <div class="card-3-title">First Class</div>
-          <div class="card-3-price">£8</div>
-          <div class="card-3-sub">Try your first 50-minute session</div>
-          <span class="click-hint">Click to Book &rarr;</span>
-        </div>
-
+      <div class="pricing-grid-2">
         <!-- DROP-IN (£12) -->
-        <div class="pricing-card-3" onclick="selectAndBook('Drop-In - £12')">
-          <div class="card-3-title">Drop-In</div>
-          <div class="card-3-price">£12</div>
-          <div class="card-3-sub">Single class pass with flexible booking</div>
+        <div class="pricing-card-2" onclick="selectAndBook('Drop-In - £12')">
+          <div class="card-2-title">Drop-In Pass</div>
+          <div class="card-2-price">£12</div>
+          <div class="card-2-sub">Single class pass with flexible booking</div>
           <span class="click-hint">Click to Book &rarr;</span>
         </div>
 
         <!-- 6-WEEK BLOCK (£65) -->
-        <div class="pricing-card-3" onclick="selectAndBook('6-Week Block - £65')">
-          <div class="card-3-title">6-Week Block</div>
-          <div class="card-3-price">£65</div>
-          <div class="card-3-sub">Save on a 6-week consecutive pass</div>
+        <div class="pricing-card-2 featured" onclick="selectAndBook('6-Week Block - £65')">
+          <span class="top-badge">Best Value</span>
+          <div class="card-2-title">6-Week Block</div>
+          <div class="card-2-price">£65</div>
+          <div class="card-2-sub">Save on a 6-week consecutive pass</div>
           <span class="click-hint">Click to Book &rarr;</span>
         </div>
       </div>
@@ -675,7 +667,7 @@
     </div>
   </section>
 
-  <!-- BOOKING CALENDAR MODAL (STRICT ORDER OF STEPS) -->
+  <!-- BOOKING CALENDAR MODAL -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -689,7 +681,6 @@
         <div class="form-group">
           <label for="pass-type">Select Class Pass *</label>
           <select id="pass-type" required>
-            <option value="First Class - £8">First Class — £8</option>
             <option value="Drop-In - £12">Drop-In — £12</option>
             <option value="6-Week Block - £65">6-Week Block — £65</option>
           </select>
@@ -839,9 +830,8 @@
       const email = document.getElementById('booking-email').value;
       const passType = document.getElementById('pass-type').value;
 
-      // STRIPE LINKS MATCHING PASS TYPE
+      // STRIPE LINKS MATCHING ACTIVE PASS TYPES
       const stripeLinks = {
-        'First Class - £8': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
         'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
         '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604'
       };
