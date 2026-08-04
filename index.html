@@ -495,7 +495,7 @@
       <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
       <div>
         <span class="tag-badge">Beginner Friendly</span>
-        <h1 class="class-header">All levels Pilates & Strength,</h1>
+        <h1 class="class-header">All levels Pilates & Strength</h1>
         <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 6:30pm</div>
 
         <p>This class is suitable for anyone who wants to <strong>get stronger, feel stronger, and reduce posture-related aches and pains</strong> from everyday life—whether that's looking after children or sitting at a computer all day.</p>
@@ -510,39 +510,35 @@
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
           <p>Choose from First Class Free (£0), Drop-In (£12), or 6-Week Block (£65)</p>
-          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength,', '6:30 PM - 7:20 PM')">BOOK HERE</button>
+          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM')">BOOK HERE</button>
         </div>
       </div>
 
       <hr class="class-block-divider">
 
-      <!-- CLASS 2: <!-- START: Pregnancy Pilates Section -->
-<div class="pregnancy-pilates-class">
-  <p class="tagline"><em>Breathe, Focus, Energise.</em></p>
-  
-  <p class="description">
-    Come join this gentle and enjoyable class designed to support your body through every stage of pregnancy. You will learn how to safely strengthen your core muscles, prevent pregnancy-related aches and pains, and increase the stamina and muscle strength needed for pregnancy, birth, and beyond.
-  </p>
-  
-  <blockquote class="highlight-quote">
-    Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior experience.
-  </blockquote>
-  
-  <div class="pricing-section">
-    <h3>Pricing & Booking</h3>
-    <ul>
-      <li>
-        <strong>5-Week Course (£55):</strong> 
-        <a href="https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606" target="_blank" rel="noopener">Book 5-Week Course</a>
-      </li>
-      <li>
-        <strong>Pay As You Go (£13):</strong> 
-        <a href="https://buy.stripe.com/4gMeVf2vj2TK86n2Qc7N605" target="_blank" rel="noopener">Book Single Class</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<!-- END: Pregnancy Pilates Section -->
+      <!-- CLASS 2: PREGNANCY PILATES -->
+      <div class="pregnancy-pilates-class">
+        <span class="tag-badge pink">Pregnancy Special</span>
+        <h1 class="class-header">Pregnancy Pilates</h1>
+        <div class="class-sub-header">Breathe, Focus, Energise.</div>
+        
+        <p class="description">
+          Come join this gentle and enjoyable class designed to support your body through every stage of pregnancy. You will learn how to safely strengthen your core muscles, prevent pregnancy-related aches and pains, and increase the stamina and muscle strength needed for pregnancy, birth, and beyond.
+        </p>
+        
+        <div class="highlight-quote">
+          <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior experience.</p>
+        </div>
+        
+        <div class="single-booking-box">
+          <h3>Ready to Join Pregnancy Pilates?</h3>
+          <p>Choose from 5-Week Course (£55) or Pay As You Go (£13)</p>
+          <button class="book-here-btn" onclick="openBooking('Pregnancy Pilates', 'Dynamic Time Slot')">BOOK HERE</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- ABOUT NIKI -->
   <section id="about-niki" class="section-strip strip-rose">
@@ -786,14 +782,14 @@
 
     // PASS OPTIONS DEFINITION PER CLASS
     const classPassOptions = {
-      'All levels Pilates & Strength,': [
+      'All levels Pilates & Strength': [
         { label: 'First Class Free — £0', value: 'First Class Free - £0' },
         { label: 'Drop-In — £12', value: 'Drop-In - £12' },
         { label: '6-Week Block — £65', value: '6-Week Block - £65' }
       ],
-      'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Drop-In — £12', value: 'Drop-In - £12' },
-        { label: '6-Week Block — £65', value: '6-Week Block - £65' }
+      'Pregnancy Pilates': [
+        { label: '5-Week Course — £55', value: '5-Week Course - £55' },
+        { label: 'Pay As You Go — £13', value: 'Pay As You Go - £13' }
       ]
     };
 
@@ -806,7 +802,7 @@
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength,'];
+      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
       
       options.forEach(opt => {
         const optionEl = document.createElement('option');
@@ -856,7 +852,9 @@
       // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
       const stripeLinks = {
         'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
-        '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604'
+        '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
+        '5-Week Course - £55': 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606',
+        'Pay As You Go - £13': 'https://buy.stripe.com/4gMeVf2vj2TK86n2Qc7N605'
       };
 
       const targetUrl = stripeLinks[passType];
