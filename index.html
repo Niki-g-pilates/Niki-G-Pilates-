@@ -270,107 +270,57 @@
       border-top: 1px solid var(--border-color);
     }
 
-    /* PRICING GRIDS */
-    .pricing-heading {
+    /* SINGLE BOOKING CARD / BOX */
+    .single-booking-box {
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      margin-top: 1.8rem;
+    }
+
+    .single-booking-box h3 {
       font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
       color: var(--primary-dark);
     }
 
-    .pricing-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
+    .single-booking-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
       margin-bottom: 1.5rem;
     }
 
-    .pricing-grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .pricing-card {
-      background: #F8F9FA;
-      border: 2px solid #E9ECEF;
-      border-radius: 6px;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 140px;
+    .book-here-btn {
+      display: inline-block;
+      background-color: var(--accent-green);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s ease;
-      user-select: none;
+      box-shadow: 0 4px 10px rgba(46, 125, 94, 0.2);
     }
 
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-      border-color: var(--accent-green);
-    }
-
-    .pricing-card.featured {
-      background: var(--bg-green-light);
-      border-color: var(--accent-green);
-    }
-
-    .top-badge {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent-green);
-      color: #FFFFFF;
-      font-size: 0.55rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 3px;
-      white-space: nowrap;
-    }
-
-    .card-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.3rem;
-    }
-
-    .card-price {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.4rem;
-    }
-
-    .card-sub {
-      font-size: 0.72rem;
-      color: #6C757D;
-      line-height: 1.3;
-    }
-
-    .click-hint {
-      display: block;
-      margin-top: 0.5rem;
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--accent-green);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    .book-here-btn:hover {
+      background-color: #236149;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(46, 125, 94, 0.3);
     }
 
     .action-buttons-container {
       display: flex;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
 
     /* BUTTONS */
@@ -484,7 +434,6 @@
       .hero-title { font-size: 1.7rem; }
       .hero-subtitle { font-size: 0.85rem; }
       .hero-image-banner { height: 360px; }
-      .pricing-grid-3, .pricing-grid-2 { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
       .section-strip { padding: 3rem 1.2rem; }
       .action-buttons-container { flex-direction: column; }
@@ -557,34 +506,11 @@
           <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine! This class offers a welcoming space for all abilities. I provide <strong>personalised attention</strong> so you always feel like you're learning, progressing, and getting the most out of every class.</p>
         </div>
 
-        <h2 class="pricing-heading">Select Pass & Book</h2>
-
-        <div class="pricing-grid-3">
-          <!-- FREE TRIAL (£0) -->
-          <div class="pricing-card" onclick="openBooking('All levels Pilates & Strength,', 'First Class Free - £0', '6:30 PM - 7:20 PM')">
-            <span class="top-badge">New Clients</span>
-            <div class="card-title">First Class Free</div>
-            <div class="card-price">£0</div>
-            <div class="card-sub">Try your first class completely free</div>
-            <span class="click-hint">Click to Book &rarr;</span>
-          </div>
-
-          <!-- DROP-IN (£12) -->
-          <div class="pricing-card" onclick="openBooking('All levels Pilates & Strength,', 'Drop-In - £12', '6:30 PM - 7:20 PM')">
-            <div class="card-title">Drop-In Pass</div>
-            <div class="card-price">£12</div>
-            <div class="card-sub">Single class pass with flexible booking</div>
-            <span class="click-hint">Click to Book &rarr;</span>
-          </div>
-
-          <!-- 6-WEEK BLOCK (£65) -->
-          <div class="pricing-card featured" onclick="openBooking('All levels Pilates & Strength,', '6-Week Block - £65', '6:30 PM - 7:20 PM')">
-            <span class="top-badge">Best Value</span>
-            <div class="card-title">6-Week Block</div>
-            <div class="card-price">£65</div>
-            <div class="card-sub">Save on a 6-week consecutive pass</div>
-            <span class="click-hint">Click to Book &rarr;</span>
-          </div>
+        <!-- SINGLE BOOKING BOX FOR CLASS 1 -->
+        <div class="single-booking-box">
+          <h3>Ready to Join All Levels Pilates?</h3>
+          <p>Choose from First Class Free (£0), Drop-In (£12), or 6-Week Block (£65)</p>
+          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength,', '6:30 PM - 7:20 PM')">BOOK HERE</button>
         </div>
       </div>
 
@@ -598,29 +524,15 @@
 
         <p>Class description to be advised.</p>
 
-        <h2 class="pricing-heading">Select Pass & Book</h2>
-
-        <div class="pricing-grid-2">
-          <!-- DROP-IN (£12) -->
-          <div class="pricing-card" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', 'Drop-In - £12', '5:30 PM - 6:20 PM')">
-            <div class="card-title">Drop-In Pass</div>
-            <div class="card-price">£12</div>
-            <div class="card-sub">Single class pass with flexible booking</div>
-            <span class="click-hint">Click to Book &rarr;</span>
-          </div>
-
-          <!-- 6-WEEK BLOCK (£65) -->
-          <div class="pricing-card featured" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6-Week Block - £65', '5:30 PM - 6:20 PM')">
-            <span class="top-badge">Best Value</span>
-            <div class="card-title">6-Week Block</div>
-            <div class="card-price">£65</div>
-            <div class="card-sub">Save on a 6-week consecutive pass</div>
-            <span class="click-hint">Click to Book &rarr;</span>
-          </div>
+        <!-- SINGLE BOOKING BOX FOR CLASS 2 -->
+        <div class="single-booking-box">
+          <h3>Ready to Join Lovely Bumps?</h3>
+          <p>Choose from Drop-In (£12) or 6-Week Block (£65)</p>
+          <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '5:30 PM - 6:20 PM')">BOOK HERE</button>
         </div>
       </div>
 
-      <div class="action-buttons-container" style="margin-top: 2rem;">
+      <div class="action-buttons-container">
         <a href="#contact" class="btn">Get in Touch</a>
       </div>
 
@@ -738,10 +650,10 @@
       
       <form id="bookingForm">
         
-        <!-- STEP 1: PAYMENT OPTION -->
-        <div class="step-heading">Step 1: Payment Option</div>
+        <!-- STEP 1: PAYMENT OPTION DROPDOWN -->
+        <div class="step-heading">Step 1: Choose Your Pass</div>
         <div class="form-group">
-          <label for="pass-type">Select Class Pass *</label>
+          <label for="pass-type">Select Option *</label>
           <select id="pass-type" required onchange="updateSubmitButtonLabel()">
             <!-- Options populated dynamically -->
           </select>
@@ -875,8 +787,8 @@
       ]
     };
 
-    // OPEN MODAL WITH SELECTED CLASS, PASS AND TIME
-    function openBooking(className, selectedPass, timeSlot) {
+    // OPEN MODAL WITH SELECTED CLASS
+    function openBooking(className, timeSlot) {
       document.getElementById('modal-class-title').innerText = className;
       document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
       document.getElementById('booking-time').value = timeSlot || '6:30 PM - 7:20 PM';
@@ -890,9 +802,6 @@
         const optionEl = document.createElement('option');
         optionEl.value = opt.value;
         optionEl.textContent = opt.label;
-        if (opt.value === selectedPass) {
-          optionEl.selected = true;
-        }
         passSelect.appendChild(optionEl);
       });
 
@@ -929,7 +838,7 @@
       const date = document.getElementById('booking-date').value;
 
       if (passType === 'First Class Free - £0') {
-        alert(`Thank you! Your free trial for "${className}" on ${date} is confirmed. A confirmation has been logged for ${email}.`);
+        alert(`Thank you! Your free trial for "${className}" on ${date} is confirmed. A confirmation email has been logged for ${email}.`);
         closeModal();
         return;
       }
