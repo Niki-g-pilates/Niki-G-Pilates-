@@ -317,12 +317,6 @@
       box-shadow: 0 6px 15px rgba(46, 125, 94, 0.3);
     }
 
-    .action-buttons-container {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
     /* BUTTONS */
     .btn { display: inline-block; background-color: #FFFFFF; color: var(--primary-dark); border: 1px solid var(--primary-dark); padding: 0.75rem 1.2rem; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-align: center; transition: all 0.3s ease; width: 100%; text-decoration: none; border-radius: 4px; }
     .btn:hover { background-color: var(--primary-dark); color: #FFFFFF; }
@@ -436,7 +430,6 @@
       .hero-image-banner { height: 360px; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
       .section-strip { padding: 3rem 1.2rem; }
-      .action-buttons-container { flex-direction: column; }
     }
   </style>
 </head>
@@ -783,14 +776,22 @@
     // PASS OPTIONS DEFINITION PER CLASS
     const classPassOptions = {
       'All levels Pilates & Strength': [
-        { label: 'First Class Free — £0', value: 'First Class Free - £0' },
-        { label: 'Drop-In — £12', value: 'Drop-In - £12' },
-        { label: '6-Week Block — £65', value: '6-Week Block - £65' }
+        { label: 'First Class Free — £0', value: 'First Class Free — £0' },
+        { label: 'Drop-In — £12', value: 'Drop-In — £12' },
+        { label: '6-Week Block — £65', value: '6-Week Block — £65' }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Pay As You Go — £13', value: 'Pay As You Go - £13' },
-        { label: '5-Week Block — £55', value: '5-Week Block - £55' }
+        { label: 'Pay As You Go — £13', value: 'Pay As You Go — £13' },
+        { label: '5-Week Block — £55', value: '5-Week Block — £55' }
       ]
+    };
+
+    // STRIPE PAYMENT LINKS MAPPING
+    const stripeLinks = {
+      'Drop-In': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
+      '6-Week Block': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
+      '5-Week Block': 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606',
+      'Pay As You Go': 'https://buy.stripe.com/4gMeVf2vj2TK86n2Qc7N605'
     };
 
     // OPEN MODAL WITH SELECTED CLASS
@@ -827,7 +828,7 @@
       const passType = document.getElementById('pass-type').value;
       const submitBtn = document.getElementById('submit-btn');
 
-      if (passType === 'First Class Free - £0') {
+      if (passType.includes('Free')) {
         submitBtn.innerText = 'Confirm Free Booking ✓';
       } else {
         submitBtn.innerText = 'Proceed to Payment →';
@@ -843,26 +844,25 @@
       const className = document.getElementById('modal-class-title').innerText;
       const date = document.getElementById('booking-date').value;
 
-      if (passType === 'First Class Free - £0') {
+      if (passType.includes('Free')) {
         alert(`Thank you! Your free trial for "${className}" on ${date} is confirmed. A confirmation email has been logged for ${email}.`);
         closeModal();
         return;
       }
 
-      // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
-      const stripeLinks = {
-        'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
-        '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
-        '5-Week Block - £55': 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606',
-        'Pay As You Go - £13': 'https://buy.stripe.com/4gMeVf2vj2TK86n2Qc7N605'
-      };
-
-      const targetUrl = stripeLinks[passType];
+      // MATCH STRIPE LINK DYNAMICALLY
+      let targetUrl = null;
+      for (const key in stripeLinks) {
+        if (passType.includes(key)) {
+          targetUrl = stripeLinks[key];
+          break;
+        }
+      }
 
       if (targetUrl) {
         window.location.href = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
       } else {
-        alert('Stripe URL missing. Please verify link setup.');
+        alert('Stripe URL missing. Please check option configuration.');
       }
     });
   </script>
