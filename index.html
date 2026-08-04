@@ -229,6 +229,11 @@
       margin-bottom: 0.8rem;
     }
 
+    .tag-badge.pink {
+      background: #FCE8E6;
+      color: #C5221F;
+    }
+
     .class-header {
       font-family: var(--font-heading);
       font-size: 2rem;
@@ -259,24 +264,37 @@
       line-height: 1.7;
     }
 
-    /* PRICING GRID (2-COLUMN LAYOUT) */
+    .class-block-divider {
+      margin: 4rem 0;
+      border: 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* PRICING GRIDS */
     .pricing-heading {
       font-family: var(--font-heading);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      margin-top: 2.5rem;
-      margin-bottom: 1.2rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
       color: var(--primary-dark);
+    }
+
+    .pricing-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .pricing-grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .pricing-card-2 {
+    .pricing-card {
       background: #F8F9FA;
       border: 2px solid #E9ECEF;
       border-radius: 6px;
@@ -292,13 +310,13 @@
       user-select: none;
     }
 
-    .pricing-card-2:hover {
+    .pricing-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.08);
       border-color: var(--accent-green);
     }
 
-    .pricing-card-2.featured {
+    .pricing-card.featured {
       background: var(--bg-green-light);
       border-color: var(--accent-green);
     }
@@ -318,14 +336,14 @@
       white-space: nowrap;
     }
 
-    .card-2-title {
+    .card-title {
       font-size: 0.9rem;
       font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 0.3rem;
     }
 
-    .card-2-price {
+    .card-price {
       font-family: var(--font-heading);
       font-size: 1.6rem;
       font-weight: 700;
@@ -333,7 +351,7 @@
       margin-bottom: 0.4rem;
     }
 
-    .card-2-sub {
+    .card-sub {
       font-size: 0.72rem;
       color: #6C757D;
       line-height: 1.3;
@@ -466,7 +484,7 @@
       .hero-title { font-size: 1.7rem; }
       .hero-subtitle { font-size: 0.85rem; }
       .hero-image-banner { height: 360px; }
-      .pricing-grid-2 { grid-template-columns: 1fr; }
+      .pricing-grid-3, .pricing-grid-2 { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
       .section-strip { padding: 3rem 1.2rem; }
       .action-buttons-container { flex-direction: column; }
@@ -525,40 +543,84 @@
   <section id="booking" class="section-strip strip-white">
     <div class="strip-content">
       
-      <span class="tag-badge">Beginner Friendly</span>
-      <h1 class="class-header">All levels Pilates & Strength,</h1>
-      <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 6:30pm</div>
+      <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
+      <div>
+        <span class="tag-badge">Beginner Friendly</span>
+        <h1 class="class-header">All levels Pilates & Strength,</h1>
+        <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 6:30pm</div>
 
-      <p>This class is suitable for anyone who wants to <strong>get stronger, feel stronger, and reduce posture-related aches and pains</strong> from everyday life—whether that's looking after children or sitting at a computer all day.</p>
+        <p>This class is suitable for anyone who wants to <strong>get stronger, feel stronger, and reduce posture-related aches and pains</strong> from everyday life—whether that's looking after children or sitting at a computer all day.</p>
 
-      <p>We'll focus on building core strength, stability, and creating functional strength to support you in everyday life. This beginner friendly class is for you if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more stretched, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+        <p>We'll focus on building core strength, stability, and creating functional strength to support you in everyday life. This beginner friendly class is for you if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more stretched, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
 
-      <div class="highlight-quote">
-        <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine! This class offers a welcoming space for all abilities. I provide <strong>personalised attention</strong> so you always feel like you're learning, progressing, and getting the most out of every class.</p>
-      </div>
-
-      <h2 class="pricing-heading">Class Pricing</h2>
-
-      <div class="pricing-grid-2">
-        <!-- DROP-IN (£12) -->
-        <div class="pricing-card-2" onclick="selectAndBook('Drop-In - £12')">
-          <div class="card-2-title">Drop-In Pass</div>
-          <div class="card-2-price">£12</div>
-          <div class="card-2-sub">Single class pass with flexible booking</div>
-          <span class="click-hint">Click to Book &rarr;</span>
+        <div class="highlight-quote">
+          <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine! This class offers a welcoming space for all abilities. I provide <strong>personalised attention</strong> so you always feel like you're learning, progressing, and getting the most out of every class.</p>
         </div>
 
-        <!-- 6-WEEK BLOCK (£65) -->
-        <div class="pricing-card-2 featured" onclick="selectAndBook('6-Week Block - £65')">
-          <span class="top-badge">Best Value</span>
-          <div class="card-2-title">6-Week Block</div>
-          <div class="card-2-price">£65</div>
-          <div class="card-2-sub">Save on a 6-week consecutive pass</div>
-          <span class="click-hint">Click to Book &rarr;</span>
+        <h2 class="pricing-heading">Select Pass & Book</h2>
+
+        <div class="pricing-grid-3">
+          <!-- FREE TRIAL (£0) -->
+          <div class="pricing-card" onclick="openBooking('All levels Pilates & Strength,', 'First Class Free - £0', '6:30 PM - 7:20 PM')">
+            <span class="top-badge">New Clients</span>
+            <div class="card-title">First Class Free</div>
+            <div class="card-price">£0</div>
+            <div class="card-sub">Try your first class completely free</div>
+            <span class="click-hint">Click to Book &rarr;</span>
+          </div>
+
+          <!-- DROP-IN (£12) -->
+          <div class="pricing-card" onclick="openBooking('All levels Pilates & Strength,', 'Drop-In - £12', '6:30 PM - 7:20 PM')">
+            <div class="card-title">Drop-In Pass</div>
+            <div class="card-price">£12</div>
+            <div class="card-sub">Single class pass with flexible booking</div>
+            <span class="click-hint">Click to Book &rarr;</span>
+          </div>
+
+          <!-- 6-WEEK BLOCK (£65) -->
+          <div class="pricing-card featured" onclick="openBooking('All levels Pilates & Strength,', '6-Week Block - £65', '6:30 PM - 7:20 PM')">
+            <span class="top-badge">Best Value</span>
+            <div class="card-title">6-Week Block</div>
+            <div class="card-price">£65</div>
+            <div class="card-sub">Save on a 6-week consecutive pass</div>
+            <span class="click-hint">Click to Book &rarr;</span>
+          </div>
         </div>
       </div>
 
-      <div class="action-buttons-container">
+      <hr class="class-block-divider">
+
+      <!-- CLASS 2: LOVELY BUMPS - PREGNANCY PILATES -->
+      <div>
+        <span class="tag-badge pink">Pregnancy Speciality</span>
+        <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
+        <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 5:30pm</div>
+
+        <p>Class description to be advised.</p>
+
+        <h2 class="pricing-heading">Select Pass & Book</h2>
+
+        <div class="pricing-grid-2">
+          <!-- DROP-IN (£12) -->
+          <div class="pricing-card" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', 'Drop-In - £12', '5:30 PM - 6:20 PM')">
+            <div class="card-title">Drop-In Pass</div>
+            <div class="card-price">£12</div>
+            <div class="card-sub">Single class pass with flexible booking</div>
+            <span class="click-hint">Click to Book &rarr;</span>
+          </div>
+
+          <!-- 6-WEEK BLOCK (£65) -->
+          <div class="pricing-card featured" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6-Week Block - £65', '5:30 PM - 6:20 PM')">
+            <span class="top-badge">Best Value</span>
+            <div class="card-title">6-Week Block</div>
+            <div class="card-price">£65</div>
+            <div class="card-sub">Save on a 6-week consecutive pass</div>
+            <span class="click-hint">Click to Book &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons-container" style="margin-top: 2rem;">
         <a href="#contact" class="btn">Get in Touch</a>
       </div>
 
@@ -671,8 +733,8 @@
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h3>Class Booking & Health Waiver</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">All-Levels Mat Pilates (50 Mins)</p>
+      <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to secure your spot</p>
       
       <form id="bookingForm">
         
@@ -680,9 +742,8 @@
         <div class="step-heading">Step 1: Payment Option</div>
         <div class="form-group">
           <label for="pass-type">Select Class Pass *</label>
-          <select id="pass-type" required>
-            <option value="Drop-In - £12">Drop-In — £12</option>
-            <option value="6-Week Block - £65">6-Week Block — £65</option>
+          <select id="pass-type" required onchange="updateSubmitButtonLabel()">
+            <!-- Options populated dynamically -->
           </select>
         </div>
 
@@ -770,8 +831,8 @@
           </div>
         </div>
 
-        <!-- STEP 6: REDIRECT TO PAYMENT -->
-        <button type="submit" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Proceed to Payment &rarr;</button>
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" id="submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Proceed to Payment &rarr;</button>
       </form>
     </div>
   </div>
@@ -801,17 +862,41 @@
       });
     });
 
-    // OPEN MODAL WITH SELECTED PRICING OPTION
-    function selectAndBook(optionName) {
-      const selectElement = document.getElementById('pass-type');
-      if (optionName && selectElement) {
-        for (let i = 0; i < selectElement.options.length; i++) {
-          if (selectElement.options[i].value === optionName) {
-            selectElement.selectedIndex = i;
-            break;
-          }
+    // PASS OPTIONS DEFINITION PER CLASS
+    const classPassOptions = {
+      'All levels Pilates & Strength,': [
+        { label: 'First Class Free — £0', value: 'First Class Free - £0' },
+        { label: 'Drop-In — £12', value: 'Drop-In - £12' },
+        { label: '6-Week Block — £65', value: '6-Week Block - £65' }
+      ],
+      'LOVELY BUMPS — Pregnancy Pilates': [
+        { label: 'Drop-In — £12', value: 'Drop-In - £12' },
+        { label: '6-Week Block — £65', value: '6-Week Block - £65' }
+      ]
+    };
+
+    // OPEN MODAL WITH SELECTED CLASS, PASS AND TIME
+    function openBooking(className, selectedPass, timeSlot) {
+      document.getElementById('modal-class-title').innerText = className;
+      document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
+      document.getElementById('booking-time').value = timeSlot || '6:30 PM - 7:20 PM';
+      
+      const passSelect = document.getElementById('pass-type');
+      passSelect.innerHTML = '';
+
+      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength,'];
+      
+      options.forEach(opt => {
+        const optionEl = document.createElement('option');
+        optionEl.value = opt.value;
+        optionEl.textContent = opt.label;
+        if (opt.value === selectedPass) {
+          optionEl.selected = true;
         }
-      }
+        passSelect.appendChild(optionEl);
+      });
+
+      updateSubmitButtonLabel();
       document.getElementById('bookingModal').style.display = 'flex';
     }
 
@@ -823,14 +908,33 @@
       document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
     }
 
-    // FORM SUBMISSION & STRIPE PAYMENT REDIRECT
+    function updateSubmitButtonLabel() {
+      const passType = document.getElementById('pass-type').value;
+      const submitBtn = document.getElementById('submit-btn');
+
+      if (passType === 'First Class Free - £0') {
+        submitBtn.innerText = 'Confirm Free Booking ✓';
+      } else {
+        submitBtn.innerText = 'Proceed to Payment →';
+      }
+    }
+
+    // FORM SUBMISSION & PAYMENT REDIRECT
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const email = document.getElementById('booking-email').value;
       const passType = document.getElementById('pass-type').value;
+      const className = document.getElementById('modal-class-title').innerText;
+      const date = document.getElementById('booking-date').value;
 
-      // STRIPE LINKS MATCHING ACTIVE PASS TYPES
+      if (passType === 'First Class Free - £0') {
+        alert(`Thank you! Your free trial for "${className}" on ${date} is confirmed. A confirmation has been logged for ${email}.`);
+        closeModal();
+        return;
+      }
+
+      // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
       const stripeLinks = {
         'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
         '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604'
@@ -839,7 +943,6 @@
       const targetUrl = stripeLinks[passType];
 
       if (targetUrl) {
-        // PRE-FILL USER'S EMAIL ON STRIPE CHECKOUT PAGE
         window.location.href = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
       } else {
         alert('Stripe URL missing. Please verify link setup.');
