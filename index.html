@@ -317,6 +317,12 @@
       box-shadow: 0 6px 15px rgba(46, 125, 94, 0.3);
     }
 
+    .action-buttons-container {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
     /* BUTTONS */
     .btn { display: inline-block; background-color: #FFFFFF; color: var(--primary-dark); border: 1px solid var(--primary-dark); padding: 0.75rem 1.2rem; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-align: center; transition: all 0.3s ease; width: 100%; text-decoration: none; border-radius: 4px; }
     .btn:hover { background-color: var(--primary-dark); color: #FFFFFF; }
@@ -337,8 +343,31 @@
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; }
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--primary-dark); }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; border-radius: 4px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; border-radius: 4px; transition: border-color 0.2s ease, background-color 0.2s ease; }
     .form-group textarea { height: 100px; resize: vertical; }
+
+    /* FORM ERROR / INCOMPLETE INPUT STYLING */
+    .form-group input.field-error,
+    .form-group textarea.field-error,
+    .form-group select.field-error {
+      border: 2px solid #D32F2F !important;
+      background-color: #FFF8F8 !important;
+      font-weight: 700 !important;
+      color: #D32F2F !important;
+      outline: none !important;
+    }
+
+    .checkbox-group.field-error-checkbox {
+      border: 2px solid #D32F2F !important;
+      background-color: #FFF8F8 !important;
+      padding: 0.6rem;
+      border-radius: 4px;
+    }
+
+    .checkbox-group.field-error-checkbox label {
+      font-weight: 700 !important;
+      color: #D32F2F !important;
+    }
 
     /* FORM STEP HEADINGS IN MODAL */
     .step-heading {
@@ -389,6 +418,7 @@
       align-items: flex-start;
       gap: 0.6rem;
       margin-bottom: 1.5rem;
+      transition: all 0.2s ease;
     }
 
     .checkbox-group input[type="checkbox"] {
@@ -430,6 +460,7 @@
       .hero-image-banner { height: 360px; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
       .section-strip { padding: 3rem 1.2rem; }
+      .action-buttons-container { flex-direction: column; }
     }
   </style>
 </head>
@@ -488,7 +519,7 @@
       <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
       <div>
         <span class="tag-badge">Beginner Friendly</span>
-        <h1 class="class-header">All levels Pilates & Strength</h1>
+        <h1 class="class-header">All levels Pilates & Strength,</h1>
         <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 6:30pm</div>
 
         <p>This class is suitable for anyone who wants to <strong>get stronger, feel stronger, and reduce posture-related aches and pains</strong> from everyday life—whether that's looking after children or sitting at a computer all day.</p>
@@ -503,31 +534,36 @@
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
           <p>Choose from First Class Free (£0), Drop-In (£12), or 6-Week Block (£65)</p>
-          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM')">BOOK HERE</button>
+          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength,', '6:30 PM - 7:20 PM')">BOOK HERE</button>
         </div>
       </div>
 
       <hr class="class-block-divider">
 
-      <!-- CLASS 2: LOVELY BUMPS — PREGNANCY PILATES -->
-      <div class="pregnancy-pilates-class">
-        <span class="tag-badge pink">Pregnancy Special</span>
+      <!-- CLASS 2: LOVELY BUMPS - PREGNANCY PILATES -->
+      <div>
+        <span class="tag-badge pink">Pregnancy Speciality</span>
         <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
-        <div class="class-sub-header">Breathe, Focus, Energise.</div>
-        
-        <p class="description">
-          Come join this gentle and enjoyable class designed to support your body through every stage of pregnancy. You will learn how to safely strengthen your core muscles, prevent pregnancy-related aches and pains, and increase the stamina and muscle strength needed for pregnancy, birth, and beyond.
-        </p>
-        
+        <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:30pm</div>
+
+        <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
+
+        <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
+
         <div class="highlight-quote">
-          <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior experience.</p>
+          <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
         </div>
-        
+
+        <!-- SINGLE BOOKING BOX FOR CLASS 2 -->
         <div class="single-booking-box">
-          <h3>Ready to Join Lovely Bumps — Pregnancy Pilates?</h3>
-          <p>Choose from Pay As You Go (£13) or 5-Week Block (£55)</p>
-          <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '5:30 PM - 6:20 PM')">BOOK HERE</button>
+          <h3>Ready to Join Lovely Bumps?</h3>
+          <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
+          <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:30 PM')">BOOK HERE</button>
         </div>
+      </div>
+
+      <div class="action-buttons-container">
+        <a href="#contact" class="btn">Get in Touch</a>
       </div>
 
     </div>
@@ -579,7 +615,7 @@
         <!-- FORM -->
         <div>
           <h3 style="margin-bottom: 1.2rem;">Send a Message</h3>
-          <form onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+          <form id="contactForm" novalidate>
             <div class="form-group">
               <label for="contact-name">Full Name *</label>
               <input type="text" id="contact-name" required placeholder="Jane Doe">
@@ -642,7 +678,7 @@
       <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to secure your spot</p>
       
-      <form id="bookingForm">
+      <form id="bookingForm" novalidate>
         
         <!-- STEP 1: PAYMENT OPTION DROPDOWN -->
         <div class="step-heading">Step 1: Choose Your Pass</div>
@@ -736,7 +772,7 @@
           <div class="waiver-box">
             By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury, and I confirm that I am in suitable physical health to participate. I agree to inform the instructor before class of any changes to my physical condition, pregnancy, or injuries.
           </div>
-          <div class="checkbox-group">
+          <div class="checkbox-group" id="waiver-container">
             <input type="checkbox" id="waiver-agree" required>
             <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
           </div>
@@ -775,35 +811,28 @@
 
     // PASS OPTIONS DEFINITION PER CLASS
     const classPassOptions = {
-      'All levels Pilates & Strength': [
-        { label: 'First Class Free — £0', value: 'First Class Free — £0' },
-        { label: 'Drop-In — £12', value: 'Drop-In — £12' },
-        { label: '6-Week Block — £65', value: '6-Week Block — £65' }
+      'All levels Pilates & Strength,': [
+        { label: 'First Class Free — £0', value: 'First Class Free - £0' },
+        { label: 'Drop-In — £12', value: 'Drop-In - £12' },
+        { label: '6-Week Block — £65', value: '6-Week Block - £65' }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Pay As You Go — £13', value: 'Pay As You Go — £13' },
-        { label: '5-Week Block — £55', value: '5-Week Block — £55' }
+        { label: 'Drop-In — £13', value: 'Drop-In - £13' },
+        { label: '5-Week Block — £55', value: '5-Week Block - £55' }
       ]
-    };
-
-    // STRIPE PAYMENT LINKS MAPPING
-    const stripeLinks = {
-      'Drop-In': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
-      '6-Week Block': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
-      '5-Week Block': 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606',
-      'Pay As You Go': 'https://buy.stripe.com/4gMeVf2vj2TK86n2Qc7N605'
     };
 
     // OPEN MODAL WITH SELECTED CLASS
     function openBooking(className, timeSlot) {
+      clearFormErrors(document.getElementById('bookingForm'));
       document.getElementById('modal-class-title').innerText = className;
       document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
-      document.getElementById('booking-time').value = timeSlot || '5:30 PM - 6:20 PM';
+      document.getElementById('booking-time').value = timeSlot || '6:30 PM - 7:30 PM';
       
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
+      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength,'];
       
       options.forEach(opt => {
         const optionEl = document.createElement('option');
@@ -828,41 +857,106 @@
       const passType = document.getElementById('pass-type').value;
       const submitBtn = document.getElementById('submit-btn');
 
-      if (passType.includes('Free')) {
+      if (passType === 'First Class Free - £0') {
         submitBtn.innerText = 'Confirm Free Booking ✓';
       } else {
         submitBtn.innerText = 'Proceed to Payment →';
       }
     }
 
-    // FORM SUBMISSION & PAYMENT REDIRECT
+    // RED OUTLINE & BOLD TEXT VALIDATION FUNCTIONS
+    function clearFormErrors(form) {
+      form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+      form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
+    }
+
+    function validateForm(form) {
+      clearFormErrors(form);
+      let isValid = true;
+      const requiredInputs = form.querySelectorAll('[required]');
+
+      requiredInputs.forEach(input => {
+        if (input.type === 'checkbox') {
+          if (!input.checked) {
+            isValid = false;
+            const parent = input.closest('.checkbox-group');
+            if (parent) parent.classList.add('field-error-checkbox');
+          }
+        } else {
+          if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('field-error');
+          }
+        }
+      });
+
+      return isValid;
+    }
+
+    // REMOVE RED OUTLINE LIVE AS USER TYPES/CHOOSES
+    document.querySelectorAll('input, select, textarea').forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('field-error');
+        if (input.type === 'checkbox') {
+          const parent = input.closest('.checkbox-group');
+          if (parent) parent.classList.remove('field-error-checkbox');
+        }
+      });
+      input.addEventListener('change', () => {
+        input.classList.remove('field-error');
+        if (input.type === 'checkbox') {
+          const parent = input.closest('.checkbox-group');
+          if (parent) parent.classList.remove('field-error-checkbox');
+        }
+      });
+    });
+
+    // CONTACT FORM SUBMISSION
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validateForm(this)) {
+        alert('Please complete all outlined fields in red before sending.');
+        return;
+      }
+      alert('Message sent successfully!');
+      this.reset();
+      clearFormErrors(this);
+    });
+
+    // BOOKING FORM SUBMISSION & PAYMENT REDIRECT
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
+
+      if (!validateForm(this)) {
+        alert('Please fill out all required fields outlined in red.');
+        return;
+      }
 
       const email = document.getElementById('booking-email').value;
       const passType = document.getElementById('pass-type').value;
       const className = document.getElementById('modal-class-title').innerText;
       const date = document.getElementById('booking-date').value;
 
-      if (passType.includes('Free')) {
+      if (passType === 'First Class Free - £0') {
         alert(`Thank you! Your free trial for "${className}" on ${date} is confirmed. A confirmation email has been logged for ${email}.`);
         closeModal();
         return;
       }
 
-      // MATCH STRIPE LINK DYNAMICALLY
-      let targetUrl = null;
-      for (const key in stripeLinks) {
-        if (passType.includes(key)) {
-          targetUrl = stripeLinks[key];
-          break;
-        }
-      }
+      // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
+      const stripeLinks = {
+        'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
+        '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
+        'Drop-In - £13': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
+        '5-Week Block - £55': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604'
+      };
+
+      const targetUrl = stripeLinks[passType];
 
       if (targetUrl) {
         window.location.href = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
       } else {
-        alert('Stripe URL missing. Please check option configuration.');
+        alert('Stripe URL missing. Please verify link setup.');
       }
     });
   </script>
