@@ -1,984 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIKI G PILATES | Pilates for Every Body, Tailored to Your Needs</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Class</title>
   <style>
     :root {
-      --primary-rose: #D8A7A1;
-      --primary-dark: #2D3748;
-      --bg-stone: #F5F2EE;
-      --card-bg: #FFFFFF;
-      --text-dark: #2D3748;
-      --text-muted: #5A6578;
-      --text-light: #F5F2EE;
-      --border-color: #E2DCD5;
-      --accent-green: #2e7d5e;
-      --bg-green-light: #eef7f2;
-      
-      --font-heading: 'Playfair Display', Georgia, serif;
-      --font-body: 'Montserrat', -apple-system, sans-serif;
-      --font-script: 'Alex Brush', cursive;
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.8; font-weight: 300; background-color: var(--bg-stone); }
-
-    /* HEADER & BRANDING */
-    header {
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 1.2rem 2rem;
-    }
-
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: var(--font-script);
-      font-size: 2.2rem;
-      color: var(--primary-rose);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    /* MENU TOGGLE BUTTON */
-    .menu-toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 20px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
+    * {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0;
-      z-index: 1200;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    .menu-toggle span {
-      width: 100%;
-      height: 3px;
-      background-color: var(--primary-dark);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* SLIDE-OUT SIDE NAVIGATION DRAWER */
-    .side-nav {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: 300px;
-      height: 100vh;
-      background-color: #FFFFFF;
-      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      padding: 6rem 2.5rem 2rem 2.5rem;
-      transition: right 0.4s ease;
-      z-index: 1100;
-    }
-
-    .side-nav.open { right: 0; }
-
-    .side-nav ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-    }
-
-    .side-nav a {
-      text-decoration: none;
-      color: var(--primary-dark);
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: color 0.3s ease;
-    }
-
-    .side-nav a:hover { color: var(--primary-rose); }
-
-    .nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 1050;
-    }
-
-    .nav-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* HERO BANNER IMAGE */
-    .hero-image-banner {
-      width: 100%;
-      height: 480px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-image-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
-      filter: brightness(0.85);
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(45, 55, 72, 0.5);
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
-      text-align: center;
-      padding: 2rem;
+      min-height: 100vh;
+      padding: 20px;
     }
 
-    .hero-content {
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 2.6rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-      line-height: 1.25;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-      margin: 0 auto;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      color: #F5F2EE;
-    }
-
-    /* SECTIONS */
-    .section-strip { width: 100%; padding: 4rem 1.5rem; }
-    .strip-stone { background-color: var(--bg-stone); color: var(--text-dark); }
-    .strip-white { background-color: #FFFFFF; color: var(--text-dark); }
-    .strip-rose { background-color: var(--primary-rose); color: var(--primary-dark); }
-    .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
-
-    .strip-content { max-width: 850px; margin: 0 auto; }
-    .strip-content.text-center { text-align: center; }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 2rem;
-      letter-spacing: 1px;
-    }
-
-    .strip-dark .section-title { color: #FFFFFF; }
-
-    .strip-content p { margin-bottom: 1.4rem; font-size: 0.98rem; font-weight: 300; }
-    .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
-    .strip-dark h3 { color: #FFFFFF; }
-
-    /* CLASS DETAILS STYLING */
-    .tag-badge {
-      display: inline-block;
-      background: #E6F4EA;
-      color: #137333;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 3px;
-      margin-bottom: 0.8rem;
-    }
-
-    .tag-badge.pink {
-      background: #FCE8E6;
-      color: #C5221F;
-    }
-
-    .class-header {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.3rem;
-    }
-
-    .class-sub-header {
-      color: #5F6368;
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 1.8rem;
-    }
-
-    .highlight-quote {
-      background: #FAF7F2;
-      border-left: 3px solid #D8A7A1;
-      padding: 1.5rem;
-      margin: 1.8rem 0;
-      border-radius: 0 6px 6px 0;
-    }
-
-    .highlight-quote p {
-      margin-bottom: 0;
-      color: var(--text-dark);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .class-block-divider {
-      margin: 4rem 0;
-      border: 0;
-      border-top: 1px solid var(--border-color);
-    }
-
-    /* SINGLE BOOKING CARD / BOX */
-    .single-booking-box {
-      background: #FFFFFF;
-      border: 2px solid var(--border-color);
-      border-radius: 8px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      margin-top: 1.8rem;
-    }
-
-    .single-booking-box h3 {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      color: #000000;
-      font-weight: 700;
-    }
-
-    .single-booking-box p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .book-here-btn {
-      display: inline-block;
-      background-color: var(--accent-green);
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 1rem 2.5rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(46, 125, 94, 0.2);
-    }
-
-    .book-here-btn:hover {
-      background-color: #236149;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(46, 125, 94, 0.3);
-    }
-
-    .action-buttons-container {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    /* BUTTONS */
-    .btn { display: inline-block; background-color: #FFFFFF; color: var(--primary-dark); border: 1px solid var(--primary-dark); padding: 0.75rem 1.2rem; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-align: center; transition: all 0.3s ease; width: 100%; text-decoration: none; border-radius: 4px; }
-    .btn:hover { background-color: var(--primary-dark); color: #FFFFFF; }
-    .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
-    .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
-
-    /* PROFILE / MASSAGE IMAGE */
-    .profile-img-container { width: 200px; height: 200px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 4px solid #FFFFFF; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
-    .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* TESTIMONIALS */
-    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1.5rem; }
-    .testimonial-card { background: #FFFFFF; border: 1px solid var(--border-color); padding: 2.2rem; }
-    .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; font-weight: 400; margin-bottom: 1.2rem; line-height: 1.6; }
-    .testimonial-author { font-weight: 600; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
-
-    /* CONTACT SECTION */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; }
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; border-radius: 4px; transition: border-color 0.2s ease, background-color 0.2s ease; }
-    .form-group textarea { height: 100px; resize: vertical; }
-
-    /* FORM ERROR / INCOMPLETE INPUT STYLING */
-    .form-group input.field-error,
-    .form-group textarea.field-error,
-    .form-group select.field-error {
-      border: 2px solid #D32F2F !important;
-      background-color: #FFF8F8 !important;
-      font-weight: 700 !important;
-      color: #D32F2F !important;
-      outline: none !important;
-    }
-
-    .checkbox-group.field-error-checkbox,
-    .radio-group-container.field-error-radio {
-      border: 2px solid #D32F2F !important;
-      background-color: #FFF8F8 !important;
-      padding: 0.6rem;
-      border-radius: 4px;
-    }
-
-    .checkbox-group.field-error-checkbox label,
-    .radio-group-container.field-error-radio label {
-      font-weight: 700 !important;
-      color: #D32F2F !important;
-    }
-
-    /* FORM STEP HEADINGS IN MODAL - BOLD BLACK TEXT */
-    .step-heading {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #000000;
-      margin: 1.6rem 0 0.8rem 0;
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid var(--primary-rose);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .radio-group {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 0.3rem;
-    }
-
-    .radio-group label {
-      font-size: 0.85rem;
-      text-transform: none;
-      font-weight: 600;
-      color: #000000;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* HEALTH WAIVER BOX STYLING */
-    .waiver-box {
-      background: #FAFAFA;
+    .booking-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 480px;
+      padding: 32px;
       border: 1px solid var(--border-color);
-      padding: 1rem;
-      border-radius: 4px;
-      font-size: 0.78rem;
-      max-height: 110px;
-      overflow-y: auto;
-      margin-bottom: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
     }
 
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-      transition: all 0.2s ease;
+    .booking-header {
+      text-align: center;
+      margin-bottom: 24px;
     }
 
-    .checkbox-group input[type="checkbox"] {
-      width: auto;
-      margin-top: 3px;
-      cursor: pointer;
-    }
-
-    .checkbox-group label {
-      font-size: 0.78rem;
-      text-transform: none;
-      letter-spacing: 0;
-      color: #000000;
-      line-height: 1.4;
-      cursor: pointer;
+    .booking-header h1 {
+      font-size: 1.75rem;
       font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
     }
 
-    /* SOCIAL MEDIA SECTION */
-    .social-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
-    .social-section h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
-    .social-section p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem; }
-    .social-icons-container { display: flex; justify-content: center; gap: 1.5rem; align-items: center; }
-    .social-icon-btn { display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; border-radius: 50%; background: var(--bg-stone); border: 1px solid var(--border-color); color: var(--primary-dark); text-decoration: none; transition: all 0.3s ease; }
-    .social-icon-btn:hover { background: var(--primary-rose); border-color: var(--primary-rose); color: #FFFFFF; transform: translateY(-3px); }
-    .social-icon-btn svg { width: 26px; height: 26px; fill: currentColor; }
+    .booking-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
 
-    /* MODAL OVERLAY */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
-    .modal { background: #FFFFFF; padding: 2.5rem; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border-color); color: var(--text-dark); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    
-    /* MODAL HEADINGS BOLD BLACK */
-    .modal h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; }
-    .close-btn { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; }
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-    footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
 
-    @media (max-width: 768px) {
-      .hero-title { font-size: 1.7rem; }
-      .hero-subtitle { font-size: 0.85rem; }
-      .hero-image-banner { height: 360px; }
-      .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
-      .section-strip { padding: 3rem 1.2rem; }
-      .action-buttons-container { flex-direction: column; }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      color: var(--text-main);
+      background-color: #fff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--primary-color);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--primary-hover);
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="nav-container">
-      <a href="#home" class="logo"><strong>Niki G Pilates</strong></a>
-      
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <div class="booking-card">
+    <div class="booking-header">
+      <h1>Book Your Class</h1>
+      <p>Reserve your spot online today</p>
     </div>
-  </header>
 
-  <!-- SIDE NAVIGATION MENU -->
-  <div class="nav-overlay" id="navOverlay"></div>
-  <nav class="side-nav" id="sideNav">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#booking">Classes & Booking</a></li>
-      <li><a href="#about-niki">About Niki</a></li>
-      <li><a href="#massage">Sports Massage</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO BANNER -->
-  <section id="home" class="hero-image-banner">
-    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Inclusive mat Pilates session">
-    <div class="hero-overlay">
-      <div class="hero-content">
-        <h1 class="hero-title">Strength, Posture & Wellbeing</h1>
-        <p class="hero-subtitle">A Welcoming Space for Every Body & Every Ability</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WELCOME STRIP -->
-  <section class="section-strip strip-stone">
-    <div class="strip-content text-center">
-      <h2 class="section-title">WELCOME TO <strong>NIKI G PILATES</strong></h2>
-      <p>I'm passionate about helping people feel stronger, healthier, and more confident through Pilates. Whether you're new to movement or looking to build consistency, you'll find a welcoming environment to move at your own pace.</p>
-      <p>With a background as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, I bring a clinical foundation to every class. My focus is simple: helping you release stiffness, improve posture, and move better in everyday life.</p>
-    </div>
-  </section>
-
-  <!-- CLASSES & BOOKING -->
-  <section id="booking" class="section-strip strip-white">
-    <div class="strip-content">
-      
-      <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
-      <div>
-        <span class="tag-badge">Beginner Friendly</span>
-        <h1 class="class-header">All levels Pilates & Strength,</h1>
-        <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 6:30pm</div>
-
-        <p>This class is suitable for anyone who wants to <strong>get stronger, feel stronger, and reduce posture-related aches and pains</strong> from everyday life—whether that's looking after children or sitting at a computer all day.</p>
-
-        <p>We'll focus on building core strength, stability, and creating functional strength to support you in everyday life. This beginner friendly class is for you if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more stretched, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
-
-        <div class="highlight-quote">
-          <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine! This class offers a welcoming space for all abilities. I provide <strong>personalised attention</strong> so you always feel like you're learning, progressing, and getting the most out of every class.</p>
-        </div>
-
-        <!-- SINGLE BOOKING BOX FOR CLASS 1 -->
-        <div class="single-booking-box">
-          <h3>Ready to Join All Levels Pilates?</h3>
-          <p>Choose from First Class (£8), Drop-In (£12), or 6-Week Block (£65)</p>
-          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength,', '6:30 PM - 7:20 PM')">BOOK HERE</button>
-        </div>
+    <form id="bookingForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required />
       </div>
 
-      <hr class="class-block-divider">
-
-      <!-- CLASS 2: LOVELY BUMPS - PREGNANCY PILATES -->
-      <div>
-        <span class="tag-badge pink">Pregnancy Speciality</span>
-        <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
-        <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:30pm</div>
-
-        <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
-
-        <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
-
-        <div class="highlight-quote">
-          <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
-        </div>
-
-        <!-- SINGLE BOOKING BOX FOR CLASS 2 -->
-        <div class="single-booking-box">
-          <h3>Ready to Join Lovely Bumps?</h3>
-          <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
-          <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:30 PM')">BOOK HERE</button>
-        </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" required />
       </div>
 
-      <div class="action-buttons-container">
-        <a href="#contact" class="btn">Get in Touch</a>
+      <div class="form-group">
+        <label for="passType">Select Option</label>
+        <select id="passType" name="passType" required>
+          <option value="First Class - £8" selected>First Class - £8</option>
+        </select>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ABOUT NIKI -->
-  <section id="about-niki" class="section-strip strip-rose">
-    <div class="strip-content">
-      <h2 class="section-title">Clinical Background & Mindful Movement</h2>
-      <p>Hi, I’m Niki! My journey started in NHS clinical care at Imperial College Hospital London, guiding patients through exercise rehabilitation for joint and spinal health.</p>
-      <p>I bridge clinical movement knowledge with functional everyday fitness—helping you move smoothly without pain, recover from injuries, and build confidence in your body.</p>
-    </div>
-  </section>
-
-  <!-- SPORTS MASSAGE -->
-  <section id="massage" class="section-strip strip-dark">
-    <div class="strip-content text-center">
-      <div class="profile-img-container">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" alt="Sports Massage Therapy">
-      </div>
-      <h2 class="section-title">Sports & Remedial Massage</h2>
-      <p>As a certified Level 3 Sports Massage therapist, I use tailored soft tissue techniques to reduce muscle discomfort, restore joint mobility, and accelerate recovery.</p>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="section-strip strip-white">
-    <div class="strip-content">
-      <h2 class="section-title">Client Stories</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <p>"I came to Pilates to help with a back injury, and Niki's classes have made a noticeable difference to my day-to-day mobility."</p>
-          <div class="testimonial-author">— Sue, Hove</div>
-        </div>
-        <div class="testimonial-card">
-          <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
-          <div class="testimonial-author">— Elysia, Brighton</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="section-strip strip-stone">
-    <div class="strip-content">
-      <h2 class="section-title">Contact Us</h2>
-      
-      <div class="contact-grid">
-        <!-- FORM -->
-        <div>
-          <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Send a Message</h3>
-          <form id="contactForm" novalidate>
-            <div class="form-group">
-              <label for="contact-name">Full Name *</label>
-              <input type="text" id="contact-name" required placeholder="Jane Doe">
-            </div>
-            <div class="form-group">
-              <label for="contact-phone">Phone Number *</label>
-              <input type="tel" id="contact-phone" required placeholder="07123 456789">
-            </div>
-            <div class="form-group">
-              <label for="contact-email">Email Address *</label>
-              <input type="email" id="contact-email" required placeholder="jane@example.com">
-            </div>
-            <div class="form-group">
-              <label for="contact-msg">Message *</label>
-              <textarea id="contact-msg" required placeholder="How can we help you?"></textarea>
-            </div>
-            <button type="submit" class="btn btn-dark">Send Message</button>
-          </form>
-        </div>
-
-        <!-- DETAILS -->
-        <div>
-          <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Get in Touch</h3>
-          
-          <div class="info-block">
-            <h3 style="color: #000000; font-weight: 700;">📞 Phone</h3>
-            <p><a href="tel:07834950178">07834 950178</a></p>
-          </div>
-
-          <div class="info-block">
-            <h3 style="color: #000000; font-weight: 700;">✉️ Email</h3>
-            <p><a href="mailto:nikigpilates@gmail.com">nikigpilates@gmail.com</a></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SOCIAL ICONS -->
-      <div class="social-section">
-        <h3 style="color: #000000; font-weight: 800;">Connect & Follow Along</h3>
-        <p>Follow Niki G Pilates for updates and movement tips:</p>
-        
-        <div class="social-icons-container">
-          <a href="https://www.instagram.com/niki_g_pilates" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-
-          <a href="https://www.facebook.com/share/18E5VZBZYA/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- BOOKING CALENDAR MODAL -->
-  <div class="modal-overlay" id="bookingModal">
-    <div class="modal">
-      <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to secure your spot</p>
-      
-      <form id="bookingForm" novalidate>
-        
-        <!-- STEP 1: PAYMENT OPTION DROPDOWN -->
-        <div class="step-heading">Step 1: Choose Your Pass</div>
-        <div class="form-group">
-          <label for="pass-type">Select Option *</label>
-          <select id="pass-type" required onchange="updateSubmitButtonLabel()">
-            <!-- Options populated dynamically -->
-          </select>
-        </div>
-
-        <!-- STEP 2: DATE & TIME -->
-        <div class="step-heading">Step 2: Date & Time</div>
-        <div class="form-group">
-          <label for="booking-date">Choose Class Date *</label>
-          <input type="date" id="booking-date" required>
-        </div>
-
-        <div class="form-group">
-          <label for="booking-time">Time Slot</label>
-          <input type="text" id="booking-time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
-        </div>
-
-        <!-- STEP 3: PERSONAL INFORMATION -->
-        <div class="step-heading">Step 3: Personal Information</div>
-        <div class="form-group">
-          <label for="booking-name">Full Name *</label>
-          <input type="text" id="booking-name" required placeholder="Jane Doe">
-        </div>
-
-        <div class="form-group">
-          <label for="booking-email">Email Address *</label>
-          <input type="email" id="booking-email" required placeholder="jane@example.com">
-        </div>
-
-        <div class="form-group">
-          <label for="booking-phone">Contact Phone Number *</label>
-          <input type="tel" id="booking-phone" required placeholder="07123 456789">
-        </div>
-
-        <!-- STEP 4: HEALTH QUESTIONS -->
-        <div class="step-heading">Step 4: Health Questions</div>
-
-        <div class="form-group">
-          <label>1. Any injuries, joint, or spinal issues? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="injuries" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
-            <label><input type="radio" name="injuries" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
-          </div>
-        </div>
-
-        <div class="form-group" id="injuries-details-group" style="display: none;">
-          <label for="injuries-details">Please describe your injury or condition:</label>
-          <textarea id="injuries-details" placeholder="E.g., lower back stiffness, recovering from shoulder injury..."></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>2. High blood pressure, heart condition, or dizziness? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="heart" value="No" checked> No</label>
-            <label><input type="radio" name="heart" value="Yes"> Yes</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="pregnant" value="No" checked> No</label>
-            <label><input type="radio" name="pregnant" value="Yes"> Yes</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="other-health-issues">4. Are there any other health-related issues, conditions, or injuries I should be aware of?</label>
-          <textarea id="other-health-issues" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
-        </div>
-
-        <!-- PILATES EXPERIENCE QUESTION -->
-        <div class="form-group radio-group-container" id="pilates-before-group">
-          <label>5. Have you done Pilates before? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="pilates_before" value="No" checked> No</label>
-            <label><input type="radio" name="pilates_before" value="Yes"> Yes</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="emerg-name">Emergency Contact Name *</label>
-          <input type="text" id="emerg-name" required placeholder="John Doe">
-        </div>
-
-        <div class="form-group">
-          <label for="emerg-phone">Emergency Contact Phone *</label>
-          <input type="tel" id="emerg-phone" required placeholder="07987 654321">
-        </div>
-
-        <!-- STEP 5: TICK THE WAIVER -->
-        <div class="step-heading">Step 5: Health Waiver Consent</div>
-
-        <div class="form-group">
-          <div class="waiver-box">
-            By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury, and I confirm that I am in suitable physical health to participate. I agree to inform the instructor before class of any changes to my physical condition, pregnancy, or injuries.
-          </div>
-          <div class="checkbox-group" id="waiver-container">
-            <input type="checkbox" id="waiver-agree" required>
-            <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
-          </div>
-        </div>
-
-        <!-- SUBMIT BUTTON -->
-        <button type="submit" id="submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Proceed to Payment &rarr;</button>
-      </form>
-    </div>
+      <button type="submit" class="btn-submit">BOOK HERE</button>
+    </form>
   </div>
 
-  <footer>
-    <p>&copy; 2026 Niki G Pilates. All rights reserved.</p>
-  </footer>
-
   <script>
-    // NAVIGATION CONTROLS
-    const menuToggle = document.getElementById('menuToggle');
-    const sideNav = document.getElementById('sideNav');
-    const navOverlay = document.getElementById('navOverlay');
-
-    function toggleMenu() {
-      sideNav.classList.toggle('open');
-      navOverlay.classList.toggle('active');
-    }
-
-    menuToggle.addEventListener('click', toggleMenu);
-    navOverlay.addEventListener('click', toggleMenu);
-
-    document.querySelectorAll('.side-nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        sideNav.classList.remove('open');
-        navOverlay.classList.remove('active');
-      });
-    });
-
-    // PASS OPTIONS DEFINITION PER CLASS
-    const classPassOptions = {
-      'All levels Pilates & Strength,': [
-        { label: 'First Class — £8', value: 'First Class - £8' },
-        { label: 'Drop-In — £12', value: 'Drop-In - £12' },
-        { label: '6-Week Block — £65', value: '6-Week Block - £65' }
-      ],
-      'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Drop-In — £13', value: 'Drop-In - £13' },
-        { label: '5-Week Block — £55', value: '5-Week Block - £55' }
-      ]
-    };
-
-    // OPEN MODAL WITH SELECTED CLASS
-    function openBooking(className, timeSlot) {
-      clearFormErrors(document.getElementById('bookingForm'));
-      document.getElementById('modal-class-title').innerText = className;
-      document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
-      document.getElementById('booking-time').value = timeSlot || '6:30 PM - 7:30 PM';
-      
-      const passSelect = document.getElementById('pass-type');
-      passSelect.innerHTML = '';
-
-      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength,'];
-      
-      options.forEach(opt => {
-        const optionEl = document.createElement('option');
-        optionEl.value = opt.value;
-        optionEl.textContent = opt.label;
-        passSelect.appendChild(optionEl);
-      });
-
-      updateSubmitButtonLabel();
-      document.getElementById('bookingModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('bookingModal').style.display = 'none';
-    }
-
-    function toggleInjuriesBox(show) {
-      document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
-    }
-
-    function updateSubmitButtonLabel() {
-      const submitBtn = document.getElementById('submit-btn');
-      submitBtn.innerText = 'Proceed to Payment →';
-    }
-
-    // RED OUTLINE & BOLD TEXT VALIDATION FUNCTIONS
-    function clearFormErrors(form) {
-      form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
-      form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
-      form.querySelectorAll('.field-error-radio').forEach(el => el.classList.remove('field-error-radio'));
-    }
-
-    function validateForm(form) {
-      clearFormErrors(form);
-      let isValid = true;
-      const requiredInputs = form.querySelectorAll('[required]');
-
-      requiredInputs.forEach(input => {
-        if (input.type === 'checkbox') {
-          if (!input.checked) {
-            isValid = false;
-            const parent = input.closest('.checkbox-group');
-            if (parent) parent.classList.add('field-error-checkbox');
-          }
-        } else {
-          if (!input.value.trim()) {
-            isValid = false;
-            input.classList.add('field-error');
-          }
-        }
-      });
-
-      // VALIDATE RADIO BUTTON QUESTION FOR PILATES EXPERIENCE
-      const pilatesRadios = form.querySelectorAll('input[name="pilates_before"]');
-      if (pilatesRadios.length > 0) {
-        let selected = Array.from(pilatesRadios).some(r => r.checked);
-        if (!selected) {
-          isValid = false;
-          const parentGroup = document.getElementById('pilates-before-group');
-          if (parentGroup) parentGroup.classList.add('field-error-radio');
-        }
-      }
-
-      return isValid;
-    }
-
-    // REMOVE RED OUTLINE LIVE AS USER TYPES/CHOOSES
-    document.querySelectorAll('input, select, textarea').forEach(input => {
-      input.addEventListener('input', () => {
-        input.classList.remove('field-error');
-        if (input.type === 'checkbox') {
-          const parent = input.closest('.checkbox-group');
-          if (parent) parent.classList.remove('field-error-checkbox');
-        }
-        if (input.type === 'radio') {
-          const parentGroup = input.closest('.radio-group-container');
-          if (parentGroup) parentGroup.classList.remove('field-error-radio');
-        }
-      });
-      input.addEventListener('change', () => {
-        input.classList.remove('field-error');
-        if (input.type === 'checkbox') {
-          const parent = input.closest('.checkbox-group');
-          if (parent) parent.classList.remove('field-error-checkbox');
-        }
-        if (input.type === 'radio') {
-          const parentGroup = input.closest('.radio-group-container');
-          if (parentGroup) parentGroup.classList.remove('field-error-radio');
-        }
-      });
-    });
-
-    // CONTACT FORM SUBMISSION
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (!validateForm(this)) {
-        alert('Please complete all outlined fields in red before sending.');
-        return;
-      }
-      alert('Message sent successfully!');
-      this.reset();
-      clearFormErrors(this);
-    });
-
-    // BOOKING FORM SUBMISSION & PAYMENT REDIRECT
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
-      if (!validateForm(this)) {
-        alert('Please fill out all required fields outlined in red.');
-        return;
-      }
+      const email = document.getElementById('email').value;
+      const passType = document.getElementById('passType').value;
 
-      const email = document.getElementById('booking-email').value;
-      const passType = document.getElementById('pass-type').value;
-
-      // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
+      // STRIPE CHECKOUT REDIRECTS FOR ALL PAID OPTIONS
       const stripeLinks = {
-        'First Class - £8': ''First Class - £8': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603
-        'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
-        '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
-        'Drop-In - £13': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
-        '5-Week Block - £55': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604'
+        'First Class - £8': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603'
       };
 
       const targetUrl = stripeLinks[passType];
 
       if (targetUrl) {
-        window.location.href = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
+        // Direct page redirect optimized for Desktop and Mobile
+        window.location.assign(`${targetUrl}?prefilled_email=${encodeURIComponent(email)}`);
       } else {
-        alert('Stripe URL missing. Please verify link setup.');
+        alert('Please select a valid payment option.');
       }
     });
   </script>
