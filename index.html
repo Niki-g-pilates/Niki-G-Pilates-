@@ -837,7 +837,7 @@
         </form>
       </div>
 
-      <!-- BANK PAYMENT CONFIRMATION SCREEN (Revealed after email sends) -->
+      <!-- BANK PAYMENT CONFIRMATION SCREEN (UPDATED WITH YOUR EXACT DETAILS) -->
       <div id="paymentInstructionsScreen" style="display: none;">
         <h3>Registration Submitted!</h3>
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Thank you! Your registration has been emailed to Niki. Please complete your payment via Bank Transfer to confirm your spot.</p>
@@ -846,15 +846,15 @@
           <h4>Bank Transfer Details</h4>
           <div class="bank-detail-row">
             <span class="label">Account Name:</span>
-            <span class="value">Niki G Pilates</span>
+            <span class="value">Nicola Georgiou</span>
           </div>
           <div class="bank-detail-row">
             <span class="label">Sort Code:</span>
-            <span class="value">00-00-00</span> <!-- Replace with your actual sort code -->
+            <span class="value">04-00-03</span>
           </div>
           <div class="bank-detail-row">
             <span class="label">Account Number:</span>
-            <span class="value">00000000</span> <!-- Replace with your actual account number -->
+            <span class="value">28461548</span>
           </div>
           <div class="bank-detail-row">
             <span class="label">Selected Option:</span>
@@ -1049,9 +1049,9 @@
       const clientName = document.getElementById('booking-name').value;
       const passType = document.getElementById('pass-type').value;
 
-      // Clean name for reference (e.g. "Jane Doe" -> "JANEDOE")
+      // Clean name for reference (e.g. "Sarah Jenkins" -> "PILATES-SARAHJEN")
       const cleanRefName = clientName.replace(/[^a-zA-Z]/g, '').toUpperCase();
-      const refString = `PILATES-${cleanRefName.slice(0, 10)}`;
+      const refString = `PILATES-${cleanRefName.slice(0, 8)}`;
 
       document.getElementById('summary-pass-type').innerText = passType;
       document.getElementById('summary-reference').innerText = refString;
