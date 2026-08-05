@@ -964,10 +964,9 @@
       const email = document.getElementById('booking-email').value;
       const passType = document.getElementById('pass-type').value;
 
-      // STRIPE CHECKOUT REDIRECTS FOR ALL PAID OPTIONS
+      // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
       const stripeLinks = {
-        // PASTE YOUR REAL £8 STRIPE PAYMENT LINK BELOW INSIDE THE SINGLE QUOTES
-        'First Class - £8': 'https://buy.stripe.com/YOUR_LIVE_8_POUND_STRIPE_LINK_HERE',
+        'First Class - £8': 'https://buy.stripe.com/YOUR_8_POUND_LINK_HERE', // Paste your £8 Stripe Checkout Link here
         'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
         '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
         'Drop-In - £13': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
@@ -976,11 +975,10 @@
 
       const targetUrl = stripeLinks[passType];
 
-      if (targetUrl && !targetUrl.includes('YOUR_LIVE_8_POUND_STRIPE_LINK_HERE')) {
-        // Direct page redirect optimized for both Desktop and Mobile devices
-        window.location.assign(`${targetUrl}?prefilled_email=${encodeURIComponent(email)}`);
+      if (targetUrl) {
+        window.location.href = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
       } else {
-        alert('Please update the code with your live £8 Stripe link from your Stripe dashboard.');
+        alert('Stripe URL missing. Please verify link setup.');
       }
     });
   </script>
