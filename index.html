@@ -286,7 +286,8 @@
       font-size: 1.4rem;
       margin-top: 0;
       margin-bottom: 0.5rem;
-      color: var(--primary-dark);
+      color: #000000;
+      font-weight: 700;
     }
 
     .single-booking-box p {
@@ -342,7 +343,7 @@
     /* CONTACT SECTION */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; }
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--primary-dark); }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; border-radius: 4px; transition: border-color 0.2s ease, background-color 0.2s ease; }
     .form-group textarea { height: 100px; resize: vertical; }
 
@@ -357,24 +358,26 @@
       outline: none !important;
     }
 
-    .checkbox-group.field-error-checkbox {
+    .checkbox-group.field-error-checkbox,
+    .radio-group-container.field-error-radio {
       border: 2px solid #D32F2F !important;
       background-color: #FFF8F8 !important;
       padding: 0.6rem;
       border-radius: 4px;
     }
 
-    .checkbox-group.field-error-checkbox label {
+    .checkbox-group.field-error-checkbox label,
+    .radio-group-container.field-error-radio label {
       font-weight: 700 !important;
       color: #D32F2F !important;
     }
 
-    /* FORM STEP HEADINGS IN MODAL */
+    /* FORM STEP HEADINGS IN MODAL - BOLD BLACK TEXT */
     .step-heading {
       font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--primary-dark);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #000000;
       margin: 1.6rem 0 0.8rem 0;
       padding-bottom: 0.4rem;
       border-bottom: 2px solid var(--primary-rose);
@@ -392,7 +395,8 @@
     .radio-group label {
       font-size: 0.85rem;
       text-transform: none;
-      font-weight: 400;
+      font-weight: 600;
+      color: #000000;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -431,10 +435,10 @@
       font-size: 0.78rem;
       text-transform: none;
       letter-spacing: 0;
-      color: var(--text-dark);
+      color: #000000;
       line-height: 1.4;
       cursor: pointer;
-      font-weight: 500;
+      font-weight: 700;
     }
 
     /* SOCIAL MEDIA SECTION */
@@ -449,7 +453,9 @@
     /* MODAL OVERLAY */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
     .modal { background: #FFFFFF; padding: 2.5rem; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border-color); color: var(--text-dark); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    .modal h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.2rem; }
+    
+    /* MODAL HEADINGS BOLD BLACK */
+    .modal h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; }
     .close-btn { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; }
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
@@ -614,7 +620,7 @@
       <div class="contact-grid">
         <!-- FORM -->
         <div>
-          <h3 style="margin-bottom: 1.2rem;">Send a Message</h3>
+          <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Send a Message</h3>
           <form id="contactForm" novalidate>
             <div class="form-group">
               <label for="contact-name">Full Name *</label>
@@ -638,15 +644,15 @@
 
         <!-- DETAILS -->
         <div>
-          <h3 style="margin-bottom: 1.2rem;">Get in Touch</h3>
+          <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Get in Touch</h3>
           
           <div class="info-block">
-            <h3>📞 Phone</h3>
+            <h3 style="color: #000000; font-weight: 700;">📞 Phone</h3>
             <p><a href="tel:07834950178">07834 950178</a></p>
           </div>
 
           <div class="info-block">
-            <h3>✉️ Email</h3>
+            <h3 style="color: #000000; font-weight: 700;">✉️ Email</h3>
             <p><a href="mailto:nikigpilates@gmail.com">nikigpilates@gmail.com</a></p>
           </div>
         </div>
@@ -654,7 +660,7 @@
 
       <!-- SOCIAL ICONS -->
       <div class="social-section">
-        <h3>Connect & Follow Along</h3>
+        <h3 style="color: #000000; font-weight: 800;">Connect & Follow Along</h3>
         <p>Follow Niki G Pilates for updates and movement tips:</p>
         
         <div class="social-icons-container">
@@ -753,6 +759,15 @@
         <div class="form-group">
           <label for="other-health-issues">4. Are there any other health-related issues, conditions, or injuries I should be aware of?</label>
           <textarea id="other-health-issues" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
+        </div>
+
+        <!-- NEW QUESTION: HAVE YOU DONE PILATES BEFORE? -->
+        <div class="form-group radio-group-container" id="pilates-before-group">
+          <label>5. Have you done Pilates before? *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="pilates_before" value="No" checked> No</label>
+            <label><input type="radio" name="pilates_before" value="Yes"> Yes</label>
+          </div>
         </div>
 
         <div class="form-group">
@@ -868,6 +883,7 @@
     function clearFormErrors(form) {
       form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
       form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
+      form.querySelectorAll('.field-error-radio').forEach(el => el.classList.remove('field-error-radio'));
     }
 
     function validateForm(form) {
@@ -890,6 +906,17 @@
         }
       });
 
+      // VALIDATE RADIO BUTTON QUESTION FOR PILATES EXPERIENCE
+      const pilatesRadios = form.querySelectorAll('input[name="pilates_before"]');
+      if (pilatesRadios.length > 0) {
+        let selected = Array.from(pilatesRadios).some(r => r.checked);
+        if (!selected) {
+          isValid = false;
+          const parentGroup = document.getElementById('pilates-before-group');
+          if (parentGroup) parentGroup.classList.add('field-error-radio');
+        }
+      }
+
       return isValid;
     }
 
@@ -901,12 +928,20 @@
           const parent = input.closest('.checkbox-group');
           if (parent) parent.classList.remove('field-error-checkbox');
         }
+        if (input.type === 'radio') {
+          const parentGroup = input.closest('.radio-group-container');
+          if (parentGroup) parentGroup.classList.remove('field-error-radio');
+        }
       });
       input.addEventListener('change', () => {
         input.classList.remove('field-error');
         if (input.type === 'checkbox') {
           const parent = input.closest('.checkbox-group');
           if (parent) parent.classList.remove('field-error-checkbox');
+        }
+        if (input.type === 'radio') {
+          const parentGroup = input.closest('.radio-group-container');
+          if (parentGroup) parentGroup.classList.remove('field-error-radio');
         }
       });
     });
