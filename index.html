@@ -539,7 +539,7 @@
         <!-- SINGLE BOOKING BOX FOR CLASS 1 -->
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
-          <p>Choose from First Class (£10), Drop-In (£12), or 6-Week Block (£65)</p>
+          <p>Choose from First Class (£8), Drop-In (£12), or 6-Week Block (£65)</p>
           <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength,', '6:30 PM - 7:20 PM')">BOOK HERE</button>
         </div>
       </div>
@@ -827,7 +827,7 @@
     // PASS OPTIONS DEFINITION PER CLASS
     const classPassOptions = {
       'All levels Pilates & Strength,': [
-        { label: 'First Class — £10', value: 'First Class - £10' },
+        { label: 'First Class — £8', value: 'First Class - £8' },
         { label: 'Drop-In — £12', value: 'Drop-In - £12' },
         { label: '6-Week Block — £65', value: '6-Week Block - £65' }
       ],
@@ -966,7 +966,7 @@
 
       // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
       const stripeLinks = {
-        'First Class - £10': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602', // Replace with your £10 Stripe Link
+        'First Class - £8': 'https://buy.stripe.com/YOUR_8_POUND_LINK_HERE', // Paste your £8 Stripe Checkout Link here
         'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
         '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
         'Drop-In - £13': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
