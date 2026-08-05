@@ -347,7 +347,7 @@
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; border-radius: 4px; transition: border-color 0.2s ease, background-color 0.2s ease; }
     .form-group textarea { height: 100px; resize: vertical; }
 
-    /* FORM ERROR / INCOMPLETE INPUT STYLING */
+    /* FORM ERROR STYLING */
     .form-group input.field-error,
     .form-group textarea.field-error,
     .form-group select.field-error {
@@ -372,7 +372,7 @@
       color: #D32F2F !important;
     }
 
-    /* FORM STEP HEADINGS IN MODAL - BOLD BLACK TEXT */
+    /* STEP HEADINGS */
     .step-heading {
       font-family: var(--font-heading);
       font-size: 1.1rem;
@@ -441,6 +441,45 @@
       font-weight: 700;
     }
 
+    /* BANK DETAILS PAYMENT INSTRUCTIONS BOX */
+    .bank-details-box {
+      background: var(--bg-green-light);
+      border: 2px dashed var(--accent-green);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .bank-details-box h4 {
+      color: var(--accent-green);
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .bank-detail-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+    }
+
+    .bank-detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .bank-detail-row span.label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .bank-detail-row span.value {
+      font-weight: 700;
+      color: #000000;
+    }
+
     /* SOCIAL MEDIA SECTION */
     .social-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
     .social-section h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
@@ -454,7 +493,6 @@
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
     .modal { background: #FFFFFF; padding: 2.5rem; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border-color); color: var(--text-dark); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     
-    /* MODAL HEADINGS BOLD BLACK */
     .modal h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; }
     .close-btn { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; }
 
@@ -536,7 +574,6 @@
           <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine! This class offers a welcoming space for all abilities. I provide <strong>personalised attention</strong> so you always feel like you're learning, progressing, and getting the most out of every class.</p>
         </div>
 
-        <!-- SINGLE BOOKING BOX FOR CLASS 1 -->
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
           <p>Choose from First Class (£8), Drop-In (£12), or 6-Week Block (£65)</p>
@@ -560,7 +597,6 @@
           <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
         </div>
 
-        <!-- SINGLE BOOKING BOX FOR CLASS 2 -->
         <div class="single-booking-box">
           <h3>Ready to Join Lovely Bumps?</h3>
           <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
@@ -618,25 +654,26 @@
       <h2 class="section-title">Contact Us</h2>
       
       <div class="contact-grid">
-        <!-- FORM -->
+        <!-- FORM LINKED TO FORMSPREE -->
         <div>
           <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Send a Message</h3>
-          <form id="contactForm" novalidate>
+          <form id="contactForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+            <input type="hidden" name="Form Type" value="General Contact Inquiry">
             <div class="form-group">
               <label for="contact-name">Full Name *</label>
-              <input type="text" id="contact-name" required placeholder="Jane Doe">
+              <input type="text" id="contact-name" name="Contact Name" required placeholder="Jane Doe">
             </div>
             <div class="form-group">
               <label for="contact-phone">Phone Number *</label>
-              <input type="tel" id="contact-phone" required placeholder="07123 456789">
+              <input type="tel" id="contact-phone" name="Contact Phone" required placeholder="07123 456789">
             </div>
             <div class="form-group">
               <label for="contact-email">Email Address *</label>
-              <input type="email" id="contact-email" required placeholder="jane@example.com">
+              <input type="email" id="contact-email" name="Contact Email" required placeholder="jane@example.com">
             </div>
             <div class="form-group">
               <label for="contact-msg">Message *</label>
-              <textarea id="contact-msg" required placeholder="How can we help you?"></textarea>
+              <textarea id="contact-msg" name="Message" required placeholder="How can we help you?"></textarea>
             </div>
             <button type="submit" class="btn btn-dark">Send Message</button>
           </form>
@@ -677,125 +714,165 @@
     </div>
   </section>
 
-  <!-- BOOKING CALENDAR MODAL -->
+  <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to secure your spot</p>
       
-      <form id="bookingForm" novalidate>
+      <!-- FORM CONTAINER LINKED TO FORMSPREE -->
+      <div id="bookingFormContainer">
+        <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to reserve your spot</p>
         
-        <!-- STEP 1: PAYMENT OPTION DROPDOWN -->
-        <div class="step-heading">Step 1: Choose Your Pass</div>
-        <div class="form-group">
-          <label for="pass-type">Select Option *</label>
-          <select id="pass-type" required onchange="updateSubmitButtonLabel()">
-            <!-- Options populated dynamically -->
-          </select>
-        </div>
+        <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+          <input type="hidden" name="Class Name" id="hidden-class-name">
+          
+          <!-- STEP 1: PASS SELECTION -->
+          <div class="step-heading">Step 1: Choose Your Pass</div>
+          <div class="form-group">
+            <label for="pass-type">Select Option *</label>
+            <select id="pass-type" name="Pass Selected" required>
+              <!-- Options populated dynamically -->
+            </select>
+          </div>
 
-        <!-- STEP 2: DATE & TIME -->
-        <div class="step-heading">Step 2: Date & Time</div>
-        <div class="form-group">
-          <label for="booking-date">Choose Class Date *</label>
-          <input type="date" id="booking-date" required>
-        </div>
+          <!-- STEP 2: DATE & TIME -->
+          <div class="step-heading">Step 2: Date & Time</div>
+          <div class="form-group">
+            <label for="booking-date">Choose Class Date *</label>
+            <input type="date" id="booking-date" name="Class Date" required>
+          </div>
 
-        <div class="form-group">
-          <label for="booking-time">Time Slot</label>
-          <input type="text" id="booking-time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
-        </div>
+          <div class="form-group">
+            <label for="booking-time">Time Slot</label>
+            <input type="text" id="booking-time" name="Class Time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
+          </div>
 
-        <!-- STEP 3: PERSONAL INFORMATION -->
-        <div class="step-heading">Step 3: Personal Information</div>
-        <div class="form-group">
-          <label for="booking-name">Full Name *</label>
-          <input type="text" id="booking-name" required placeholder="Jane Doe">
-        </div>
+          <!-- STEP 3: PERSONAL INFORMATION -->
+          <div class="step-heading">Step 3: Personal Information</div>
+          <div class="form-group">
+            <label for="booking-name">Full Name *</label>
+            <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
+          </div>
 
-        <div class="form-group">
-          <label for="booking-email">Email Address *</label>
-          <input type="email" id="booking-email" required placeholder="jane@example.com">
-        </div>
+          <div class="form-group">
+            <label for="booking-email">Email Address *</label>
+            <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
+          </div>
 
-        <div class="form-group">
-          <label for="booking-phone">Contact Phone Number *</label>
-          <input type="tel" id="booking-phone" required placeholder="07123 456789">
-        </div>
+          <div class="form-group">
+            <label for="booking-phone">Contact Phone Number *</label>
+            <input type="tel" id="booking-phone" name="Client Phone" required placeholder="07123 456789">
+          </div>
 
-        <!-- STEP 4: HEALTH QUESTIONS -->
-        <div class="step-heading">Step 4: Health Questions</div>
+          <!-- STEP 4: HEALTH QUESTIONS -->
+          <div class="step-heading">Step 4: Health Questions</div>
 
-        <div class="form-group">
-          <label>1. Any injuries, joint, or spinal issues? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="injuries" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
-            <label><input type="radio" name="injuries" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
+          <div class="form-group">
+            <label>1. Any injuries, joint, or spinal issues? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Injuries or Spinal Issues" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
+              <label><input type="radio" name="Injuries or Spinal Issues" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
+            </div>
+          </div>
+
+          <div class="form-group" id="injuries-details-group" style="display: none;">
+            <label for="injuries-details">Please describe your injury or condition:</label>
+            <textarea id="injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness, recovering from shoulder injury..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>2. High blood pressure, heart condition, or dizziness? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
+              <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
+              <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="other-health-issues">4. Are there any other health-related issues, conditions, or injuries I should be aware of?</label>
+            <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
+          </div>
+
+          <div class="form-group radio-group-container" id="pilates-before-group">
+            <label>5. Have you done Pilates before? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Done Pilates Before" value="No" checked> No</label>
+              <label><input type="radio" name="Done Pilates Before" value="Yes"> Yes</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="emerg-name">Emergency Contact Name *</label>
+            <input type="text" id="emerg-name" name="Emergency Contact Name" required placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="emerg-phone">Emergency Contact Phone *</label>
+            <input type="tel" id="emerg-phone" name="Emergency Contact Phone" required placeholder="07987 654321">
+          </div>
+
+          <!-- STEP 5: HEALTH WAIVER -->
+          <div class="step-heading">Step 5: Health Waiver Consent</div>
+
+          <div class="form-group">
+            <div class="waiver-box">
+              By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury, and I confirm that I am in suitable physical health to participate. I agree to inform the instructor before class of any changes to my physical condition, pregnancy, or injuries.
+            </div>
+            <div class="checkbox-group" id="waiver-container">
+              <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
+              <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
+            </div>
+          </div>
+
+          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Submit Registration & View Payment Details &rarr;</button>
+        </form>
+      </div>
+
+      <!-- BANK PAYMENT CONFIRMATION SCREEN (Revealed after email sends) -->
+      <div id="paymentInstructionsScreen" style="display: none;">
+        <h3>Registration Submitted!</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Thank you! Your registration has been emailed to Niki. Please complete your payment via Bank Transfer to confirm your spot.</p>
+
+        <div class="bank-details-box">
+          <h4>Bank Transfer Details</h4>
+          <div class="bank-detail-row">
+            <span class="label">Account Name:</span>
+            <span class="value">Niki G Pilates</span>
+          </div>
+          <div class="bank-detail-row">
+            <span class="label">Sort Code:</span>
+            <span class="value">00-00-00</span> <!-- Replace with your actual sort code -->
+          </div>
+          <div class="bank-detail-row">
+            <span class="label">Account Number:</span>
+            <span class="value">00000000</span> <!-- Replace with your actual account number -->
+          </div>
+          <div class="bank-detail-row">
+            <span class="label">Selected Option:</span>
+            <span class="value" id="summary-pass-type">-</span>
+          </div>
+          <div class="bank-detail-row">
+            <span class="label">Payment Reference:</span>
+            <span class="value" id="summary-reference" style="color: var(--accent-green);">-</span>
           </div>
         </div>
 
-        <div class="form-group" id="injuries-details-group" style="display: none;">
-          <label for="injuries-details">Please describe your injury or condition:</label>
-          <textarea id="injuries-details" placeholder="E.g., lower back stiffness, recovering from shoulder injury..."></textarea>
-        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong>Note:</strong> Please use the Payment Reference above when transferring funds so we can match your payment to your registration. Your spot is confirmed upon payment receipt.
+        </p>
 
-        <div class="form-group">
-          <label>2. High blood pressure, heart condition, or dizziness? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="heart" value="No" checked> No</label>
-            <label><input type="radio" name="heart" value="Yes"> Yes</label>
-          </div>
-        </div>
+        <button onclick="closeModal()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 0.8rem;">Close Window</button>
+      </div>
 
-        <div class="form-group">
-          <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="pregnant" value="No" checked> No</label>
-            <label><input type="radio" name="pregnant" value="Yes"> Yes</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="other-health-issues">4. Are there any other health-related issues, conditions, or injuries I should be aware of?</label>
-          <textarea id="other-health-issues" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
-        </div>
-
-        <!-- PILATES EXPERIENCE QUESTION -->
-        <div class="form-group radio-group-container" id="pilates-before-group">
-          <label>5. Have you done Pilates before? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="pilates_before" value="No" checked> No</label>
-            <label><input type="radio" name="pilates_before" value="Yes"> Yes</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="emerg-name">Emergency Contact Name *</label>
-          <input type="text" id="emerg-name" required placeholder="John Doe">
-        </div>
-
-        <div class="form-group">
-          <label for="emerg-phone">Emergency Contact Phone *</label>
-          <input type="tel" id="emerg-phone" required placeholder="07987 654321">
-        </div>
-
-        <!-- STEP 5: TICK THE WAIVER -->
-        <div class="step-heading">Step 5: Health Waiver Consent</div>
-
-        <div class="form-group">
-          <div class="waiver-box">
-            By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury, and I confirm that I am in suitable physical health to participate. I agree to inform the instructor before class of any changes to my physical condition, pregnancy, or injuries.
-          </div>
-          <div class="checkbox-group" id="waiver-container">
-            <input type="checkbox" id="waiver-agree" required>
-            <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
-          </div>
-        </div>
-
-        <!-- SUBMIT BUTTON -->
-        <button type="submit" id="submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Proceed to Payment &rarr;</button>
-      </form>
     </div>
   </div>
 
@@ -824,24 +901,26 @@
       });
     });
 
-    // PASS OPTIONS DEFINITION PER CLASS
     const classPassOptions = {
       'All levels Pilates & Strength,': [
-        { label: 'First Class — £8', value: 'First Class - £8' },
-        { label: 'Drop-In — £12', value: 'Drop-In - £12' },
-        { label: '6-Week Block — £65', value: '6-Week Block - £65' }
+        { label: 'First Class — £8', value: 'First Class (£8)' },
+        { label: 'Drop-In — £12', value: 'Drop-In (£12)' },
+        { label: '6-Week Block — £65', value: '6-Week Block (£65)' }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Drop-In — £13', value: 'Drop-In - £13' },
-        { label: '5-Week Block — £55', value: '5-Week Block - £55' }
+        { label: 'Drop-In — £13', value: 'Drop-In (£13)' },
+        { label: '5-Week Block — £55', value: '5-Week Block (£55)' }
       ]
     };
 
-    // OPEN MODAL WITH SELECTED CLASS
     function openBooking(className, timeSlot) {
       clearFormErrors(document.getElementById('bookingForm'));
+      document.getElementById('bookingFormContainer').style.display = 'block';
+      document.getElementById('paymentInstructionsScreen').style.display = 'none';
+
       document.getElementById('modal-class-title').innerText = className;
       document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
+      document.getElementById('hidden-class-name').value = className;
       document.getElementById('booking-time').value = timeSlot || '6:30 PM - 7:30 PM';
       
       const passSelect = document.getElementById('pass-type');
@@ -856,7 +935,6 @@
         passSelect.appendChild(optionEl);
       });
 
-      updateSubmitButtonLabel();
       document.getElementById('bookingModal').style.display = 'flex';
     }
 
@@ -868,12 +946,6 @@
       document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
     }
 
-    function updateSubmitButtonLabel() {
-      const submitBtn = document.getElementById('submit-btn');
-      submitBtn.innerText = 'Proceed to Payment →';
-    }
-
-    // RED OUTLINE & BOLD TEXT VALIDATION FUNCTIONS
     function clearFormErrors(form) {
       form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
       form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
@@ -900,8 +972,7 @@
         }
       });
 
-      // VALIDATE RADIO BUTTON QUESTION FOR PILATES EXPERIENCE
-      const pilatesRadios = form.querySelectorAll('input[name="pilates_before"]');
+      const pilatesRadios = form.querySelectorAll('input[name="Done Pilates Before"]');
       if (pilatesRadios.length > 0) {
         let selected = Array.from(pilatesRadios).some(r => r.checked);
         if (!selected) {
@@ -914,7 +985,6 @@
       return isValid;
     }
 
-    // REMOVE RED OUTLINE LIVE AS USER TYPES/CHOOSES
     document.querySelectorAll('input, select, textarea').forEach(input => {
       input.addEventListener('input', () => {
         input.classList.remove('field-error');
@@ -927,33 +997,44 @@
           if (parentGroup) parentGroup.classList.remove('field-error-radio');
         }
       });
-      input.addEventListener('change', () => {
-        input.classList.remove('field-error');
-        if (input.type === 'checkbox') {
-          const parent = input.closest('.checkbox-group');
-          if (parent) parent.classList.remove('field-error-checkbox');
-        }
-        if (input.type === 'radio') {
-          const parentGroup = input.closest('.radio-group-container');
-          if (parentGroup) parentGroup.classList.remove('field-error-radio');
-        }
-      });
     });
 
-    // CONTACT FORM SUBMISSION
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // GENERAL CONTACT FORM SUBMISSION
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       if (!validateForm(this)) {
         alert('Please complete all outlined fields in red before sending.');
         return;
       }
-      alert('Message sent successfully!');
-      this.reset();
-      clearFormErrors(this);
+
+      const submitBtn = this.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending...';
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          alert('Message sent successfully!');
+          this.reset();
+          clearFormErrors(this);
+        } else {
+          alert('There was a problem sending your message. Please try again.');
+        }
+      } catch (err) {
+        alert('Network error. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Send Message';
+      }
     });
 
-    // BOOKING FORM SUBMISSION & PAYMENT REDIRECT
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    // BOOKING FORM SUBMISSION -> EMAILS FORMSPREE & DISPLAYS BANK DETAILS SCREEN
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
       if (!validateForm(this)) {
@@ -961,24 +1042,43 @@
         return;
       }
 
-      const email = document.getElementById('booking-email').value;
+      const submitBtn = document.getElementById('booking-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting Registration...";
+
+      const clientName = document.getElementById('booking-name').value;
       const passType = document.getElementById('pass-type').value;
 
-      // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
-      const stripeLinks = {
-        'First Class - £8': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
-        'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
-        '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
-        'Drop-In - £13': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
-        '5-Week Block - £55': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604'
-      };
+      // Clean name for reference (e.g. "Jane Doe" -> "JANEDOE")
+      const cleanRefName = clientName.replace(/[^a-zA-Z]/g, '').toUpperCase();
+      const refString = `PILATES-${cleanRefName.slice(0, 10)}`;
 
-      const targetUrl = stripeLinks[passType];
+      document.getElementById('summary-pass-type').innerText = passType;
+      document.getElementById('summary-reference').innerText = refString;
 
-      if (targetUrl) {
-        window.location.href = `${targetUrl}?prefilled_email=${encodeURIComponent(email)}`;
-      } else {
-        alert('Stripe URL missing. Please verify link setup.');
+      // Create payload and attach generated ref to email
+      const formData = new FormData(this);
+      formData.append('Generated Payment Reference', refString);
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          // Hide registration form and show bank details screen
+          document.getElementById('bookingFormContainer').style.display = 'none';
+          document.getElementById('paymentInstructionsScreen').style.display = 'block';
+        } else {
+          alert("There was an issue submitting your registration. Please try again.");
+        }
+      } catch (error) {
+        alert("Network error. Please check your connection and try again.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submit Registration & View Payment Details →";
       }
     });
   </script>
