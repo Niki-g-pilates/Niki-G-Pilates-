@@ -539,7 +539,7 @@
         <!-- SINGLE BOOKING BOX FOR CLASS 1 -->
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
-          <p>Choose from First Class Free (£0), Drop-In (£12), or 6-Week Block (£65)</p>
+          <p>Choose from First Class (£10), Drop-In (£12), or 6-Week Block (£65)</p>
           <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength,', '6:30 PM - 7:20 PM')">BOOK HERE</button>
         </div>
       </div>
@@ -761,7 +761,7 @@
           <textarea id="other-health-issues" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
         </div>
 
-        <!-- NEW QUESTION: HAVE YOU DONE PILATES BEFORE? -->
+        <!-- PILATES EXPERIENCE QUESTION -->
         <div class="form-group radio-group-container" id="pilates-before-group">
           <label>5. Have you done Pilates before? *</label>
           <div class="radio-group">
@@ -827,7 +827,7 @@
     // PASS OPTIONS DEFINITION PER CLASS
     const classPassOptions = {
       'All levels Pilates & Strength,': [
-        { label: 'First Class Free — £0', value: 'First Class Free - £0' },
+        { label: 'First Class — £10', value: 'First Class - £10' },
         { label: 'Drop-In — £12', value: 'Drop-In - £12' },
         { label: '6-Week Block — £65', value: '6-Week Block - £65' }
       ],
@@ -869,14 +869,8 @@
     }
 
     function updateSubmitButtonLabel() {
-      const passType = document.getElementById('pass-type').value;
       const submitBtn = document.getElementById('submit-btn');
-
-      if (passType === 'First Class Free - £0') {
-        submitBtn.innerText = 'Confirm Free Booking ✓';
-      } else {
-        submitBtn.innerText = 'Proceed to Payment →';
-      }
+      submitBtn.innerText = 'Proceed to Payment →';
     }
 
     // RED OUTLINE & BOLD TEXT VALIDATION FUNCTIONS
@@ -969,17 +963,10 @@
 
       const email = document.getElementById('booking-email').value;
       const passType = document.getElementById('pass-type').value;
-      const className = document.getElementById('modal-class-title').innerText;
-      const date = document.getElementById('booking-date').value;
-
-      if (passType === 'First Class Free - £0') {
-        alert(`Thank you! Your free trial for "${className}" on ${date} is confirmed. A confirmation email has been logged for ${email}.`);
-        closeModal();
-        return;
-      }
 
       // STRIPE CHECKOUT REDIRECTS FOR PAID OPTIONS
       const stripeLinks = {
+        'First Class - £10': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602', // Replace with your £10 Stripe Link
         'Drop-In - £12': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
         '6-Week Block - £65': 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604',
         'Drop-In - £13': 'https://buy.stripe.com/5kQ6oJ3zn8e4euL2Qc7N602',
