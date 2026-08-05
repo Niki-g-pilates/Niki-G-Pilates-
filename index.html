@@ -343,8 +343,26 @@
     /* CONTACT SECTION */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; }
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-weight: 300; border-radius: 4px; transition: border-color 0.2s ease, background-color 0.2s ease; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 400; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
+    
+    /* USER ANSWER TYPED TEXT BOLDING */
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      font-family: var(--font-body);
+      background: #FAFAFA;
+      font-weight: 700 !important; /* Forces typed user text to be BOLD */
+      color: #000000;
+      border-radius: 4px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    
     .form-group textarea { height: 100px; resize: vertical; }
 
     /* FORM ERROR STYLING */
@@ -368,7 +386,7 @@
 
     .checkbox-group.field-error-checkbox label,
     .radio-group-container.field-error-radio label {
-      font-weight: 700 !important;
+      font-weight: 400 !important;
       color: #D32F2F !important;
     }
 
@@ -395,7 +413,7 @@
     .radio-group label {
       font-size: 0.85rem;
       text-transform: none;
-      font-weight: 600;
+      font-weight: 400;
       color: #000000;
       cursor: pointer;
       display: flex;
@@ -438,7 +456,7 @@
       color: #000000;
       line-height: 1.4;
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 400;
     }
 
     /* BANK DETAILS PAYMENT INSTRUCTIONS BOX */
@@ -471,7 +489,7 @@
     }
 
     .bank-detail-row span.label {
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text-dark);
     }
 
@@ -755,6 +773,12 @@
             <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
           </div>
 
+          <!-- NEW DATE OF BIRTH FIELD -->
+          <div class="form-group">
+            <label for="booking-dob">Date of Birth *</label>
+            <input type="date" id="booking-dob" name="Date of Birth" required>
+          </div>
+
           <div class="form-group">
             <label for="booking-email">Email Address *</label>
             <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
@@ -802,12 +826,18 @@
             <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
           </div>
 
+          <!-- PILATES BEFORE QUESTION WITH CUSTOM TEXT FIELD -->
           <div class="form-group radio-group-container" id="pilates-before-group">
             <label>5. Have you done Pilates before? *</label>
             <div class="radio-group">
-              <label><input type="radio" name="Done Pilates Before" value="No" checked> No</label>
-              <label><input type="radio" name="Done Pilates Before" value="Yes"> Yes</label>
+              <label><input type="radio" name="Done Pilates Before" value="No" checked onclick="togglePilatesExperienceBox(false)"> No</label>
+              <label><input type="radio" name="Done Pilates Before" value="Yes" onclick="togglePilatesExperienceBox(true)"> Yes</label>
             </div>
+          </div>
+
+          <div class="form-group" id="pilates-experience-details-group" style="display: none;">
+            <label for="pilates-experience-details">Please share a brief note on your previous Pilates experience:</label>
+            <textarea id="pilates-experience-details" name="Pilates Experience Details" placeholder="E.g., practiced mat Pilates 2 years ago, completed reformer classes, etc."></textarea>
           </div>
 
           <div class="form-group">
@@ -837,7 +867,7 @@
         </form>
       </div>
 
-      <!-- BANK PAYMENT CONFIRMATION SCREEN (UPDATED WITH YOUR EXACT DETAILS) -->
+      <!-- BANK PAYMENT CONFIRMATION SCREEN -->
       <div id="paymentInstructionsScreen" style="display: none;">
         <h3>Registration Submitted!</h3>
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Thank you! Your registration has been emailed to Niki. Please complete your payment via Bank Transfer to confirm your spot.</p>
@@ -946,6 +976,10 @@
       document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
     }
 
+    function togglePilatesExperienceBox(show) {
+      document.getElementById('pilates-experience-details-group').style.display = show ? 'block' : 'none';
+    }
+
     function clearFormErrors(form) {
       form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
       form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
@@ -1033,7 +1067,7 @@
       }
     });
 
-    // BOOKING FORM SUBMISSION -> EMAILS FORMSPREE & DISPLAYS BANK DETAILS SCREEN
+    // BOOKING FORM SUBMISSION
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -1049,14 +1083,12 @@
       const clientName = document.getElementById('booking-name').value;
       const passType = document.getElementById('pass-type').value;
 
-      // Clean name for reference (e.g. "Sarah Jenkins" -> "PILATES-SARAHJEN")
       const cleanRefName = clientName.replace(/[^a-zA-Z]/g, '').toUpperCase();
       const refString = `PILATES-${cleanRefName.slice(0, 8)}`;
 
       document.getElementById('summary-pass-type').innerText = passType;
       document.getElementById('summary-reference').innerText = refString;
 
-      // Create payload and attach generated ref to email
       const formData = new FormData(this);
       formData.append('Generated Payment Reference', refString);
 
@@ -1068,7 +1100,6 @@
         });
 
         if (response.ok) {
-          // Hide registration form and show bank details screen
           document.getElementById('bookingFormContainer').style.display = 'none';
           document.getElementById('paymentInstructionsScreen').style.display = 'block';
         } else {
