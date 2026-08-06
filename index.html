@@ -9,9 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- STRIPE SDK INCLUSION -->
-  <script src="https://js.stripe.com/v3/"></script>
-
   <style>
     :root {
       --primary-rose: #D8A7A1;
@@ -396,7 +393,6 @@
       -webkit-appearance: none;
     }
     
-    /* AUTOMATIC BOLDING WHEN USER TYPES */
     .form-group input[type="text"]:not(:placeholder-shown),
     .form-group input[type="email"]:not(:placeholder-shown),
     .form-group input[type="tel"]:not(:placeholder-shown),
@@ -808,7 +804,7 @@
         
         <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
           <input type="hidden" name="Class Name" id="hidden-class-name">
-          <input type="hidden" name="Stripe Price ID" id="hidden-price-id" value="price_1U1RqkPEm4IxJdcN298yLw6F">
+          <input type="hidden" name="Stripe Payment Link" id="hidden-stripe-link" value="https://buy.stripe.com/test_12345">
           
           <!-- STEP 1: PASS SELECTION -->
           <div class="step-heading">Step 1: Choose Your Pass</div>
@@ -938,12 +934,11 @@
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Your registration details have been saved. Tap below to complete checkout via Stripe.</p>
 
         <div class="stripe-payment-box">
-          <h4>Card Checkout (£8.50)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Clicking pay will securely connect your device directly with Stripe Checkout.</p>
-          <div id="card-errors" role="alert" style="color: #D32F2F; font-size: 0.85rem; margin-top: 0.5rem;"></div>
+          <h4 id="payment-box-title">Card Checkout</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Clicking pay will redirect you directly to Stripe's secure payment page.</p>
         </div>
 
-        <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">Pay & Confirm Booking (£8.50)</button>
+        <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">Pay & Confirm Booking</button>
       </div>
 
     </div>
@@ -954,14 +949,16 @@
   </footer>
 
   <script>
-    // STRIPE INTEGRATION SETUP
-    // Replace 'pk_test_...' with your live 'pk_live_...' key when ready for live payments.
-    const stripe = Stripe('pk_test_TYooMQauvd3qKEJujyT5UrFD'); 
-    
-    // £8.50 STRIPE CONNECT / PRICE ID
-    const STRIPE_PRICE_850 = 'price_1U1RqkPEm4IxJdcN298yLw6F';
+    // Direct Stripe Payment Links (Create these under "Payment Links" in your Stripe Dashboard)
+    // Update these URLs to match your live Stripe Payment Links:
+    const STRIPE_LINKS = {
+      'First Class (£8.50)': 'https://buy.stripe.com/test_12345',
+      'Drop-In (£12.50)': 'https://buy.stripe.com/test_12345',
+      '6-Week Block (£66)': 'https://buy.stripe.com/test_12345',
+      'Drop-In (£13)': 'https://buy.stripe.com/test_12345',
+      '5-Week Block (£55)': 'https://buy.stripe.com/test_12345'
+    };
 
-    // Track active modal view state for phone back button handling
     let currentModalStep = null;
 
     // NAVIGATION CONTROLS
@@ -984,23 +981,20 @@
       });
     });
 
-    // PRICING OPTIONS MATRIX
     const classPassOptions = {
       'All levels Pilates & Strength': [
-        { label: 'First Class — £8.50', value: 'First Class (£8.50)', priceId: STRIPE_PRICE_850 },
-        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)', priceId: STRIPE_PRICE_850 },
-        { label: '6-Week Block — £66', value: '6-Week Block (£66)', priceId: STRIPE_PRICE_850 }
+        { label: 'First Class — £8.50', value: 'First Class (£8.50)', link: STRIPE_LINKS['First Class (£8.50)'] },
+        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)', link: STRIPE_LINKS['Drop-In (£12.50)'] },
+        { label: '6-Week Block — £66', value: '6-Week Block (£66)', link: STRIPE_LINKS['6-Week Block (£66)'] }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Drop-In — £13', value: 'Drop-In (£13)', priceId: STRIPE_PRICE_850 },
-        { label: '5-Week Block — £55', value: '5-Week Block (£55)', priceId: STRIPE_PRICE_850 }
+        { label: 'Drop-In — £13', value: 'Drop-In (£13)', link: STRIPE_LINKS['Drop-In (£13)'] },
+        { label: '5-Week Block — £55', value: '5-Week Block (£55)', link: STRIPE_LINKS['5-Week Block (£55)'] }
       ]
     };
 
-    // OPEN BOOKING MODAL WITH MOBILE BACK BUTTON SUPPORT
     function openBooking(className, timeSlot) {
       const form = document.getElementById('bookingForm');
-      
       form.reset();
       clearFormErrors(form);
 
@@ -1021,37 +1015,35 @@
         const optionEl = document.createElement('option');
         optionEl.value = opt.value;
         optionEl.textContent = opt.label;
-        optionEl.setAttribute('data-price-id', opt.priceId);
+        optionEl.setAttribute('data-stripe-link', opt.link);
         passSelect.appendChild(optionEl);
       });
 
       document.getElementById('bookingModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
 
-      // Push history state so phone back button triggers backward navigation inside modal
       currentModalStep = 'form';
       history.pushState({ modalStep: 'form' }, '');
     }
 
-    // ADVANCE TO STRIPE PAYMENT VIEW
     function showStripeScreen() {
       document.getElementById('bookingFormContainer').style.display = 'none';
       document.getElementById('stripePaymentScreen').style.display = 'block';
 
-      // Push history state for payment screen
+      const passSelect = document.getElementById('pass-type');
+      const selectedOption = passSelect.options[passSelect.selectedIndex];
+      document.getElementById('payment-box-title').innerText = `Card Checkout (${selectedOption.value})`;
+
       currentModalStep = 'payment';
       history.pushState({ modalStep: 'payment' }, '');
     }
 
-    // PHONE BACK BUTTON / POPSTATE EVENT HANDLER
     window.addEventListener('popstate', function(event) {
       if (currentModalStep === 'payment') {
-        // From payment back to form
         currentModalStep = 'form';
         document.getElementById('stripePaymentScreen').style.display = 'none';
         document.getElementById('bookingFormContainer').style.display = 'block';
       } else if (currentModalStep === 'form') {
-        // From form back to page
         closeModalView();
       }
     });
@@ -1110,34 +1102,10 @@
         }
       });
 
-      const pilatesRadios = form.querySelectorAll('input[name="Done Pilates Before"]');
-      if (pilatesRadios.length > 0) {
-        let selected = Array.from(pilatesRadios).some(r => r.checked);
-        if (!selected) {
-          isValid = false;
-          const parentGroup = document.getElementById('pilates-before-group');
-          if (parentGroup) parentGroup.classList.add('field-error-radio');
-        }
-      }
-
       return isValid;
     }
 
-    document.querySelectorAll('input, select, textarea').forEach(input => {
-      input.addEventListener('input', () => {
-        input.classList.remove('field-error');
-        if (input.type === 'checkbox') {
-          const parent = input.closest('.checkbox-group');
-          if (parent) parent.classList.remove('field-error-checkbox');
-        }
-        if (input.type === 'radio') {
-          const parentGroup = input.closest('.radio-group-container');
-          if (parentGroup) parentGroup.classList.remove('field-error-radio');
-        }
-      });
-    });
-
-    // CONTACT FORM SUBMISSION
+    // CONTACT FORM
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       if (!validateForm(this)) {
@@ -1171,7 +1139,7 @@
       }
     });
 
-    // BOOKING FORM ROUTER (FORMSPREE -> STRIPE SCREEN)
+    // BOOKING FORM TO STRIPE PAYMENT LINK
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -1186,8 +1154,8 @@
 
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const activePriceId = selectedOption.getAttribute('data-price-id') || STRIPE_PRICE_850;
-      document.getElementById('hidden-price-id').value = activePriceId;
+      const activeStripeLink = selectedOption.getAttribute('data-stripe-link') || 'https://buy.stripe.com/';
+      document.getElementById('hidden-stripe-link').value = activeStripeLink;
 
       const formData = new FormData(this);
 
@@ -1211,36 +1179,17 @@
       }
     });
 
-    // STRIPE CHECKOUT REDIRECT EXECUTION
-    async function processStripeCheckout() {
-      const priceId = document.getElementById('hidden-price-id').value || STRIPE_PRICE_850;
-      const clientEmail = document.getElementById('booking-email').value;
+    // REDIRECT TO STRIPE LINK
+    function processStripeCheckout() {
+      const passSelect = document.getElementById('pass-type');
+      const selectedOption = passSelect.options[passSelect.selectedIndex];
+      const link = selectedOption.getAttribute('data-stripe-link') || 'https://buy.stripe.com/';
+      
       const payBtn = document.getElementById('stripe-pay-btn');
-      const errBox = document.getElementById('card-errors');
-
-      errBox.innerText = '';
       payBtn.disabled = true;
-      payBtn.innerText = 'Connecting to Stripe...';
+      payBtn.innerText = 'Redirecting to Stripe...';
 
-      try {
-        const { error } = await stripe.redirectToCheckout({
-          lineItems: [{ price: priceId, quantity: 1 }],
-          mode: 'payment',
-          customerEmail: clientEmail,
-          successUrl: window.location.origin + '?booking=success',
-          cancelUrl: window.location.href,
-        });
-
-        if (error) {
-          errBox.innerText = error.message;
-          payBtn.disabled = false;
-          payBtn.innerText = 'Pay & Confirm Booking (£8.50)';
-        }
-      } catch (err) {
-        errBox.innerText = 'Stripe Redirect Error: Ensure "Client-only integration" is enabled in your Stripe Dashboard Settings -> Checkout settings.';
-        payBtn.disabled = false;
-        payBtn.innerText = 'Pay & Confirm Booking (£8.50)';
-      }
+      window.location.href = link;
     }
   </script>
 
