@@ -246,7 +246,19 @@
       color: #5F6368;
       font-size: 1.05rem;
       font-weight: 500;
-      margin-bottom: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .class-pricing-line {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      background: #F5F2EE;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid var(--primary-rose);
     }
 
     .highlight-quote {
@@ -357,7 +369,7 @@
       border: 1px solid var(--border-color);
       font-family: var(--font-body);
       background: #FAFAFA;
-      font-weight: 700 !important; /* Forces typed user text to be BOLD */
+      font-weight: 700 !important;
       color: #000000;
       border-radius: 4px;
       transition: border-color 0.2s ease, background-color 0.2s ease;
@@ -581,8 +593,9 @@
       <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
       <div>
         <span class="tag-badge">Beginner Friendly</span>
-        <h1 class="class-header">All levels Pilates & Strength,</h1>
-        <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 6:30pm</div>
+        <h1 class="class-header">All levels Pilates & Strength</h1>
+        <div class="class-sub-header">West Park, Goring-by-Sea, Wednesday's 6:30pm - 7:20pm (50 mins)</div>
+        <div class="class-pricing-line">Price Options: First Class £8 | Drop-In £12 | 6-Week Block £65</div>
 
         <p>This class is suitable for anyone who wants to <strong>get stronger, feel stronger, and reduce posture-related aches and pains</strong> from everyday life—whether that's looking after children or sitting at a computer all day.</p>
 
@@ -595,7 +608,7 @@
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
           <p>Choose from First Class (£8), Drop-In (£12), or 6-Week Block (£65)</p>
-          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength,', '6:30 PM - 7:20 PM')">BOOK HERE</button>
+          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
         </div>
       </div>
 
@@ -605,7 +618,8 @@
       <div>
         <span class="tag-badge pink">Pregnancy Speciality</span>
         <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
-        <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:30pm</div>
+        <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:20pm (50 mins)</div>
+        <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £55</div>
 
         <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
 
@@ -618,7 +632,7 @@
         <div class="single-booking-box">
           <h3>Ready to Join Lovely Bumps?</h3>
           <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
-          <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:30 PM')">BOOK HERE</button>
+          <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
         </div>
       </div>
 
@@ -763,7 +777,7 @@
 
           <div class="form-group">
             <label for="booking-time">Time Slot</label>
-            <input type="text" id="booking-time" name="Class Time" value="6:30 PM - 7:20 PM" readonly style="background:#e9ecef; cursor:not-allowed;">
+            <input type="text" id="booking-time" name="Class Time" value="6:30 PM - 7:20 PM (50 mins)" readonly style="background:#e9ecef; cursor:not-allowed;">
           </div>
 
           <!-- STEP 3: PERSONAL INFORMATION -->
@@ -773,7 +787,7 @@
             <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
           </div>
 
-          <!-- NEW DATE OF BIRTH FIELD -->
+          <!-- DATE OF BIRTH FIELD -->
           <div class="form-group">
             <label for="booking-dob">Date of Birth *</label>
             <input type="date" id="booking-dob" name="Date of Birth" required>
@@ -932,7 +946,7 @@
     });
 
     const classPassOptions = {
-      'All levels Pilates & Strength,': [
+      'All levels Pilates & Strength': [
         { label: 'First Class — £8', value: 'First Class (£8)' },
         { label: 'Drop-In — £12', value: 'Drop-In (£12)' },
         { label: '6-Week Block — £65', value: '6-Week Block (£65)' }
@@ -951,12 +965,12 @@
       document.getElementById('modal-class-title').innerText = className;
       document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
       document.getElementById('hidden-class-name').value = className;
-      document.getElementById('booking-time').value = timeSlot || '6:30 PM - 7:30 PM';
+      document.getElementById('booking-time').value = timeSlot || '6:30 PM - 7:20 PM (50 mins)';
       
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength,'];
+      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
       
       options.forEach(opt => {
         const optionEl = document.createElement('option');
