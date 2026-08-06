@@ -355,6 +355,7 @@
       color: var(--primary-dark);
       border: 1px solid var(--border-color);
       margin-bottom: 1rem;
+      cursor: pointer;
     }
     .btn-secondary:hover {
       background-color: #E2DCD5;
@@ -798,7 +799,7 @@
   <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
-      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <button class="close-btn" onclick="closeModalDirect()">&times;</button>
       
       <!-- FORM CONTAINER LINKED TO FORMSPREE -->
       <div id="bookingFormContainer">
@@ -931,7 +932,7 @@
 
       <!-- EMBEDDED STRIPE PAYMENT SCREEN -->
       <div id="stripePaymentScreen" style="display: none;">
-        <button type="button" onclick="goBackToForm()" class="btn btn-secondary">&larr; Back to Details</button>
+        <button type="button" onclick="triggerHardwareBack()" class="btn btn-secondary">&larr; Back to Details</button>
 
         <h3>Complete Payment</h3>
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Your registration details have been saved. Tap below to complete checkout via Stripe.</p>
@@ -954,11 +955,14 @@
 
   <script>
     // STRIPE INTEGRATION SETUP
-    // Replace 'pk_test_...' with your live 'pk_live_...' key when going live in Stripe Dashboard
+    // Replace 'pk_test_...' with your live 'pk_live_...' key when ready for live payments.
     const stripe = Stripe('pk_test_TYooMQauvd3qKEJujyT5UrFD'); 
     
-    // £8.50 STRIPE CONNECT LINK PRICE ID
+    // £8.50 STRIPE CONNECT / PRICE ID
     const STRIPE_PRICE_850 = 'price_1U1RqkPEm4IxJdcN298yLw6F';
+
+    // Track active modal view state for phone back button handling
+    let currentModalStep = null;
 
     // NAVIGATION CONTROLS
     const menuToggle = document.getElementById('menuToggle');
@@ -993,10 +997,10 @@
       ]
     };
 
+    // OPEN BOOKING MODAL WITH MOBILE BACK BUTTON SUPPORT
     function openBooking(className, timeSlot) {
       const form = document.getElementById('bookingForm');
       
-      // Reset form on initial launch
       form.reset();
       clearFormErrors(form);
 
@@ -1023,15 +1027,51 @@
 
       document.getElementById('bookingModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
+
+      // Push history state so phone back button triggers backward navigation inside modal
+      currentModalStep = 'form';
+      history.pushState({ modalStep: 'form' }, '');
     }
 
-    // Preserve typed field values on back button tap
-    function goBackToForm() {
-      document.getElementById('stripePaymentScreen').style.display = 'none';
-      document.getElementById('bookingFormContainer').style.display = 'block';
+    // ADVANCE TO STRIPE PAYMENT VIEW
+    function showStripeScreen() {
+      document.getElementById('bookingFormContainer').style.display = 'none';
+      document.getElementById('stripePaymentScreen').style.display = 'block';
+
+      // Push history state for payment screen
+      currentModalStep = 'payment';
+      history.pushState({ modalStep: 'payment' }, '');
     }
 
-    function closeModal() {
+    // PHONE BACK BUTTON / POPSTATE EVENT HANDLER
+    window.addEventListener('popstate', function(event) {
+      if (currentModalStep === 'payment') {
+        // From payment back to form
+        currentModalStep = 'form';
+        document.getElementById('stripePaymentScreen').style.display = 'none';
+        document.getElementById('bookingFormContainer').style.display = 'block';
+      } else if (currentModalStep === 'form') {
+        // From form back to page
+        closeModalView();
+      }
+    });
+
+    function triggerHardwareBack() {
+      history.back();
+    }
+
+    function closeModalDirect() {
+      if (currentModalStep === 'payment') {
+        history.go(-2);
+      } else if (currentModalStep === 'form') {
+        history.go(-1);
+      } else {
+        closeModalView();
+      }
+    }
+
+    function closeModalView() {
+      currentModalStep = null;
       document.getElementById('bookingModal').style.display = 'none';
       document.body.style.overflow = 'auto';
     }
@@ -1131,7 +1171,7 @@
       }
     });
 
-    // BOOKING FORM ROUTER (FORMSPREE -> STRIPE)
+    // BOOKING FORM ROUTER (FORMSPREE -> STRIPE SCREEN)
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -1159,8 +1199,7 @@
         });
 
         if (response.ok) {
-          document.getElementById('bookingFormContainer').style.display = 'none';
-          document.getElementById('stripePaymentScreen').style.display = 'block';
+          showStripeScreen();
         } else {
           alert("There was an issue submitting your registration details. Please try again.");
         }
@@ -1172,28 +1211,36 @@
       }
     });
 
-    // STRIPE CHECKOUT EXECUTION
-    function processStripeCheckout() {
+    // STRIPE CHECKOUT REDIRECT EXECUTION
+    async function processStripeCheckout() {
       const priceId = document.getElementById('hidden-price-id').value || STRIPE_PRICE_850;
       const clientEmail = document.getElementById('booking-email').value;
       const payBtn = document.getElementById('stripe-pay-btn');
+      const errBox = document.getElementById('card-errors');
 
+      errBox.innerText = '';
       payBtn.disabled = true;
       payBtn.innerText = 'Connecting to Stripe...';
 
-      stripe.redirectToCheckout({
-        lineItems: [{ price: priceId, quantity: 1 }],
-        mode: 'payment',
-        customerEmail: clientEmail,
-        successUrl: window.location.origin + '?booking=success',
-        cancelUrl: window.location.href,
-      }).then(function (result) {
-        if (result.error) {
-          document.getElementById('card-errors').textContent = result.error.message;
+      try {
+        const { error } = await stripe.redirectToCheckout({
+          lineItems: [{ price: priceId, quantity: 1 }],
+          mode: 'payment',
+          customerEmail: clientEmail,
+          successUrl: window.location.origin + '?booking=success',
+          cancelUrl: window.location.href,
+        });
+
+        if (error) {
+          errBox.innerText = error.message;
           payBtn.disabled = false;
           payBtn.innerText = 'Pay & Confirm Booking (£8.50)';
         }
-      });
+      } catch (err) {
+        errBox.innerText = 'Stripe Redirect Error: Ensure "Client-only integration" is enabled in your Stripe Dashboard Settings -> Checkout settings.';
+        payBtn.disabled = false;
+        payBtn.innerText = 'Pay & Confirm Booking (£8.50)';
+      }
     }
   </script>
 
