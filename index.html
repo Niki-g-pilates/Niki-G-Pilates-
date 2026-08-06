@@ -9,9 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Stripe Buy Button JS Library -->
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-
   <style>
     :root {
       --primary-rose: #D8A7A1;
@@ -395,19 +392,7 @@
       transition: border-color 0.2s ease, background-color 0.2s ease;
       -webkit-appearance: none;
     }
-    
-    .form-group input[type="text"]:not(:placeholder-shown),
-    .form-group input[type="email"]:not(:placeholder-shown),
-    .form-group input[type="tel"]:not(:placeholder-shown),
-    .form-group textarea:not(:placeholder-shown) {
-      font-weight: 700 !important;
-    }
 
-    .form-group input[type="date"]:valid,
-    .form-group select:valid {
-      font-weight: 700;
-    }
-    
     .form-group textarea { height: 100px; resize: vertical; }
 
     /* FORM ERROR STYLING */
@@ -420,17 +405,11 @@
       outline: none !important;
     }
 
-    .checkbox-group.field-error-checkbox,
-    .radio-group-container.field-error-radio {
+    .checkbox-group.field-error-checkbox {
       border: 2px solid #D32F2F !important;
       background-color: #FFF8F8 !important;
       padding: 0.6rem;
       border-radius: 4px;
-    }
-
-    .checkbox-group.field-error-checkbox label,
-    .radio-group-container.field-error-radio label {
-      color: #D32F2F !important;
     }
 
     /* STEP HEADINGS */
@@ -465,11 +444,6 @@
       padding: 0.3rem 0;
     }
 
-    .radio-group input[type="radio"] {
-      width: 18px;
-      height: 18px;
-    }
-
     /* WAIVER BOX */
     .waiver-box {
       background: #FAFAFA;
@@ -482,7 +456,6 @@
       margin-bottom: 0.8rem;
       color: var(--text-muted);
       line-height: 1.5;
-      -webkit-overflow-scrolling: touch;
     }
 
     .checkbox-group {
@@ -490,35 +463,35 @@
       align-items: flex-start;
       gap: 0.8rem;
       margin-bottom: 1.5rem;
-      transition: all 0.2s ease;
     }
 
     .checkbox-group input[type="checkbox"] {
       width: 20px;
       height: 20px;
       margin-top: 2px;
-      cursor: pointer;
-      flex-shrink: 0;
     }
 
     .checkbox-group label {
       font-size: 0.8rem;
       text-transform: none;
-      letter-spacing: 0;
       color: #000000;
-      line-height: 1.4;
-      cursor: pointer;
-      font-weight: 400;
     }
 
-    /* EMBEDDED STRIPE CONTAINER */
-    .stripe-embedded-container {
-      background: #FFFFFF;
+    /* DIRECT EMBEDDED STRIPE IFRAME */
+    .stripe-iframe-wrapper {
+      width: 100%;
+      height: 600px;
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 2rem 1.5rem;
+      overflow: hidden;
       margin-top: 1rem;
-      text-align: center;
+      background: #ffffff;
+    }
+
+    .stripe-iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     /* SOCIAL MEDIA SECTION */
@@ -549,7 +522,7 @@
       background: #FFFFFF; 
       padding: 2.2rem 1.5rem; 
       width: 100%; 
-      max-width: 620px; 
+      max-width: 650px; 
       max-height: 92vh; 
       overflow-y: auto; 
       position: relative; 
@@ -577,6 +550,7 @@
       .single-booking-box { padding: 1.5rem 1rem; }
       .book-here-btn { width: 100%; max-width: 100%; }
       .modal { padding: 1.8rem 1.2rem; }
+      .stripe-iframe-wrapper { height: 500px; }
     }
   </style>
 </head>
@@ -793,7 +767,7 @@
     <div class="modal">
       <button class="close-btn" onclick="closeModalDirect()">&times;</button>
       
-      <!-- FORM CONTAINER LINKED TO FORMSPREE -->
+      <!-- STEP 1: FORM CONTAINER LINKED TO FORMSPREE -->
       <div id="bookingFormContainer">
         <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to reserve your spot</p>
@@ -881,7 +855,7 @@
             <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
           </div>
 
-          <div class="form-group radio-group-container" id="pilates-before-group">
+          <div class="form-group">
             <label>5. Have you done Pilates before? *</label>
             <div class="radio-group">
               <label><input type="radio" name="Done Pilates Before" value="No" checked onclick="togglePilatesExperienceBox(false)"> No</label>
@@ -917,24 +891,24 @@
             </div>
           </div>
 
-          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Complete Booking & Pay &rarr;</button>
+          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Continue to Payment &rarr;</button>
         </form>
       </div>
 
-      <!-- EMBEDDED STRIPE CHECKOUT SCREEN -->
+      <!-- STEP 2: STRIPE DIRECTLY EMBEDDED INSIDE MODAL -->
       <div id="stripePaymentScreen" style="display: none;">
-        <button type="button" onclick="triggerHardwareBack()" class="btn btn-secondary">&larr; Back to Details</button>
+        <button type="button" onclick="triggerHardwareBack()" class="btn btn-secondary">&larr; Edit Registration Details</button>
 
-        <h3>Complete Payment</h3>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Your registration details have been saved. Complete checkout below.</p>
+        <h3 style="color: #000000; font-weight: 800;">Secure Stripe Payment</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">Your registration form was successfully received. Complete your checkout below to confirm your spot.</p>
 
-        <div class="stripe-embedded-container">
-          <!-- EMBEDDED STRIPE BUY BUTTON -->
-          <stripe-buy-button
-            buy-button-id="buy_btn_1Qz3cxee1gKA4Ub2Qc7N607"
-            publishable-key="pk_live_51P..."
-          >
-          </stripe-buy-button>
+        <div class="stripe-iframe-wrapper">
+          <iframe 
+            id="stripeEmbedFrame" 
+            src="https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607" 
+            title="Stripe Checkout"
+            allow="payment">
+          </iframe>
         </div>
       </div>
 
@@ -1061,7 +1035,6 @@
     function clearFormErrors(form) {
       form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
       form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
-      form.querySelectorAll('.field-error-radio').forEach(el => el.classList.remove('field-error-radio'));
     }
 
     function validateForm(form) {
@@ -1152,7 +1125,7 @@
         alert("Network error. Please check your connection and try again.");
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerText = "Complete Booking & Pay →";
+        submitBtn.innerText = "Complete Registration & Continue to Payment →";
       }
     });
   </script>
