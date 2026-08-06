@@ -293,7 +293,6 @@
     .btn:hover { background-color: var(--primary-dark); color: #FFFFFF; }
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
-    .btn-secondary { background-color: transparent; color: var(--primary-dark); border: 1px solid var(--border-color); margin-bottom: 1rem; cursor: pointer; }
 
     /* PROFILE & TESTIMONIALS */
     .profile-img-container { width: 200px; height: 200px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 4px solid #FFFFFF; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
@@ -338,9 +337,6 @@
       border-bottom: 2px solid var(--primary-rose);
     }
 
-    .radio-group { display: flex; gap: 1.5rem; margin-top: 0.4rem; }
-    .radio-group label { font-size: 0.9rem; text-transform: none; font-weight: 400; color: #000; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
-
     .waiver-box {
       background: #FAFAFA;
       border: 1px solid var(--border-color);
@@ -365,28 +361,6 @@
     .social-icon-btn { display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; border-radius: 50%; background: var(--bg-stone); border: 1px solid var(--border-color); color: var(--primary-dark); text-decoration: none; transition: all 0.3s ease; }
     .social-icon-btn:hover { background: var(--primary-rose); border-color: var(--primary-rose); color: #FFFFFF; transform: translateY(-3px); }
     .social-icon-btn svg { width: 26px; height: 26px; fill: currentColor; }
-
-    /* STRIPE DISPLAY CONTAINERS */
-    .stripe-iframe-wrapper {
-      width: 100%;
-      height: 600px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: 1rem;
-      background: #ffffff;
-    }
-
-    .stripe-iframe-wrapper iframe { width: 100%; height: 100%; border: none; }
-
-    .external-pay-box {
-      background: var(--bg-green-light);
-      border: 1px solid var(--accent-green);
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 1rem;
-    }
 
     /* MODAL OVERLAY */
     .modal-overlay { 
@@ -424,7 +398,6 @@
       header { padding: 1rem; }
       .hero-title { font-size: 1.7rem; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.5rem; }
-      .stripe-iframe-wrapper { height: 500px; }
     }
   </style>
 </head>
@@ -628,36 +601,8 @@
             </div>
           </div>
 
-          <div class="step-heading">Step 5: Checkout Preference</div>
-          <div class="form-group">
-            <div class="radio-group" style="margin-bottom: 1.2rem;">
-              <label><input type="radio" name="checkout_type" value="embedded" checked> Embed Checkout in Modal</label>
-              <label><input type="radio" name="checkout_type" value="external"> Open Stripe in New Tab</label>
-            </div>
-          </div>
-
           <button type="submit" id="booking-submit-btn" class="book-here-btn" style="width: 100%; max-width: 100%;">Confirm Waiver & Continue to Stripe Payment &rarr;</button>
         </form>
-      </div>
-
-      <!-- STRIPE EMBED SCREEN -->
-      <div id="stripeEmbedScreen" style="display: none;">
-        <button type="button" onclick="resetToForm()" class="btn btn-secondary">&larr; Edit Registration Details</button>
-        <h3 style="color: #000;">Complete Secure Payment</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">Your registration form was successfully received. Finish checkout below:</p>
-        
-        <div class="stripe-iframe-wrapper">
-          <iframe id="stripeEmbedFrame" src="https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607" title="Stripe Checkout" allow="payment"></iframe>
-        </div>
-      </div>
-
-      <!-- STRIPE EXTERNAL SCREEN -->
-      <div id="stripeExternalScreen" style="display: none;">
-        <div class="external-pay-box">
-          <h3 style="color: var(--accent-green);">Registration Saved!</h3>
-          <p style="margin-top: 0.5rem; color: var(--text-dark);">We've opened Stripe payment in a new tab. If your browser blocked it, click below to complete your checkout:</p>
-          <a href="https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607" target="_blank" class="book-here-btn" style="display: inline-block; margin-top: 1rem; text-decoration: none;">Proceed to Stripe Payment</a>
-        </div>
       </div>
 
     </div>
@@ -692,8 +637,6 @@
     function openBooking(className, timeSlot) {
       document.getElementById('bookingForm').reset();
       document.getElementById('bookingFormContainer').style.display = 'block';
-      document.getElementById('stripeEmbedScreen').style.display = 'none';
-      document.getElementById('stripeExternalScreen').style.display = 'none';
 
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '<option value="First Class (£8.50)">First Class — £8.50</option><option value="Drop-In (£12.50)">Drop-In — £12.50</option>';
@@ -705,12 +648,6 @@
     function closeModalView() {
       document.getElementById('bookingModal').style.display = 'none';
       document.body.style.overflow = 'auto';
-    }
-
-    function resetToForm() {
-      document.getElementById('stripeEmbedScreen').style.display = 'none';
-      document.getElementById('stripeExternalScreen').style.display = 'none';
-      document.getElementById('bookingFormContainer').style.display = 'block';
     }
 
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
@@ -726,8 +663,6 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Saving Registration...";
 
-      const checkoutPreference = document.querySelector('input[name="checkout_type"]:checked').value;
-
       try {
         const response = await fetch(this.action, {
           method: 'POST',
@@ -736,20 +671,14 @@
         });
 
         if (response.ok) {
-          document.getElementById('bookingFormContainer').style.display = 'none';
-
-          if (checkoutPreference === 'embedded') {
-            document.getElementById('stripeEmbedScreen').style.display = 'block';
-          } else {
-            window.open(STRIPE_PAYMENT_URL, '_blank');
-            document.getElementById('stripeExternalScreen').style.display = 'block';
-          }
+          window.location.href = STRIPE_PAYMENT_URL;
         } else {
           alert("Submission failed. Please check your form fields and try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Confirm Waiver & Continue to Stripe Payment →";
         }
       } catch (err) {
         alert("Network error. Please try again.");
-      } finally {
         submitBtn.disabled = false;
         submitBtn.innerText = "Confirm Waiver & Continue to Stripe Payment →";
       }
