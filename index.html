@@ -935,7 +935,7 @@
 
         <div class="stripe-payment-box">
           <h4 id="payment-box-title">Card Checkout</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Clicking pay will redirect you directly to Stripe's secure payment page.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Clicking pay will securely redirect your device directly to Stripe's payment portal.</p>
         </div>
 
         <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">PAY & CONFIRM BOOKING (£8.50)</button>
@@ -949,8 +949,6 @@
   </footer>
 
   <script>
-    // Live Stripe Link integrated for £8.50
-    // Replace the placeholder strings below when you create links for your other tier options
     const STRIPE_LINKS = {
       'First Class (£8.50)': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
       'Drop-In (£12.50)': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
