@@ -365,7 +365,6 @@
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
     
-    /* Font size 16px on inputs prevents iOS auto-zoom on focus */
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="tel"],
@@ -621,7 +620,7 @@
         <span class="tag-badge">Beginner Friendly</span>
         <h1 class="class-header">All levels Pilates & Strength</h1>
         <div class="class-sub-header">West Park, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins) — <strong>Starts 16th September</strong></div>
-        <div class="class-pricing-line">Price Options: First Class £8.50 | Drop-In £12 | 6-Week Block £65</div>
+        <div class="class-pricing-line">Price Options: First Class £8.50 | Drop-In £12.50 | 6-Week Block £66</div>
 
         <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
 
@@ -635,7 +634,7 @@
 
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
-          <p>Starts 16th September | Choose from First Class (£8.50), Drop-In (£12), or 6-Week Block (£65)</p>
+          <p>Starts 16th September | Choose from First Class (£8.50), Drop-In (£12.50), or 6-Week Block (£66)</p>
           <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
         </div>
       </div>
@@ -955,11 +954,12 @@
       });
     });
 
+    // UPDATED PRICING OPTIONS MATRIX
     const classPassOptions = {
       'All levels Pilates & Strength': [
         { label: 'First Class — £8.50', value: 'First Class (£8.50)', priceId: DEFAULT_PRICE_ID },
-        { label: 'Drop-In — £12', value: 'Drop-In (£12)', priceId: DEFAULT_PRICE_ID },
-        { label: '6-Week Block — £65', value: '6-Week Block (£65)', priceId: DEFAULT_PRICE_ID }
+        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)', priceId: DEFAULT_PRICE_ID },
+        { label: '6-Week Block — £66', value: '6-Week Block (£66)', priceId: DEFAULT_PRICE_ID }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
         { label: 'Drop-In — £13', value: 'Drop-In (£13)', priceId: DEFAULT_PRICE_ID },
