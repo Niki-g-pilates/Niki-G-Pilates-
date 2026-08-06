@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>NIKI G PILATES | Pilates for Every Body, Tailored to Your Needs</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- STRIPE SDK INCLUSION -->
+  <script src="https://js.stripe.com/v3/"></script>
 
   <style>
     :root {
@@ -27,7 +30,7 @@
       --font-script: 'Alex Brush', cursive;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.8; font-weight: 300; background-color: var(--bg-stone); }
 
@@ -62,8 +65,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 30px;
-      height: 20px;
+      width: 32px;
+      height: 22px;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -93,6 +96,7 @@
       padding: 6rem 2.5rem 2rem 2.5rem;
       transition: right 0.4s ease;
       z-index: 1100;
+      -webkit-overflow-scrolling: touch;
     }
 
     .side-nav.open { right: 0; }
@@ -107,11 +111,13 @@
     .side-nav a {
       text-decoration: none;
       color: var(--primary-dark);
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       transition: color 0.3s ease;
+      display: block;
+      padding: 0.4rem 0;
     }
 
     .side-nav a:hover { color: var(--primary-rose); }
@@ -313,15 +319,17 @@
       background-color: var(--accent-green);
       color: #FFFFFF;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 1rem 2.5rem;
+      padding: 1.1rem 2.5rem;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(46, 125, 94, 0.2);
+      width: 100%;
+      max-width: 320px;
     }
 
     .book-here-btn:hover {
@@ -337,7 +345,7 @@
     }
 
     /* BUTTONS */
-    .btn { display: inline-block; background-color: #FFFFFF; color: var(--primary-dark); border: 1px solid var(--primary-dark); padding: 0.75rem 1.2rem; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-align: center; transition: all 0.3s ease; width: 100%; text-decoration: none; border-radius: 4px; }
+    .btn { display: inline-block; background-color: #FFFFFF; color: var(--primary-dark); border: 1px solid var(--primary-dark); padding: 0.85rem 1.2rem; font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-align: center; transition: all 0.3s ease; width: 100%; text-decoration: none; border-radius: 4px; }
     .btn:hover { background-color: var(--primary-dark); color: #FFFFFF; }
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
@@ -355,9 +363,9 @@
     /* CONTACT SECTION */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; }
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 400; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
     
-    /* USER ANSWER TYPED TEXT BOLDING */
+    /* Font size 16px on inputs prevents iOS auto-zoom on focus */
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="tel"],
@@ -365,14 +373,16 @@
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 0.8rem;
+      padding: 0.85rem;
       border: 1px solid var(--border-color);
       font-family: var(--font-body);
       background: #FAFAFA;
-      font-weight: 700 !important;
+      font-weight: 600;
+      font-size: 16px;
       color: #000000;
       border-radius: 4px;
       transition: border-color 0.2s ease, background-color 0.2s ease;
+      -webkit-appearance: none;
     }
     
     .form-group textarea { height: 100px; resize: vertical; }
@@ -383,7 +393,6 @@
     .form-group select.field-error {
       border: 2px solid #D32F2F !important;
       background-color: #FFF8F8 !important;
-      font-weight: 700 !important;
       color: #D32F2F !important;
       outline: none !important;
     }
@@ -398,7 +407,6 @@
 
     .checkbox-group.field-error-checkbox label,
     .radio-group-container.field-error-radio label {
-      font-weight: 400 !important;
       color: #D32F2F !important;
     }
 
@@ -419,18 +427,24 @@
     .radio-group {
       display: flex;
       gap: 1.5rem;
-      margin-top: 0.3rem;
+      margin-top: 0.4rem;
     }
 
     .radio-group label {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       text-transform: none;
       font-weight: 400;
       color: #000000;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
+      padding: 0.3rem 0;
+    }
+
+    .radio-group input[type="radio"] {
+      width: 18px;
+      height: 18px;
     }
 
     /* HEALTH WAIVER BOX STYLING */
@@ -439,30 +453,33 @@
       border: 1px solid var(--border-color);
       padding: 1rem;
       border-radius: 4px;
-      font-size: 0.78rem;
-      max-height: 110px;
+      font-size: 0.8rem;
+      max-height: 120px;
       overflow-y: auto;
       margin-bottom: 0.8rem;
       color: var(--text-muted);
       line-height: 1.5;
+      -webkit-overflow-scrolling: touch;
     }
 
     .checkbox-group {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
+      gap: 0.8rem;
       margin-bottom: 1.5rem;
       transition: all 0.2s ease;
     }
 
     .checkbox-group input[type="checkbox"] {
-      width: auto;
-      margin-top: 3px;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .checkbox-group label {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       text-transform: none;
       letter-spacing: 0;
       color: #000000;
@@ -471,43 +488,21 @@
       font-weight: 400;
     }
 
-    /* BANK DETAILS PAYMENT INSTRUCTIONS BOX */
-    .bank-details-box {
-      background: var(--bg-green-light);
-      border: 2px dashed var(--accent-green);
+    /* STRIPE EMBEDDED BOX */
+    .stripe-payment-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 1.5rem;
       margin-top: 1rem;
       text-align: left;
     }
 
-    .bank-details-box h4 {
-      color: var(--accent-green);
+    .stripe-payment-box h4 {
+      color: var(--primary-dark);
       font-family: var(--font-heading);
       font-size: 1.2rem;
       margin-bottom: 0.8rem;
-    }
-
-    .bank-detail-row {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border-color);
-      padding: 0.4rem 0;
-      font-size: 0.9rem;
-    }
-
-    .bank-detail-row:last-child {
-      border-bottom: none;
-    }
-
-    .bank-detail-row span.label {
-      font-weight: 400;
-      color: var(--text-dark);
-    }
-
-    .bank-detail-row span.value {
-      font-weight: 700;
-      color: #000000;
     }
 
     /* SOCIAL MEDIA SECTION */
@@ -520,21 +515,52 @@
     .social-icon-btn svg { width: 26px; height: 26px; fill: currentColor; }
 
     /* MODAL OVERLAY */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
-    .modal { background: #FFFFFF; padding: 2.5rem; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border-color); color: var(--text-dark); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .modal-overlay { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(45, 55, 72, 0.75); 
+      display: none; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 1rem; 
+      z-index: 2000; 
+    }
     
-    .modal h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; }
-    .close-btn { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; }
+    .modal { 
+      background: #FFFFFF; 
+      padding: 2.2rem 1.5rem; 
+      width: 100%; 
+      max-width: 620px; 
+      max-height: 92vh; 
+      overflow-y: auto; 
+      position: relative; 
+      border: 1px solid var(--border-color); 
+      color: var(--text-dark); 
+      border-radius: 8px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; padding-right: 1.5rem; }
+    .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; padding: 0.3rem; }
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
+    /* MOBILE AND TABLET ADAPTATION */
     @media (max-width: 768px) {
+      header { padding: 1rem; }
       .hero-title { font-size: 1.7rem; }
       .hero-subtitle { font-size: 0.85rem; }
       .hero-image-banner { height: 360px; }
-      .contact-grid { grid-template-columns: 1fr; padding: 1.8rem; }
-      .section-strip { padding: 3rem 1.2rem; }
+      .contact-grid { grid-template-columns: 1fr; padding: 1.5rem; gap: 2rem; }
+      .section-strip { padding: 3rem 1rem; }
       .action-buttons-container { flex-direction: column; }
+      .single-booking-box { padding: 1.5rem 1rem; }
+      .book-here-btn { width: 100%; max-width: 100%; }
+      .modal { padding: 1.8rem 1.2rem; }
     }
   </style>
 </head>
@@ -595,7 +621,7 @@
         <span class="tag-badge">Beginner Friendly</span>
         <h1 class="class-header">All levels Pilates & Strength</h1>
         <div class="class-sub-header">West Park, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins) — <strong>Starts 16th September</strong></div>
-        <div class="class-pricing-line">Price Options: First Class £8 | Drop-In £12 | 6-Week Block £65</div>
+        <div class="class-pricing-line">Price Options: First Class £8.50 | Drop-In £12 | 6-Week Block £65</div>
 
         <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
 
@@ -609,7 +635,7 @@
 
         <div class="single-booking-box">
           <h3>Ready to Join All Levels Pilates?</h3>
-          <p>Starts 16th September | Choose from First Class (£8), Drop-In (£12), or 6-Week Block (£65)</p>
+          <p>Starts 16th September | Choose from First Class (£8.50), Drop-In (£12), or 6-Week Block (£65)</p>
           <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
         </div>
       </div>
@@ -719,12 +745,12 @@
           
           <div class="info-block">
             <h3 style="color: #000000; font-weight: 700;">📞 Phone</h3>
-            <p><a href="tel:07834950178">07834 950178</a></p>
+            <p><a href="tel:07834950178" style="color: inherit; text-decoration: none;">07834 950178</a></p>
           </div>
 
           <div class="info-block">
             <h3 style="color: #000000; font-weight: 700;">✉️ Email</h3>
-            <p><a href="mailto:nikigpilates@gmail.com">nikigpilates@gmail.com</a></p>
+            <p><a href="mailto:nikigpilates@gmail.com" style="color: inherit; text-decoration: none;">nikigpilates@gmail.com</a></p>
           </div>
         </div>
       </div>
@@ -760,6 +786,7 @@
         
         <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
           <input type="hidden" name="Class Name" id="hidden-class-name">
+          <input type="hidden" name="Stripe Price ID" id="hidden-price-id" value="price_1U1RqkPEm4IxJdcN298yLw6F">
           
           <!-- STEP 1: PASS SELECTION -->
           <div class="step-heading">Step 1: Choose Your Pass</div>
@@ -789,7 +816,6 @@
             <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
           </div>
 
-          <!-- DATE OF BIRTH FIELD -->
           <div class="form-group">
             <label for="booking-dob">Date of Birth *</label>
             <input type="date" id="booking-dob" name="Date of Birth" required>
@@ -842,7 +868,6 @@
             <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
           </div>
 
-          <!-- PILATES BEFORE QUESTION WITH CUSTOM TEXT FIELD -->
           <div class="form-group radio-group-container" id="pilates-before-group">
             <label>5. Have you done Pilates before? *</label>
             <div class="radio-group">
@@ -879,44 +904,22 @@
             </div>
           </div>
 
-          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Submit Registration & View Payment Details &rarr;</button>
+          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Proceed to Secure Stripe Payment &rarr;</button>
         </form>
       </div>
 
-      <!-- BANK PAYMENT CONFIRMATION SCREEN -->
-      <div id="paymentInstructionsScreen" style="display: none;">
-        <h3>Registration Submitted!</h3>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Thank you! Your registration has been emailed to Niki. Please complete your payment via Bank Transfer to confirm your spot.</p>
+      <!-- EMBEDDED STRIPE PAYMENT SCREEN (DESKTOP & MOBILE COMPATIBLE) -->
+      <div id="stripePaymentScreen" style="display: none;">
+        <h3>Complete Payment</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Your registration details have been submitted. Tap below to complete card checkout via Stripe.</p>
 
-        <div class="bank-details-box">
-          <h4>Bank Transfer Details</h4>
-          <div class="bank-detail-row">
-            <span class="label">Account Name:</span>
-            <span class="value">Nicola Georgiou</span>
-          </div>
-          <div class="bank-detail-row">
-            <span class="label">Sort Code:</span>
-            <span class="value">04-00-03</span>
-          </div>
-          <div class="bank-detail-row">
-            <span class="label">Account Number:</span>
-            <span class="value">28461548</span>
-          </div>
-          <div class="bank-detail-row">
-            <span class="label">Selected Option:</span>
-            <span class="value" id="summary-pass-type">-</span>
-          </div>
-          <div class="bank-detail-row">
-            <span class="label">Payment Reference:</span>
-            <span class="value" id="summary-reference" style="color: var(--accent-green);">-</span>
-          </div>
+        <div class="stripe-payment-box">
+          <h4>Card Checkout</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Clicking pay will securely connect your device directly with Stripe Checkout.</p>
+          <div id="card-errors" role="alert" style="color: #D32F2F; font-size: 0.85rem; margin-top: 0.5rem;"></div>
         </div>
 
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 1rem;">
-          <strong>Note:</strong> Please use the Payment Reference above when transferring funds so we can match your payment to your registration. Your spot is confirmed upon payment receipt.
-        </p>
-
-        <button onclick="closeModal()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 0.8rem;">Close Window</button>
+        <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">Pay & Confirm Booking</button>
       </div>
 
     </div>
@@ -927,6 +930,11 @@
   </footer>
 
   <script>
+    // STRIPE INTEGRATION SETUP
+    // Standard publishable key placeholder. Replace with your live pk_live_... key when going live.
+    const stripe = Stripe('pk_test_TYooMQauvd3qKEJujyT5UrFD'); 
+    const DEFAULT_PRICE_ID = 'price_1U1RqkPEm4IxJdcN298yLw6F';
+
     // NAVIGATION CONTROLS
     const menuToggle = document.getElementById('menuToggle');
     const sideNav = document.getElementById('sideNav');
@@ -949,20 +957,20 @@
 
     const classPassOptions = {
       'All levels Pilates & Strength': [
-        { label: 'First Class — £8', value: 'First Class (£8)' },
-        { label: 'Drop-In — £12', value: 'Drop-In (£12)' },
-        { label: '6-Week Block — £65', value: '6-Week Block (£65)' }
+        { label: 'First Class — £8.50', value: 'First Class (£8.50)', priceId: DEFAULT_PRICE_ID },
+        { label: 'Drop-In — £12', value: 'Drop-In (£12)', priceId: DEFAULT_PRICE_ID },
+        { label: '6-Week Block — £65', value: '6-Week Block (£65)', priceId: DEFAULT_PRICE_ID }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Drop-In — £13', value: 'Drop-In (£13)' },
-        { label: '5-Week Block — £55', value: '5-Week Block (£55)' }
+        { label: 'Drop-In — £13', value: 'Drop-In (£13)', priceId: DEFAULT_PRICE_ID },
+        { label: '5-Week Block — £55', value: '5-Week Block (£55)', priceId: DEFAULT_PRICE_ID }
       ]
     };
 
     function openBooking(className, timeSlot) {
       clearFormErrors(document.getElementById('bookingForm'));
       document.getElementById('bookingFormContainer').style.display = 'block';
-      document.getElementById('paymentInstructionsScreen').style.display = 'none';
+      document.getElementById('stripePaymentScreen').style.display = 'none';
 
       document.getElementById('modal-class-title').innerText = className;
       document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
@@ -978,14 +986,17 @@
         const optionEl = document.createElement('option');
         optionEl.value = opt.value;
         optionEl.textContent = opt.label;
+        optionEl.setAttribute('data-price-id', opt.priceId);
         passSelect.appendChild(optionEl);
       });
 
       document.getElementById('bookingModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Lock background scroll on mobile
     }
 
     function closeModal() {
       document.getElementById('bookingModal').style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scroll
     }
 
     function toggleInjuriesBox(show) {
@@ -1083,7 +1094,7 @@
       }
     });
 
-    // BOOKING FORM SUBMISSION
+    // BOOKING FORM SUBMISSION (FORMSPREE + STRIPE ROUTING)
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -1096,17 +1107,12 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting Registration...";
 
-      const clientName = document.getElementById('booking-name').value;
-      const passType = document.getElementById('pass-type').value;
-
-      const cleanRefName = clientName.replace(/[^a-zA-Z]/g, '').toUpperCase();
-      const refString = `PILATES-${cleanRefName.slice(0, 8)}`;
-
-      document.getElementById('summary-pass-type').innerText = passType;
-      document.getElementById('summary-reference').innerText = refString;
+      const passSelect = document.getElementById('pass-type');
+      const selectedOption = passSelect.options[passSelect.selectedIndex];
+      const activePriceId = selectedOption.getAttribute('data-price-id') || DEFAULT_PRICE_ID;
+      document.getElementById('hidden-price-id').value = activePriceId;
 
       const formData = new FormData(this);
-      formData.append('Generated Payment Reference', refString);
 
       try {
         const response = await fetch(this.action, {
@@ -1117,17 +1123,41 @@
 
         if (response.ok) {
           document.getElementById('bookingFormContainer').style.display = 'none';
-          document.getElementById('paymentInstructionsScreen').style.display = 'block';
+          document.getElementById('stripePaymentScreen').style.display = 'block';
         } else {
-          alert("There was an issue submitting your registration. Please try again.");
+          alert("There was an issue submitting your registration details. Please try again.");
         }
       } catch (error) {
         alert("Network error. Please check your connection and try again.");
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerText = "Submit Registration & View Payment Details →";
+        submitBtn.innerText = "Proceed to Secure Stripe Payment →";
       }
     });
+
+    // SEAMLESS MOBILE & DESKTOP STRIPE CHECKOUT ROUTER
+    function processStripeCheckout() {
+      const priceId = document.getElementById('hidden-price-id').value || DEFAULT_PRICE_ID;
+      const clientEmail = document.getElementById('booking-email').value;
+      const payBtn = document.getElementById('stripe-pay-btn');
+
+      payBtn.disabled = true;
+      payBtn.innerText = 'Connecting to Stripe...';
+
+      stripe.redirectToCheckout({
+        lineItems: [{ price: priceId, quantity: 1 }],
+        mode: 'payment',
+        customerEmail: clientEmail,
+        successUrl: window.location.origin + '?booking=success',
+        cancelUrl: window.location.href,
+      }).then(function (result) {
+        if (result.error) {
+          document.getElementById('card-errors').textContent = result.error.message;
+          payBtn.disabled = false;
+          payBtn.innerText = 'Pay & Confirm Booking';
+        }
+      });
+    }
   </script>
 
 </body>
