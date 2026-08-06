@@ -804,7 +804,7 @@
         
         <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
           <input type="hidden" name="Class Name" id="hidden-class-name">
-          <input type="hidden" name="Stripe Payment Link" id="hidden-stripe-link" value="https://buy.stripe.com/test_12345">
+          <input type="hidden" name="Stripe Payment Link" id="hidden-stripe-link" value="https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603">
           
           <!-- STEP 1: PASS SELECTION -->
           <div class="step-heading">Step 1: Choose Your Pass</div>
@@ -938,7 +938,7 @@
           <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Clicking pay will redirect you directly to Stripe's secure payment page.</p>
         </div>
 
-        <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">Pay & Confirm Booking</button>
+        <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">PAY & CONFIRM BOOKING (£8.50)</button>
       </div>
 
     </div>
@@ -949,14 +949,14 @@
   </footer>
 
   <script>
-    // Direct Stripe Payment Links (Create these under "Payment Links" in your Stripe Dashboard)
-    // Update these URLs to match your live Stripe Payment Links:
+    // Live Stripe Link integrated for £8.50
+    // Replace the placeholder strings below when you create links for your other tier options
     const STRIPE_LINKS = {
-      'First Class (£8.50)': 'https://buy.stripe.com/test_12345',
-      'Drop-In (£12.50)': 'https://buy.stripe.com/test_12345',
-      '6-Week Block (£66)': 'https://buy.stripe.com/test_12345',
-      'Drop-In (£13)': 'https://buy.stripe.com/test_12345',
-      '5-Week Block (£55)': 'https://buy.stripe.com/test_12345'
+      'First Class (£8.50)': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
+      'Drop-In (£12.50)': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
+      '6-Week Block (£66)': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
+      'Drop-In (£13)': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603',
+      '5-Week Block (£55)': 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603'
     };
 
     let currentModalStep = null;
@@ -1033,6 +1033,7 @@
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
       document.getElementById('payment-box-title').innerText = `Card Checkout (${selectedOption.value})`;
+      document.getElementById('stripe-pay-btn').innerText = `PAY & CONFIRM BOOKING (${selectedOption.value.split(' ')[1] || ''})`;
 
       currentModalStep = 'payment';
       history.pushState({ modalStep: 'payment' }, '');
@@ -1154,7 +1155,7 @@
 
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const activeStripeLink = selectedOption.getAttribute('data-stripe-link') || 'https://buy.stripe.com/';
+      const activeStripeLink = selectedOption.getAttribute('data-stripe-link') || 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603';
       document.getElementById('hidden-stripe-link').value = activeStripeLink;
 
       const formData = new FormData(this);
@@ -1183,7 +1184,7 @@
     function processStripeCheckout() {
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const link = selectedOption.getAttribute('data-stripe-link') || 'https://buy.stripe.com/';
+      const link = selectedOption.getAttribute('data-stripe-link') || 'https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603';
       
       const payBtn = document.getElementById('stripe-pay-btn');
       payBtn.disabled = true;
