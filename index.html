@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- STRIPE SDK INCLUSION -->
   <script src="https://js.stripe.com/v3/"></script>
@@ -350,6 +350,17 @@
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
 
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary-dark);
+      border: 1px solid var(--border-color);
+      margin-bottom: 1rem;
+    }
+    .btn-secondary:hover {
+      background-color: #E2DCD5;
+      color: var(--primary-dark);
+    }
+
     /* PROFILE / MASSAGE IMAGE */
     .profile-img-container { width: 200px; height: 200px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 4px solid #FFFFFF; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
     .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
@@ -376,12 +387,25 @@
       border: 1px solid var(--border-color);
       font-family: var(--font-body);
       background: #FAFAFA;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 16px;
       color: #000000;
       border-radius: 4px;
       transition: border-color 0.2s ease, background-color 0.2s ease;
       -webkit-appearance: none;
+    }
+    
+    /* AUTOMATIC BOLDING WHEN USER TYPES */
+    .form-group input[type="text"]:not(:placeholder-shown),
+    .form-group input[type="email"]:not(:placeholder-shown),
+    .form-group input[type="tel"]:not(:placeholder-shown),
+    .form-group textarea:not(:placeholder-shown) {
+      font-weight: 700 !important;
+    }
+
+    .form-group input[type="date"]:valid,
+    .form-group select:valid {
+      font-weight: 700;
     }
     
     .form-group textarea { height: 100px; resize: vertical; }
@@ -446,7 +470,7 @@
       height: 18px;
     }
 
-    /* HEALTH WAIVER BOX STYLING */
+    /* WAIVER BOX */
     .waiver-box {
       background: #FAFAFA;
       border: 1px solid var(--border-color);
@@ -548,7 +572,7 @@
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* MOBILE AND TABLET ADAPTATION */
+    /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
       header { padding: 1rem; }
       .hero-title { font-size: 1.7rem; }
@@ -713,7 +737,6 @@
       <h2 class="section-title">Contact Us</h2>
       
       <div class="contact-grid">
-        <!-- FORM LINKED TO FORMSPREE -->
         <div>
           <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Send a Message</h3>
           <form id="contactForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
@@ -738,7 +761,6 @@
           </form>
         </div>
 
-        <!-- DETAILS -->
         <div>
           <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Get in Touch</h3>
           
@@ -792,7 +814,7 @@
           <div class="form-group">
             <label for="pass-type">Select Option *</label>
             <select id="pass-type" name="Pass Selected" required>
-              <!-- Options populated dynamically -->
+              <!-- Dynamic Options -->
             </select>
           </div>
 
@@ -907,18 +929,20 @@
         </form>
       </div>
 
-      <!-- EMBEDDED STRIPE PAYMENT SCREEN (DESKTOP & MOBILE COMPATIBLE) -->
+      <!-- EMBEDDED STRIPE PAYMENT SCREEN -->
       <div id="stripePaymentScreen" style="display: none;">
+        <button type="button" onclick="goBackToForm()" class="btn btn-secondary">&larr; Back to Details</button>
+
         <h3>Complete Payment</h3>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Your registration details have been submitted. Tap below to complete card checkout via Stripe.</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Your registration details have been saved. Tap below to complete checkout via Stripe.</p>
 
         <div class="stripe-payment-box">
-          <h4>Card Checkout</h4>
+          <h4>Card Checkout (£8.50)</h4>
           <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Clicking pay will securely connect your device directly with Stripe Checkout.</p>
           <div id="card-errors" role="alert" style="color: #D32F2F; font-size: 0.85rem; margin-top: 0.5rem;"></div>
         </div>
 
-        <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">Pay & Confirm Booking</button>
+        <button id="stripe-pay-btn" onclick="processStripeCheckout()" class="btn btn-dark" style="margin-top: 1.5rem; padding: 1.1rem; font-size: 0.95rem; font-weight: 700;">Pay & Confirm Booking (£8.50)</button>
       </div>
 
     </div>
@@ -930,9 +954,11 @@
 
   <script>
     // STRIPE INTEGRATION SETUP
-    // Standard publishable key placeholder. Replace with your live pk_live_... key when going live.
+    // Replace 'pk_test_...' with your live 'pk_live_...' key when going live in Stripe Dashboard
     const stripe = Stripe('pk_test_TYooMQauvd3qKEJujyT5UrFD'); 
-    const DEFAULT_PRICE_ID = 'price_1U1RqkPEm4IxJdcN298yLw6F';
+    
+    // £8.50 STRIPE CONNECT LINK PRICE ID
+    const STRIPE_PRICE_850 = 'price_1U1RqkPEm4IxJdcN298yLw6F';
 
     // NAVIGATION CONTROLS
     const menuToggle = document.getElementById('menuToggle');
@@ -954,21 +980,26 @@
       });
     });
 
-    // UPDATED PRICING OPTIONS MATRIX
+    // PRICING OPTIONS MATRIX
     const classPassOptions = {
       'All levels Pilates & Strength': [
-        { label: 'First Class — £8.50', value: 'First Class (£8.50)', priceId: DEFAULT_PRICE_ID },
-        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)', priceId: DEFAULT_PRICE_ID },
-        { label: '6-Week Block — £66', value: '6-Week Block (£66)', priceId: DEFAULT_PRICE_ID }
+        { label: 'First Class — £8.50', value: 'First Class (£8.50)', priceId: STRIPE_PRICE_850 },
+        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)', priceId: STRIPE_PRICE_850 },
+        { label: '6-Week Block — £66', value: '6-Week Block (£66)', priceId: STRIPE_PRICE_850 }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Drop-In — £13', value: 'Drop-In (£13)', priceId: DEFAULT_PRICE_ID },
-        { label: '5-Week Block — £55', value: '5-Week Block (£55)', priceId: DEFAULT_PRICE_ID }
+        { label: 'Drop-In — £13', value: 'Drop-In (£13)', priceId: STRIPE_PRICE_850 },
+        { label: '5-Week Block — £55', value: '5-Week Block (£55)', priceId: STRIPE_PRICE_850 }
       ]
     };
 
     function openBooking(className, timeSlot) {
-      clearFormErrors(document.getElementById('bookingForm'));
+      const form = document.getElementById('bookingForm');
+      
+      // Reset form on initial launch
+      form.reset();
+      clearFormErrors(form);
+
       document.getElementById('bookingFormContainer').style.display = 'block';
       document.getElementById('stripePaymentScreen').style.display = 'none';
 
@@ -991,12 +1022,18 @@
       });
 
       document.getElementById('bookingModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Lock background scroll on mobile
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Preserve typed field values on back button tap
+    function goBackToForm() {
+      document.getElementById('stripePaymentScreen').style.display = 'none';
+      document.getElementById('bookingFormContainer').style.display = 'block';
     }
 
     function closeModal() {
       document.getElementById('bookingModal').style.display = 'none';
-      document.body.style.overflow = 'auto'; // Restore scroll
+      document.body.style.overflow = 'auto';
     }
 
     function toggleInjuriesBox(show) {
@@ -1060,7 +1097,7 @@
       });
     });
 
-    // GENERAL CONTACT FORM SUBMISSION
+    // CONTACT FORM SUBMISSION
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       if (!validateForm(this)) {
@@ -1094,7 +1131,7 @@
       }
     });
 
-    // BOOKING FORM SUBMISSION (FORMSPREE + STRIPE ROUTING)
+    // BOOKING FORM ROUTER (FORMSPREE -> STRIPE)
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -1109,7 +1146,7 @@
 
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const activePriceId = selectedOption.getAttribute('data-price-id') || DEFAULT_PRICE_ID;
+      const activePriceId = selectedOption.getAttribute('data-price-id') || STRIPE_PRICE_850;
       document.getElementById('hidden-price-id').value = activePriceId;
 
       const formData = new FormData(this);
@@ -1135,9 +1172,9 @@
       }
     });
 
-    // SEAMLESS MOBILE & DESKTOP STRIPE CHECKOUT ROUTER
+    // STRIPE CHECKOUT EXECUTION
     function processStripeCheckout() {
-      const priceId = document.getElementById('hidden-price-id').value || DEFAULT_PRICE_ID;
+      const priceId = document.getElementById('hidden-price-id').value || STRIPE_PRICE_850;
       const clientEmail = document.getElementById('booking-email').value;
       const payBtn = document.getElementById('stripe-pay-btn');
 
@@ -1154,7 +1191,7 @@
         if (result.error) {
           document.getElementById('card-errors').textContent = result.error.message;
           payBtn.disabled = false;
-          payBtn.innerText = 'Pay & Confirm Booking';
+          payBtn.innerText = 'Pay & Confirm Booking (£8.50)';
         }
       });
     }
