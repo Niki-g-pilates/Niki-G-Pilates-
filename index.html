@@ -20,6 +20,7 @@
       --text-light: #F5F2EE;
       --border-color: #E2DCD5;
       --accent-green: #2e7d5e;
+      --bg-green-light: #eef7f2;
       
       --font-heading: 'Playfair Display', Georgia, serif;
       --font-body: 'Montserrat', -apple-system, sans-serif;
@@ -90,6 +91,7 @@
       padding: 6rem 2.5rem 2rem 2.5rem;
       transition: right 0.4s ease;
       z-index: 1100;
+      -webkit-overflow-scrolling: touch;
     }
 
     .side-nav.open { right: 0; }
@@ -128,7 +130,10 @@
       z-index: 1050;
     }
 
-    .nav-overlay.active { opacity: 1; visibility: visible; }
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
 
     /* HERO BANNER */
     .hero-image-banner {
@@ -161,7 +166,10 @@
       padding: 2rem;
     }
 
-    .hero-content { max-width: 850px; margin: 0 auto; }
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
 
     .hero-title {
       font-family: var(--font-heading);
@@ -204,8 +212,10 @@
 
     .strip-dark .section-title { color: #FFFFFF; }
     .strip-content p { margin-bottom: 1.4rem; font-size: 0.98rem; font-weight: 300; }
+    .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
+    .strip-dark h3 { color: #FFFFFF; }
 
-    /* CLASS CARDS & BOOKING WRAPPERS */
+    /* CLASS DETAILS */
     .tag-badge {
       display: inline-block;
       background: #E6F4EA;
@@ -217,20 +227,6 @@
       padding: 3px 8px;
       border-radius: 3px;
       margin-bottom: 0.8rem;
-    }
-
-    .tag-badge-prenatal {
-      background: #FCE8E6;
-      color: #C5221F;
-    }
-
-    .class-card-container {
-      background: #FFFFFF;
-      border: 2px solid var(--border-color);
-      border-radius: 8px;
-      padding: 2.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      margin-bottom: 3rem;
     }
 
     .class-header {
@@ -260,53 +256,18 @@
       border-left: 3px solid var(--primary-rose);
     }
 
-    .step-heading {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #000000;
-      margin: 1.6rem 0 0.8rem 0;
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid var(--primary-rose);
+    .single-booking-box {
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      margin-top: 1.8rem;
     }
 
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
-    
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="tel"],
-    .form-group input[type="date"],
-    .form-group select {
-      width: 100%;
-      padding: 0.85rem;
-      border: 1px solid var(--border-color);
-      font-family: var(--font-body);
-      background: #FAFAFA;
-      font-size: 16px;
-      color: #000000;
-      border-radius: 4px;
-    }
-
-    .waiver-container-box {
-      background: #FAFAFA;
-      border: 1px solid var(--border-color);
-      padding: 1.2rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      line-height: 1.5;
-      margin-bottom: 1rem;
-      color: var(--text-muted);
-    }
-
-    .waiver-container-box ul {
-      margin-top: 0.5rem;
-      margin-left: 1.2rem;
-    }
-
-    .checkbox-group { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.5rem; }
-    .checkbox-group input[type="checkbox"] { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--accent-green); cursor: pointer; }
-    .checkbox-group label { font-size: 0.85rem; text-transform: none; color: #000; font-weight: 500; cursor: pointer; }
+    .single-booking-box h3 { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem; color: #000; font-weight: 700; }
+    .single-booking-box p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; }
 
     .book-here-btn {
       display: inline-block;
@@ -323,7 +284,7 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(46, 125, 94, 0.2);
       width: 100%;
-      text-align: center;
+      max-width: 320px;
     }
 
     .book-here-btn:hover { background-color: #236149; transform: translateY(-2px); }
@@ -332,6 +293,7 @@
     .btn:hover { background-color: var(--primary-dark); color: #FFFFFF; }
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
+    .btn-secondary { background-color: transparent; color: var(--primary-dark); border: 1px solid var(--border-color); margin-bottom: 1rem; cursor: pointer; }
 
     /* PROFILE & TESTIMONIALS */
     .profile-img-container { width: 200px; height: 200px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 4px solid #FFFFFF; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
@@ -339,12 +301,61 @@
 
     .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1.5rem; }
     .testimonial-card { background: #FFFFFF; border: 1px solid var(--border-color); padding: 2.2rem; }
-    .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; margin-bottom: 1.2rem; }
+    .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; font-weight: 400; margin-bottom: 1.2rem; line-height: 1.6; }
     .testimonial-author { font-weight: 600; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* CONTACT SECTION */
+    /* CONTACT & FORMS */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; }
-    .form-group textarea { width: 100%; padding: 0.85rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-size: 16px; color: #000000; border-radius: 4px; height: 100px; resize: vertical; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid var(--border-color);
+      font-family: var(--font-body);
+      background: #FAFAFA;
+      font-weight: 400;
+      font-size: 16px;
+      color: #000000;
+      border-radius: 4px;
+    }
+
+    .form-group textarea { height: 100px; resize: vertical; }
+
+    .step-heading {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #000000;
+      margin: 1.6rem 0 0.8rem 0;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--primary-rose);
+    }
+
+    .radio-group { display: flex; gap: 1.5rem; margin-top: 0.4rem; }
+    .radio-group label { font-size: 0.9rem; text-transform: none; font-weight: 400; color: #000; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+
+    .waiver-box {
+      background: #FAFAFA;
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      max-height: 120px;
+      overflow-y: auto;
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .checkbox-group { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; }
+    .checkbox-group label { font-size: 0.8rem; text-transform: none; color: #000; }
 
     /* SOCIAL MEDIA SECTION */
     .social-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
@@ -355,12 +366,65 @@
     .social-icon-btn:hover { background: var(--primary-rose); border-color: var(--primary-rose); color: #FFFFFF; transform: translateY(-3px); }
     .social-icon-btn svg { width: 26px; height: 26px; fill: currentColor; }
 
+    /* STRIPE DISPLAY CONTAINERS */
+    .stripe-iframe-wrapper {
+      width: 100%;
+      height: 600px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 1rem;
+      background: #ffffff;
+    }
+
+    .stripe-iframe-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+    .external-pay-box {
+      background: var(--bg-green-light);
+      border: 1px solid var(--accent-green);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay { 
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      background: rgba(45, 55, 72, 0.75); 
+      display: none; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 1rem; 
+      z-index: 2000; 
+    }
+    
+    .modal { 
+      background: #FFFFFF; 
+      padding: 2.2rem 1.5rem; 
+      width: 100%; 
+      max-width: 650px; 
+      max-height: 92vh; 
+      overflow-y: auto; 
+      position: relative; 
+      border: 1px solid var(--border-color); 
+      color: var(--text-dark); 
+      border-radius: 8px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    }
+    
+    .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #000; margin-bottom: 0.2rem; }
+    .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
+
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
     @media (max-width: 768px) {
       header { padding: 1rem; }
       .hero-title { font-size: 1.7rem; }
       .contact-grid { grid-template-columns: 1fr; padding: 1.5rem; }
+      .stripe-iframe-wrapper { height: 500px; }
     }
   </style>
 </head>
@@ -407,141 +471,20 @@
     </div>
   </section>
 
-  <!-- CLASSES, DESCRIPTIONS & DIRECT BOOKING FORMS WITH HEALTH WAIVERS -->
+  <!-- CLASSES & BOOKING -->
   <section id="booking" class="section-strip strip-white">
     <div class="strip-content">
-      <h2 class="section-title">Classes & Direct Booking</h2>
-
-      <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
-      <div class="class-card-container">
+      <div>
         <span class="tag-badge">Beginner Friendly</span>
-        <h2 class="class-header">All levels Pilates & Strength</h2>
+        <h1 class="class-header">All levels Pilates & Strength</h1>
         <div class="class-sub-header">West Park, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins)</div>
-        <p style="margin-top: 1rem; color: var(--text-muted);">
-          A balanced session focusing on core stability, mobility, and functional total-body strength designed to accommodate all fitness levels.
-        </p>
         <div class="class-pricing-line">Price Options: First Class £8.50 | Drop-In £12.50 | 6-Week Block £66</div>
 
-        <form id="bookingForm1" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
-          <input type="hidden" name="Class Name" value="All levels Pilates & Strength (Goring-by-Sea)">
-
-          <div class="step-heading">Step 1: Choose Your Pass Option</div>
-          <div class="form-group">
-            <label for="pass-type-1">Select Pass *</label>
-            <select id="pass-type-1" name="Pass Selected" required>
-              <option value="First Class (£8.50)">First Class Trial — £8.50</option>
-              <option value="Drop-In (£12.50)">Standard Drop-In — £12.50</option>
-              <option value="6-Week Block (£66)">6-Week Block Course — £66</option>
-            </select>
-          </div>
-
-          <div class="step-heading">Step 2: Class Date</div>
-          <div class="form-group">
-            <label for="booking-date-1">Choose Wednesday Date *</label>
-            <input type="date" id="booking-date-1" name="Class Date" required>
-          </div>
-
-          <div class="step-heading">Step 3: Personal Details</div>
-          <div class="form-group">
-            <label for="booking-name-1">Full Name *</label>
-            <input type="text" id="booking-name-1" name="Client Full Name" required placeholder="Jane Doe">
-          </div>
-          <div class="form-group">
-            <label for="booking-email-1">Email Address *</label>
-            <input type="email" id="booking-email-1" name="Client Email" required placeholder="jane@example.com">
-          </div>
-          <div class="form-group">
-            <label for="booking-phone-1">Phone Number *</label>
-            <input type="tel" id="booking-phone-1" name="Client Phone" required placeholder="07123 456789">
-          </div>
-
-          <div class="step-heading">Step 4: Health Waiver & Medical Questionnaire</div>
-          <div class="waiver-container-box">
-            <strong>Medical Disclaimer & Health Screening:</strong>
-            <p style="margin-top: 6px;">By participating in Niki G Pilates classes, you confirm and agree to the following conditions:</p>
-            <ul>
-              <li>You are voluntarily engaging in physical exercise and fitness conditioning.</li>
-              <li>You are in suitable physical health and know of no medical reason why you should not participate in moderate exercise.</li>
-              <li>You agree to inform the instructor of any new injuries, medical changes, or pregnancy prior to any class.</li>
-              <li>You release Niki G Pilates and instructors from any direct liability for injuries sustained during classes to the maximum extent permitted by law.</li>
-            </ul>
-          </div>
-
-          <div class="checkbox-group">
-            <input type="checkbox" id="waiver-agree-1" name="Health Waiver Agreed" value="Yes" required>
-            <label for="waiver-agree-1">I confirm that I have read, understood, and accept all health screening terms outlined in the Health Waiver above. *</label>
-          </div>
-
-          <button type="submit" id="booking-submit-btn-1" class="book-here-btn">Proceed to Secure Stripe Payment &rarr;</button>
-        </form>
+        <div class="single-booking-box">
+          <h3>Ready to Join All Levels Pilates?</h3>
+          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
+        </div>
       </div>
-
-      <!-- CLASS 2: PREGNANCY (PRENATAL) PILATES -->
-      <div class="class-card-container">
-        <span class="tag-badge tag-badge-prenatal">Prenatal Specialist</span>
-        <h2 class="class-header">Pregnancy Pilates</h2>
-        <div class="class-sub-header">Specialist Prenatal Support — Tailored Session Schedule</div>
-        <p style="margin-top: 1rem; color: var(--text-muted);">
-          Safe, gentle, and nurturing movement specifically designed to support your changing body during pregnancy. Focuses on pelvic health, back relief, posture alignment, and gentle core preparation for labor.
-        </p>
-        <div class="class-pricing-line">Price Options: Single Session £14.00 | 4-Week Prenatal Block £52.00</div>
-
-        <form id="bookingForm2" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
-          <input type="hidden" name="Class Name" value="Pregnancy Pilates Session">
-
-          <div class="step-heading">Step 1: Choose Your Pass Option</div>
-          <div class="form-group">
-            <label for="pass-type-2">Select Pass *</label>
-            <select id="pass-type-2" name="Pass Selected" required>
-              <option value="Single Session (£14.00)">Single Session — £14.00</option>
-              <option value="4-Week Block (£52.00)">4-Week Prenatal Block — £52.00</option>
-            </select>
-          </div>
-
-          <div class="step-heading">Step 2: Class Date & Due Date</div>
-          <div class="form-group">
-            <label for="booking-date-2">Preferred Class Date *</label>
-            <input type="date" id="booking-date-2" name="Class Date" required>
-          </div>
-          <div class="form-group">
-            <label for="pregnancy-due">Estimated Due Date / Current Trimester *</label>
-            <input type="text" id="pregnancy-due" name="Pregnancy Details" required placeholder="e.g., Due Nov 2026 / 2nd Trimester">
-          </div>
-
-          <div class="step-heading">Step 3: Personal Details</div>
-          <div class="form-group">
-            <label for="booking-name-2">Full Name *</label>
-            <input type="text" id="booking-name-2" name="Client Full Name" required placeholder="Jane Doe">
-          </div>
-          <div class="form-group">
-            <label for="booking-email-2">Email Address *</label>
-            <input type="email" id="booking-email-2" name="Client Email" required placeholder="jane@example.com">
-          </div>
-          <div class="form-group">
-            <label for="booking-phone-2">Phone Number *</label>
-            <input type="tel" id="booking-phone-2" name="Client Phone" required placeholder="07123 456789">
-          </div>
-
-          <div class="step-heading">Step 4: Pregnancy Health Screening & Waiver</div>
-          <div class="waiver-container-box">
-            <strong>Prenatal Medical Disclaimer:</strong>
-            <p style="margin-top: 6px;">By participating in Pregnancy Pilates, you confirm and agree to the following:</p>
-            <ul>
-              <li>You have received clearance from your midwife, GP, or obstetrician to engage in gentle prenatal exercise.</li>
-              <li>You understand that modifications will be provided, but you must exercise within your personal limits and stop if you experience pain, dizziness, or discomfort.</li>
-              <li>You release Niki G Pilates and instructors from liability regarding pregnancy-related medical complications to the maximum extent permitted by law.</li>
-            </ul>
-          </div>
-
-          <div class="checkbox-group">
-            <input type="checkbox" id="waiver-agree-2" name="Pregnancy Waiver Agreed" value="Yes" required>
-            <label for="waiver-agree-2">I confirm I have medical clearance and agree to the Pregnancy Health Waiver terms above. *</label>
-          </div>
-
-          <button type="submit" id="booking-submit-btn-2" class="book-here-btn">Proceed to Secure Stripe Payment &rarr;</button>
-        </form>
-      </div>
-
     </div>
   </section>
 
@@ -639,6 +582,87 @@
     </div>
   </section>
 
+  <!-- BOOKING MODAL -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModalView()">&times;</button>
+      
+      <!-- REGISTRATION FORM -->
+      <div id="bookingFormContainer">
+        <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to reserve your spot</p>
+        
+        <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+          <input type="hidden" name="Class Name" id="hidden-class-name">
+          
+          <div class="step-heading">Step 1: Choose Your Pass</div>
+          <div class="form-group">
+            <label for="pass-type">Select Option *</label>
+            <select id="pass-type" name="Pass Selected" required></select>
+          </div>
+
+          <div class="step-heading">Step 2: Date & Time</div>
+          <div class="form-group">
+            <label for="booking-date">Choose Class Date *</label>
+            <input type="date" id="booking-date" name="Class Date" required>
+          </div>
+
+          <div class="step-heading">Step 3: Personal Details</div>
+          <div class="form-group">
+            <label for="booking-name">Full Name *</label>
+            <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
+          </div>
+          <div class="form-group">
+            <label for="booking-email">Email Address *</label>
+            <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
+          </div>
+
+          <div class="step-heading">Step 4: Health Waiver Consent</div>
+          <div class="form-group">
+            <div class="waiver-box">
+              By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise and am in suitable physical health to participate.
+            </div>
+            <div class="checkbox-group" id="waiver-container">
+              <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
+              <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
+            </div>
+          </div>
+
+          <div class="step-heading">Step 5: Checkout Preference</div>
+          <div class="form-group">
+            <div class="radio-group" style="margin-bottom: 1.2rem;">
+              <label><input type="radio" name="checkout_type" value="embedded" checked> Embed Checkout in Modal</label>
+              <label><input type="radio" name="checkout_type" value="external"> Open Stripe in New Tab</label>
+            </div>
+          </div>
+
+          <button type="submit" id="booking-submit-btn" class="book-here-btn" style="width: 100%; max-width: 100%;">Confirm Waiver & Continue to Stripe Payment &rarr;</button>
+        </form>
+      </div>
+
+      <!-- STRIPE EMBED SCREEN -->
+      <div id="stripeEmbedScreen" style="display: none;">
+        <button type="button" onclick="resetToForm()" class="btn btn-secondary">&larr; Edit Registration Details</button>
+        <h3 style="color: #000;">Complete Secure Payment</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">Your registration form was successfully received. Finish checkout below:</p>
+        
+        <div class="stripe-iframe-wrapper">
+          <iframe id="stripeEmbedFrame" src="https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607" title="Stripe Checkout" allow="payment"></iframe>
+        </div>
+      </div>
+
+      <!-- STRIPE EXTERNAL SCREEN -->
+      <div id="stripeExternalScreen" style="display: none;">
+        <div class="external-pay-box">
+          <h3 style="color: var(--accent-green);">Registration Saved!</h3>
+          <p style="margin-top: 0.5rem; color: var(--text-dark);">We've opened Stripe payment in a new tab. If your browser blocked it, click below to complete your checkout:</p>
+          <a href="https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607" target="_blank" class="book-here-btn" style="display: inline-block; margin-top: 1rem; text-decoration: none;">Proceed to Stripe Payment</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2026 Niki G Pilates. All rights reserved.</p>
   </footer>
@@ -665,47 +689,70 @@
       });
     });
 
-    // Reusable handler for booking forms (Posts to Formspree, checks waiver, then heads to Stripe)
-    async function handleBookingSubmission(e, formElement, submitBtnId, checkboxId) {
+    function openBooking(className, timeSlot) {
+      document.getElementById('bookingForm').reset();
+      document.getElementById('bookingFormContainer').style.display = 'block';
+      document.getElementById('stripeEmbedScreen').style.display = 'none';
+      document.getElementById('stripeExternalScreen').style.display = 'none';
+
+      const passSelect = document.getElementById('pass-type');
+      passSelect.innerHTML = '<option value="First Class (£8.50)">First Class — £8.50</option><option value="Drop-In (£12.50)">Drop-In — £12.50</option>';
+
+      document.getElementById('bookingModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalView() {
+      document.getElementById('bookingModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function resetToForm() {
+      document.getElementById('stripeEmbedScreen').style.display = 'none';
+      document.getElementById('stripeExternalScreen').style.display = 'none';
+      document.getElementById('bookingFormContainer').style.display = 'block';
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      const waiverChecked = document.getElementById(checkboxId).checked;
+      const waiverChecked = document.getElementById('waiver-agree').checked;
       if (!waiverChecked) {
-        alert("Please tick the Health Waiver checkbox to confirm your medical clearance before proceeding to payment.");
+        alert("Please tick the Health Waiver checkbox to proceed to payment.");
         return;
       }
 
-      const submitBtn = document.getElementById(submitBtnId);
+      const submitBtn = document.getElementById('booking-submit-btn');
       submitBtn.disabled = true;
-      submitBtn.innerText = "Processing Registration...";
+      submitBtn.innerText = "Saving Registration...";
+
+      const checkoutPreference = document.querySelector('input[name="checkout_type"]:checked').value;
 
       try {
-        const response = await fetch(formElement.action, {
+        const response = await fetch(this.action, {
           method: 'POST',
-          body: new FormData(formElement),
+          body: new FormData(this),
           headers: { 'Accept': 'application/json' }
         });
 
         if (response.ok) {
-          window.location.href = STRIPE_PAYMENT_URL;
+          document.getElementById('bookingFormContainer').style.display = 'none';
+
+          if (checkoutPreference === 'embedded') {
+            document.getElementById('stripeEmbedScreen').style.display = 'block';
+          } else {
+            window.open(STRIPE_PAYMENT_URL, '_blank');
+            document.getElementById('stripeExternalScreen').style.display = 'block';
+          }
         } else {
-          alert("Submission encountered an issue. Please verify your fields and try again.");
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Proceed to Secure Stripe Payment →";
+          alert("Submission failed. Please check your form fields and try again.");
         }
       } catch (err) {
-        alert("Network connection error. Please try again.");
+        alert("Network error. Please try again.");
+      } finally {
         submitBtn.disabled = false;
-        submitBtn.innerText = "Proceed to Secure Stripe Payment →";
+        submitBtn.innerText = "Confirm Waiver & Continue to Stripe Payment →";
       }
-    }
-
-    document.getElementById('bookingForm1').addEventListener('submit', function(e) {
-      handleBookingSubmission(e, this, 'booking-submit-btn-1', 'waiver-agree-1');
-    });
-
-    document.getElementById('bookingForm2').addEventListener('submit', function(e) {
-      handleBookingSubmission(e, this, 'booking-submit-btn-2', 'waiver-agree-2');
     });
 
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
