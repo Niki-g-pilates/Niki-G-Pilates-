@@ -347,18 +347,6 @@
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
 
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--primary-dark);
-      border: 1px solid var(--border-color);
-      margin-bottom: 1rem;
-      cursor: pointer;
-    }
-    .btn-secondary:hover {
-      background-color: #E2DCD5;
-      color: var(--primary-dark);
-    }
-
     /* PROFILE / MASSAGE IMAGE */
     .profile-img-container { width: 200px; height: 200px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 4px solid #FFFFFF; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
     .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
@@ -477,23 +465,6 @@
       color: #000000;
     }
 
-    /* DIRECT EMBEDDED STRIPE IFRAME */
-    .stripe-iframe-wrapper {
-      width: 100%;
-      height: 600px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: 1rem;
-      background: #ffffff;
-    }
-
-    .stripe-iframe-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
     /* SOCIAL MEDIA SECTION */
     .social-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
     .social-section h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
@@ -550,7 +521,6 @@
       .single-booking-box { padding: 1.5rem 1rem; }
       .book-here-btn { width: 100%; max-width: 100%; }
       .modal { padding: 1.8rem 1.2rem; }
-      .stripe-iframe-wrapper { height: 500px; }
     }
   </style>
 </head>
@@ -582,192 +552,194 @@
     </ul>
   </nav>
 
-  <!-- HERO BANNER -->
-  <section id="home" class="hero-image-banner">
-    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Inclusive mat Pilates session">
-    <div class="hero-overlay">
-      <div class="hero-content">
-        <h1 class="hero-title">Strength, Posture & Wellbeing</h1>
-        <p class="hero-subtitle">A Welcoming Space for Every Body & Every Ability</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WELCOME STRIP -->
-  <section class="section-strip strip-stone">
-    <div class="strip-content text-center">
-      <h2 class="section-title">WELCOME TO <strong>NIKI G PILATES</strong></h2>
-      <p>I'm passionate about helping people feel stronger, healthier, and more confident through Pilates. Whether you're new to movement or looking to build consistency, you'll find a welcoming environment to move at your own pace.</p>
-      <p>With a background as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, I bring a clinical foundation to every class. My focus is simple: helping you release stiffness, improve posture, and move better in everyday life.</p>
-    </div>
-  </section>
-
-  <!-- CLASSES & BOOKING -->
-  <section id="booking" class="section-strip strip-white">
-    <div class="strip-content">
-      
-      <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
-      <div>
-        <span class="tag-badge">Beginner Friendly</span>
-        <h1 class="class-header">All levels Pilates & Strength</h1>
-        <div class="class-sub-header">West Park, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins) — <strong>Starts 16th September</strong></div>
-        <div class="class-pricing-line">Price Options: First Class £8.50 | Drop-In £12.50 | 6-Week Block £66</div>
-
-        <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
-
-        <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
-
-        <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
-
-        <div class="highlight-quote">
-          <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
-        </div>
-
-        <div class="single-booking-box">
-          <h3>Ready to Join All Levels Pilates?</h3>
-          <p>Starts 16th September | Choose from First Class (£8.50), Drop-In (£12.50), or 6-Week Block (£66)</p>
-          <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
+  <!-- MAIN WEBSITE CONTENT WRAPPER -->
+  <div id="mainWebsiteContent">
+    <!-- HERO BANNER -->
+    <section id="home" class="hero-image-banner">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Inclusive mat Pilates session">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 class="hero-title">Strength, Posture & Wellbeing</h1>
+          <p class="hero-subtitle">A Welcoming Space for Every Body & Every Ability</p>
         </div>
       </div>
+    </section>
 
-      <hr class="class-block-divider">
-
-      <!-- CLASS 2: LOVELY BUMPS - PREGNANCY PILATES -->
-      <div>
-        <span class="tag-badge pink">Pregnancy Speciality</span>
-        <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
-        <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:20pm (50 mins)</div>
-        <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £55</div>
-
-        <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
-
-        <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
-
-        <div class="highlight-quote">
-          <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
-        </div>
-
-        <div class="single-booking-box">
-          <h3>Ready to Join Lovely Bumps?</h3>
-          <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
-          <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
-        </div>
+    <!-- WELCOME STRIP -->
+    <section class="section-strip strip-stone">
+      <div class="strip-content text-center">
+        <h2 class="section-title">WELCOME TO <strong>NIKI G PILATES</strong></h2>
+        <p>I'm passionate about helping people feel stronger, healthier, and more confident through Pilates. Whether you're new to movement or looking to build consistency, you'll find a welcoming environment to move at your own pace.</p>
+        <p>With a background as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, I bring a clinical foundation to every class. My focus is simple: helping you release stiffness, improve posture, and move better in everyday life.</p>
       </div>
+    </section>
 
-      <div class="action-buttons-container">
-        <a href="#contact" class="btn">Get in Touch</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT NIKI -->
-  <section id="about-niki" class="section-strip strip-rose">
-    <div class="strip-content">
-      <h2 class="section-title">Clinical Background & Mindful Movement</h2>
-      <p>Hi, I’m Niki! My journey started in NHS clinical care at Imperial College Hospital London, guiding patients through exercise rehabilitation for joint and spinal health.</p>
-      <p>I bridge clinical movement knowledge with functional everyday fitness—helping you move smoothly without pain, recover from injuries, and build confidence in your body.</p>
-    </div>
-  </section>
-
-  <!-- SPORTS MASSAGE -->
-  <section id="massage" class="section-strip strip-dark">
-    <div class="strip-content text-center">
-      <div class="profile-img-container">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" alt="Sports Massage Therapy">
-      </div>
-      <h2 class="section-title">Sports & Remedial Massage</h2>
-      <p>As a certified Level 3 Sports Massage therapist, I use tailored soft tissue techniques to reduce muscle discomfort, restore joint mobility, and accelerate recovery.</p>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="section-strip strip-white">
-    <div class="strip-content">
-      <h2 class="section-title">Client Stories</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <p>"I came to Pilates to help with a back injury, and Niki's classes have made a noticeable difference to my day-to-day mobility."</p>
-          <div class="testimonial-author">— Sue, Hove</div>
-        </div>
-        <div class="testimonial-card">
-          <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
-          <div class="testimonial-author">— Elysia, Brighton</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="section-strip strip-stone">
-    <div class="strip-content">
-      <h2 class="section-title">Contact Us</h2>
-      
-      <div class="contact-grid">
-        <div>
-          <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Send a Message</h3>
-          <form id="contactForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
-            <input type="hidden" name="Form Type" value="General Contact Inquiry">
-            <div class="form-group">
-              <label for="contact-name">Full Name *</label>
-              <input type="text" id="contact-name" name="Contact Name" required placeholder="Jane Doe">
-            </div>
-            <div class="form-group">
-              <label for="contact-phone">Phone Number *</label>
-              <input type="tel" id="contact-phone" name="Contact Phone" required placeholder="07123 456789">
-            </div>
-            <div class="form-group">
-              <label for="contact-email">Email Address *</label>
-              <input type="email" id="contact-email" name="Contact Email" required placeholder="jane@example.com">
-            </div>
-            <div class="form-group">
-              <label for="contact-msg">Message *</label>
-              <textarea id="contact-msg" name="Message" required placeholder="How can we help you?"></textarea>
-            </div>
-            <button type="submit" class="btn btn-dark">Send Message</button>
-          </form>
-        </div>
-
-        <div>
-          <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Get in Touch</h3>
-          
-          <div class="info-block">
-            <h3 style="color: #000000; font-weight: 700;">📞 Phone</h3>
-            <p><a href="tel:07834950178" style="color: inherit; text-decoration: none;">07834 950178</a></p>
-          </div>
-
-          <div class="info-block">
-            <h3 style="color: #000000; font-weight: 700;">✉️ Email</h3>
-            <p><a href="mailto:nikigpilates@gmail.com" style="color: inherit; text-decoration: none;">nikigpilates@gmail.com</a></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SOCIAL ICONS -->
-      <div class="social-section">
-        <h3 style="color: #000000; font-weight: 800;">Connect & Follow Along</h3>
-        <p>Follow Niki G Pilates for updates and movement tips:</p>
+    <!-- CLASSES & BOOKING -->
+    <section id="booking" class="section-strip strip-white">
+      <div class="strip-content">
         
-        <div class="social-icons-container">
-          <a href="https://www.instagram.com/niki_g_pilates" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
+        <!-- CLASS 1: ALL LEVELS PILATES & STRENGTH -->
+        <div>
+          <span class="tag-badge">Beginner Friendly</span>
+          <h1 class="class-header">All levels Pilates & Strength</h1>
+          <div class="class-sub-header">West Park, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins) — <strong>Starts 16th September</strong></div>
+          <div class="class-pricing-line">Price Options: First Class £8.50 | Drop-In £12.50 | 6-Week Block £66</div>
 
-          <a href="https://www.facebook.com/share/18E5VZBZYA/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
+          <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
+
+          <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
+
+          <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+
+          <div class="highlight-quote">
+            <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join All Levels Pilates?</h3>
+            <p>Starts 16th September | Choose from First Class (£8.50), Drop-In (£12.50), or 6-Week Block (£66)</p>
+            <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
+          </div>
+        </div>
+
+        <hr class="class-block-divider">
+
+        <!-- CLASS 2: LOVELY BUMPS - PREGNANCY PILATES -->
+        <div>
+          <span class="tag-badge pink">Pregnancy Speciality</span>
+          <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
+          <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:20pm (50 mins)</div>
+          <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £55</div>
+
+          <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
+
+          <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
+
+          <div class="highlight-quote">
+            <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join Lovely Bumps?</h3>
+            <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
+            <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
+          </div>
+        </div>
+
+        <div class="action-buttons-container">
+          <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT NIKI -->
+    <section id="about-niki" class="section-strip strip-rose">
+      <div class="strip-content">
+        <h2 class="section-title">Clinical Background & Mindful Movement</h2>
+        <p>Hi, I’m Niki! My journey started in NHS clinical care at Imperial College Hospital London, guiding patients through exercise rehabilitation for joint and spinal health.</p>
+        <p>I bridge clinical movement knowledge with functional everyday fitness—helping you move smoothly without pain, recover from injuries, and build confidence in your body.</p>
+      </div>
+    </section>
+
+    <!-- SPORTS MASSAGE -->
+    <section id="massage" class="section-strip strip-dark">
+      <div class="strip-content text-center">
+        <div class="profile-img-container">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" alt="Sports Massage Therapy">
+        </div>
+        <h2 class="section-title">Sports & Remedial Massage</h2>
+        <p>As a certified Level 3 Sports Massage therapist, I use tailored soft tissue techniques to reduce muscle discomfort, restore joint mobility, and accelerate recovery.</p>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="section-strip strip-white">
+      <div class="strip-content">
+        <h2 class="section-title">Client Stories</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p>"I came to Pilates to help with a back injury, and Niki's classes have made a noticeable difference to my day-to-day mobility."</p>
+            <div class="testimonial-author">— Sue, Hove</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
+            <div class="testimonial-author">— Elysia, Brighton</div>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section-strip strip-stone">
+      <div class="strip-content">
+        <h2 class="section-title">Contact Us</h2>
+        
+        <div class="contact-grid">
+          <div>
+            <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Send a Message</h3>
+            <form id="contactForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+              <input type="hidden" name="Form Type" value="General Contact Inquiry">
+              <div class="form-group">
+                <label for="contact-name">Full Name *</label>
+                <input type="text" id="contact-name" name="Contact Name" required placeholder="Jane Doe">
+              </div>
+              <div class="form-group">
+                <label for="contact-phone">Phone Number *</label>
+                <input type="tel" id="contact-phone" name="Contact Phone" required placeholder="07123 456789">
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email Address *</label>
+                <input type="email" id="contact-email" name="Contact Email" required placeholder="jane@example.com">
+              </div>
+              <div class="form-group">
+                <label for="contact-msg">Message *</label>
+                <textarea id="contact-msg" name="Message" required placeholder="How can we help you?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-dark">Send Message</button>
+            </form>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Get in Touch</h3>
+            
+            <div class="info-block">
+              <h3 style="color: #000000; font-weight: 700;">📞 Phone</h3>
+              <p><a href="tel:07834950178" style="color: inherit; text-decoration: none;">07834 950178</a></p>
+            </div>
+
+            <div class="info-block">
+              <h3 style="color: #000000; font-weight: 700;">✉️ Email</h3>
+              <p><a href="mailto:nikigpilates@gmail.com" style="color: inherit; text-decoration: none;">nikigpilates@gmail.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-section">
+          <h3 style="color: #000000; font-weight: 800;">Connect & Follow Along</h3>
+          <p>Follow Niki G Pilates for updates and movement tips:</p>
+          
+          <div class="social-icons-container">
+            <a href="https://www.instagram.com/niki_g_pilates" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+
+            <a href="https://www.facebook.com/share/18E5VZBZYA/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
 
   <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModalDirect()">&times;</button>
       
-      <!-- STEP 1: FORM CONTAINER LINKED TO FORMSPREE -->
       <div id="bookingFormContainer">
         <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to reserve your spot</p>
@@ -881,25 +853,8 @@
             </div>
           </div>
 
-          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Continue to Payment &rarr;</button>
+          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Pay via Stripe &rarr;</button>
         </form>
-      </div>
-
-      <!-- STEP 2: STRIPE DIRECTLY EMBEDDED INSIDE MODAL -->
-      <div id="stripePaymentScreen" style="display: none;">
-        <button type="button" onclick="triggerHardwareBack()" class="btn btn-secondary">&larr; Edit Registration Details</button>
-
-        <h3 style="color: #000000; font-weight: 800;">Secure Stripe Payment</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">Your registration form was successfully received. Complete your checkout below to confirm your spot.</p>
-
-        <div class="stripe-iframe-wrapper">
-          <iframe 
-            id="stripeEmbedFrame" 
-            src="https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607" 
-            title="Stripe Checkout"
-            allow="payment">
-          </iframe>
-        </div>
       </div>
 
     </div>
@@ -910,8 +865,6 @@
   </footer>
 
   <script>
-    let currentModalStep = null;
-
     // NAVIGATION CONTROLS
     const menuToggle = document.getElementById('menuToggle');
     const sideNav = document.getElementById('sideNav');
@@ -949,9 +902,6 @@
       form.reset();
       clearFormErrors(form);
 
-      document.getElementById('bookingFormContainer').style.display = 'block';
-      document.getElementById('stripePaymentScreen').style.display = 'none';
-
       document.getElementById('modal-class-title').innerText = className;
       document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
       document.getElementById('hidden-class-name').value = className;
@@ -971,45 +921,9 @@
 
       document.getElementById('bookingModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
-
-      currentModalStep = 'form';
-      history.pushState({ modalStep: 'form' }, '');
-    }
-
-    function showStripeScreen() {
-      document.getElementById('bookingFormContainer').style.display = 'none';
-      document.getElementById('stripePaymentScreen').style.display = 'block';
-
-      currentModalStep = 'payment';
-      history.pushState({ modalStep: 'payment' }, '');
-    }
-
-    window.addEventListener('popstate', function(event) {
-      if (currentModalStep === 'payment') {
-        currentModalStep = 'form';
-        document.getElementById('stripePaymentScreen').style.display = 'none';
-        document.getElementById('bookingFormContainer').style.display = 'block';
-      } else if (currentModalStep === 'form') {
-        closeModalView();
-      }
-    });
-
-    function triggerHardwareBack() {
-      history.back();
     }
 
     function closeModalDirect() {
-      if (currentModalStep === 'payment') {
-        history.go(-2);
-      } else if (currentModalStep === 'form') {
-        history.go(-1);
-      } else {
-        closeModalView();
-      }
-    }
-
-    function closeModalView() {
-      currentModalStep = null;
       document.getElementById('bookingModal').style.display = 'none';
       document.body.style.overflow = 'auto';
     }
@@ -1084,7 +998,7 @@
       }
     });
 
-    // BOOKING FORM PROCESSOR
+    // BOOKING FORM PROCESSOR & REDIRECT TO STRIPE
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -1095,7 +1009,7 @@
 
       const submitBtn = document.getElementById('booking-submit-btn');
       submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting Registration...";
+      submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
       const formData = new FormData(this);
 
@@ -1107,15 +1021,17 @@
         });
 
         if (response.ok) {
-          showStripeScreen();
+          // Successfully sent to form backend, now instantly redirect straight to Stripe payment page
+          window.location.href = "https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603";
         } else {
           alert("There was an issue submitting your registration details. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Complete Registration & Pay via Stripe →";
         }
       } catch (error) {
         alert("Network error. Please check your connection and try again.");
-      } finally {
         submitBtn.disabled = false;
-        submitBtn.innerText = "Complete Registration & Continue to Payment →";
+        submitBtn.innerText = "Complete Registration & Pay via Stripe →";
       }
     });
   </script>
