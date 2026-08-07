@@ -887,13 +887,13 @@
 
     const classPassOptions = {
       'All levels Pilates & Strength': [
-        { label: 'First Class — £8.50', value: 'First Class (£8.50)' },
-        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)' },
-        { label: '6-Week Block — £66', value: '6-Week Block (£66)' }
+        { label: 'First Class — £8.50', value: 'First Class (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
+        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
+        { label: '6-Week Block — £66', value: '6-Week Block (£66)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
-        { label: 'Drop-In — £13', value: 'Drop-In (£13)' },
-        { label: '5-Week Block — £55', value: '5-Week Block (£55)' }
+        { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
+        { label: '5-Week Block — £55', value: '5-Week Block (£55)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
       ]
     };
 
@@ -916,6 +916,7 @@
         const optionEl = document.createElement('option');
         optionEl.value = opt.value;
         optionEl.textContent = opt.label;
+        optionEl.dataset.stripeUrl = opt.stripeUrl;
         passSelect.appendChild(optionEl);
       });
 
@@ -998,7 +999,7 @@
       }
     });
 
-    // BOOKING FORM PROCESSOR & REDIRECT TO STRIPE
+    // BOOKING FORM PROCESSOR & DYNAMIC STRIPE REDIRECT BASED ON SELECTED PASS
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -1011,6 +1012,10 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
+      const passSelect = document.getElementById('pass-type');
+      const selectedOption = passSelect.options[passSelect.selectedIndex];
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603";
+
       const formData = new FormData(this);
 
       try {
@@ -1021,8 +1026,8 @@
         });
 
         if (response.ok) {
-          // Successfully sent to form backend, now instantly redirect straight to Stripe payment page
-          window.location.href = "https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603";
+          // Successfully sent booking details to form backend, now instantly redirect straight to the specific Stripe payment link
+          window.location.href = targetStripeUrl;
         } else {
           alert("There was an issue submitting your registration details. Please try again.");
           submitBtn.disabled = false;
