@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>NIKI G PILATES | Pilates for Every Body, . Tailored to Your Needs</title>
+  <title>NIKI G PILATES | Pilates for Every Body, Tailored to Your Needs</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,7 @@
       --text-light: #F5F2EE;
       --border-color: #E2DCD5;
       --accent-green: #2e7d5e;
+      --bg-green-light: #eef7f2;
       
       --font-heading: 'Playfair Display', Georgia, serif;
       --font-body: 'Montserrat', -apple-system, sans-serif;
@@ -165,7 +166,10 @@
       padding: 2rem;
     }
 
-    .hero-content { max-width: 850px; margin: 0 auto; }
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
 
     .hero-title {
       font-family: var(--font-heading);
@@ -349,25 +353,6 @@
     .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; }
     .checkbox-group label { font-size: 0.8rem; text-transform: none; color: #000; }
 
-    /* SUCCESS SCREEN MESSAGE */
-    .success-screen {
-      text-align: center;
-      padding: 2rem 1rem;
-      display: none;
-    }
-    .success-screen h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      color: var(--accent-green);
-      margin-bottom: 1rem;
-    }
-    .success-screen p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
     /* SOCIAL MEDIA SECTION */
     .social-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
     .social-section h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
@@ -404,6 +389,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
     }
     
+    .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #000; margin-bottom: 0.2rem; }
     .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
@@ -615,16 +601,8 @@
             </div>
           </div>
 
-          <button type="submit" id="booking-submit-btn" class="book-here-btn" style="width: 100%; max-width: 100%;">Complete Booking & Reserve Spot &rarr;</button>
+          <button type="submit" id="booking-submit-btn" class="book-here-btn" style="width: 100%; max-width: 100%;">Confirm Waiver & Continue to Stripe Payment &rarr;</button>
         </form>
-      </div>
-
-      <!-- SUCCESS SCREEN -->
-      <div id="successScreen" class="success-screen">
-        <h3>Booking Confirmed!</h3>
-        <p>Your registration details and health waiver have been successfully saved. We have received your booking request for Niki G Pilates.</p>
-        <p style="font-size: 0.85rem; color: var(--text-dark);">We look forward to seeing you in class!</p>
-        <button class="btn btn-dark" onclick="closeModalView()" style="margin-top: 1rem;">Close Window</button>
       </div>
 
     </div>
@@ -635,6 +613,8 @@
   </footer>
 
   <script>
+    const STRIPE_PAYMENT_URL = "https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607";
+
     const menuToggle = document.getElementById('menuToggle');
     const sideNav = document.getElementById('sideNav');
     const navOverlay = document.getElementById('navOverlay');
@@ -657,11 +637,9 @@
     function openBooking(className, timeSlot) {
       document.getElementById('bookingForm').reset();
       document.getElementById('bookingFormContainer').style.display = 'block';
-      document.getElementById('successScreen').style.display = 'none';
 
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '<option value="First Class (£8.50)">First Class — £8.50</option><option value="Drop-In (£12.50)">Drop-In — £12.50</option>';
-      document.getElementById('hidden-class-name').value = className;
 
       document.getElementById('bookingModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
@@ -677,13 +655,13 @@
 
       const waiverChecked = document.getElementById('waiver-agree').checked;
       if (!waiverChecked) {
-        alert("Please tick the Health Waiver checkbox to proceed.");
+        alert("Please tick the Health Waiver checkbox to proceed to payment.");
         return;
       }
 
       const submitBtn = document.getElementById('booking-submit-btn');
       submitBtn.disabled = true;
-      submitBtn.innerText = "Processing Booking...";
+      submitBtn.innerText = "Saving Registration...";
 
       try {
         const response = await fetch(this.action, {
@@ -693,17 +671,16 @@
         });
 
         if (response.ok) {
-          document.getElementById('bookingFormContainer').style.display = 'none';
-          document.getElementById('successScreen').style.display = 'block';
+          window.location.href = STRIPE_PAYMENT_URL;
         } else {
           alert("Submission failed. Please check your form fields and try again.");
           submitBtn.disabled = false;
-          submitBtn.innerText = "Complete Booking & Reserve Spot →";
+          submitBtn.innerText = "Confirm Waiver & Continue to Stripe Payment →";
         }
       } catch (err) {
         alert("Network error. Please try again.");
         submitBtn.disabled = false;
-        submitBtn.innerText = "Complete Booking & Reserve Spot →";
+        submitBtn.innerText = "Confirm Waiver & Continue to Stripe Payment →";
       }
     });
 
