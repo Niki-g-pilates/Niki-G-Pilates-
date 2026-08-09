@@ -614,7 +614,7 @@
           <span class="tag-badge">Beginner Friendly</span>
           <h1 class="class-header">All levels Pilates & Strength</h1>
           <div class="class-sub-header">West Park, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins) — <strong>Starts 16th September</strong></div>
-          <div class="class-pricing-line">Price Options: First Class £8.50 | Drop-In £12.50 | 6-Week Block £66</div>
+          <div class="class-pricing-line">Book Your First Class £8.50 or £12 PAYG Drop-In Below</div>
 
           <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
 
@@ -628,38 +628,14 @@
 
           <div class="single-booking-box">
             <h3>Ready to Join All Levels Pilates?</h3>
-            <p>Starts 16th September | Choose from First Class (£8.50), Drop-In (£12.50), or 6-Week Block (£66)</p>
+            <p>Starts 16th September | Book Your First Class £8.50 or £12 PAYG Class</p>
             <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
           </div>
         </div>
 
         <hr class="class-block-divider">
 
-        <!-- CLASS 2: LOVELY BUMPS - PREGNANCY PILATES -->
-        <div>
-          <span class="tag-badge pink">Pregnancy Speciality</span>
-          <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
-          <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:20pm (50 mins)</div>
-          <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £55</div>
-
-          <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
-
-          <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
-
-          <div class="highlight-quote">
-            <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
-          </div>
-
-          <div class="single-booking-box">
-            <h3>Ready to Join Lovely Bumps?</h3>
-            <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
-            <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
-          </div>
-        </div>
-
-        <hr class="class-block-divider">
-
-        <!-- CLASS 3: 6-WEEK PILATES STRENGTH COURSE ✨ -->
+        <!-- CLASS 2: 6-WEEK PILATES STRENGTH COURSE ✨ (Now positioned directly below All Levels) -->
         <div>
           <span class="tag-badge purple">Special Course</span>
           <h1 class="class-header">6-Week Pilates Strength Course</h1>
@@ -690,6 +666,30 @@
             <h3>Ready to Join the 6-Week Course?</h3>
             <p>Full 6-Week Course Package (£66)</p>
             <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course', 'Course Schedule Slot')">BOOK HERE</button>
+          </div>
+        </div>
+
+        <hr class="class-block-divider">
+
+        <!-- CLASS 3: LOVELY BUMPS - PREGNANCY PILATES -->
+        <div>
+          <span class="tag-badge pink">Pregnancy Speciality</span>
+          <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
+          <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 6:30pm - 7:20pm (50 mins)</div>
+          <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £55</div>
+
+          <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
+
+          <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
+
+          <div class="highlight-quote">
+            <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join Lovely Bumps?</h3>
+            <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
+            <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
           </div>
         </div>
 
@@ -954,16 +954,15 @@
 
     const classPassOptions = {
       'All levels Pilates & Strength': [
-        { label: 'First Class — £8.50', value: 'First Class (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
-        { label: 'Drop-In — £12.50', value: 'Drop-In (£12.50)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
-        { label: '6-Week Block — £66', value: '6-Week Block (£66)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
+        { label: 'Book Your First Class — £8.50', value: 'Book Your First Class (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
+        { label: 'Drop-In — £12.00', value: 'Drop-In (£12.00)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' }
+      ],
+      '6-Week Pilates Strength Course': [
+        { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
       ],
       'LOVELY BUMPS — Pregnancy Pilates': [
         { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
         { label: '5-Week Block — £55', value: '5-Week Block (£55)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
-      ],
-      '6-Week Pilates Strength Course': [
-        { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
       ]
     };
 
@@ -1096,7 +1095,6 @@
         });
 
         if (response.ok) {
-          // Successfully sent booking details to form backend, now instantly redirect straight to the specific Stripe payment link
           window.location.href = targetStripeUrl;
         } else {
           alert("There was an issue submitting your registration details. Please try again.");
