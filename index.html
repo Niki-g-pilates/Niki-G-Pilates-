@@ -237,6 +237,11 @@
       color: #C5221F;
     }
 
+    .tag-badge.purple {
+      background: #F3E8FF;
+      color: #6B21A8;
+    }
+
     .class-header {
       font-family: var(--font-heading);
       font-size: 2rem;
@@ -283,6 +288,31 @@
       margin: 4rem 0;
       border: 0;
       border-top: 1px solid var(--border-color);
+    }
+
+    /* BULLET LIST HIGHLIGHTS */
+    .course-highlights-list {
+      list-style: none;
+      margin: 1.5rem 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .course-highlights-list li {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .course-highlights-list li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
     }
 
     /* SINGLE BOOKING CARD / BOX */
@@ -521,6 +551,7 @@
       .single-booking-box { padding: 1.5rem 1rem; }
       .book-here-btn { width: 100%; max-width: 100%; }
       .modal { padding: 1.8rem 1.2rem; }
+      .course-highlights-list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -623,6 +654,42 @@
             <h3>Ready to Join Lovely Bumps?</h3>
             <p>Choose from Drop-In (£13) or 5-Week Block (£55)</p>
             <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
+          </div>
+        </div>
+
+        <hr class="class-block-divider">
+
+        <!-- CLASS 3: 6-WEEK PILATES STRENGTH COURSE ✨ -->
+        <div>
+          <span class="tag-badge purple">Special Course</span>
+          <h1 class="class-header">6-Week Pilates Strength Course</h1>
+          <div class="class-sub-header">Designed Especially with Beginners in Mind 💛</div>
+          <div class="class-pricing-line">Price Option: Full 6-Week Course £66</div>
+
+          <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
+
+          <p>I'm excited to be introducing my <strong>6-Week Pilates Strength Course</strong> — designed especially with beginners in mind. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
+
+          <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
+
+          <ul class="course-highlights-list">
+            <li>Core & pelvic stability</li>
+            <li>Glutes & lower-body strength</li>
+            <li>Arms, shoulders & back</li>
+            <li>Posture & alignment</li>
+            <li>Balance & stability</li>
+            <li>Mobility & flexibility</li>
+            <li>Pilates-based strength work</li>
+          </ul>
+
+          <div class="highlight-quote">
+            <p>And don't worry if you've never done Pilates before — you absolutely don't need any experience to join. We'll start with the foundations and build week by week, so you'll have the chance to learn the movements properly and actually feel your progress. By the end of the six weeks, the aim is for you to feel stronger, more confident and more connected to your body.</p>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join the 6-Week Course?</h3>
+            <p>Full 6-Week Course Package (£66)</p>
+            <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course', 'Course Schedule Slot')">BOOK HERE</button>
           </div>
         </div>
 
@@ -759,7 +826,7 @@
           <!-- STEP 2: DATE & TIME -->
           <div class="step-heading">Step 2: Date & Time</div>
           <div class="form-group">
-            <label for="booking-date">Choose Class Date *</label>
+            <label for="booking-date">Choose Class/Course Start Date *</label>
             <input type="date" id="booking-date" name="Class Date" required>
           </div>
 
@@ -894,6 +961,9 @@
       'LOVELY BUMPS — Pregnancy Pilates': [
         { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
         { label: '5-Week Block — £55', value: '5-Week Block (£55)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
+      ],
+      '6-Week Pilates Strength Course': [
+        { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/8x2eVfd9XeCseuL4Yk7N604' }
       ]
     };
 
