@@ -377,7 +377,7 @@
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
 
-    /* MASSAGE PROFILE IMAGE (Kept for massage section if needed) */
+    /* MASSAGE PROFILE IMAGE CONTAINER */
     .profile-img-container { 
       width: 180px; 
       height: 180px; 
@@ -712,7 +712,7 @@
       </div>
     </section>
 
-    <!-- ABOUT NIKI (Circle & Image Removed, Content Shifted Up) -->
+    <!-- ABOUT NIKI (Circle & Image Removed, Text Shifted Up) -->
     <section id="about-niki" class="section-strip strip-rose">
       <div class="strip-content text-center">
         <h2 class="section-title" style="margin-top: 0;">Clinical Background & Mindful Movement</h2>
@@ -977,7 +977,7 @@
 
       const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
       
-      options.exports = options.forEach(opt => {
+      options.forEach(opt => {
         const optionEl = document.createElement('option');
         optionEl.value = opt.value;
         optionEl.textContent = opt.label;
@@ -1060,6 +1060,7 @@
           window.location.href = targetStripeUrl;
         } else {
           alert("There was an issue submitting your registration details. Please try again.");
+          submitBtn.disabled5 = false;
           submitBtn.disabled = false;
           submitBtn.innerText = "Complete Registration & Pay via Stripe →";
         }
