@@ -388,7 +388,7 @@
     .testimonial-author { font-weight: 600; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
     /* CONTACT SECTION */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; text-align: center; }
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
     
@@ -545,7 +545,7 @@
       .hero-title { font-size: 1.7rem; }
       .hero-subtitle { font-size: 0.85rem; }
       .hero-image-banner { height: 360px; }
-      .contact-grid { grid-template-columns: 1fr; padding: 1.5rem; gap: 2rem; }
+      .contact-grid { padding: 1.5rem; gap: 2rem; }
       .section-strip { padding: 3rem 1rem; }
       .action-buttons-container { flex-direction: column; }
       .single-booking-box { padding: 1.5rem 1rem; }
@@ -745,41 +745,25 @@
       <div class="strip-content">
         <h2 class="section-title">Contact Us</h2>
         
-        <div class="contact-grid">
+        <div class="contact-grid" style="padding: 1.5rem;">
           <div>
             <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Send a Message</h3>
-            <form id="contactForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
-              <input type="hidden" name="Form Type" value="General Contact Inquiry">
-              <div class="form-group">
-                <label for="contact-name">Full Name *</label>
-                <input type="text" id="contact-name" name="Contact Name" required placeholder="Jane Doe">
-              </div>
-              <div class="form-group">
-                <label for="contact-phone">Phone Number *</label>
-                <input type="tel" id="contact-phone" name="Contact Phone" required placeholder="07123 456789">
-              </div>
-              <div class="form-group">
-                <label for="contact-email">Email Address *</label>
-                <input type="email" id="contact-email" name="Contact Email" required placeholder="jane@example.com">
-              </div>
-              <div class="form-group">
-                <label for="contact-msg">Message *</label>
-                <textarea id="contact-msg" name="Message" required placeholder="How can we help you?"></textarea>
-              </div>
-              <button type="submit" class="btn btn-dark">Send Message</button>
-            </form>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Have a question or want to get in touch? Fill out the form below:</p>
+            
+            <!-- GOOGLE FORM EMBED -->
+            <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="826" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
+            </div>
           </div>
 
-          <div>
-            <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800;">Get in Touch</h3>
-            
-            <div class="info-block">
-              <h3 style="color: #000000; font-weight: 700;">📞 Phone</h3>
+          <div style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+            <div class="info-block" style="margin-bottom: 1.5rem;">
+              <h3 style="color: #000000; font-weight: 700; font-size: 1.1rem;">📞 Phone</h3>
               <p><a href="tel:07834950178" style="color: inherit; text-decoration: none;">07834 950178</a></p>
             </div>
 
             <div class="info-block">
-              <h3 style="color: #000000; font-weight: 700;">✉️ Email</h3>
+              <h3 style="color: #000000; font-weight: 700; font-size: 1.1rem;">✉️ Email</h3>
               <p><a href="mailto:nikigpilates@gmail.com" style="color: inherit; text-decoration: none;">nikigpilates@gmail.com</a></p>
             </div>
           </div>
@@ -1036,40 +1020,6 @@
 
       return isValid;
     }
-
-    // CONTACT FORM
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      if (!validateForm(this)) {
-        alert('Please complete all outlined fields in red before sending.');
-        return;
-      }
-
-      const submitBtn = this.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.innerText = 'Sending...';
-
-      try {
-        const response = await fetch(this.action, {
-          method: 'POST',
-          body: new FormData(this),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          alert('Message sent successfully!');
-          this.reset();
-          clearFormErrors(this);
-        } else {
-          alert('There was a problem sending your message. Please try again.');
-        }
-      } catch (err) {
-        alert('Network error. Please try again.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'Send Message';
-      }
-    });
 
     // BOOKING FORM PROCESSOR & DYNAMIC STRIPE REDIRECT BASED ON SELECTED PASS
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
