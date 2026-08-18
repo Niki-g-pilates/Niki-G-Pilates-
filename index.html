@@ -377,10 +377,10 @@
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
 
-    /* PROFILE / CIRCLE IMAGE */
+    /* MASSAGE PROFILE IMAGE (Kept for massage section if needed) */
     .profile-img-container { 
-      width: 200px; 
-      height: 200px; 
+      width: 180px; 
+      height: 180px; 
       margin: 0 auto 1.8rem auto; 
       border-radius: 50%; 
       overflow: hidden; 
@@ -391,7 +391,7 @@
       width: 100%; 
       height: 100%; 
       object-fit: cover; 
-      object-position: center top;
+      object-position: center;
     }
 
     /* TESTIMONIALS */
@@ -600,7 +600,6 @@
   <div id="mainWebsiteContent">
     <!-- HERO BANNER -->
     <section id="home" class="hero-image-banner">
-      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Inclusive mat Pilates session">
       <div class="hero-overlay">
         <div class="hero-content">
           <h1 class="hero-title">Strength, Posture & Wellbeing</h1>
@@ -713,13 +712,10 @@
       </div>
     </section>
 
-    <!-- ABOUT NIKI -->
+    <!-- ABOUT NIKI (Circle & Image Removed, Content Shifted Up) -->
     <section id="about-niki" class="section-strip strip-rose">
       <div class="strip-content text-center">
-        <div class="profile-img-container">
-          <img src="images (3).jpeg" alt="Niki practicing Pilates">
-        </div>
-        <h2 class="section-title">Clinical Background & Mindful Movement</h2>
+        <h2 class="section-title" style="margin-top: 0;">Clinical Background & Mindful Movement</h2>
         <p>Hi, I’m Niki! My journey started in NHS clinical care at Imperial College Hospital London, guiding patients through exercise rehabilitation for joint and spinal health.</p>
         <p>I bridge clinical movement knowledge with functional everyday fitness—helping you move smoothly without pain, recover from injuries, and build confidence in your body.</p>
       </div>
@@ -981,7 +977,7 @@
 
       const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
       
-      options.forEach(opt => {
+      options.exports = options.forEach(opt => {
         const optionEl = document.createElement('option');
         optionEl.value = opt.value;
         optionEl.textContent = opt.label;
@@ -1067,7 +1063,7 @@
           submitBtn.disabled = false;
           submitBtn.innerText = "Complete Registration & Pay via Stripe →";
         }
-      } caught (error) {
+      } catch (error) {
         alert("Network error. Please check your connection and try again.");
         submitBtn.disabled = false;
         submitBtn.innerText = "Complete Registration & Pay via Stripe →";
