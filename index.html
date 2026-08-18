@@ -377,7 +377,7 @@
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
 
-    /* SPORTS MASSAGE PROFILE IMAGE CONTAINER (Restored) */
+    /* SPORTS MASSAGE PROFILE IMAGE CONTAINER (Explicitly populated with image tag) */
     .profile-img-container { 
       width: 180px; 
       height: 180px; 
@@ -598,8 +598,9 @@
 
   <!-- MAIN WEBSITE CONTENT WRAPPER -->
   <div id="mainWebsiteContent">
-    <!-- HERO BANNER -->
+    <!-- HERO BANNER (Restored Image) -->
     <section id="home" class="hero-image-banner">
+      <img src="1000023476.jpg" alt="Niki G Pilates Hero Banner">
       <div class="hero-overlay">
         <div class="hero-content">
           <h1 class="hero-title">Strength, Posture & Wellbeing</h1>
@@ -721,11 +722,11 @@
       </div>
     </section>
 
-    <!-- SPORTS MASSAGE (Restored image inside profile container) -->
+    <!-- SPORTS MASSAGE (Restored image inside profile container explicitly using filename) -->
     <section id="massage" class="section-strip strip-dark">
       <div class="strip-content text-center">
         <div class="profile-img-container">
-          <img src="1000023245.png" alt="Sports Massage Therapy">
+          <img src="1000023476.jpg" alt="Sports Massage Therapy">
         </div>
         <h2 class="section-title">Sports & Remedial Massage</h2>
         <p>As a certified Level 3 Sports Massage therapist, I use tailored soft tissue techniques to reduce muscle discomfort, restore joint mobility, and accelerate recovery.</p>
@@ -1060,7 +1061,6 @@
           window.location.href = targetStripeUrl;
         } else {
           alert("There was an issue submitting your registration details. Please try again.");
-          submitBtn.disabled5 = false;
           submitBtn.disabled = false;
           submitBtn.innerText = "Complete Registration & Pay via Stripe →";
         }
