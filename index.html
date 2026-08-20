@@ -375,7 +375,6 @@
       box-shadow: 0 6px 15px rgba(46, 125, 94, 0.3);
     }
 
-    /* Waitlist Button Variant */
     .book-here-btn.waitlist-btn {
       background-color: #718096;
       box-shadow: 0 4px 10px rgba(113, 128, 150, 0.2);
@@ -384,12 +383,6 @@
     .book-here-btn.waitlist-btn:hover {
       background-color: #4A5568;
       box-shadow: 0 6px 15px rgba(74, 85, 104, 0.3);
-    }
-
-    .action-buttons-container {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
     }
 
     /* BUTTONS */
@@ -577,7 +570,6 @@
       .hero-image-banner { height: 360px; }
       .contact-grid { padding: 1.5rem; gap: 2rem; }
       .section-strip { padding: 3rem 1rem; }
-      .action-buttons-container { flex-direction: column; }
       .single-booking-box { padding: 1.5rem 1rem; }
       .book-here-btn { width: 100%; max-width: 100%; }
       .modal { padding: 1.8rem 1.2rem; }
@@ -605,10 +597,8 @@
   <nav class="side-nav" id="sideNav">
     <ul>
       <li><a onclick="switchPage('home', event)">Home</a></li>
-      <li><a onclick="switchPage('booking', event)">Classes & Booking</a></li>
       <li><a onclick="switchPage('about-niki', event)">About Niki</a></li>
       <li><a onclick="switchPage('massage', event)">Sports Massage</a></li>
-      <li><a onclick="switchPage('testimonials', event)">Testimonials</a></li>
       <li><a onclick="switchPage('contact', event)">Contact</a></li>
     </ul>
   </nav>
@@ -616,7 +606,7 @@
   <!-- MAIN WEBSITE VIEWS CONTAINER -->
   <div id="mainWebsiteContent">
 
-    <!-- PAGE VIEW 1: HOME (Hero + Welcome) -->
+    <!-- PAGE VIEW 1: HOME (Hero, Welcome, Classes, Testimonials) -->
     <div id="page-home" class="page-view active-page">
       <section class="hero-image-banner">
         <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Group of women doing mat Pilates">
@@ -635,17 +625,15 @@
           <p>With a background as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, I bring a strong understanding of movement to every class to help you feel your best, release stiffness, improve posture, and move better in everyday life.</p>
         </div>
       </section>
-    </div>
 
-    <!-- PAGE VIEW 2: CLASSES & BOOKING -->
-    <div id="page-booking" class="page-view">
+      <!-- CLASSES & BOOKING SECTION ON HOMEPAGE -->
       <section class="section-strip strip-white">
         <div class="strip-content">
           
           <!-- CLASS 1 -->
           <div>
             <span class="tag-badge">Beginner Friendly</span>
-            <h1 class="class-header">All levels Pilates & Strength</h1>
+            <h2 class="class-header">All levels Pilates & Strength</h2>
             <div class="class-sub-header">West Park, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins) — <strong>Starts 16th September</strong></div>
             <div class="class-pricing-line">Book Your First Class £8.50 or £12 PAYG Drop-In Below</div>
 
@@ -671,7 +659,7 @@
           <!-- CLASS 2 -->
           <div>
             <span class="tag-badge purple">Special Course</span>
-            <h1 class="class-header">6-Week Pilates Strength Course</h1>
+            <h2 class="class-header">6-Week Pilates Strength Course</h2>
             <div class="class-sub-header">Designed Especially with Beginners in Mind 💛</div>
             <div class="class-pricing-line">Price Option: Full 6-Week Course £66</div>
 
@@ -707,7 +695,7 @@
           <!-- CLASS 3 -->
           <div>
             <span class="tag-badge pink">Pregnancy Speciality</span>
-            <h1 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h1>
+            <h2 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h2>
             <div class="class-sub-header">The Nest Family Club, 48 Cromwell Rd, Hove, Thursday's 5:30pm - 6:20pm (50 mins)</div>
             <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £60.50</div>
 
@@ -730,9 +718,26 @@
 
         </div>
       </section>
+
+      <!-- TESTIMONIALS SECTION ON HOMEPAGE -->
+      <section class="section-strip strip-stone">
+        <div class="strip-content">
+          <h2 class="section-title">Client Stories</h2>
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <p>"I came to Pilates to help with a back injury, and Niki's classes have made a noticeable difference to my day-to-day mobility."</p>
+              <div class="testimonial-author">— Sue, Hove</div>
+            </div>
+            <div class="testimonial-card">
+              <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
+              <div class="testimonial-author">— Elysia, Brighton</div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <!-- PAGE VIEW 3: ABOUT NIKI -->
+    <!-- PAGE VIEW 2: ABOUT NIKI (Separate Page) -->
     <div id="page-about-niki" class="page-view">
       <section class="section-strip strip-rose" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
@@ -751,7 +756,7 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW 4: SPORTS MASSAGE -->
+    <!-- PAGE VIEW 3: SPORTS MASSAGE (Separate Page) -->
     <div id="page-massage" class="page-view">
       <section class="section-strip strip-dark" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
@@ -764,26 +769,7 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW 5: TESTIMONIALS -->
-    <div id="page-testimonials" class="page-view">
-      <section class="section-strip strip-white" style="padding-top: 3.5rem;">
-        <div class="strip-content">
-          <h2 class="section-title">Client Stories</h2>
-          <div class="testimonial-grid">
-            <div class="testimonial-card">
-              <p>"I came to Pilates to help with a back injury, and Niki's classes have made a noticeable difference to my day-to-day mobility."</p>
-              <div class="testimonial-author">— Sue, Hove</div>
-            </div>
-            <div class="testimonial-card">
-              <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
-              <div class="testimonial-author">— Elysia, Brighton</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- PAGE VIEW 6: CONTACT -->
+    <!-- PAGE VIEW 4: CONTACT (Separate Page) -->
     <div id="page-contact" class="page-view">
       <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
         <div class="strip-content">
