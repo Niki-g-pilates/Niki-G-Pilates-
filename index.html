@@ -366,6 +366,17 @@
       box-shadow: 0 6px 15px rgba(46, 125, 94, 0.3);
     }
 
+    /* Waitlist Button Variant */
+    .book-here-btn.waitlist-btn {
+      background-color: #718096;
+      box-shadow: 0 4px 10px rgba(113, 128, 150, 0.2);
+      margin-top: 0.8rem;
+    }
+    .book-here-btn.waitlist-btn:hover {
+      background-color: #4A5568;
+      box-shadow: 0 6px 15px rgba(74, 85, 104, 0.3);
+    }
+
     .action-buttons-container {
       display: flex;
       gap: 1rem;
@@ -700,6 +711,8 @@
             <h3>Ready to Join Lovely Bumps?</h3>
             <p>Choose from Drop-In (£13) or 5-Week Block (£60.50)</p>
             <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '5:30 PM - 6:20 PM (50 mins)')">BOOK HERE</button>
+            <br>
+            <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
           </div>
         </div>
 
@@ -915,6 +928,43 @@
     </div>
   </div>
 
+  <!-- WAITLIST MODAL -->
+  <div class="modal-overlay" id="waitlistModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
+      
+      <h3>LOVELY BUMPS — Waitlist</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+        Joining the wait-list doesn’t commit you to booking. We’ll contact you when bookings open and share further class details!
+      </p>
+
+      <form id="waitlistForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+        <input type="hidden" name="Form Type" value="Pregnancy Pilates Waitlist">
+        
+        <div class="form-group">
+          <label for="waitlist-name">Name *</label>
+          <input type="text" id="waitlist-name" name="Client Full Name" required placeholder="Jane Doe">
+        </div>
+
+        <div class="form-group">
+          <label for="waitlist-email">Email Address *</label>
+          <input type="email" id="waitlist-email" name="Client Email" required placeholder="jane@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="waitlist-phone">Mobile Number *</label>
+          <input type="tel" id="waitlist-phone" name="Client Phone" required placeholder="07123 456789">
+        </div>
+
+        <p style="font-size: 0.9rem; font-weight: 600; color: var(--accent-green); margin: 1rem 0 1.5rem 0;">
+          So happy you'll join! 💛
+        </p>
+
+        <button type="submit" id="waitlist-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Join Waitlist</button>
+      </form>
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2026 Niki G Pilates. All rights reserved.</p>
   </footer>
@@ -982,6 +1032,19 @@
 
     function closeModalDirect() {
       document.getElementById('bookingModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function openWaitlist() {
+      const form = document.getElementById('waitlistForm');
+      form.reset();
+      clearFormErrors(form);
+      document.getElementById('waitlistModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWaitlistDirect() {
+      document.getElementById('waitlistModal').style.display = 'none';
       document.body.style.overflow = 'auto';
     }
 
@@ -1057,6 +1120,44 @@
         alert("Network error. Please check your connection and try again.");
         submitBtn.disabled = false;
         submitBtn.innerText = "Complete Registration & Pay via Stripe →";
+      }
+    });
+
+    document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!validateForm(this)) {
+        alert('Please fill out all required fields outlined in red.');
+        return;
+      }
+
+      const submitBtn = document.getElementById('waitlist-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          alert("You have successfully joined the waitlist! We'll be in touch soon.");
+          closeWaitlistDirect();
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Join Waitlist";
+        } else {
+          alert("There was an issue submitting your details. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Join Waitlist";
+        }
+      } catch (error) {
+        alert("Network error. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Join Waitlist";
       }
     });
   </script>
