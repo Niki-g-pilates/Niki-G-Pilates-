@@ -159,7 +159,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center 35%;
-      filter: brightness(0.85);
+      filter: brightness(0.9);
     }
 
     .hero-overlay {
@@ -242,16 +242,6 @@
       margin-bottom: 0.8rem;
     }
 
-    .tag-badge.pink {
-      background: #FCE8E6;
-      color: #C5221F;
-    }
-
-    .tag-badge.purple {
-      background: #F3E8FF;
-      color: #6B21A8;
-    }
-
     .class-header {
       font-family: var(--font-heading);
       font-size: 2rem;
@@ -277,52 +267,6 @@
       display: inline-block;
       margin-bottom: 1.5rem;
       border-left: 3px solid var(--primary-rose);
-    }
-
-    .highlight-quote {
-      background: #FAF7F2;
-      border-left: 3px solid #D8A7A1;
-      padding: 1.5rem;
-      margin: 1.8rem 0;
-      border-radius: 0 6px 6px 0;
-    }
-
-    .highlight-quote p {
-      margin-bottom: 0;
-      color: var(--text-dark);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .class-block-divider {
-      margin: 4rem 0;
-      border: 0;
-      border-top: 1px solid var(--border-color);
-    }
-
-    /* COURSE HIGHLIGHTS LIST */
-    .course-highlights-list {
-      list-style: none;
-      margin: 1.5rem 0;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem 1.5rem;
-    }
-
-    .course-highlights-list li {
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: var(--text-dark);
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    .course-highlights-list li::before {
-      content: "✨";
-      position: absolute;
-      left: 0;
-      top: 0;
     }
 
     /* QUALIFICATIONS BOX STYLING */
@@ -410,38 +354,17 @@
       box-shadow: 0 6px 15px rgba(46, 125, 94, 0.3);
     }
 
-    .book-here-btn.waitlist-btn {
-      background-color: #718096;
-      box-shadow: 0 4px 10px rgba(113, 128, 150, 0.2);
-      margin-top: 0.8rem;
-    }
-    .book-here-btn.waitlist-btn:hover {
-      background-color: #4A5568;
-      box-shadow: 0 6px 15px rgba(74, 85, 104, 0.3);
-    }
-
     /* BUTTONS */
     .btn { display: inline-block; background-color: #FFFFFF; color: var(--primary-dark); border: 1px solid var(--primary-dark); padding: 0.85rem 1.2rem; font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-align: center; transition: all 0.3s ease; width: 100%; text-decoration: none; border-radius: 4px; }
     .btn:hover { background-color: var(--primary-dark); color: #FFFFFF; }
     .btn-dark { background-color: var(--primary-dark); color: #FFFFFF; border: 1px solid var(--primary-dark); }
     .btn-dark:hover { background-color: transparent; color: var(--primary-dark); }
 
-    /* TESTIMONIALS */
-    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1.5rem; }
-    .testimonial-card { background: #FFFFFF; border: 1px solid var(--border-color); padding: 2.2rem; }
-    .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; font-weight: 400; margin-bottom: 1.2rem; line-height: 1.6; }
-    .testimonial-author { font-weight: 600; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
-
     /* CONTACT SECTION */
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; text-align: center; }
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
     
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="tel"],
-    .form-group input[type="date"],
-    .form-group textarea,
     .form-group select {
       width: 100%;
       padding: 0.85rem;
@@ -452,99 +375,8 @@
       font-size: 16px;
       color: #000000;
       border-radius: 4px;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
       -webkit-appearance: none;
     }
-
-    .form-group textarea { height: 100px; resize: vertical; }
-
-    .form-group input.field-error,
-    .form-group textarea.field-error,
-    .form-group select.field-error {
-      border: 2px solid #D32F2F !important;
-      background-color: #FFF8F8 !important;
-      color: #D32F2F !important;
-      outline: none !important;
-    }
-
-    .checkbox-group.field-error-checkbox {
-      border: 2px solid #D32F2F !important;
-      background-color: #FFF8F8 !important;
-      padding: 0.6rem;
-      border-radius: 4px;
-    }
-
-    .step-heading {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #000000;
-      margin: 1.6rem 0 0.8rem 0;
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid var(--primary-rose);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .radio-group {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 0.4rem;
-    }
-
-    .radio-group label {
-      font-size: 0.9rem;
-      text-transform: none;
-      font-weight: 400;
-      color: #000000;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.3rem 0;
-    }
-
-    .waiver-box {
-      background: #FAFAFA;
-      border: 1px solid var(--border-color);
-      padding: 1rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      max-height: 120px;
-      overflow-y: auto;
-      margin-bottom: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .checkbox-group input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      margin-top: 2px;
-    }
-
-    .checkbox-group label {
-      font-size: 0.8rem;
-      text-transform: none;
-      color: #000000;
-    }
-
-    /* SOCIAL MEDIA SECTION */
-    .social-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
-    .social-section h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
-    .social-section p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem; }
-    .social-icons-container { display: flex; justify-content: center; gap: 1.5rem; align-items: center; }
-    .social-icon-btn { display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; border-radius: 50%; background: var(--bg-stone); border: 1px solid var(--border-color); color: var(--primary-dark); text-decoration: none; transition: all 0.3s ease; }
-    .social-icon-btn:hover { background: var(--primary-rose); border-color: var(--primary-rose); color: #FFFFFF; transform: translateY(-3px); }
-    .social-icon-btn svg { width: 26px; height: 26px; fill: currentColor; }
 
     /* MODAL OVERLAY */
     .modal-overlay { 
@@ -573,7 +405,6 @@
       color: var(--text-dark); 
       border-radius: 8px; 
       box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-      -webkit-overflow-scrolling: touch;
     }
     
     .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; padding-right: 1.5rem; }
@@ -586,12 +417,7 @@
       .hero-title { font-size: 1.7rem; }
       .hero-subtitle { font-size: 0.85rem; }
       .hero-image-banner { height: 360px; }
-      .contact-grid { padding: 1.5rem; gap: 2rem; }
       .section-strip { padding: 3rem 1rem; }
-      .single-booking-box { padding: 1.5rem 1rem; }
-      .book-here-btn { width: 100%; max-width: 100%; }
-      .modal { padding: 1.8rem 1.2rem; }
-      .course-highlights-list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -665,22 +491,16 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW 2: ABOUT NIKI (Banner Image Added Here) -->
+    <!-- PAGE VIEW 2: ABOUT NIKI (Clean Banner & Shifted Layout) -->
     <div id="page-about-niki" class="page-view">
-      <!-- About Me Banner Image Section -->
+      <!-- About Me Banner Image Section (No Text Overlay) -->
       <section class="hero-image-banner">
         <img src="https://drive.google.com/thumbnail?id=1TMo90jLW_bnrEMHEQFzba2upis1n5XlT&sz=w1000" alt="Niki G Pilates About Me">
-        <div class="hero-overlay">
-          <div class="hero-content">
-            <h1 class="hero-title">About Me</h1>
-            <p class="hero-subtitle">Get to know the person behind the practice</p>
-          </div>
-        </div>
       </section>
 
-      <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
+      <section class="section-strip strip-stone" style="padding-top: 2.2rem;">
         <div class="strip-content text-center">
-          <h2 class="section-title">MY STORY</h2>
+          <h2 class="section-title">About me</h2>
 
           <p>Hi, I’m Niki!</p>
           
@@ -749,7 +569,7 @@
         
         <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
           <input type="hidden" name="Class Name" id="hidden-class-name">
-          <div class="step-heading">Step 1: Choose Your Pass</div>
+          <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800; color: #000000; margin: 1.6rem 0 0.8rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--primary-rose);">Step 1: Choose Your Pass</div>
           <div class="form-group">
             <label for="pass-type">Select Option *</label>
             <select id="pass-type" name="Pass Selected" required></select>
@@ -799,7 +619,6 @@
     };
 
     function openBooking(className, timeSlot) {
-      const form = document.getElementById('bookingForm');
       document.getElementById('modal-class-title').innerText = className;
       document.getElementById('hidden-class-name').value = className;
       
