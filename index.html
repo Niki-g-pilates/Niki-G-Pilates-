@@ -252,6 +252,11 @@
       color: #6B21A8;
     }
 
+    .tag-badge.grey {
+      background: #F1F3F4;
+      color: #5F6368;
+    }
+
     .class-header {
       font-family: var(--font-heading);
       font-size: 2rem;
@@ -665,33 +670,33 @@
       <section class="section-strip strip-white">
         <div class="strip-content">
           
-          <!-- CLASS 1 -->
+          <!-- CLASS 1 (INTRO / ALL LEVELS - FULLY BOOKED) -->
           <div>
-            <span class="tag-badge">Beginner Friendly</span>
+            <span class="tag-badge grey">Currently Full</span>
             <h2 class="class-header">All levels Pilates & Strength</h2>
             <div class="class-sub-header">West park primary school, Goring-by-Sea — Wednesday's 5:30pm - 6:20pm (50 mins) — <strong>Starts 16th September</strong></div>
-            <div class="class-pricing-line">Book Your First Class £8.50 or £12 PAYG Drop-In Below</div>
+            <div class="class-pricing-line">Intro Class — Currently Full</div>
 
             <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
 
             <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
 
-            <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+            <p>We'll focus on core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
 
             <div class="highlight-quote">
               <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
             </div>
 
             <div class="single-booking-box">
-              <h3>Ready to Join All Levels Pilates?</h3>
-              <p>Starts 16th September | Book Your First Class £8.50 or £12 PAYG Class</p>
-              <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '5:30 PM - 6:20 PM (50 mins)')">BOOK HERE</button>
+              <h3>Intro Class — Currently Full</h3>
+              <p>This class has now reached capacity. Want to be notified if a place becomes available? Join the waiting list and I’ll contact you if a space opens up.</p>
+              <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
             </div>
           </div>
 
           <hr class="class-block-divider">
 
-          <!-- CLASS 2 -->
+          <!-- CLASS 2 (6-WEEK COURSE) -->
           <div>
             <span class="tag-badge purple">Special Course</span>
             <h2 class="class-header">6-Week Pilates Strength Course</h2>
@@ -720,14 +725,14 @@
 
             <div class="single-booking-box">
               <h3>Ready to Join the 6-Week Course?</h3>
-              <p>Full 6-Week Course Package (£66)</p>
+              <p>Full 6-Week Course Package (£66)<br><span style="font-size: 0.82rem; font-style: italic;">Limited places available. The course is kept small and friendly so everyone gets plenty of guidance and support. If the course becomes fully booked, you can join the waiting list and I’ll contact you if a place becomes available.</span></p>
               <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
             </div>
           </div>
 
           <hr class="class-block-divider">
 
-          <!-- CLASS 3 -->
+          <!-- CLASS 3 (LOVELY BUMPS) -->
           <div>
             <span class="tag-badge pink">Pregnancy Speciality</span>
             <h2 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h2>
@@ -994,13 +999,13 @@
     <div class="modal">
       <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
       
-      <h3>LOVELY BUMPS — Waitlist</h3>
+      <h3>Class Waitlist</h3>
       <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Joining the wait-list doesn’t commit you to booking. We’ll contact you when bookings open and share further class details!
+        Joining the waiting list doesn’t commit you to booking. We’ll contact you if a space opens up or when new places become available!
       </p>
 
       <form id="waitlistForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
-        <input type="hidden" name="Form Type" value="Pregnancy Pilates Waitlist">
+        <input type="hidden" name="Form Type" value="General / Intro Class Waitlist">
         
         <div class="form-group">
           <label for="waitlist-name">Name *</label>
@@ -1018,7 +1023,7 @@
         </div>
 
         <p style="font-size: 0.9rem; font-weight: 600; color: var(--accent-green); margin: 1rem 0 1.5rem 0;">
-          So happy you'll join! 💛
+          Looking forward to moving with you! 💛
         </p>
 
         <button type="submit" id="waitlist-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Join Waitlist</button>
@@ -1067,10 +1072,6 @@
     }
 
     const classPassOptions = {
-      'All levels Pilates & Strength': [
-        { label: 'Book Your First Class — £8.50', value: 'Book Your First Class (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
-        { label: 'Drop-In — £12.00', value: 'Drop-In (£12.00)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' }
-      ],
       '6-Week Pilates Strength Course': [
         { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' }
       ],
@@ -1093,7 +1094,7 @@
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
+      const options = classPassOptions[className] || classPassOptions['6-Week Pilates Strength Course'];
       
       options.forEach(opt => {
         const optionEl = document.createElement('option');
