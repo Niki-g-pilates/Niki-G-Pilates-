@@ -418,7 +418,7 @@
     .book-here-btn.waitlist-btn {
       background-color: #718096;
       box-shadow: 0 4px 10px rgba(113, 128, 150, 0.2);
-      margin-top: 0.8rem;
+      margin-top: 0.4rem;
     }
     .book-here-btn.waitlist-btn:hover {
       background-color: #4A5568;
@@ -689,7 +689,7 @@
 
             <div class="single-booking-box">
               <h3>Intro Class — Currently Full</h3>
-              <p>This class has now reached capacity. Want to be notified if a place becomes available? Join the waiting list and I’ll contact you if a space opens up.</p>
+              <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified straight away if someone drops out.</p>
               <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
             </div>
           </div>
@@ -698,10 +698,10 @@
 
           <!-- CLASS 2 (6-WEEK COURSE) -->
           <div>
-            <span class="tag-badge purple">Special Course</span>
+            <span class="tag-badge grey">Currently Full</span>
             <h2 class="class-header">6-Week Pilates Strength Course</h2>
             <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins)</div>
-            <div class="class-pricing-line">Price Option: Full 6-Week Course £66</div>
+            <div class="class-pricing-line">6-Week Course — Currently Full</div>
 
             <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
 
@@ -724,12 +724,10 @@
             </div>
 
             <div class="single-booking-box">
-              <h3>Ready to Join the 6-Week Course?</h3>
+              <h3>6-Week Pilates Strength Course — Currently Full</h3>
               <p>Full 6-Week Course Package (£66)</p>
-              <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course', '6:30 PM - 7:20 PM (50 mins)')">BOOK HERE</button>
-              <br>
+              <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified straight away if someone drops out.</p>
               <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
-              <p style="font-size: 0.82rem; font-style: italic; margin-top: 0.8rem; margin-bottom: 0;">Want to join the wait-list? I'll contact you if someone drops out.</p>
             </div>
           </div>
 
@@ -1075,9 +1073,6 @@
     }
 
     const classPassOptions = {
-      '6-Week Pilates Strength Course': [
-        { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' }
-      ],
       'LOVELY BUMPS — Pregnancy Pilates': [
         { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
         { label: '5-Week Block — £60.50', value: '5-Week Block (£60.50)', stripeUrl: 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606' }
@@ -1097,7 +1092,7 @@
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const options = classPassOptions[className] || classPassOptions['6-Week Pilates Strength Course'];
+      const options = classPassOptions[className] || [];
       
       options.forEach(opt => {
         const optionEl = document.createElement('option');
