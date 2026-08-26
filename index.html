@@ -685,7 +685,7 @@
             <div class="single-booking-box">
               <h3>Intro Class — Currently Full</h3>
               <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified when a space comes available.</p>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
+              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('intro')">JOIN THE WAITLIST</button>
             </div>
           </div>
 
@@ -722,7 +722,7 @@
               <h3>6-Week Pilates Strength Course — Currently Full</h3>
               <p>Full 6-Week Course Package (£66)</p>
               <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified when a space comes available.</p>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
+              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('sixweek')">JOIN THE WAITLIST</button>
             </div>
           </div>
 
@@ -748,7 +748,7 @@
               <p>Choose from Drop-In (£13) or 5-Week Block (£60.50)</p>
               <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '5:30 PM - 6:20 PM (50 mins)')">BOOK HERE</button>
               <br>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
+              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('lovelybumps')">JOIN THE WAITLIST</button>
             </div>
           </div>
 
@@ -990,18 +990,49 @@
     </div>
   </div>
 
-  <!-- WAITLIST MODAL (GOOGLE FORM EMBED) -->
-  <div class="modal-overlay" id="waitlistModal">
+  <!-- WAITLIST MODAL 1: INTRO CLASS -->
+  <div class="modal-overlay" id="waitlistModal-intro">
     <div class="modal" style="max-width: 700px;">
-      <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
+      <button class="close-btn" onclick="closeWaitlistDirect('intro')">&times;</button>
       
-      <h3 style="margin-bottom: 0.5rem;">Class Waitlist</h3>
+      <h3 style="margin-bottom: 0.5rem;">Intro Class Waitlist</h3>
       <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
         Complete the form below to join the wait-list and be notified when a space comes available.
       </p>
 
       <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-        <!-- Replace the src URL below with your actual Google Wait-list Form embed link -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdpPu_9xYq5qI81xWIiQHt_Ajj5jO2YWuvoX7V_2X4bCPNjbw/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITLIST MODAL 2: 6-WEEK COURSE -->
+  <div class="modal-overlay" id="waitlistModal-sixweek">
+    <div class="modal" style="max-width: 700px;">
+      <button class="close-btn" onclick="closeWaitlistDirect('sixweek')">&times;</button>
+      
+      <h3 style="margin-bottom: 0.5rem;">6-Week Course Waitlist</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+        Complete the form below to join the wait-list and be notified when a space comes available.
+      </p>
+
+      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd3u6DJVmQfnILZDy4zQ1tHp4wTshA1qpRayGWn3saOHiFKxg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITLIST MODAL 3: LOVELY BUMPS -->
+  <div class="modal-overlay" id="waitlistModal-lovelybumps">
+    <div class="modal" style="max-width: 700px;">
+      <button class="close-btn" onclick="closeWaitlistDirect('lovelybumps')">&times;</button>
+      
+      <h3 style="margin-bottom: 0.5rem;">Lovely Bumps Waitlist</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+        Complete the form below to join the wait-list and be notified when a space comes available.
+      </p>
+
+      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
       </div>
     </div>
@@ -1086,14 +1117,20 @@
       document.body.style.overflow = 'auto';
     }
 
-    function openWaitlist() {
-      document.getElementById('waitlistModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+    function openWaitlist(type) {
+      const modal = document.getElementById('waitlistModal-' + type);
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
     }
 
-    function closeWaitlistDirect() {
-      document.getElementById('waitlistModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
+    function closeWaitlistDirect(type) {
+      const modal = document.getElementById('waitlistModal-' + type);
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
     }
 
     function toggleInjuriesBox(show) {
