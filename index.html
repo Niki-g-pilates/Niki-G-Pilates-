@@ -228,7 +228,70 @@
     .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
     .strip-dark h3 { color: #FFFFFF; }
 
-    /* CLASS DETAILS STYLING */
+    /* CLASS PREVIEW CARDS GRID */
+    .classes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .class-preview-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .class-preview-card:hover {
+      border-color: var(--primary-rose);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .class-preview-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0.5rem 0 0.4rem 0;
+    }
+
+    .preview-meta {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .preview-snippet {
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .preview-cta-btn {
+      display: inline-block;
+      background-color: var(--primary-dark);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .class-preview-card:hover .preview-cta-btn {
+      background-color: var(--primary-rose);
+    }
+
+    /* CLASS DETAILS STYLING INSIDE MODAL */
     .tag-badge {
       display: inline-block;
       background: #E6F4EA;
@@ -242,19 +305,12 @@
       margin-bottom: 0.8rem;
     }
 
-    .tag-badge.pink {
-      background: #FCE8E6;
-      color: #C5221F;
-    }
-
-    .tag-badge.grey {
-      background: #F1F3F4;
-      color: #5F6368;
-    }
+    .tag-badge.pink { background: #FCE8E6; color: C5221F; }
+    .tag-badge.purple { background: #F3E8FF; color: #6B21A8; }
 
     .class-header {
       font-family: var(--font-heading);
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 0.3rem;
@@ -262,60 +318,54 @@
 
     .class-sub-header {
       color: #5F6368;
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
 
     .class-pricing-line {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--primary-dark);
       background: #F5F2EE;
-      padding: 0.6rem 1rem;
+      padding: 0.5rem 0.9rem;
       border-radius: 4px;
       display: inline-block;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       border-left: 3px solid var(--primary-rose);
     }
 
     .highlight-quote {
       background: #FAF7F2;
       border-left: 3px solid #D8A7A1;
-      padding: 1.5rem;
-      margin: 1.8rem 0;
+      padding: 1.2rem;
+      margin: 1.4rem 0;
       border-radius: 0 6px 6px 0;
     }
 
     .highlight-quote p {
       margin-bottom: 0;
       color: var(--text-dark);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .class-block-divider {
-      margin: 4rem 0;
-      border: 0;
-      border-top: 1px solid var(--border-color);
+      font-size: 0.92rem;
+      line-height: 1.6;
     }
 
     /* COURSE HIGHLIGHTS LIST */
     .course-highlights-list {
       list-style: none;
-      margin: 1.5rem 0;
+      margin: 1.2rem 0;
       padding: 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.8rem 1.5rem;
+      gap: 0.6rem 1rem;
     }
 
     .course-highlights-list li {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 400;
       color: var(--text-dark);
       position: relative;
-      padding-left: 1.5rem;
+      padding-left: 1.4rem;
     }
 
     .course-highlights-list li::before {
@@ -365,25 +415,25 @@
       background: #FFFFFF;
       border: 2px solid var(--border-color);
       border-radius: 8px;
-      padding: 2rem;
+      padding: 1.8rem;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      margin-top: 1.8rem;
+      margin-top: 1.5rem;
     }
 
     .single-booking-box h3 {
       font-family: var(--font-heading);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-top: 0;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       color: #000000;
       font-weight: 700;
     }
 
     .single-booking-box p {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .book-here-btn {
@@ -391,17 +441,17 @@
       background-color: var(--accent-green);
       color: #FFFFFF;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 1.1rem 2.5rem;
+      padding: 1rem 2rem;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(46, 125, 94, 0.2);
       width: 100%;
-      max-width: 320px;
+      max-width: 300px;
     }
 
     .book-here-btn:hover {
@@ -413,7 +463,7 @@
     .book-here-btn.waitlist-btn {
       background-color: #718096;
       box-shadow: 0 4px 10px rgba(113, 128, 150, 0.2);
-      margin-top: 0.4rem;
+      margin-top: 0.8rem;
     }
     .book-here-btn.waitlist-btn:hover {
       background-color: #4A5568;
@@ -451,7 +501,7 @@
 
     /* CONTACT SECTION */
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; text-align: center; }
-    .form-group { margin-bottom: 1.2rem; }
+    .form-group { margin-bottom: 1.2rem; text-align: left; }
     .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; }
     
     .form-group input[type="text"],
@@ -580,9 +630,9 @@
     
     .modal { 
       background: #FFFFFF; 
-      padding: 2.2rem 1.5rem; 
+      padding: 2.2rem 1.8rem; 
       width: 100%; 
-      max-width: 650px; 
+      max-width: 680px; 
       max-height: 92vh; 
       overflow-y: auto; 
       position: relative; 
@@ -594,7 +644,7 @@
     }
     
     .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; padding-right: 1.5rem; }
-    .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; padding: 0.3rem; }
+    .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); line-height: 1; padding: 0.3rem; z-index: 10; }
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
@@ -614,7 +664,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a href="#home" class="logo" onclick="switchPage('home', event)"><strong>Niki G Pilates</strong></a>
@@ -627,7 +676,6 @@
     </div>
   </header>
 
-  <!-- SIDE NAVIGATION DRAWER -->
   <div class="nav-overlay" id="navOverlay"></div>
   <nav class="side-nav" id="sideNav">
     <ul>
@@ -638,10 +686,8 @@
     </ul>
   </nav>
 
-  <!-- MAIN WEBSITE VIEWS CONTAINER -->
   <div id="mainWebsiteContent">
 
-    <!-- PAGE VIEW 1: HOME (Hero, Welcome, Classes, Testimonials) -->
     <div id="page-home" class="page-view active-page">
       <section class="hero-image-banner">
         <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Group of women doing mat Pilates">
@@ -661,101 +707,41 @@
         </div>
       </section>
 
-      <!-- CLASSES & BOOKING SECTION ON HOMEPAGE -->
       <section class="section-strip strip-white">
         <div class="strip-content">
-          
-          <!-- CLASS 1 (INTRO / ALL LEVELS - FULLY BOOKED) -->
-          <div>
-            <span class="tag-badge grey">Currently Full</span>
-            <h2 class="class-header">All levels Pilates & Strength</h2>
-            <div class="class-sub-header">West park primary school, Goring-by-Sea — Wednesday's 5:30pm - 6:20pm (50 mins) — <strong>Starts 16th September</strong></div>
-            <div class="class-pricing-line">Intro Class — Currently Full</div>
+          <h2 class="section-title">Explore Our Classes</h2>
+          <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Click any class below to view full details, descriptions, pricing, and book your spot!</p>
 
-            <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
-
-            <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
-
-            <p>We'll focus on core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
-
-            <div class="highlight-quote">
-              <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+          <div class="classes-grid">
+            
+            <div class="class-preview-card" onclick="openClassDetails('All levels Pilates & Strength')">
+              <span class="tag-badge">Beginner Friendly</span>
+              <h3>All levels Pilates & Strength</h3>
+              <div class="preview-meta">West Park Primary School, Goring-by-Sea | Wednesday's 5:30pm - 6:20pm</div>
+              <p class="preview-snippet">Suitable for anyone who wants to get stronger, move better, and reduce posture-related aches and pains from everyday life. Personalised attention provided for all abilities.</p>
+              <span class="preview-cta-btn">View Class & Book &rarr;</span>
             </div>
 
-            <div class="single-booking-box">
-              <h3>Intro Class — Currently Full</h3>
-              <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified when a space comes available.</p>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('intro')">JOIN THE WAITLIST</button>
+            <div class="class-preview-card" onclick="openClassDetails('6-Week Pilates Strength Course')">
+              <span class="tag-badge purple">Special Course</span>
+              <h3>6-Week Pilates Strength Course</h3>
+              <div class="preview-meta">Designed Especially with Beginners in Mind 💛</div>
+              <p class="preview-snippet">Build your strength, core control, stability and confidence through progressive Pilates-based movement using bodyweight, resistance bands and light dumbbells.</p>
+              <span class="preview-cta-btn">View Class & Book &rarr;</span>
             </div>
+
+            <div class="class-preview-card" onclick="openClassDetails('LOVELY BUMPS — Pregnancy Pilates')">
+              <span class="tag-badge pink">Pregnancy Speciality</span>
+              <h3>LOVELY BUMPS — Pregnancy Pilates</h3>
+              <div class="preview-meta">West Park Primary School, Goring-by-Sea | Wednesday's 5:30pm - 6:20pm</div>
+              <p class="preview-snippet">Breathe, Focus, Energise. Learn how to strengthen core muscles, prevent pregnancy-related aches and pains, and increase stamina suitable from 16 weeks.</p>
+              <span class="preview-cta-btn">View Class & Book &rarr;</span>
+            </div>
+
           </div>
-
-          <hr class="class-block-divider">
-
-          <!-- CLASS 2 (6-WEEK COURSE) -->
-          <div>
-            <span class="tag-badge grey">Currently Full</span>
-            <h2 class="class-header">6-Week Pilates Strength Course</h2>
-            <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins)</div>
-            <div class="class-pricing-line">6-Week Course — Currently Full</div>
-
-            <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
-
-            <p>I'm excited to be introducing my <strong>6-Week Pilates Strength Course</strong> — designed especially with beginners in mind. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
-
-            <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
-
-            <ul class="course-highlights-list">
-              <li>Core & pelvic stability</li>
-              <li>Glutes & lower-body strength</li>
-              <li>Arms, shoulders & back</li>
-              <li>Posture & alignment</li>
-              <li>Balance & stability</li>
-              <li>Mobility & flexibility</li>
-              <li>Pilates-based strength work</li>
-            </ul>
-
-            <div class="highlight-quote">
-              <p>And don't worry if you've never done Pilates before — you absolutely don't need any experience to join. We'll start with the foundations and build week by week, so you'll have the chance to learn the movements properly and actually feel your progress. By the end of the six weeks, the aim is for you to feel stronger, more confident and more connected to your body.</p>
-            </div>
-
-            <div class="single-booking-box">
-              <h3>6-Week Pilates Strength Course — Currently Full</h3>
-              <p>Full 6-Week Course Package (£66)</p>
-              <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified when a space comes available.</p>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('sixweek')">JOIN THE WAITLIST</button>
-            </div>
-          </div>
-
-          <hr class="class-block-divider">
-
-          <!-- CLASS 3 (LOVELY BUMPS) -->
-          <div>
-            <span class="tag-badge pink">Pregnancy Speciality</span>
-            <h2 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h2>
-            <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesday's 5:30pm - 6:20pm (50 mins)</div>
-            <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £60.50</div>
-
-            <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
-
-            <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
-
-            <div class="highlight-quote">
-              <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
-            </div>
-
-            <div class="single-booking-box">
-              <h3>Ready to Join Lovely Bumps?</h3>
-              <p>Choose from Drop-In (£13) or 5-Week Block (£60.50)</p>
-              <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '5:30 PM - 6:20 PM (50 mins)')">BOOK HERE</button>
-              <br>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('lovelybumps')">JOIN THE WAITLIST</button>
-            </div>
-          </div>
-
         </div>
       </section>
 
-      <!-- TESTIMONIALS SECTION ON HOMEPAGE -->
       <section class="section-strip strip-stone">
         <div class="strip-content">
           <h2 class="section-title">Client Stories</h2>
@@ -773,23 +759,17 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW 2: ABOUT NIKI (Separate Page) -->
     <div id="page-about-niki" class="page-view">
       <section class="section-strip strip-rose" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
           <h2 class="section-title">ABOUT ME</h2>
           
           <p>Hi, I’m Niki!</p>
-          
           <p>I started my journey as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London, supporting people with movement and exercise.</p>
-          
           <p>I’m trained in the APPI Pilates method, a physiotherapist-designed approach that focuses on mindful movement, strength, control and good technique. I’m also Prenatal and Postnatal certified in both Mat and Reformer Pilates, as well as a Level 2 Group Strength Trainer.</p>
-          
           <p>I bring this knowledge into every class, creating supportive and approachable sessions for all abilities and stages of life. Whether you’re building strength, returning to exercise after having a baby, becoming stronger during pregnancy or simply looking to move with more confidence, my classes are designed to help you feel strong, capable and supported.</p>
-          
           <p>My aim is simple: to help you move better, build strength and feel more confident in your body — without pressure or perfection.</p>
 
-          <!-- QUALIFICATIONS SECTION -->
           <div class="qualifications-box">
             <h3>Qualifications</h3>
             <ul>
@@ -802,12 +782,10 @@
               <li>Anatomy & Physiology ITEC – <strong>2015</strong></li>
             </ul>
           </div>
-
         </div>
       </section>
     </div>
 
-    <!-- PAGE VIEW 3: SPORTS MASSAGE (Separate Page) -->
     <div id="page-massage" class="page-view">
       <section class="section-strip strip-dark" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
@@ -820,7 +798,6 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW 4: CONTACT (Separate Page) -->
     <div id="page-contact" class="page-view">
       <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
         <div class="strip-content">
@@ -849,7 +826,6 @@
             </div>
           </div>
 
-          <!-- SOCIAL ICONS -->
           <div class="social-section">
             <h3 style="color: #000000; font-weight: 800;">Connect & Follow Along</h3>
             <p>Follow Niki G Pilates for updates and movement tips:</p>
@@ -864,177 +840,52 @@
               </a>
             </div>
           </div>
-
         </div>
       </section>
     </div>
-
   </div>
 
-  <!-- BOOKING MODAL -->
-  <div class="modal-overlay" id="bookingModal">
+  <div class="modal-overlay" id="classModal">
     <div class="modal">
-      <button class="close-btn" onclick="closeModalDirect()">&times;</button>
+      <button class="close-btn" onclick="closeClassModal()">&times;</button>
+      <div id="classModalContent">
+        </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="waitlistModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
       
-      <div id="bookingFormContainer">
-        <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to reserve your spot</p>
+      <h3>LOVELY BUMPS — Waitlist</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+        Joining the wait-list doesn’t commit you to booking. We’ll contact you when bookings open and share further class details!
+      </p>
+
+      <form id="waitlistForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+        <input type="hidden" name="Form Type" value="Pregnancy Pilates Waitlist">
         
-        <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
-          <input type="hidden" name="Class Name" id="hidden-class-name">
-          
-          <div class="step-heading">Step 1: Choose Your Pass</div>
-          <div class="form-group">
-            <label for="pass-type">Select Option *</label>
-            <select id="pass-type" name="Pass Selected" required>
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="waitlist-name">Name *</label>
+          <input type="text" id="waitlist-name" name="Client Full Name" required placeholder="Jane Doe">
+        </div>
 
-          <div class="step-heading">Step 2: Date & Time</div>
-          <div class="form-group">
-            <label for="booking-date">Choose Class/Course Start Date *</label>
-            <input type="date" id="booking-date" name="Class Date" required>
-          </div>
+        <div class="form-group">
+          <label for="waitlist-email">Email Address *</label>
+          <input type="email" id="waitlist-email" name="Client Email" required placeholder="jane@example.com">
+        </div>
 
-          <div class="form-group">
-            <label for="booking-time">Time Slot</label>
-            <input type="text" id="booking-time" name="Class Time" readonly style="background:#e9ecef; cursor:not-allowed;">
-          </div>
+        <div class="form-group">
+          <label for="waitlist-phone">Mobile Number *</label>
+          <input type="tel" id="waitlist-phone" name="Client Phone" required placeholder="07123 456789">
+        </div>
 
-          <div class="step-heading">Step 3: Personal Information</div>
-          <div class="form-group">
-            <label for="booking-name">Full Name *</label>
-            <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
-          </div>
+        <p style="font-size: 0.9rem; font-weight: 600; color: var(--accent-green); margin: 1rem 0 1.5rem 0;">
+          So happy you'll join! 💛
+        </p>
 
-          <div class="form-group">
-            <label for="booking-dob">Date of Birth *</label>
-            <input type="date" id="booking-dob" name="Date of Birth" required>
-          </div>
-
-          <div class="form-group">
-            <label for="booking-email">Email Address *</label>
-            <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
-          </div>
-
-          <div class="form-group">
-            <label for="booking-phone">Contact Phone Number *</label>
-            <input type="tel" id="booking-phone" name="Client Phone" required placeholder="07123 456789">
-          </div>
-
-          <div class="step-heading">Step 4: Health Questions</div>
-
-          <div class="form-group">
-            <label>1. Any injuries, joint, or spinal issues? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Injuries or Spinal Issues" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
-              <label><input type="radio" name="Injuries or Spinal Issues" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
-            </div>
-          </div>
-
-          <div class="form-group" id="injuries-details-group" style="display: none;">
-            <label for="injuries-details">Please describe your injury or condition:</label>
-            <textarea id="injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness, recovering from shoulder injury..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>2. High blood pressure, heart condition, or dizziness? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
-              <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
-              <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="other-health-issues">4. Are there any other health-related issues, conditions, or injuries I should be aware of?</label>
-            <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma, joint replacement, etc."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>5. Have you done Pilates before? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Done Pilates Before" value="No" checked onclick="togglePilatesExperienceBox(false)"> No</label>
-              <label><input type="radio" name="Done Pilates Before" value="Yes" onclick="togglePilatesExperienceBox(true)"> Yes</label>
-            </div>
-          </div>
-
-          <div class="form-group" id="pilates-experience-details-group" style="display: none;">
-            <label for="pilates-experience-details">Please share a brief note on your previous Pilates experience:</label>
-            <textarea id="pilates-experience-details" name="Pilates Experience Details" placeholder="E.g., practiced mat Pilates 2 years ago, completed reformer classes, etc."></textarea>
-          </div>
-
-          <div class="step-heading">Step 5: Health Waiver Consent</div>
-
-          <div class="form-group">
-            <div class="waiver-box">
-              By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury, and I confirm that I am in suitable physical health to participate. I agree to inform the instructor before class of any changes to my physical condition, pregnancy, or injuries.
-            </div>
-            <div class="checkbox-group" id="waiver-container">
-              <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
-              <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
-            </div>
-          </div>
-
-          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Pay via Stripe &rarr;</button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- WAITLIST MODAL 1: INTRO CLASS -->
-  <div class="modal-overlay" id="waitlistModal-intro">
-    <div class="modal" style="max-width: 700px;">
-      <button class="close-btn" onclick="closeWaitlistDirect('intro')">&times;</button>
-      
-      <h3 style="margin-bottom: 0.5rem;">Intro Class Waitlist</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Complete the form below to join the wait-list and be notified when a space comes available.
-      </p>
-
-      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdpPu_9xYq5qI81xWIiQHt_Ajj5jO2YWuvoX7V_2X4bCPNjbw/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- WAITLIST MODAL 2: 6-WEEK COURSE -->
-  <div class="modal-overlay" id="waitlistModal-sixweek">
-    <div class="modal" style="max-width: 700px;">
-      <button class="close-btn" onclick="closeWaitlistDirect('sixweek')">&times;</button>
-      
-      <h3 style="margin-bottom: 0.5rem;">6-Week Course Waitlist</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Complete the form below to join the wait-list and be notified when a space comes available.
-      </p>
-
-      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd3u6DJVmQfnILZDy4zQ1tHp4wTshA1qpRayGWn3saOHiFKxg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- WAITLIST MODAL 3: LOVELY BUMPS -->
-  <div class="modal-overlay" id="waitlistModal-lovelybumps">
-    <div class="modal" style="max-width: 700px;">
-      <button class="close-btn" onclick="closeWaitlistDirect('lovelybumps')">&times;</button>
-      
-      <h3 style="margin-bottom: 0.5rem;">Lovely Bumps Waitlist</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Complete the form below to join the wait-list and be notified when a space comes available.
-      </p>
-
-      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
-      </div>
+        <button type="submit" id="waitlist-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Join Waitlist</button>
+      </form>
     </div>
   </div>
 
@@ -1059,155 +910,79 @@
     function switchPage(pageId, event) {
       if (event) event.preventDefault();
       
-      // Hide all page views
       document.querySelectorAll('.page-view').forEach(view => {
         view.classList.remove('active-page');
       });
 
-      // Show the targeted page view
       const targetPage = document.getElementById('page-' + pageId);
       if (targetPage) {
         targetPage.classList.add('active-page');
       }
 
-      // Close slide-out navigation menu
       sideNav.classList.remove('open');
       navOverlay.classList.remove('active');
-
-      // Scroll back to top smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     const classPassOptions = {
+      'All levels Pilates & Strength': [
+        { label: 'Book Your First Class — £8.50', value: 'Book Your First Class (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
+        { label: 'Drop-In — £12.00', value: 'Drop-In (£12.00)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' }
+      ],
+      '6-Week Pilates Strength Course': [
+        { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' }
+      ],
       'LOVELY BUMPS — Pregnancy Pilates': [
         { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
         { label: '5-Week Block — £60.50', value: '5-Week Block (£60.50)', stripeUrl: 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606' }
       ]
     };
 
-    function openBooking(className, timeSlot) {
-      const form = document.getElementById('bookingForm');
-      form.reset();
-      clearFormErrors(form);
-
-      document.getElementById('modal-class-title').innerText = className;
-      document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
-      document.getElementById('hidden-class-name').value = className;
-      document.getElementById('booking-time').value = timeSlot || '5:30 PM - 6:20 PM (50 mins)';
-      
-      const passSelect = document.getElementById('pass-type');
-      passSelect.innerHTML = '';
-
-      const options = classPassOptions[className] || [];
-      
-      options.forEach(opt => {
-        const optionEl = document.createElement('option');
-        optionEl.value = opt.value;
-        optionEl.textContent = opt.label;
-        optionEl.dataset.stripeUrl = opt.stripeUrl;
-        passSelect.appendChild(optionEl);
-      });
-
-      document.getElementById('bookingModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModalDirect() {
-      document.getElementById('bookingModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function openWaitlist(type) {
-      const modal = document.getElementById('waitlistModal-' + type);
-      if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeWaitlistDirect(type) {
-      const modal = document.getElementById('waitlistModal-' + type);
-      if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    function toggleInjuriesBox(show) {
-      document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
-    }
-
-    function togglePilatesExperienceBox(show) {
-      document.getElementById('pilates-experience-details-group').style.display = show ? 'block' : 'none';
-    }
-
-    function clearFormErrors(form) {
-      form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
-      form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
-    }
-
-    function validateForm(form) {
-      clearFormErrors(form);
-      let isValid = true;
-      const requiredInputs = form.querySelectorAll('[required]');
-
-      requiredInputs.forEach(input => {
-        if (input.type === 'checkbox') {
-          if (!input.checked) {
-            isValid = false;
-            const parent = input.closest('.checkbox-group');
-            if (parent) parent.classList.add('field-error-checkbox');
-          }
-        } else {
-          if (!input.value.trim()) {
-            isValid = false;
-            input.classList.add('field-error');
-          }
-        }
-      });
-
-      return isValid;
-    }
-
-    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      if (!validateForm(this)) {
-        alert('Please fill out all required fields outlined in red.');
-        return;
-      }
-
-      const submitBtn = document.getElementById('booking-submit-btn');
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting & Redirecting to Stripe...";
-
-      const passSelect = document.getElementById('pass-type');
-      const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/cNifZj8TH0LC2M3gH27N603";
-
-      const formData = new FormData(this);
-
-      try {
-        const response = await fetch(this.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          window.location.href = targetStripeUrl;
-        } else {
-          alert("There was an issue submitting your registration details. Please try again.");
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Complete Registration & Pay via Stripe →";
-        }
-      } catch (error) {
-        alert("Network error. Please check your connection and try again.");
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Complete Registration & Pay via Stripe →";
-      }
-    });
-  </script>
-
-</body>
-</html>
+    // Database of full class contents to populate inside the modal
+    const classData = {
+      'All levels Pilates & Strength': {
+        tag: '<span class="tag-badge">Beginner Friendly</span>',
+        title: 'All levels Pilates & Strength',
+        subHeader: "West park primary school, Goring-by-Sea — Wednesday's 5:30pm - 6:20pm (50 mins) — <strong>Starts 16th September</strong>",
+        pricingLine: 'Book Your First Class £8.50 or £12 PAYG Drop-In Below',
+        bodyHTML: `
+          <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
+          <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
+          <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+          <div class="highlight-quote">
+            <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+          </div>
+        `,
+        timeSlot: '5:30 PM - 6:20 PM (50 mins)',
+        showWaitlist: false
+      },
+      '6-Week Pilates Strength Course': {
+        tag: '<span class="tag-badge purple">Special Course</span>',
+        title: '6-Week Pilates Strength Course',
+        subHeader: 'Designed Especially with Beginners in Mind 💛',
+        pricingLine: 'Price Option: Full 6-Week Course £66',
+        bodyHTML: `
+          <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
+          <p>I'm excited to be introducing my <strong>6-Week Pilates Strength Course</strong> — designed especially with beginners in mind. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
+          <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
+          <ul class="course-highlights-list">
+            <li>Core & pelvic stability</li>
+            <li>Glutes & lower-body strength</li>
+            <li>Arms, shoulders & back</li>
+            <li>Posture & alignment</li>
+            <li>Balance & stability</li>
+            <li>Mobility & flexibility</li>
+            <li>Pilates-based strength work</li>
+          </ul>
+          <div class="highlight-quote">
+            <p>And don't worry if you've never done Pilates before — you absolutely don't need any experience to join. We'll start with the foundations and build week by week, so you'll have the chance to learn the movements properly and actually feel your progress.</p>
+          </div>
+        `,
+        timeSlot: '5:30 PM - 6:20 PM (50 mins)',
+        showWaitlist: false
+      },
+      'LOVELY BUMPS — Pregnancy Pilates': {
+        tag: '<span class="tag-badge pink">Pregnancy Speciality</span>',
+        title: 'LOVELY BUMPS — Pregnancy Pilates',
+        subHeader: "West Park Primary School, Goring-by-Sea — Wednesday's 5:30pm - 6:20pm (50 mins)",
+        pricingLine: 'Price Options: Drop-In £13 |
