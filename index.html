@@ -247,9 +247,9 @@
       color: #C5221F;
     }
 
-    .tag-badge.grey {
-      background: #F1F3F4;
-      color: #5F6368;
+    .tag-badge.purple {
+      background: #F3E8FF;
+      color: #6B21A8;
     }
 
     .class-header {
@@ -327,7 +327,7 @@
 
     /* QUALIFICATIONS BOX STYLING */
     .qualifications-box {
-      background-color: #FAF6F0;
+      background-color: #FAF6F0; /* Distinct soft background to stand out from the main block */
       border: 1px solid #E2DCD5;
       padding: 1.5rem;
       border-radius: 6px;
@@ -353,7 +353,7 @@
     }
 
     .qualifications-box li {
-      font-size: 0.85rem;
+      font-size: 0.85rem; /* Smaller than main text */
       line-height: 1.6;
       margin-bottom: 0.4rem;
       color: var(--text-dark);
@@ -413,7 +413,7 @@
     .book-here-btn.waitlist-btn {
       background-color: #718096;
       box-shadow: 0 4px 10px rgba(113, 128, 150, 0.2);
-      margin-top: 0.4rem;
+      margin-top: 0.8rem;
     }
     .book-here-btn.waitlist-btn:hover {
       background-color: #4A5568;
@@ -665,38 +665,38 @@
       <section class="section-strip strip-white">
         <div class="strip-content">
           
-          <!-- CLASS 1 (INTRO / ALL LEVELS - FULLY BOOKED) -->
+          <!-- CLASS 1 -->
           <div>
-            <span class="tag-badge grey">Currently Full</span>
+            <span class="tag-badge">Beginner Friendly</span>
             <h2 class="class-header">All levels Pilates & Strength</h2>
             <div class="class-sub-header">West park primary school, Goring-by-Sea — Wednesday's 5:30pm - 6:20pm (50 mins) — <strong>Starts 16th September</strong></div>
-            <div class="class-pricing-line">Intro Class — Currently Full</div>
+            <div class="class-pricing-line">Book Your First Class £8.50 or £12 PAYG Drop-In Below</div>
 
             <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
 
             <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
 
-            <p>We'll focus on core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+            <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
 
             <div class="highlight-quote">
               <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
             </div>
 
             <div class="single-booking-box">
-              <h3>Intro Class — Currently Full</h3>
-              <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified when a space comes available.</p>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('intro')">JOIN THE WAITLIST</button>
+              <h3>Ready to Join All Levels Pilates?</h3>
+              <p>Starts 16th September | Book Your First Class £8.50 or £12 PAYG Class</p>
+              <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength', '5:30 PM - 6:20 PM (50 mins)')">BOOK HERE</button>
             </div>
           </div>
 
           <hr class="class-block-divider">
 
-          <!-- CLASS 2 (6-WEEK COURSE) -->
+          <!-- CLASS 2 -->
           <div>
-            <span class="tag-badge grey">Currently Full</span>
+            <span class="tag-badge purple">Special Course</span>
             <h2 class="class-header">6-Week Pilates Strength Course</h2>
-            <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesday's 6:30pm - 7:20pm (50 mins)</div>
-            <div class="class-pricing-line">6-Week Course — Currently Full</div>
+            <div class="class-sub-header">Designed Especially with Beginners in Mind 💛</div>
+            <div class="class-pricing-line">Price Option: Full 6-Week Course £66</div>
 
             <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
 
@@ -719,16 +719,15 @@
             </div>
 
             <div class="single-booking-box">
-              <h3>6-Week Pilates Strength Course — Currently Full</h3>
+              <h3>Ready to Join the 6-Week Course?</h3>
               <p>Full 6-Week Course Package (£66)</p>
-              <p style="font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem;">Join the wait-list below and be notified when a space comes available.</p>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('sixweek')">JOIN THE WAITLIST</button>
+              <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course', '5:30 PM - 6:20 PM (50 mins)')">BOOK HERE</button>
             </div>
           </div>
 
           <hr class="class-block-divider">
 
-          <!-- CLASS 3 (LOVELY BUMPS) -->
+          <!-- CLASS 3 -->
           <div>
             <span class="tag-badge pink">Pregnancy Speciality</span>
             <h2 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h2>
@@ -748,7 +747,7 @@
               <p>Choose from Drop-In (£13) or 5-Week Block (£60.50)</p>
               <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates', '5:30 PM - 6:20 PM (50 mins)')">BOOK HERE</button>
               <br>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist('lovelybumps')">JOIN THE WAITLIST</button>
+              <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
             </div>
           </div>
 
@@ -990,51 +989,40 @@
     </div>
   </div>
 
-  <!-- WAITLIST MODAL 1: INTRO CLASS -->
-  <div class="modal-overlay" id="waitlistModal-intro">
-    <div class="modal" style="max-width: 700px;">
-      <button class="close-btn" onclick="closeWaitlistDirect('intro')">&times;</button>
+  <!-- WAITLIST MODAL -->
+  <div class="modal-overlay" id="waitlistModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
       
-      <h3 style="margin-bottom: 0.5rem;">Intro Class Waitlist</h3>
+      <h3>LOVELY BUMPS — Waitlist</h3>
       <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Complete the form below to join the wait-list and be notified when a space comes available.
+        Joining the wait-list doesn’t commit you to booking. We’ll contact you when bookings open and share further class details!
       </p>
 
-      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdpPu_9xYq5qI81xWIiQHt_Ajj5jO2YWuvoX7V_2X4bCPNjbw/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
-      </div>
-    </div>
-  </div>
+      <form id="waitlistForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+        <input type="hidden" name="Form Type" value="Pregnancy Pilates Waitlist">
+        
+        <div class="form-group">
+          <label for="waitlist-name">Name *</label>
+          <input type="text" id="waitlist-name" name="Client Full Name" required placeholder="Jane Doe">
+        </div>
 
-  <!-- WAITLIST MODAL 2: 6-WEEK COURSE -->
-  <div class="modal-overlay" id="waitlistModal-sixweek">
-    <div class="modal" style="max-width: 700px;">
-      <button class="close-btn" onclick="closeWaitlistDirect('sixweek')">&times;</button>
-      
-      <h3 style="margin-bottom: 0.5rem;">6-Week Course Waitlist</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Complete the form below to join the wait-list and be notified when a space comes available.
-      </p>
+        <div class="form-group">
+          <label for="waitlist-email">Email Address *</label>
+          <input type="email" id="waitlist-email" name="Client Email" required placeholder="jane@example.com">
+        </div>
 
-      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd3u6DJVmQfnILZDy4zQ1tHp4wTshA1qpRayGWn3saOHiFKxg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
-      </div>
-    </div>
-  </div>
+        <div class="form-group">
+          <label for="waitlist-phone">Mobile Number *</label>
+          <input type="tel" id="waitlist-phone" name="Client Phone" required placeholder="07123 456789">
+        </div>
 
-  <!-- WAITLIST MODAL 3: LOVELY BUMPS -->
-  <div class="modal-overlay" id="waitlistModal-lovelybumps">
-    <div class="modal" style="max-width: 700px;">
-      <button class="close-btn" onclick="closeWaitlistDirect('lovelybumps')">&times;</button>
-      
-      <h3 style="margin-bottom: 0.5rem;">Lovely Bumps Waitlist</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Complete the form below to join the wait-list and be notified when a space comes available.
-      </p>
+        <p style="font-size: 0.9rem; font-weight: 600; color: var(--accent-green); margin: 1rem 0 1.5rem 0;">
+          So happy you'll join! 💛
+        </p>
 
-      <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
-      </div>
+        <button type="submit" id="waitlist-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Join Waitlist</button>
+      </form>
     </div>
   </div>
 
@@ -1079,6 +1067,13 @@
     }
 
     const classPassOptions = {
+      'All levels Pilates & Strength': [
+        { label: 'Book Your First Class — £8.50', value: 'Book Your First Class (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
+        { label: 'Drop-In — £12.00', value: 'Drop-In (£12.00)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' }
+      ],
+      '6-Week Pilates Strength Course': [
+        { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' }
+      ],
       'LOVELY BUMPS — Pregnancy Pilates': [
         { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
         { label: '5-Week Block — £60.50', value: '5-Week Block (£60.50)', stripeUrl: 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606' }
@@ -1098,7 +1093,7 @@
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const options = classPassOptions[className] || [];
+      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
       
       options.forEach(opt => {
         const optionEl = document.createElement('option');
@@ -1117,20 +1112,17 @@
       document.body.style.overflow = 'auto';
     }
 
-    function openWaitlist(type) {
-      const modal = document.getElementById('waitlistModal-' + type);
-      if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
+    function openWaitlist() {
+      const form = document.getElementById('waitlistForm');
+      form.reset();
+      clearFormErrors(form);
+      document.getElementById('waitlistModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
 
-    function closeWaitlistDirect(type) {
-      const modal = document.getElementById('waitlistModal-' + type);
-      if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
+    function closeWaitlistDirect() {
+      document.getElementById('waitlistModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
 
     function toggleInjuriesBox(show) {
@@ -1207,7 +1199,47 @@
         submitBtn.innerText = "Complete Registration & Pay via Stripe →";
       }
     });
+
+    document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!validateForm(this)) {
+        alert('Please fill out all required fields outlined in red.');
+        return;
+      }
+
+      const submitBtn = document.getElementById('waitlist-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          alert("You have successfully joined the waitlist! We'll be in touch soon.");
+          closeWaitlistDirect();
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Join Waitlist";
+        } else {
+          alert("There was an issue submitting your details. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Join Waitlist";
+        }
+      } catch (error) {
+        alert("Network error. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Join Waitlist";
+      }
+    });
   </script>
 
 </body>
 </html>
+
+
