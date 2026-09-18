@@ -790,7 +790,7 @@
     <div id="page-class-all-levels" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
-          <button class="back-to-home-btn" onclick="switchPage('home', event)">&larr; Back to Classes</button>
+          <button class="back-to-home-btn" onclick="goBack(event)">&larr; Back</button>
           
           <span class="tag-badge">Beginner Friendly</span>
           <h2 class="class-header">All levels Pilates & Strength</h2>
@@ -820,7 +820,7 @@
     <div id="page-class-6-week-course" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
-          <button class="back-to-home-btn" onclick="switchPage('home', event)">&larr; Back to Classes</button>
+          <button class="back-to-home-btn" onclick="goBack(event)">&larr; Back</button>
 
           <span class="tag-badge purple">Special Course</span>
           <h2 class="class-header">6-Week Pilates Strength Course (Beginners)</h2>
@@ -860,7 +860,7 @@
     <div id="page-class-lovely-bumps" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
-          <button class="back-to-home-btn" onclick="switchPage('home', event)">&larr; Back to Classes</button>
+          <button class="back-to-home-btn" onclick="goBack(event)">&larr; Back</button>
 
           <span class="tag-badge pink">Pregnancy Speciality</span>
           <h2 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h2>
@@ -890,6 +890,7 @@
     <div id="page-about-niki" class="page-view">
       <section class="section-strip strip-rose" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
+          <button class="back-to-home-btn" onclick="goBack(event)" style="color: var(--primary-dark);">&larr; Back</button>
           <h2 class="section-title">ABOUT ME</h2>
           
           <p>Hi, I’m Niki!</p>
@@ -924,6 +925,7 @@
     <div id="page-massage" class="page-view">
       <section class="section-strip strip-dark" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
+          <button class="back-to-home-btn" onclick="goBack(event)" style="color: #FFFFFF;">&larr; Back</button>
           <div class="profile-img-container">
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Sports massage oils and wellness setup">
           </div>
@@ -937,6 +939,7 @@
     <div id="page-contact" class="page-view">
       <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
         <div class="strip-content">
+          <button class="back-to-home-btn" onclick="goBack(event)">&larr; Back</button>
           <h2 class="section-title">Contact Us</h2>
           
           <div class="contact-grid" style="padding: 1.5rem;">
@@ -1160,16 +1163,23 @@
     menuToggle.addEventListener('click', toggleMenu);
     navOverlay.addEventListener('click', toggleMenu);
 
-    // PAGE SWITCHER FUNCTION
+    // NAVIGATION HISTORY STACK (TRACKS 1-STEP BACKWARDS)
+    let pageHistory = ['home'];
+
     function switchPage(pageId, event) {
       if (event) event.preventDefault();
       
+      const currentPage = pageHistory[pageHistory.length - 1];
+      if (currentPage !== pageId) {
+        pageHistory.push(pageId);
+      }
+
       // Hide all page views
       document.querySelectorAll('.page-view').forEach(view => {
         view.classList.remove('active-page');
       });
 
-      // Show the targeted page view
+      // Show targeted page view
       const targetPage = document.getElementById('page-' + pageId);
       if (targetPage) {
         targetPage.classList.add('active-page');
@@ -1180,6 +1190,28 @@
       navOverlay.classList.remove('active');
 
       // Scroll back to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack(event) {
+      if (event) event.preventDefault();
+
+      if (pageHistory.length > 1) {
+        pageHistory.pop(); // Remove current page
+        const previousPageId = pageHistory[pageHistory.length - 1]; // Get previous page
+
+        document.querySelectorAll('.page-view').forEach(view => {
+          view.classList.remove('active-page');
+        });
+
+        const targetPage = document.getElementById('page-' + previousPageId);
+        if (targetPage) {
+          targetPage.classList.add('active-page');
+        }
+      } else {
+        switchPage('home');
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
