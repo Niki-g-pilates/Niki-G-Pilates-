@@ -55,6 +55,7 @@
       color: var(--primary-rose);
       text-decoration: none;
       font-weight: 700;
+      cursor: pointer;
     }
 
     /* MENU TOGGLE BUTTON */
@@ -228,6 +229,80 @@
     .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
     .strip-dark h3 { color: #FFFFFF; }
 
+    /* HOMEPAGE SELECTION BOXES (CLEAN MENU GRID) */
+    .classes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .class-selection-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .class-selection-card:hover {
+      border-color: var(--primary-rose);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .class-card-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0 0 0.4rem 0;
+    }
+
+    .class-card-info p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .class-card-arrow {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-rose);
+      transition: transform 0.3s ease;
+    }
+
+    .class-selection-card:hover .class-card-arrow {
+      transform: translateX(5px);
+    }
+
+    /* BACK BUTTON FOR DETAIL PAGES */
+    .back-to-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-to-home-btn:hover {
+      color: var(--primary-dark);
+    }
+
     /* CLASS DETAILS STYLING */
     .tag-badge {
       display: inline-block;
@@ -292,12 +367,6 @@
       color: var(--text-dark);
       font-size: 0.95rem;
       line-height: 1.7;
-    }
-
-    .class-block-divider {
-      margin: 4rem 0;
-      border: 0;
-      border-top: 1px solid var(--border-color);
     }
 
     /* COURSE HIGHLIGHTS LIST */
@@ -617,7 +686,7 @@
   <!-- HEADER -->
   <header>
     <div class="nav-container">
-      <a href="#home" class="logo" onclick="switchPage('home', event)"><strong>Niki G Pilates</strong></a>
+      <a class="logo" onclick="switchPage('home', event)"><strong>Niki G Pilates</strong></a>
       
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
         <span></span>
@@ -641,7 +710,7 @@
   <!-- MAIN WEBSITE VIEWS CONTAINER -->
   <div id="mainWebsiteContent">
 
-    <!-- PAGE VIEW 1: HOME (Hero, Welcome, Classes, Testimonials) -->
+    <!-- PAGE VIEW 1: HOME (Hero, Welcome, Clean Class Selection Menu, Testimonials) -->
     <div id="page-home" class="page-view active-page">
       <section class="hero-image-banner">
         <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Group of women doing mat Pilates">
@@ -661,93 +730,38 @@
         </div>
       </section>
 
-      <!-- CLASSES & BOOKING SECTION ON HOMEPAGE -->
+      <!-- HOMEPAGE CLASSES MENU (CLEAN SELECTION BOXES WITH NO TEXT PREVIEWS) -->
       <section class="section-strip strip-white">
         <div class="strip-content">
-          
-          <!-- CLASS 1 -->
-          <div>
-            <span class="tag-badge">Beginner Friendly</span>
-            <h2 class="class-header">All levels Pilates & Strength</h2>
-            <div class="class-sub-header">West park primary school, Goring-by-Sea — Wednesday's 5:30pm / 6:30pm (50 mins) — <strong>Starts 16th September</strong></div>
-            <div class="class-pricing-line">Book Your First Class £8.50 or £12 PAYG Drop-In Below</div>
+          <h2 class="section-title">CLASSES & COURSES</h2>
+          <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Select an option below to view full details, schedules, and book your spot:</p>
 
-            <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
-
-            <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
-
-            <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
-
-            <div class="highlight-quote">
-              <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+          <div class="classes-grid">
+            <!-- Card 1 -->
+            <div class="class-selection-card" onclick="switchPage('class-all-levels', event)">
+              <div class="class-card-info">
+                <h3>All levels Pilates & Strength</h3>
+                <p>West Park Primary School, Goring-by-Sea — Wednesdays</p>
+              </div>
+              <div class="class-card-arrow">&rarr;</div>
             </div>
 
-            <div class="single-booking-box">
-              <h3>Ready to Join All Levels Pilates?</h3>
-              <p>Starts 16th September | Book Your First Class £8.50 or £12 PAYG Class</p>
-              <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength')">BOOK HERE</button>
-            </div>
-          </div>
-
-          <hr class="class-block-divider">
-
-          <!-- CLASS 2 -->
-          <div>
-            <span class="tag-badge purple">Special Course</span>
-            <h2 class="class-header">6-Week Pilates Strength Course</h2>
-            <div class="class-sub-header">Designed Especially with Beginners in Mind 💛</div>
-            <div class="class-pricing-line">Price Option: Full 6-Week Course £66</div>
-
-            <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
-
-            <p>I'm excited to be introducing my <strong>6-Week Pilates Strength Course</strong> — designed especially with beginners in mind. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
-
-            <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
-
-            <ul class="course-highlights-list">
-              <li>Core & pelvic stability</li>
-              <li>Glutes & lower-body strength</li>
-              <li>Arms, shoulders & back</li>
-              <li>Posture & alignment</li>
-              <li>Balance & stability</li>
-              <li>Mobility & flexibility</li>
-              <li>Pilates-based strength work</li>
-            </ul>
-
-            <div class="highlight-quote">
-              <p>And don't worry if you've never done Pilates before — you absolutely don't need any experience to join. We'll start with the foundations and build week by week, so you'll have the chance to learn the movements properly and actually feel your progress. By the end of the six weeks, the aim is for you to feel stronger, more confident and more connected to your body.</p>
+            <!-- Card 2 -->
+            <div class="class-selection-card" onclick="switchPage('class-6-week-course', event)">
+              <div class="class-card-info">
+                <h3>6-Week Pilates Strength Course</h3>
+                <p>Designed especially with beginners in mind</p>
+              </div>
+              <div class="class-card-arrow">&rarr;</div>
             </div>
 
-            <div class="single-booking-box">
-              <h3>Ready to Join the 6-Week Course?</h3>
-              <p>Full 6-Week Course Package (£66)</p>
-              <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course')">BOOK HERE</button>
-            </div>
-          </div>
-
-          <hr class="class-block-divider">
-
-          <!-- CLASS 3 -->
-          <div>
-            <span class="tag-badge pink">Pregnancy Speciality</span>
-            <h2 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h2>
-            <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesday's 5:30pm / 6:30pm (50 mins)</div>
-            <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £60.50</div>
-
-            <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
-
-            <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
-
-            <div class="highlight-quote">
-              <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
-            </div>
-
-            <div class="single-booking-box">
-              <h3>Ready to Join Lovely Bumps?</h3>
-              <p>Choose from Drop-In (£13) or 5-Week Block (£60.50)</p>
-              <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates')">BOOK HERE</button>
-              <br>
-              <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
+            <!-- Card 3 -->
+            <div class="class-selection-card" onclick="switchPage('class-lovely-bumps', event)">
+              <div class="class-card-info">
+                <h3>LOVELY BUMPS — Pregnancy Pilates</h3>
+                <p>West Park Primary School, Goring-by-Sea — Wednesdays</p>
+              </div>
+              <div class="class-card-arrow">&rarr;</div>
             </div>
           </div>
 
@@ -767,6 +781,106 @@
               <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
               <div class="testimonial-author">— Elysia, Brighton</div>
             </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE VIEW: ALL LEVELS PILATES DETAIL PAGE -->
+    <div id="page-class-all-levels" class="page-view">
+      <section class="section-strip strip-white" style="padding-top: 3.5rem;">
+        <div class="strip-content">
+          <button class="back-to-home-btn" onclick="switchPage('home', event)">&larr; Back to Classes</button>
+          
+          <span class="tag-badge">Beginner Friendly</span>
+          <h2 class="class-header">All levels Pilates & Strength</h2>
+          <div class="class-sub-header">West park primary school, Goring-by-Sea — Wednesday's 5:30pm / 6:30pm (50 mins) — <strong>Starts 16th September</strong></div>
+          <div class="class-pricing-line">Book Your First Class £8.50 or £12 PAYG Drop-In Below</div>
+
+          <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
+
+          <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
+
+          <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This beginner-friendly class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+
+          <div class="highlight-quote">
+            <p>Whether you're completely new to Pilates or haven't exercised in a while, that's absolutely fine. This class is suitable for all abilities, and I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join All Levels Pilates?</h3>
+            <p>Starts 16th September | Book Your First Class £8.50 or £12 PAYG Class</p>
+            <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength')">BOOK HERE</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE VIEW: 6-WEEK COURSE DETAIL PAGE -->
+    <div id="page-class-6-week-course" class="page-view">
+      <section class="section-strip strip-white" style="padding-top: 3.5rem;">
+        <div class="strip-content">
+          <button class="back-to-home-btn" onclick="switchPage('home', event)">&larr; Back to Classes</button>
+
+          <span class="tag-badge purple">Special Course</span>
+          <h2 class="class-header">6-Week Pilates Strength Course</h2>
+          <div class="class-sub-header">Designed Especially with Beginners in Mind 💛</div>
+          <div class="class-pricing-line">Price Option: Full 6-Week Course £66</div>
+
+          <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
+
+          <p>I'm excited to be introducing my <strong>6-Week Pilates Strength Course</strong> — designed especially with beginners in mind. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
+
+          <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
+
+          <ul class="course-highlights-list">
+            <li>Core & pelvic stability</li>
+            <li>Glutes & lower-body strength</li>
+            <li>Arms, shoulders & back</li>
+            <li>Posture & alignment</li>
+            <li>Balance & stability</li>
+            <li>Mobility & flexibility</li>
+            <li>Pilates-based strength work</li>
+          </ul>
+
+          <div class="highlight-quote">
+            <p>And don't worry if you've never done Pilates before — you absolutely don't need any experience to join. We'll start with the foundations and build week by week, so you'll have the chance to learn the movements properly and actually feel your progress. By the end of the six weeks, the aim is for you to feel stronger, more confident and more connected to your body.</p>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join the 6-Week Course?</h3>
+            <p>Full 6-Week Course Package (£66)</p>
+            <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course')">BOOK HERE</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE VIEW: LOVELY BUMPS DETAIL PAGE -->
+    <div id="page-class-lovely-bumps" class="page-view">
+      <section class="section-strip strip-white" style="padding-top: 3.5rem;">
+        <div class="strip-content">
+          <button class="back-to-home-btn" onclick="switchPage('home', event)">&larr; Back to Classes</button>
+
+          <span class="tag-badge pink">Pregnancy Speciality</span>
+          <h2 class="class-header">LOVELY BUMPS — Pregnancy Pilates</h2>
+          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesday's 5:30pm / 6:30pm (50 mins)</div>
+          <div class="class-pricing-line">Price Options: Drop-In £13 | 5-Week Block £60.50</div>
+
+          <p style="font-style: italic; font-weight: 500; color: var(--primary-rose); margin-bottom: 0.8rem;">Breathe, Focus. Energise.</p>
+
+          <p>Come join this gentle and enjoyable class and learn how to <strong>strengthen core muscles, prevent pregnancy-related aches and pains</strong>, and increase stamina and muscle strength needed for pregnancy, birth, and beyond.</p>
+
+          <div class="highlight-quote">
+            <p>Suitable from 16 weeks of pregnancy—whether you are completely new to Pilates or have prior exercise experience.</p>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join Lovely Bumps?</h3>
+            <p>Choose from Drop-In (£13) or 5-Week Block (£60.50)</p>
+            <button class="book-here-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates')">BOOK HERE</button>
+            <br>
+            <button class="book-here-btn waitlist-btn" onclick="openWaitlist()">JOIN THE WAITLIST</button>
           </div>
         </div>
       </section>
