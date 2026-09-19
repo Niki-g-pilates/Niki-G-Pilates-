@@ -750,7 +750,7 @@
             <div class="class-selection-card" onclick="switchPage('class-6-week-course', event)">
               <div class="class-card-info">
                 <h3>6-Week Pilates Strength Course (Beginners)</h3>
-                <p>West Park Primary School, Goring-by-Sea — Wednesdays at 6:30 PM (Starts September 23rd)</p>
+                <p>West Park Primary School, Goring-by-Sea — Choose between 23rd September or 11th November</p>
               </div>
               <div class="class-card-arrow">&rarr;</div>
             </div>
@@ -833,12 +833,12 @@
 
           <span class="tag-badge purple">Special Course</span>
           <h2 class="class-header">6-Week Pilates Strength Course (Beginners)</h2>
-          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesdays at 6:30 PM (Starts September 23rd)</div>
+          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesdays at 6:30 PM</div>
           <div class="class-pricing-line">Full Course £66</div>
 
           <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
 
-          <p>I'm excited to run my upcoming **6-Week Pilates Strength Course** starting **September 23rd at 6:30 PM** — designed especially with beginners in mind as a closed intake. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
+          <p>I'm excited to run my upcoming **6-Week Pilates Strength Course** with two distinct intake choices: starting either on **23rd September** or **11th November** at **6:30 PM** — designed especially with beginners in mind as a closed intake. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
 
           <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
 
@@ -853,8 +853,8 @@
           </ul>
 
           <div class="single-booking-box">
-            <h3>Ready to Join the 6-Week Course?</h3>
-            <p>Starts September 23rd at 6:30 PM | Full Course (£66)</p>
+            <h3>Choose Your Course Date & Book:</h3>
+            <p>Select either the 23rd September or 11th November course below | Full Course (£66)</p>
             <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course')">BOOK HERE</button>
           </div>
         </div>
@@ -1026,24 +1026,19 @@
         <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
           <input type="hidden" name="Class Name" id="hidden-class-name">
           
-          <div class="step-heading">Step 1: Choose Your Pass</div>
+          <div class="step-heading">Step 1: Choose Your Course Option</div>
           <div class="form-group">
-            <label for="pass-type">Select Option *</label>
+            <label for="pass-type">Select Course / Date *</label>
             <select id="pass-type" name="Pass Selected" required>
             </select>
           </div>
 
-          <div class="step-heading">Step 2: Date & Time</div>
-          <div class="form-group">
-            <label for="booking-date">Choose Class/Course Start Date *</label>
-            <input type="date" id="booking-date" name="Class Date" required>
-          </div>
-
+          <div class="step-heading">Step 2: Time Slot</div>
           <div class="form-group">
             <label for="booking-time">Time Slot *</label>
             <select id="booking-time" name="Class Time" required>
-              <option value="5:30 PM - 6:20 PM (50 mins)">5:30 PM - 6:20 PM (50 mins)</option>
               <option value="6:30 PM - 7:20 PM (50 mins)">6:30 PM - 7:20 PM (50 mins)</option>
+              <option value="5:30 PM - 6:20 PM (50 mins)">5:30 PM - 6:20 PM (50 mins)</option>
             </select>
           </div>
 
@@ -1129,7 +1124,7 @@
             </div>
           </div>
 
-          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Pay via Stripe &rarr;</button>
+          <button type="submit" id="booking-submit-btn" class="btn btn-dark" style="padding: 1.0rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Pay via Stripe &rarr;</button>
         </form>
       </div>
 
@@ -1247,7 +1242,8 @@
         { label: 'Drop-In — £14.00', value: 'Drop-In (£14.00)', stripeUrl: 'https://buy.stripe.com/3cIbJ3b1PfGwbizgH27N60b' }
       ],
       '6-Week Pilates Strength Course': [
-        { label: 'Full 6-Week Course — £66', value: 'Full 6-Week Course (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' }
+        { label: '6-Week Course (Starts 23rd September) — £66', value: '6-Week Course (Starts 23rd September) (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' },
+        { label: '6-Week Course (Starts 11th November) — £66', value: '6-Week Course (Starts 11th November) (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' }
       ],
       'Intro Class': [
         { label: 'Intro Pass — £10.00', value: 'Intro Pass (£10.00)', stripeUrl: 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' }
@@ -1381,7 +1377,7 @@
       e.preventDefault();
 
       if (!validateForm(this)) {
-        alert('Please fill out all required fields outlined in red.');
+        alert('Please layout all required fields outlined in red.');
         return;
       }
 
