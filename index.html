@@ -683,6 +683,7 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a class="logo" onclick="switchPage('home', event)"><strong>Niki G Pilates</strong></a>
@@ -695,6 +696,7 @@
     </div>
   </header>
 
+  <!-- SIDE NAVIGATION DRAWER -->
   <div class="nav-overlay" id="navOverlay"></div>
   <nav class="side-nav" id="sideNav">
     <ul>
@@ -705,8 +707,10 @@
     </ul>
   </nav>
 
+  <!-- MAIN WEBSITE VIEWS CONTAINER -->
   <div id="mainWebsiteContent">
 
+    <!-- PAGE VIEW 1: HOME (Hero, Welcome, Clean Class Selection Menu, Testimonials) -->
     <div id="page-home" class="page-view active-page">
       <section class="hero-image-banner">
         <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80" alt="Group of women doing mat Pilates">
@@ -726,12 +730,14 @@
         </div>
       </section>
 
+      <!-- HOMEPAGE CLASSES MENU (CLEAN SELECTION BOXES) -->
       <section class="section-strip strip-white">
         <div class="strip-content">
           <h2 class="section-title">CLASSES & COURSES</h2>
           <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Select an option below to view full details, schedules, and book your spot:</p>
 
           <div class="classes-grid">
+            <!-- Card 1 -->
             <div class="class-selection-card" onclick="switchPage('class-all-levels', event)">
               <div class="class-card-info">
                 <h3>All levels Pilates & Strength</h3>
@@ -740,14 +746,16 @@
               <div class="class-card-arrow">&rarr;</div>
             </div>
 
+            <!-- Card 2 -->
             <div class="class-selection-card" onclick="switchPage('class-6-week-course', event)">
               <div class="class-card-info">
                 <h3>6-Week Pilates Strength Course (Beginners)</h3>
-                <p>West Park Primary School, Goring-by-Sea — Wednesdays at 5:30 PM (Starts Nov 11)</p>
+                <p>West Park Primary School, Goring-by-Sea — Wednesdays at 6:30 PM (Starts September 23rd)</p>
               </div>
               <div class="class-card-arrow">&rarr;</div>
             </div>
 
+            <!-- Card 3 -->
             <div class="class-selection-card" onclick="switchPage('class-intro', event)">
               <div class="class-card-info">
                 <h3>Intro Class</h3>
@@ -756,6 +764,7 @@
               <div class="class-card-arrow">&rarr;</div>
             </div>
 
+            <!-- Card 4 -->
             <div class="class-selection-card" onclick="switchPage('class-lovely-bumps', event)">
               <div class="class-card-info">
                 <h3>LOVELY BUMPS — Pregnancy Pilates</h3>
@@ -768,6 +777,7 @@
         </div>
       </section>
 
+      <!-- TESTIMONIALS SECTION ON HOMEPAGE -->
       <section class="section-strip strip-stone">
         <div class="strip-content">
           <h2 class="section-title">Client Stories</h2>
@@ -785,6 +795,7 @@
       </section>
     </div>
 
+    <!-- PAGE VIEW: ALL LEVELS PILATES DETAIL PAGE -->
     <div id="page-class-all-levels" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
@@ -814,6 +825,7 @@
       </section>
     </div>
 
+    <!-- PAGE VIEW: 6-WEEK COURSE DETAIL PAGE -->
     <div id="page-class-6-week-course" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
@@ -821,12 +833,12 @@
 
           <span class="tag-badge purple">Special Course</span>
           <h2 class="class-header">6-Week Pilates Strength Course (Beginners)</h2>
-          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesdays at 5:30 PM (Starts November 11th)</div>
+          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesdays at 6:30 PM (Starts September 23rd)</div>
           <div class="class-pricing-line">Full Course £66</div>
 
           <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
 
-          <p>I'm excited to run my upcoming **6-Week Pilates Strength Course** starting **November 11th at 5:30 PM** — designed especially with beginners in mind as a closed intake. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
+          <p>I'm excited to run my upcoming **6-Week Pilates Strength Course** starting **September 23rd at 6:30 PM** — designed especially with beginners in mind as a closed intake. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
 
           <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
 
@@ -842,13 +854,14 @@
 
           <div class="single-booking-box">
             <h3>Ready to Join the 6-Week Course?</h3>
-            <p>Starts November 11th at 5:30 PM | Full Course (£66)</p>
+            <p>Starts September 23rd at 6:30 PM | Full Course (£66)</p>
             <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course')">BOOK HERE</button>
           </div>
         </div>
       </section>
     </div>
 
+    <!-- PAGE VIEW: INTRO CLASS DETAIL PAGE -->
     <div id="page-class-intro" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
@@ -870,6 +883,7 @@
       </section>
     </div>
 
+    <!-- PAGE VIEW: LOVELY BUMPS DETAIL PAGE -->
     <div id="page-class-lovely-bumps" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
@@ -899,6 +913,7 @@
       </section>
     </div>
 
+    <!-- PAGE VIEW 2: ABOUT NIKI (Separate Page) -->
     <div id="page-about-niki" class="page-view">
       <section class="section-strip strip-rose" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
@@ -915,6 +930,7 @@
           
           <p>My aim is simple: to help you move better, build strength and feel more confident in your body — without pressure or perfection.</p>
 
+          <!-- QUALIFICATIONS SECTION -->
           <div class="qualifications-box">
             <h3>Qualifications</h3>
             <ul>
@@ -932,6 +948,7 @@
       </section>
     </div>
 
+    <!-- PAGE VIEW 3: SPORTS MASSAGE (Separate Page) -->
     <div id="page-massage" class="page-view">
       <section class="section-strip strip-dark" style="padding-top: 3.5rem;">
         <div class="strip-content text-center">
@@ -945,6 +962,7 @@
       </section>
     </div>
 
+    <!-- PAGE VIEW 4: CONTACT (Separate Page) -->
     <div id="page-contact" class="page-view">
       <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
         <div class="strip-content">
@@ -974,6 +992,7 @@
             </div>
           </div>
 
+          <!-- SOCIAL ICONS -->
           <div class="social-section">
             <h3 style="color: #000000; font-weight: 800;">Connect & Follow Along</h3>
             <p>Follow Niki G Pilates for updates and movement tips:</p>
@@ -995,6 +1014,7 @@
 
   </div>
 
+  <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModalDirect()">&times;</button>
@@ -1116,6 +1136,7 @@
     </div>
   </div>
 
+  <!-- WAITLIST MODAL -->
   <div class="modal-overlay" id="waitlistModal">
     <div class="modal">
       <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
