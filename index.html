@@ -750,7 +750,7 @@
             <div class="class-selection-card" onclick="switchPage('class-6-week-course', event)">
               <div class="class-card-info">
                 <h3>6-Week Pilates Strength Course (Beginners)</h3>
-                <p>West Park Primary School, Goring-by-Sea — Choose between 23rd September or 11th November</p>
+                <p>West Park Primary School, Goring-by-Sea — Option 1: 23rd September | Option 2: 11th November</p>
               </div>
               <div class="class-card-arrow">&rarr;</div>
             </div>
@@ -803,7 +803,7 @@
           
           <span class="tag-badge">Beginner Friendly</span>
           <h2 class="class-header">All levels Pilates & Strength</h2>
-          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesday's 6:30pm (50 mins)</div>
+          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesdays at 6:30pm (50 mins)</div>
           <div class="class-pricing-line">PAYG Drop-In £14.00 Below</div>
 
           <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
@@ -838,7 +838,7 @@
 
           <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
 
-          <p>I'm excited to run my upcoming **6-Week Pilates Strength Course** with two distinct intake choices: starting either on **23rd September** or **11th November** at **6:30 PM** — designed especially with beginners in mind as a closed intake. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
+          <p>I'm excited to run my upcoming **6-Week Pilates Strength Course** designed especially with beginners in mind as a closed intake. Over six weeks we'll build your strength, core control, stability and confidence through progressive Pilates-based movement.</p>
 
           <p>We'll use bodyweight, resistance bands and light dumbbells, gradually building the challenge as you become more comfortable with the movements.</p>
 
@@ -854,7 +854,7 @@
 
           <div class="single-booking-box">
             <h3>Choose Your Course Date & Book:</h3>
-            <p>Select either the 23rd September or 11th November course below | Full Course (£66)</p>
+            <p>Two convenient options available below (23rd September or 11th November) | Full Course (£66)</p>
             <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course')">BOOK HERE</button>
           </div>
         </div>
@@ -1368,7 +1368,7 @@
         }
       } catch (error) {
         alert("Network error. Please check your connection and try again.");
-        submitBtn.disabled = false;
+        submitBtn.disabled,submitBtn.disabled = false;
         submitBtn.innerText = "Complete Registration & Pay via Stripe →";
       }
     });
