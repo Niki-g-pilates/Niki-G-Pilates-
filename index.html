@@ -750,7 +750,7 @@
             <div class="class-selection-card" onclick="switchPage('class-6-week-course', event)">
               <div class="class-card-info">
                 <h3>6-Week Pilates Strength Course (Beginners)</h3>
-                <p>West Park Primary School, Goring-by-Sea — Option 1: 23rd September | Option 2: 11th November</p>
+                <p>West Park Primary School, Goring-by-Sea — Starts 4th November (7:30 PM)</p>
               </div>
               <div class="class-card-arrow">&rarr;</div>
             </div>
@@ -833,8 +833,8 @@
 
           <span class="tag-badge purple">Special Course</span>
           <h2 class="class-header">6-Week Pilates Strength Course (Beginners)</h2>
-          <div class="class-sub-header">West Park Primary School, Goring-by-Sea</div>
-          <div class="class-pricing-line">Full Course £66</div>
+          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Starts 4th November (7:30 PM)</div>
+          <div class="class-pricing-line">Full Course £67</div>
 
           <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've done a little Pilates before and want to feel stronger and more confident with it?</p>
 
@@ -854,7 +854,7 @@
 
           <div class="single-booking-box">
             <h3>Choose Your Course Date & Book:</h3>
-            <p>Full Course (£66)</p>
+            <p>Full Course (£67)</p>
             <button class="book-here-btn" onclick="openBooking('6-Week Pilates Strength Course')">BOOK HERE</button>
           </div>
         </div>
@@ -1037,6 +1037,7 @@
           <div class="form-group">
             <label for="booking-time">Time Slot *</label>
             <select id="booking-time" name="Class Time" required>
+              <option value="7:30 PM - 8:20 PM (50 mins)">7:30 PM - 8:20 PM (50 mins)</option>
               <option value="6:30 PM - 7:20 PM (50 mins)">6:30 PM - 7:20 PM (50 mins)</option>
               <option value="5:30 PM - 6:20 PM (50 mins)">5:30 PM - 6:20 PM (50 mins)</option>
             </select>
@@ -1242,8 +1243,7 @@
         { label: 'Drop-In — £14.00', value: 'Drop-In (£14.00)', stripeUrl: 'https://buy.stripe.com/3cIbJ3b1PfGwbizgH27N60b' }
       ],
       '6-Week Pilates Strength Course': [
-        { label: '6-Week Course (Starts 23rd September) — £66', value: '6-Week Course (Starts 23rd September) (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' },
-        { label: '6-Week Course (Starts 11th November) — £66', value: '6-Week Course (Starts 11th November) (£66)', stripeUrl: 'https://buy.stripe.com/5kQ6oJ9XLamcbiz1M87N609' }
+        { label: '6-Week Course (Starts 4th November, 7:30 PM) — £67', value: '6-Week Course (Starts 4th November, 7:30 PM) (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
       ],
       'Intro Class': [
         { label: 'Intro Pass — £10.00', value: 'Intro Pass (£10.00)', stripeUrl: 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' }
@@ -1401,7 +1401,7 @@
           submitBtn.innerText = "Join Waitlist";
         } else {
           alert("There was an issue submitting your details. Please try again.");
-          submitBtn.disabled = false;
+          submitBtn.disabled, submitBtn.disabled = false;
           submitBtn.innerText = "Join Waitlist";
         }
       } catch (error) {
