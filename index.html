@@ -354,6 +354,59 @@
       border-left: 3px solid var(--primary-rose);
     }
 
+    /* ACCORDION DROP-DOWN STYLING FOR DETAILS */
+    .description-accordion {
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: #FAFAFA;
+      margin: 1.5rem 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 1rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .accordion-header:hover {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .accordion-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .description-accordion.open .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 1.2rem;
+      background: #FFFFFF;
+    }
+
+    .description-accordion.open .accordion-content {
+      max-height: 800px;
+      padding: 1.2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
     .highlight-quote {
       background: #FAF7F2;
       border-left: 3px solid #D8A7A1;
@@ -747,6 +800,15 @@
             </div>
 
             <!-- Card 2 -->
+            <div class="class-selection-card" onclick="switchPage('class-all-levels-thursday', event)">
+              <div class="class-card-info">
+                <h3>All levels Pilates & Strength</h3>
+                <p>Goring Methodist Church Hall — Thursdays (8:45 AM)</p>
+              </div>
+              <div class="class-card-arrow">&rarr;</div>
+            </div>
+
+            <!-- Card 3 -->
             <div class="class-selection-card" onclick="switchPage('class-6-week-course', event)">
               <div class="class-card-info">
                 <h3>6-Week Pilates Strength Course (Beginners)</h3>
@@ -755,7 +817,7 @@
               <div class="class-card-arrow">&rarr;</div>
             </div>
 
-            <!-- Card 3 -->
+            <!-- Card 4 -->
             <div class="class-selection-card" onclick="switchPage('class-intro', event)">
               <div class="class-card-info">
                 <h3>Intro Class</h3>
@@ -764,7 +826,7 @@
               <div class="class-card-arrow">&rarr;</div>
             </div>
 
-            <!-- Card 4 -->
+            <!-- Card 5 -->
             <div class="class-selection-card" onclick="switchPage('class-lovely-bumps', event)">
               <div class="class-card-info">
                 <h3>LOVELY BUMPS — Pregnancy Pilates</h3>
@@ -795,7 +857,7 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW: ALL LEVELS PILATES DETAIL PAGE -->
+    <!-- PAGE VIEW: ALL LEVELS PILATES DETAIL PAGE (WEDNESDAY) -->
     <div id="page-class-all-levels" class="page-view">
       <section class="section-strip strip-white" style="padding-top: 3.5rem;">
         <div class="strip-content">
@@ -803,23 +865,71 @@
           
           <span class="tag-badge">Beginner Friendly</span>
           <h2 class="class-header">All levels Pilates & Strength</h2>
-          <div class="class-sub-header">West Park Primary School, Goring-by-Sea (50 mins)</div>
-          <div class="class-pricing-line">PAYG Drop-In £14.00 Below</div>
+          <div class="class-sub-header">West Park Primary School, Goring-by-Sea — Wednesdays (6:30 PM, 50 mins)</div>
+          <div class="class-pricing-line">4 Classes for £50</div>
 
-          <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
+          <!-- DROP-DOWN ACCORDION FOR DESCRIPTION -->
+          <div class="description-accordion" id="accordion-wed">
+            <button class="accordion-header" onclick="toggleAccordion('accordion-wed')">
+              <span>Click here to read class description</span>
+              <span class="accordion-icon">&or;</span>
+            </button>
+            <div class="accordion-content">
+              <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
 
-          <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
+              <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
 
-          <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+              <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
 
-          <div class="highlight-quote">
-            <p>Whether you've progressed from our beginner courses or have previous experience, I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+              <div class="highlight-quote">
+                <p>Whether you've progressed from our beginner courses or have previous experience, I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+              </div>
+            </div>
           </div>
 
           <div class="single-booking-box">
             <h3>Ready to Join All Levels Pilates?</h3>
-            <p>PAYG Drop-In Class (£14.00)</p>
-            <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength')">BOOK HERE</button>
+            <p>4 Classes for £50</p>
+            <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength (Wednesday)')">BOOK HERE</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE VIEW: ALL LEVELS PILATES DETAIL PAGE (THURSDAY - REPLICATED) -->
+    <div id="page-class-all-levels-thursday" class="page-view">
+      <section class="section-strip strip-white" style="padding-top: 3.5rem;">
+        <div class="strip-content">
+          <button class="back-to-home-btn" onclick="goBack(event)">&larr; Back</button>
+          
+          <span class="tag-badge">Beginner Friendly</span>
+          <h2 class="class-header">All levels Pilates & Strength</h2>
+          <div class="class-sub-header">Goring Methodist Church Hall — Thursdays (8:45 AM, 50 mins)</div>
+          <div class="class-pricing-line">4 Classes for £50</div>
+
+          <!-- DROP-DOWN ACCORDION FOR DESCRIPTION -->
+          <div class="description-accordion" id="accordion-thu">
+            <button class="accordion-header" onclick="toggleAccordion('accordion-thu')">
+              <span>Click here to read class description</span>
+              <span class="accordion-icon">&or;</span>
+            </button>
+            <div class="accordion-content">
+              <p>This class is suitable for anyone who wants to <strong>get stronger, move better, and reduce posture-related aches and pains</strong> from everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply the physical demands of daily life.</p>
+
+              <p>As a busy mum myself, I know how easy it is to put yourself last and how difficult it can be to find time to look after your own body. That's why I've created a class that helps you feel <strong>stronger, more capable, and more confident</strong>, whatever stage of life you're in.</p>
+
+              <p>We'll focus on building core strength, stability, and functional strength to support you in everyday life. This class is perfect if you're looking to move more, feel better, and improve your overall wellbeing. You'll leave feeling <strong>stronger, more mobile, and calmer</strong>, with a focus on breath and mindful movement throughout.</p>
+
+              <div class="highlight-quote">
+                <p>Whether you've progressed from our beginner courses or have previous experience, I provide <strong>personalised attention</strong> so you always feel supported, challenged at the right level, and able to progress at your own pace.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="single-booking-box">
+            <h3>Ready to Join All Levels Pilates?</h3>
+            <p>4 Classes for £50</p>
+            <button class="book-here-btn" onclick="openBooking('All levels Pilates & Strength (Thursday)')">BOOK HERE</button>
           </div>
         </div>
       </section>
@@ -1039,7 +1149,7 @@
             <select id="booking-time" name="Class Time" required>
               <option value="7:30 PM - 8:20 PM (50 mins)">7:30 PM - 8:20 PM (50 mins)</option>
               <option value="6:30 PM - 7:20 PM (50 mins)">6:30 PM - 7:20 PM (50 mins)</option>
-              <option value="5:30 PM - 6:20 PM (50 mins)">5:30 PM - 6:20 PM (50 mins)</option>
+              <option value="8:45 AM - 9:35 AM (50 mins)">8:45 AM - 9:35 AM (50 mins)</option>
             </select>
           </div>
 
@@ -1186,6 +1296,12 @@
     menuToggle.addEventListener('click', toggleMenu);
     navOverlay.addEventListener('click', toggleMenu);
 
+    // ACCORDION TOGGLE
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      accordion.classList.toggle('open');
+    }
+
     // NAVIGATION HISTORY STACK (TRACKS 1-STEP BACKWARDS)
     let pageHistory = ['home'];
 
@@ -1239,8 +1355,11 @@
     }
 
     const classPassOptions = {
-      'All levels Pilates & Strength': [
-        { label: 'Drop-In — £14.00', value: 'Drop-In (£14.00)', stripeUrl: 'https://buy.stripe.com/3cIbJ3b1PfGwbizgH27N60b' }
+      'All levels Pilates & Strength (Wednesday)': [
+        { label: '4 Classes for £50', value: '4 Classes (£50.00)', stripeUrl: 'https://buy.stripe.com/3cIbJ3b1PfGwbizgH27N60b' }
+      ],
+      'All levels Pilates & Strength (Thursday)': [
+        { label: '4 Classes for £50', value: '4 Classes (£50.00)', stripeUrl: 'https://buy.stripe.com/3cIbJ3b1PfGwbizgH27N60b' }
       ],
       '6-Week Pilates Strength Course': [
         { label: '6-Week Course (Starts 4th November, 7:30 PM) — £67', value: '6-Week Course (Starts 4th November, 7:30 PM) (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
@@ -1266,7 +1385,7 @@
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength'];
+      const options = classPassOptions[className] || classPassOptions['All levels Pilates & Strength (Wednesday)'];
       
       options.forEach(opt => {
         const optionEl = document.createElement('option');
@@ -1401,7 +1520,7 @@
           submitBtn.innerText = "Join Waitlist";
         } else {
           alert("There was an issue submitting your details. Please try again.");
-          submitBtn.disabled, submitBtn.disabled = false;
+          submitBtn.disabled = false;
           submitBtn.innerText = "Join Waitlist";
         }
       } catch (error) {
