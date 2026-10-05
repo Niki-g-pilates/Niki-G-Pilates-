@@ -7,11 +7,12 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <!-- Importing Agrandir Grande typeface (using font-face or similar web font fallback if custom, standard fallback setup included) -->
-  <style>
-    @import url('https://fonts.cdnfonts.com/css/agrandir');
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+  
+  <!-- Importing Glacial Indifference from Font Library CDN -->
+  <link rel="stylesheet" href="https://fontlibrary.org/face/glacial-indifference" media="screen">
 
+  <style>
     :root {
       --primary-rose: #D8A7A1;
       --primary-dark: #2D3748;
@@ -23,14 +24,14 @@
       --border-color: #E2DCD5;
       --accent-green: #2e7d5e;
       
-      --font-heading: 'Agrandir Grand', 'Agrandir', 'Playfair Display', Georgia, serif;
-      --font-body: 'Agrandir Grand', 'Agrandir', 'Montserrat', -apple-system, sans-serif;
+      --font-heading: 'GlacialIndifferenceBold', 'Glacial Indifference', sans-serif;
+      --font-body: 'GlacialIndifferenceRegular', 'Glacial Indifference', sans-serif;
       --font-script: 'Alex Brush', cursive;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.8; font-weight: 300; background-color: var(--bg-stone); }
+    body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.8; font-weight: 400; background-color: var(--bg-stone); }
 
     /* HEADER & BRANDING */
     header {
@@ -111,7 +112,7 @@
       text-decoration: none;
       color: var(--primary-dark);
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       transition: color 0.3s ease;
@@ -219,10 +220,10 @@
     .strip-dark .section-title { color: #FFFFFF; }
     .strip-rose .section-title { color: var(--primary-dark); }
 
-    .strip-content p { margin-bottom: 1.4rem; font-size: 0.98rem; font-weight: 300; }
+    .strip-content p { margin-bottom: 1.4rem; font-size: 0.98rem; font-weight: 400; }
     .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
 
-    /* SLEEK HORIZONTAL ROW CLASS LISTINGS (OPTION 3) */
+    /* SLEEK HORIZONTAL ROW CLASS LISTINGS */
     .classes-stack {
       display: flex;
       flex-direction: column;
@@ -295,7 +296,7 @@
       color: var(--text-dark);
       font-family: var(--font-body);
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
       padding: 0.6rem 1rem;
@@ -390,7 +391,7 @@
     }
 
     .qualifications-box ul { list-style-type: disc; margin: 0; padding-left: 1.5rem; }
-    .qualifications-box li { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.4rem; color: var(--text-dark); font-weight: 300; }
+    .qualifications-box li { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.4rem; color: var(--text-dark); font-weight: 400; }
 
     /* PROFILE IMAGE */
     .profile-img-container { 
@@ -407,14 +408,14 @@
     /* TESTIMONIALS */
     .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1.5rem; }
     .testimonial-card { background: #FFFFFF; border: 1px solid var(--border-color); padding: 2.2rem; }
-    .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; font-weight: 400; margin-bottom: 1.2rem; line-height: 1.6; }
-    .testimonial-author { font-weight: 600; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
+    .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; font-weight: 700; margin-bottom: 1.2rem; line-height: 1.6; }
+    .testimonial-author { font-weight: 700; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
     /* CONTACT SECTION */
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; text-align: center; }
     
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; text-align: left; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; text-align: left; }
     
     .form-group input[type="text"],
     .form-group input[type="email"],
@@ -450,7 +451,7 @@
     .step-heading {
       font-family: var(--font-heading);
       font-size: 1.1rem;
-      font-weight: 800;
+      font-weight: 700;
       color: #000000;
       margin: 1.6rem 0 0.8rem 0;
       padding-bottom: 0.4rem;
@@ -491,7 +492,7 @@
       background: #FFFFFF; padding: 2.2rem 1.5rem; width: 100%; max-width: 650px; max-height: 92vh; 
       overflow-y: auto; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
     }
-    .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #000000; margin-bottom: 0.2rem; }
+    .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 0.2rem; }
     .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
@@ -748,7 +749,7 @@
           
           <div class="contact-grid" style="padding: 1.5rem;">
             <div>
-              <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 800; text-align: center;">Send a Message</h3>
+              <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 700; text-align: center;">Send a Message</h3>
               <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="826" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
               </div>
@@ -952,7 +953,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* ALL CORRECT STRIPE LINKS & LOCKED EXACT TIMES */
     const classPassOptions = {
       'All levels Pilates & Strength (Wednesday)': {
         timeSlot: '6:30 PM - 7:20 PM (50 mins)',
