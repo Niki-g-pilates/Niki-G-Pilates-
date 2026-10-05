@@ -344,7 +344,7 @@
     }
 
     .class-row-card.open .class-row-dropdown {
-      max-height: 800px;
+      max-height: 1200px;
       padding: 1.5rem 1.8rem;
       border-top: 1px solid var(--border-color);
     }
@@ -353,6 +353,50 @@
       font-size: 0.9rem;
       color: var(--text-dark);
       margin-bottom: 0.8rem;
+    }
+
+    /* MINI CALENDAR STYLING */
+    .mini-calendar-container {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1.2rem;
+      max-width: 320px;
+    }
+    .mini-calendar-header {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-bottom: 0.6rem;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .mini-calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+    .mini-calendar-day-name {
+      font-weight: 700;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+    }
+    .mini-calendar-day {
+      padding: 6px 0;
+      border-radius: 4px;
+      color: var(--text-dark);
+    }
+    .mini-calendar-day.empty {
+      background: transparent;
+    }
+    .mini-calendar-day.active-class-day {
+      background-color: var(--primary-rose);
+      color: #FFFFFF;
+      font-weight: 700;
     }
 
     .tag-badge {
@@ -582,6 +626,19 @@
                   <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
                   <p>Expect a fun, energetic session featuring flowing sequences that build functional strength, boost mobility, flexibility, and balance, and gently get your heart rate up.</p>
                   <p>As a busy mum myself, I know how hard it is to prioritize yourself, find the time, This class leave feeling strong, energized</p>
+                  
+                  <div class="mini-calendar-container" data-day="3">
+                    <div class="mini-calendar-header">Class Availability (Wednesdays)</div>
+                    <div class="mini-calendar-grid">
+                      <div class="mini-calendar-day-name">M</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">W</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">F</div>
+                      <div class="mini-calendar-day-name">S</div>
+                      <div class="mini-calendar-day-name">S</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -607,6 +664,19 @@
                   <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
                   <p>Expect a fun, energetic session featuring flowing sequences that build functional strength, boost mobility, flexibility, and balance, and gently get your heart rate up.</p>
                   <p>As a busy mum myself, I know how hard it is to prioritize yourself, find the time, This class leave feeling strong, energized</p>
+                  
+                  <div class="mini-calendar-container" data-day="4">
+                    <div class="mini-calendar-header">Class Availability (Thursdays)</div>
+                    <div class="mini-calendar-grid">
+                      <div class="mini-calendar-day-name">M</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">W</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">F</div>
+                      <div class="mini-calendar-day-name">S</div>
+                      <div class="mini-calendar-day-name">S</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -630,6 +700,19 @@
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
+                  
+                  <div class="mini-calendar-container" data-day="2">
+                    <div class="mini-calendar-header">Course Schedule (Tuesdays)</div>
+                    <div class="mini-calendar-grid">
+                      <div class="mini-calendar-day-name">M</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">W</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">F</div>
+                      <div class="mini-calendar-day-name">S</div>
+                      <div class="mini-calendar-day-name">S</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -652,6 +735,19 @@
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p>Not ready to commit to six weeks? Come and try for £10! Experience a welcoming, beginner-friendly taster session to see how classes work and feel the benefits for yourself.</p>
+                  
+                  <div class="mini-calendar-container" data-day="3">
+                    <div class="mini-calendar-header">Intro Availability</div>
+                    <div class="mini-calendar-grid">
+                      <div class="mini-calendar-day-name">M</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">W</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">F</div>
+                      <div class="mini-calendar-day-name">S</div>
+                      <div class="mini-calendar-day-name">S</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -676,6 +772,19 @@
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p><em>Breathe, Focus, Energise.</em> Come join this gentle, enjoyable pregnancy class to strengthen your core, prevent pregnancy-related discomfort, and build stamina for birth and beyond.</p>
+                  
+                  <div class="mini-calendar-container" data-day="3">
+                    <div class="mini-calendar-header">Class Availability (Wednesdays)</div>
+                    <div class="mini-calendar-grid">
+                      <div class="mini-calendar-day-name">M</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">W</div>
+                      <div class="mini-calendar-day-name">T</div>
+                      <div class="mini-calendar-day-name">F</div>
+                      <div class="mini-calendar-day-name">S</div>
+                      <div class="mini-calendar-day-name">S</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -928,6 +1037,53 @@
       const row = document.getElementById(rowId);
       row.classList.toggle('open');
     }
+
+    // Generate mini calendars dynamically
+    document.addEventListener("DOMContentLoaded", () => {
+      const containers = document.querySelectorAll('.mini-calendar-container');
+      containers.forEach(container => {
+        const targetDayOfWeek = parseInt(container.getAttribute('data-day')); // 0=Sun, 1=Mon ... 6=Sat
+        const grid = container.querySelector('.mini-calendar-grid');
+        
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth();
+        
+        // Month Header update
+        const headerEl = container.querySelector('.mini-calendar-header');
+        const monthName = now.toLocaleString('default', { month: 'long' });
+        headerEl.textContent = `${monthName} ${year} (${headerEl.textContent.split('(')[1] || ''}`;
+
+        const firstDayIndex = new Date(year, month, 1).getDay(); // Sunday=0
+        // Adjust for Monday start (Monday=0, Sunday=6)
+        const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+        
+        const totalDays = new Date(year, month + 1, 0).getDate();
+
+        // Empty slots before 1st of month
+        for (let i = 0; i < adjustedFirstDay; i++) {
+          const emptyCell = document.createElement('div');
+          emptyCell.className = 'mini-calendar-day empty';
+          grid.appendChild(emptyCell);
+        }
+
+        // Days of month
+        for (let day = 1; day <= totalDays; day++) {
+          const dayCell = document.createElement('div');
+          dayCell.className = 'mini-calendar-day';
+          dayCell.textContent = day;
+
+          const currentLoopDate = new Date(year, month, day);
+          let currentLoopDayOfWeek = currentLoopDate.getDay(); // 0=Sun, 1=Mon
+
+          if (currentLoopDayOfWeek === targetDayOfWeek) {
+            dayCell.classList.add('active-class-day');
+          }
+
+          grid.appendChild(dayCell);
+        }
+      });
+    });
 
     let pageHistory = ['home'];
 
