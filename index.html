@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
   
+  <!-- Importing Glacial Indifference from Font Library CDN -->
   <link rel="stylesheet" href="https://fontlibrary.org/face/glacial-indifference" media="screen">
 
   <style>
@@ -59,6 +60,7 @@
       cursor: pointer;
     }
 
+    /* MENU TOGGLE BUTTON */
     .menu-toggle {
       display: flex;
       flex-direction: column;
@@ -80,6 +82,7 @@
       transition: all 0.3s ease;
     }
 
+    /* SIDE NAVIGATION DRAWER */
     .side-nav {
       position: fixed;
       top: 0;
@@ -93,31 +96,109 @@
       padding: 6rem 2.5rem 2rem 2.5rem;
       transition: right 0.4s ease;
       z-index: 1100;
+      -webkit-overflow-scrolling: touch;
     }
 
     .side-nav.open { right: 0; }
-    .side-nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.8rem; }
-    .side-nav a { text-decoration: none; color: var(--primary-dark); font-size: 1rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; }
+
+    .side-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .side-nav a {
+      text-decoration: none;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      display: block;
+      padding: 0.4rem 0;
+      cursor: pointer;
+    }
+
+    .side-nav a:hover { color: var(--primary-rose); }
 
     .nav-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.4); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1050;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1050;
     }
-    .nav-overlay.active { opacity: 1; visibility: visible; }
 
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* PAGE VIEW CONTROLS */
     .page-view { display: none; }
     .page-view.active-page { display: block; }
 
-    .hero-image-banner { width: 100%; height: 480px; position: relative; overflow: hidden; }
-    .hero-image-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: brightness(0.85); }
-    .hero-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(45, 55, 72, 0.4); display: flex; justify-content: center; align-items: center; color: white; text-align: center; padding: 2rem;
+    /* HERO BANNER IMAGE */
+    .hero-image-banner {
+      width: 100%;
+      height: 480px;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-content { max-width: 850px; margin: 0 auto; }
-    .hero-title { font-family: var(--font-heading); font-size: 2.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
-    .hero-subtitle { font-size: 1.1rem; letter-spacing: 1px; color: #F5F2EE; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
+    .hero-image-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: brightness(0.85);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(45, 55, 72, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-content { max-width: 850px; margin: 0 auto; }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+      line-height: 1.25;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin: 0 auto;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      color: #F5F2EE;
+    }
+
+    /* SECTIONS */
     .section-strip { width: 100%; padding: 4rem 1.5rem; }
     .strip-stone { background-color: var(--bg-stone); color: var(--text-dark); }
     .strip-white { background-color: #FFFFFF; color: var(--text-dark); }
@@ -127,106 +208,373 @@
     .strip-content { max-width: 900px; margin: 0 auto; }
     .strip-content.text-center { text-align: center; }
 
-    .section-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; letter-spacing: 1px; }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
 
-    /* CLASS LIST & DROP-DOWN SELECTOR */
-    .classes-stack { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
+    .strip-dark .section-title { color: #FFFFFF; }
+    .strip-rose .section-title { color: var(--primary-dark); }
+
+    .strip-content p { margin-bottom: 1.4rem; font-size: 0.98rem; font-weight: 400; }
+    .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
+
+    /* SLEEK HORIZONTAL ROW CLASS LISTINGS */
+    .classes-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
 
     .class-row-card {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
-    .class-row-card:hover { border-color: var(--primary-rose); box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
 
-    .class-row-main { padding: 1.5rem 1.8rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-    .class-row-info { flex: 1; min-width: 260px; }
+    .class-row-card:hover {
+      border-color: var(--primary-rose);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .class-row-main {
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .class-row-info {
+      flex: 1;
+      min-width: 260px;
+    }
 
     .class-row-meta {
-      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-rose); margin-bottom: 0.3rem; display: flex; gap: 0.8rem; align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary-rose);
+      margin-bottom: 0.3rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
     }
-    .class-row-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.2rem; }
-    .class-row-location { font-size: 0.85rem; color: var(--text-muted); }
 
-    .class-row-actions { display: flex; align-items: center; gap: 0.8rem; }
+    .class-row-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .class-row-location {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .class-row-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
 
     .details-toggle-btn {
-      background: #F5F2EE; border: 1px solid var(--border-color); color: var(--text-dark); font-family: var(--font-body); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.6rem 1rem; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;
+      background: #F5F2EE;
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
-    .details-toggle-btn:hover { background: #E2DCD5; }
+
+    .details-toggle-btn:hover {
+      background: #E2DCD5;
+    }
 
     .row-book-btn {
-      background-color: var(--accent-green); color: #FFFFFF; font-weight: 700; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.6rem 1.4rem; border: none; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;
+      background-color: var(--accent-green);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
-    .row-book-btn:hover { background-color: #236149; }
-    .row-waitlist-btn { background-color: #718096; }
+
+    .row-book-btn:hover {
+      background-color: #236149;
+    }
+
+    .row-waitlist-btn {
+      background-color: #718096;
+    }
+    .row-waitlist-btn:hover {
+      background-color: #4A5568;
+    }
 
     /* EXPANDABLE ROW CONTENT */
     .class-row-dropdown {
-      max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #FAFAFA; padding: 0 1.8rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      background: #FAFAFA;
+      padding: 0 1.8rem;
     }
+
     .class-row-card.open .class-row-dropdown {
-      max-height: 600px; padding: 1.5rem 1.8rem; border-top: 1px solid var(--border-color);
+      max-height: 1200px;
+      padding: 1.5rem 1.8rem;
+      border-top: 1px solid var(--border-color);
     }
 
-    .dropdown-inner p { font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.8rem; }
-
-    .session-picker-box {
-      background: #FFFFFF; border: 1px solid var(--border-color); padding: 1rem; border-radius: 6px; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;
+    .dropdown-inner p {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      margin-bottom: 0.8rem;
     }
-    .session-picker-box label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary-dark); }
-    .session-picker-box select { width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); font-family: var(--font-body); font-size: 0.9rem; border-radius: 4px; background: #FAFAFA; }
+
+    /* MINI CALENDAR WIDGET STYLING */
+    .mini-calendar-container {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1.2rem;
+      max-width: 320px;
+    }
+
+    .modal-calendar-container {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 0.8rem;
+      margin-bottom: 1.2rem;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .cal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+    }
+
+    .cal-header button {
+      background: none;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+
+    .cal-day-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      padding-bottom: 4px;
+    }
+
+    .cal-date {
+      font-size: 0.78rem;
+      padding: 8px 0;
+      border-radius: 4px;
+      color: var(--text-dark);
+    }
+
+    .cal-date.empty {
+      background: transparent;
+    }
+
+    .cal-date.highlight {
+      background-color: var(--primary-rose);
+      color: #FFFFFF;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cal-date.highlight:hover {
+      opacity: 0.85;
+    }
+
+    .cal-date.selected-date {
+      background-color: var(--accent-green) !important;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--accent-green);
+    }
 
     .tag-badge {
-      display: inline-block; background: #E6F4EA; color: #137333; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 6px; border-radius: 3px;
+      display: inline-block;
+      background: #E6F4EA;
+      color: #137333;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
     }
+
     .tag-badge.pink { background: #FCE8E6; color: #C5221F; }
     .tag-badge.purple { background: #F3E8FF; color: #6B21A8; }
 
+    /* QUALIFICATIONS BOX */
     .qualifications-box {
-      background-color: #FAF6F0; border: 1px solid #E2DCD5; padding: 1.5rem; border-radius: 6px; margin-top: 2rem; text-align: left;
+      background-color: #FAF6F0; 
+      border: 1px solid #E2DCD5;
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin-top: 2rem;
+      text-align: left;
     }
-    .qualifications-box h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.8rem; text-align: center; }
-    .qualifications-box ul { list-style-type: disc; margin: 0; padding-left: 1.5rem; }
-    .qualifications-box li { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.4rem; color: var(--text-dark); }
 
+    .qualifications-box h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .qualifications-box ul { list-style-type: disc; margin: 0; padding-left: 1.5rem; }
+    .qualifications-box li { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.4rem; color: var(--text-dark); font-weight: 400; }
+
+    /* PROFILE IMAGE */
     .profile-img-container { 
-      width: 180px; height: 180px; margin: 0 auto 1.8rem auto; border-radius: 50%; overflow: hidden; border: 4px solid #FFFFFF; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+      width: 180px; 
+      height: 180px; 
+      margin: 0 auto 1.8rem auto; 
+      border-radius: 50%; 
+      overflow: hidden; 
+      border: 4px solid #FFFFFF; 
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
     }
     .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
+    /* TESTIMONIALS */
     .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1.5rem; }
     .testimonial-card { background: #FFFFFF; border: 1px solid var(--border-color); padding: 2.2rem; }
     .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; font-weight: 700; margin-bottom: 1.2rem; line-height: 1.6; }
     .testimonial-author { font-weight: 700; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
 
-    .contact-grid { display: grid; grid-template-columns: 1fr; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; text-align: center; }
+    /* CONTACT SECTION */
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; text-align: center; }
+    
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; color: #000000; text-align: left; }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%; padding: 0.85rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-size: 16px; color: #000000; border-radius: 4px;
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; text-align: left; }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid var(--border-color);
+      font-family: var(--font-body);
+      background: #FAFAFA;
+      font-weight: 400;
+      font-size: 16px;
+      color: #000000;
+      border-radius: 4px;
+      -webkit-appearance: none;
     }
+
     .form-group textarea { height: 100px; resize: vertical; }
 
-    .form-group input.field-error, .form-group textarea.field-error, .form-group select.field-error { border: 2px solid #D32F2F !important; background-color: #FFF8F8 !important; }
-    .checkbox-group.field-error-checkbox { border: 2px solid #D32F2F !important; background-color: #FFF8F8 !important; padding: 0.6rem; border-radius: 4px; }
+    .form-group input.field-error, .form-group textarea.field-error, .form-group select.field-error {
+      border: 2px solid #D32F2F !important;
+      background-color: #FFF8F8 !important;
+    }
+    .checkbox-group.field-error-checkbox {
+      border: 2px solid #D32F2F !important;
+      background-color: #FFF8F8 !important;
+      padding: 0.6rem;
+      border-radius: 4px;
+    }
 
     .step-heading {
-      font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #000000; margin: 1.6rem 0 0.8rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--primary-rose); text-align: left;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000000;
+      margin: 1.6rem 0 0.8rem 0;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--primary-rose);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: left;
     }
+
     .radio-group { display: flex; gap: 1.5rem; margin-top: 0.4rem; }
     .radio-group label { font-size: 0.9rem; text-transform: none; font-weight: 400; color: #000000; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
 
     .waiver-box {
-      background: #FAFAFA; border: 1px solid var(--border-color); padding: 1rem; border-radius: 4px; font-size: 0.8rem; max-height: 120px; overflow-y: auto; margin-bottom: 0.8rem; color: var(--text-muted); text-align: left;
+      background: #FAFAFA;
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      max-height: 120px;
+      overflow-y: auto;
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: left;
     }
+
     .checkbox-group { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.5rem; }
     .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
     .checkbox-group label { font-size: 0.8rem; text-transform: none; color: #000000; text-align: left; }
 
+    /* MODAL */
     .modal-overlay { 
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; 
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; 
     }
     .modal { 
-      background: #FFFFFF; padding: 2.2rem 1.5rem; width: 100%; max-width: 650px; max-height: 92vh; overflow-y: auto; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+      background: #FFFFFF; padding: 2.2rem 1.5rem; width: 100%; max-width: 650px; max-height: 92vh; 
+      overflow-y: auto; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
     }
     .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 0.2rem; }
     .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
@@ -255,6 +603,7 @@
     </div>
   </header>
 
+  <!-- SIDE NAVIGATION DRAWER -->
   <div class="nav-overlay" id="navOverlay"></div>
   <nav class="side-nav" id="sideNav">
     <ul>
@@ -265,6 +614,7 @@
     </ul>
   </nav>
 
+  <!-- MAIN WEBSITE VIEWS -->
   <div id="mainWebsiteContent">
 
     <!-- PAGE VIEW: HOME -->
@@ -283,48 +633,91 @@
         <div class="strip-content text-center">
           <h2 class="section-title">WELCOME TO <strong>NIKI G PILATES</strong></h2>
           <p>I'm passionate about helping people feel stronger, healthier, and more confident through Pilates. Whether you're new to movement or looking to build consistency, you'll find a welcoming environment to move at your own pace.</p>
+          <p>With a background as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, I bring a strong understanding of movement to every class to help you feel your best, release stiffness, improve posture, and move better in everyday life.</p>
         </div>
       </section>
 
-      <!-- CLASSES SECTION WITH COMBINED ALL-LEVELS BLOCK & SEPARATE 6-WEEK COURSE -->
+      <!-- MINIMALIST TIMETABLE & ROW STACK -->
       <section class="section-strip strip-white">
         <div class="strip-content">
           <h2 class="section-title">CLASSES & COURSES</h2>
-          <p class="text-center" style="color: var(--text-muted); margin-bottom: 1.5rem;">Choose your preferred class or course below:</p>
+          <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Browse our weekly schedule below. Click <strong>'Details'</strong> to read about each class or book your spot directly:</p>
 
           <div class="classes-stack">
 
-            <!-- ROW 1: COMBINED ALL LEVELS BLOCK -->
-            <div class="class-row-card" id="row-all-levels">
+            <!-- ROW 1: WEDNESDAY -->
+            <div class="class-row-card" id="row-wed">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span>Weekly Classes</span>
+                    <span>Wednesday • 6:30 PM</span>
                   </div>
                   <div class="class-row-title">All levels Pilates & Strength</div>
-                  <div class="class-row-location">West Park Primary School or Goring Methodist Church Hall — £50 / 4 classes</div>
+                  <div class="class-row-location">West Park Primary School, Goring-by-Sea (50 mins) — £50 / 4 classes</div>
                 </div>
                 <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Select Date & Time</button>
-                  <button class="row-book-btn" onclick="bookSelectedAllLevelSession()">Book</button>
+                  <button class="details-toggle-btn" onclick="toggleRow('row-wed')">Details</button>
+                  <button class="row-book-btn" onclick="openBooking('All levels Pilates & Strength (Wednesday)')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
-                  <p>Full-body 50-minute classes combining Pilates with functional strength. Choose your preferred day and location below:</p>
+                  <p>This 50-minute, full-body class is designed to help you feel stronger, move better, and support your body through the real-life demands of everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply keeping up with a busy schedule.</p>
+                  <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
                   
-                  <div class="session-picker-box">
-                    <label for="all-levels-session-select">Select Day & Location *</label>
-                    <select id="all-levels-session-select">
-                      <option value="All levels Pilates & Strength (Wednesday)">Wednesday @ 6:30 PM — West Park Primary School</option>
-                      <option value="All levels Pilates & Strength (Thursday)">Thursday @ 8:45 AM — Goring Methodist Church Hall</option>
-                    </select>
+                  <!-- Calendar for Wednesday Class (Target Day Index: 3 = Wednesday) -->
+                  <div class="mini-calendar-container" id="cal-row-wed" data-target-day="3">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-wed')">&larr;</button>
+                      <span class="cal-title">October 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-wed')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- ROW 2: 6-WEEK COURSE (SEPARATE BLOCK) -->
+            <!-- ROW 2: THURSDAY -->
+            <div class="class-row-card" id="row-thu">
+              <div class="class-row-main">
+                <div class="class-row-info">
+                  <div class="class-row-meta">
+                    <span>Thursday • 8:45 AM</span>
+                  </div>
+                  <div class="class-row-title">All levels Pilates & Strength</div>
+                  <div class="class-row-location">Goring Methodist Church Hall (50 mins) — £50 / 4 classes</div>
+                </div>
+                <div class="class-row-actions">
+                  <button class="details-toggle-btn" onclick="toggleRow('row-thu')">Details</button>
+                  <button class="row-book-btn" onclick="openBooking('All levels Pilates & Strength (Thursday)')">Book</button>
+                </div>
+              </div>
+              <div class="class-row-dropdown">
+                <div class="dropdown-inner">
+                  <p>This 50-minute, full-body class is designed to help you feel stronger, move better, and support your body through the real-life demands of everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply keeping up with a busy schedule.</p>
+                  <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
+                  
+                  <!-- Calendar for Thursday Class (Target Day Index: 4 = Thursday) -->
+                  <div class="mini-calendar-container" id="cal-row-thu" data-target-day="4">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-thu')">&larr;</button>
+                      <span class="cal-title">October 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-thu')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 3: 6-WEEK COURSE -->
             <div class="class-row-card" id="row-course">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -342,12 +735,25 @@
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
-                  <p>A structured 6-week beginner course guiding you safely through fundamental strength techniques starting November 4th.</p>
+                  <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
+                  
+                  <!-- Calendar for Course (Target Day Index: 2 = Tuesday, starting Nov 4) -->
+                  <div class="mini-calendar-container" id="cal-row-course" data-target-day="2" data-start-month="10" data-start-year="2026">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
+                      <span class="cal-title">November 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-course')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- ROW 3: INTRO CLASS -->
+            <!-- ROW 4: INTRO CLASS -->
             <div class="class-row-card" id="row-intro">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -364,12 +770,12 @@
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
-                  <p>Experience a welcoming, beginner-friendly taster session to see how classes work and feel the benefits.</p>
+                  <p>Not ready to commit to six weeks? Come and try for £10! Experience a welcoming, beginner-friendly taster session to see how classes work and feel the benefits for yourself.</p>
                 </div>
               </div>
             </div>
 
-            <!-- ROW 4: LOVELY BUMPS -->
+            <!-- ROW 5: LOVELY BUMPS -->
             <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -388,7 +794,20 @@
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
-                  <p>Gentle, enjoyable pregnancy class to strengthen your core and prevent pregnancy-related discomfort.</p>
+                  <p><em>Breathe, Focus, Energise.</em> Come join this gentle, enjoyable pregnancy class to strengthen your core, prevent pregnancy-related discomfort, and build stamina for birth and beyond.</p>
+                  
+                  <!-- Calendar for Bumps (Wednesday) -->
+                  <div class="mini-calendar-container" id="cal-row-bumps" data-target-day="3">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-bumps')">&larr;</button>
+                      <span class="cal-title">October 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-bumps')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -398,6 +817,7 @@
         </div>
       </section>
 
+      <!-- TESTIMONIALS -->
       <section class="section-strip strip-stone">
         <div class="strip-content">
           <h2 class="section-title">Client Stories</h2>
@@ -422,6 +842,8 @@
           <button class="details-toggle-btn" onclick="switchPage('home', event)" style="margin-bottom: 2rem;">&larr; Back to Home</button>
           <h2 class="section-title">ABOUT ME</h2>
           <p>Hi, I’m Niki!</p>
+          <p>I started my journey as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London, supporting people with movement and exercise.</p>
+
           <div class="qualifications-box">
             <h3>Qualifications</h3>
             <ul>
@@ -456,8 +878,14 @@
         <div class="strip-content">
           <button class="details-toggle-btn" onclick="switchPage('home', event)" style="margin-bottom: 2rem;">&larr; Back to Home</button>
           <h2 class="section-title">Contact Us</h2>
-          <div class="contact-grid">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="826" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+          <div class="contact-grid" style="padding: 1.5rem;">
+            <div>
+              <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 700; text-align: center;">Send a Message</h3>
+              <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="826" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -465,7 +893,7 @@
 
   </div>
 
-  <!-- BOOKING MODAL -->
+  <!-- BOOKING MODAL (WITH EMBEDDED DATE SELECTOR CALENDAR) -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModalDirect()">&times;</button>
@@ -477,10 +905,31 @@
         <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
           <input type="hidden" name="Class Name" id="hidden-class-name">
           
-          <div class="step-heading">Step 1: Choose Your Course Option</div>
+          <div class="step-heading">Step 1: Choose Your Course Option & Date</div>
           <div class="form-group">
-            <label for="pass-type">Select Course / Date *</label>
+            <label for="pass-type">Select Course Package *</label>
             <select id="pass-type" name="Pass Selected" required></select>
+          </div>
+
+          <div class="form-group">
+            <label>Select Date from Calendar *</label>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem;">Click on any highlighted available date to book:</p>
+            
+            <!-- Embedded Modal Calendar -->
+            <div class="modal-calendar-container" id="modalCalContainer" data-target-day="3">
+              <div class="cal-header">
+                <button type="button" onclick="changeModalMonth(-1)">&larr;</button>
+                <span class="modal-cal-title">October 2026</span>
+                <button type="button" onclick="changeModalMonth(1)">&rarr;</button>
+              </div>
+              <div class="cal-grid">
+                <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+              </div>
+              <div class="cal-grid modal-cal-days-body"></div>
+            </div>
+
+            <input type="hidden" id="selected-booking-date" name="Selected Class Date" required>
+            <div id="selected-date-display" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-green); margin-top: 0.4rem;">No date selected yet. Please click a highlighted date above.</div>
           </div>
 
           <div class="step-heading">Step 2: Time Slot</div>
@@ -511,6 +960,7 @@
           </div>
 
           <div class="step-heading">Step 4: Health Questions</div>
+
           <div class="form-group">
             <label>1. Any injuries, joint, or spinal issues? *</label>
             <div class="radio-group">
@@ -520,4 +970,496 @@
           </div>
 
           <div class="form-group" id="injuries-details-group" style="display: none;">
-            <label for="injuries-details">
+            <label for="injuries-details">Please describe your injury or condition:</label>
+            <textarea id="injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>2. High blood pressure, heart condition, or dizziness? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
+              <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
+              <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="other-health-issues">4. Are there any other health-related issues or conditions?</label>
+            <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>5. Have you done Pilates before? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Done Pilates Before" value="No" checked onclick="togglePilatesExperienceBox(false)"> No</label>
+              <label><input type="radio" name="Done Pilates Before" value="Yes" onclick="togglePilatesExperienceBox(true)"> Yes</label>
+            </div>
+          </div>
+
+          <div class="form-group" id="pilates-experience-details-group" style="display: none;">
+            <label for="pilates-experience-details">Please share a brief note on your previous Pilates experience:</label>
+            <textarea id="pilates-experience-details" name="Pilates Experience Details" placeholder="E.g., practiced mat Pilates..."></textarea>
+          </div>
+
+          <div class="step-heading">Step 5: Health Waiver Consent</div>
+
+          <div class="form-group">
+            <div class="waiver-box">
+              By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury.
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
+              <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
+            </div>
+          </div>
+
+          <button type="submit" id="booking-submit-btn" class="row-book-btn" style="width: 100%; padding: 1.0rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Pay via Stripe &rarr;</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WAITLIST MODAL -->
+  <div class="modal-overlay" id="waitlistModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
+      
+      <h3>LOVELY BUMPS — Waitlist</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+        Joining the waitlist doesn’t commit you to booking. We’ll contact you when bookings open!
+      </p>
+
+      <form id="waitlistForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+        <input type="hidden" name="Form Type" value="Pregnancy Pilates Waitlist">
+        
+        <div class="form-group">
+          <label for="waitlist-name">Name *</label>
+          <input type="text" id="waitlist-name" name="Client Full Name" required placeholder="Jane Doe">
+        </div>
+
+        <div class="form-group">
+          <label for="waitlist-email">Email Address *</label>
+          <input type="email" id="waitlist-email" name="Client Email" required placeholder="jane@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="waitlist-phone">Mobile Number *</label>
+          <input type="tel" id="waitlist-phone" name="Client Phone" required placeholder="07123 456789">
+        </div>
+
+        <button type="submit" id="waitlist-submit-btn" class="row-book-btn" style="width: 100%; padding: 1rem; font-size: 0.9rem; font-weight: 700;">Join Waitlist</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Niki G Pilates. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sideNav = document.getElementById('sideNav');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function toggleMenu() {
+      sideNav.classList.toggle('open');
+      navOverlay.classList.toggle('active');
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    function toggleRow(rowId) {
+      const row = document.getElementById(rowId);
+      row.classList.toggle('open');
+      if (row.classList.contains('open')) {
+        const calContainer = row.querySelector('.mini-calendar-container');
+        if (calContainer && !calContainer.dataset.rendered) {
+          initCalendar(calContainer.id);
+          calContainer.dataset.rendered = "true";
+        }
+      }
+    }
+
+    // Mini Calendar Logic for Homepage Rows
+    const calendarState = {};
+
+    function initCalendar(containerId) {
+      const container = document.getElementById(containerId);
+      if (!calendarState[containerId]) {
+        const defaultYear = parseInt(container.dataset.startYear) || 2026;
+        const defaultMonth = parseInt(container.dataset.startMonth) !== undefined ? parseInt(container.dataset.startMonth) : 9; // 9 = October
+        calendarState[containerId] = { year: defaultYear, month: defaultMonth };
+      }
+      renderCalendar(containerId);
+    }
+
+    function changeMonth(direction, containerId) {
+      let state = calendarState[containerId];
+      state.month += direction;
+      if (state.month > 11) {
+        state.month = 0;
+        state.year++;
+      } else if (state.month < 0) {
+        state.month = 11;
+        state.year--;
+      }
+      renderCalendar(containerId);
+    }
+
+    function renderCalendar(containerId) {
+      const container = document.getElementById(containerId);
+      const state = calendarState[containerId];
+      const targetDay = parseInt(container.dataset.targetDay);
+
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      container.querySelector('.cal-title').textContent = `${monthNames[state.month]} ${state.year}`;
+
+      const daysBody = container.querySelector('.cal-days-body');
+      daysBody.innerHTML = '';
+
+      const firstDayIndex = new Date(state.year, state.month, 1).getDay();
+      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+      const totalDays = new Date(state.year, state.month + 1, 0).getDate();
+
+      for (let i = 0; i < adjustedFirstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-date empty';
+        daysBody.appendChild(emptyCell);
+      }
+
+      for (let day = 1; day <= totalDays; day++) {
+        const dateCell = document.createElement('div');
+        dateCell.className = 'cal-date';
+        dateCell.textContent = day;
+
+        const currentDateObj = new Date(state.year, state.month, day);
+        if (currentDateObj.getDay() === targetDay) {
+          dateCell.classList.add('highlight');
+        }
+
+        daysBody.appendChild(dateCell);
+      }
+    }
+
+    // Modal Calendar State & Logic
+    let modalCalState = { year: 2026, month: 9, targetDay: 3, selectedDateStr: '' };
+
+    function initModalCalendar(targetDay, startMonth = 9, startYear = 2026) {
+      modalCalState.targetDay = targetDay;
+      modalCalState.month = startMonth;
+      modalCalState.year = startYear;
+      modalCalState.selectedDateStr = '';
+      document.getElementById('selected-booking-date').value = '';
+      document.getElementById('selected-date-display').textContent = 'No date selected yet. Please click a highlighted date above.';
+      renderModalCalendar();
+    }
+
+    function changeModalMonth(direction) {
+      modalCalState.month += direction;
+      if (modalCalState.month > 11) {
+        modalCalState.month = 0;
+        modalCalState.year++;
+      } else if (modalCalState.month < 0) {
+        modalCalState.month = 11;
+        modalCalState.year--;
+      }
+      renderModalCalendar();
+    }
+
+    function renderModalCalendar() {
+      const container = document.getElementById('modalCalContainer');
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      container.querySelector('.modal-cal-title').textContent = `${monthNames[modalCalState.month]} ${modalCalState.year}`;
+
+      const daysBody = container.querySelector('.modal-cal-days-body');
+      daysBody.innerHTML = '';
+
+      const firstDayIndex = new Date(modalCalState.year, modalCalState.month, 1).getDay();
+      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+      const totalDays = new Date(modalCalState.year, modalCalState.month + 1, 0).getDate();
+
+      for (let i = 0; i < adjustedFirstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-date empty';
+        daysBody.appendChild(emptyCell);
+      }
+
+      for (let day = 1; day <= totalDays; day++) {
+        const dateCell = document.createElement('div');
+        dateCell.className = 'cal-date';
+        dateCell.textContent = day;
+
+        const currentDateObj = new Date(modalCalState.year, modalCalState.month, day);
+        const formattedDateStr = currentDateObj.toISOString().split('T')[0];
+
+        if (currentDateObj.getDay() === modalCalState.targetDay) {
+          dateCell.classList.add('highlight');
+          
+          if (modalCalState.selectedDateStr === formattedDateStr) {
+            dateCell.classList.add('selected-date');
+          }
+
+          dateCell.addEventListener('click', function() {
+            container.querySelectorAll('.cal-date').forEach(el => el.classList.remove('selected-date'));
+            dateCell.classList.add('selected-date');
+            modalCalState.selectedDateStr = formattedDateStr;
+            document.getElementById('selected-booking-date').value = formattedDateStr;
+            
+            const readableDate = currentDateObj.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('selected-date-display').textContent = `Selected: ${readableDate}`;
+          });
+        }
+
+        daysBody.appendChild(dateCell);
+      }
+    }
+
+    let pageHistory = ['home'];
+
+    function switchPage(pageId, event) {
+      if (event) event.preventDefault();
+      
+      const currentPage = pageHistory[pageHistory.length - 1];
+      if (currentPage !== pageId) {
+        pageHistory.push(pageId);
+      }
+
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active-page');
+      });
+
+      const targetPage = document.getElementById('page-' + pageId);
+      if (targetPage) {
+        targetPage.classList.add('active-page');
+      }
+
+      sideNav.classList.remove('open');
+      navOverlay.classList.remove('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const classPassOptions = {
+      'All levels Pilates & Strength (Wednesday)': {
+        targetDay: 3, // Wednesday
+        startMonth: 9,
+        startYear: 2026,
+        timeSlot: '6:30 PM - 7:20 PM (50 mins)',
+        passes: [
+          { label: '4 Classes for £50', value: '4 Classes (£50.00)', stripeUrl: 'https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g' }
+        ]
+      },
+      'All levels Pilates & Strength (Thursday)': {
+        targetDay: 4, // Thursday
+        startMonth: 9,
+        startYear: 2026,
+        timeSlot: '8:45 AM - 9:35 AM (50 mins)',
+        passes: [
+          { label: '4 Classes for £50', value: '4 Classes (£50.00)', stripeUrl: 'https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f' }
+        ]
+      },
+      '6-Week Pilates Strength Course': {
+        targetDay: 2, // Tuesday
+        startMonth: 10, // November
+        startYear: 2026,
+        timeSlot: '7:30 PM - 8:20 PM (50 mins)',
+        passes: [
+          { label: '6-Week Course (Starts 4th November, 7:30 PM) — £67', value: '6-Week Course (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
+        ]
+      },
+      'Intro Class': {
+        targetDay: 3,
+        startMonth: 9,
+        startYear: 2026,
+        timeSlot: '6:30 PM - 7:20 PM (50 mins)',
+        passes: [
+          { label: 'Intro Pass — £10.00', value: 'Intro Pass (£10.00)', stripeUrl: 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' }
+        ]
+      },
+      'LOVELY BUMPS — Pregnancy Pilates': {
+        targetDay: 3, // Wednesday
+        startMonth: 9,
+        startYear: 2026,
+        timeSlot: '10:00 AM - 10:50 AM (50 mins)',
+        passes: [
+          { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
+          { label: '5-Week Block — £60.50', value: '5-Week Block (£60.50)', stripeUrl: 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606' }
+        ]
+      }
+    };
+
+    function openBooking(className) {
+      const form = document.getElementById('bookingForm');
+      form.reset();
+      clearFormErrors(form);
+
+      document.getElementById('modal-class-title').innerText = className;
+      document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
+      document.getElementById('hidden-class-name').value = className;
+      
+      const passSelect = document.getElementById('pass-type');
+      passSelect.innerHTML = '';
+
+      const classData = classPassOptions[className] || classPassOptions['All levels Pilates & Strength (Wednesday)'];
+      
+      classData.passes.forEach(opt => {
+        const optionEl = document.createElement('option');
+        optionEl.value = opt.value;
+        optionEl.textContent = opt.label;
+        optionEl.dataset.stripeUrl = opt.stripeUrl;
+        passSelect.appendChild(optionEl);
+      });
+
+      const timeSelect = document.getElementById('booking-time');
+      timeSelect.innerHTML = '';
+      const timeOption = document.createElement('option');
+      timeOption.value = classData.timeSlot;
+      timeOption.textContent = classData.timeSlot;
+      timeSelect.appendChild(timeOption);
+
+      // Initialize the modal calendar with the specific class schedule rules
+      initModalCalendar(classData.targetDay, classData.startMonth, classData.startYear);
+
+      document.getElementById('bookingModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalDirect() {
+      document.getElementById('bookingModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function openWaitlist() {
+      const form = document.getElementById('waitlistForm');
+      form.reset();
+      clearFormErrors(form);
+      document.getElementById('waitlistModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWaitlistDirect() {
+      document.getElementById('waitlistModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function toggleInjuriesBox(show) {
+      document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
+    }
+
+    function togglePilatesExperienceBox(show) {
+      document.getElementById('pilates-experience-details-group').style.display = show ? 'block' : 'none';
+    }
+
+    function clearFormErrors(form) {
+      form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+      form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
+    }
+
+    function validateForm(form) {
+      clearFormErrors(form);
+      let isValid = true;
+      const requiredInputs = form.querySelectorAll('[required]');
+
+      requiredInputs.forEach(input => {
+        if (input.type === 'checkbox') {
+          if (!input.checked) {
+            isValid = false;
+            const parent = input.closest('.checkbox-group');
+            if (parent) parent.classList.add('field-error-checkbox');
+          }
+        } else {
+          if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('field-error');
+          }
+        }
+      });
+      return isValid;
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!validateForm(this)) {
+        alert('Please fill out all required fields outlined in red, including selecting a class date from the calendar.');
+        return;
+      }
+
+      const submitBtn = document.getElementById('booking-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting & Redirecting to Stripe...";
+
+      const passSelect = document.getElementById('pass-type');
+      const selectedOption = passSelect.options[passSelect.selectedIndex];
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g";
+
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          window.location.href = targetStripeUrl;
+        } else {
+          alert("There was an issue submitting your registration. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Complete Registration & Pay via Stripe →";
+        }
+      } catch (error) {
+        alert("Network error. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Complete Registration & Pay via Stripe →";
+      }
+    });
+
+    document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!validateForm(this)) {
+        alert('Please fill out all required fields outlined in red.');
+        return;
+      }
+
+      const submitBtn = document.getElementById('waitlist-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          alert("You have successfully joined the waitlist! We'll be in touch soon.");
+          closeWaitlistDirect();
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Join Waitlist";
+        } else {
+          alert("There was an issue submitting your details. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Join Waitlist";
+        }
+      } catch (error) {
+        alert("Network error. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Join Waitlist";
+      }
+    });
+  </script>
+
+</body>
+</html>
