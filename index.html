@@ -936,9 +936,9 @@
               <div class="step-heading">Choose Payment Package</div>
               <div class="package-options-grid">
                 <div class="package-card" id="pkg-card-block" onclick="selectPackage('block')">
-                  <div class="package-title">4-CLASS BLOCK (THURSDAY CLASS)</div>
+                  <div class="package-title">4-CLASS BLOCK (WEDNESDAY CLASS)</div>
                   <div class="package-price">£50</div>
-                  <div class="package-desc">Purchase your Thursday class package for £50.</div>
+                  <div class="package-desc">Purchase your Wednesday class package for £50.</div>
                 </div>
                 <div class="package-card" id="pkg-card-payg" onclick="selectPackage('payg')">
                   <div class="package-title">PAY AS YOU GO</div>
@@ -1831,7 +1831,7 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
-      // Updated your provided Stripe link here for the Thursday/All Levels block package option
+      // Your provided Stripe links are wired here:
       const targetStripeUrl = dedicatedBookingState.packageType === 'block' 
         ? 'https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f' 
         : 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c';
