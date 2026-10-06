@@ -936,9 +936,9 @@
               <div class="step-heading">Choose Payment Package</div>
               <div class="package-options-grid">
                 <div class="package-card" id="pkg-card-block" onclick="selectPackage('block')">
-                  <div class="package-title">4-CLASS BLOCK (WEDNESDAY CLASS)</div>
+                  <div class="package-title">4-CLASS BLOCK</div>
                   <div class="package-price">£50</div>
-                  <div class="package-desc">Purchase your Wednesday class package for £50.</div>
+                  <div class="package-desc">Purchase your 4-class package for £50.</div>
                 </div>
                 <div class="package-card" id="pkg-card-payg" onclick="selectPackage('payg')">
                   <div class="package-title">PAY AS YOU GO</div>
@@ -1795,7 +1795,7 @@
 
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f";
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i";
 
       const formData = new FormData(this);
 
@@ -1820,7 +1820,7 @@
       }
     });
 
-    document.getElementById('dedicatedBookingForm').addEventListener('submit', async function(e) {
+    document.getElementById('dedicatedBookingForm').addEventListener('submit', async function(e)  {
       e.preventDefault();
       if (!validateForm(this)) {
         alert('Please fill out all required fields outlined in red.');
@@ -1831,9 +1831,9 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
-      // Your provided Stripe links are wired here:
+      // Updated Stripe link for £50 package, and Pay As You Go fallback
       const targetStripeUrl = dedicatedBookingState.packageType === 'block' 
-        ? 'https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f' 
+        ? 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i' 
         : 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c';
 
       const formData = new FormData(this);
