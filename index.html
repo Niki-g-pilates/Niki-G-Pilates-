@@ -771,7 +771,7 @@
 
           <div class="classes-stack">
 
-            <!-- ROW 1: ALL LEVELS PILATES & STRENGTH (UPDATED BOOKING JOURNEY) -->
+            <!-- ROW 1: ALL LEVELS PILATES & STRENGTH -->
             <div class="class-row-card" id="row-all-levels">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -814,8 +814,8 @@
                 <div class="dropdown-inner">
                   <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
                   
-                  <!-- Calendar for Course -->
-                  <div class="mini-calendar-container" id="cal-row-course" data-target-day="2" data-start-month="10" data-start-year="2026">
+                  <!-- Calendar for Course (Wednesday targetDay = 3) -->
+                  <div class="mini-calendar-container" id="cal-row-course" data-target-day="3" data-start-month="10" data-start-year="2026">
                     <div class="cal-header">
                       <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
                       <span class="cal-title">November 2026</span>
@@ -849,7 +849,7 @@
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
-                  <p><em>Breathe, Focus, Energise.</em> Come join this gentle, enjoyable pregnancy class to strengthen your core, prevent pregnancy-related discomfort, and build stamina for birth and beyond.</p>
+                  <p><em>Breathe, Focus, Energise.</em> Come join this gentle, pregnancy class to strengthen your core and build stamina for birth and beyond.</p>
                   
                   <!-- Calendar for Bumps -->
                   <div class="mini-calendar-container" id="cal-row-bumps" data-target-day="3">
@@ -935,7 +935,7 @@
               </div>
               <div id="ded-selected-date-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent-green); margin-bottom: 1.8rem;">No date selected yet.</div>
 
-              <!-- Package Selection (Appears after location selected) -->
+              <!-- Package Selection -->
               <div class="step-heading">Choose Payment Package</div>
               <div class="package-options-grid">
                 <div class="package-card selected-package" id="pkg-card-block" onclick="selectPackage('block')">
@@ -945,7 +945,7 @@
                 </div>
               </div>
 
-              <!-- Personal Info, Health Form, Waiver, & Summary Section (Revealed AFTER both Date & Package are chosen) -->
+              <!-- Personal Info, Health Form, Waiver, & Summary Section -->
               <div id="customerAndHealthSection" style="display: none;">
                 <form id="dedicatedBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
                   <input type="hidden" name="Class Name" value="All Levels Pilates & Strength">
@@ -1647,13 +1647,13 @@
 
     const classPassOptions = {
       '6-Week Pilates Strength Course': {
-        targetDay: 2,
+        targetDay: 3, // Wednesday target day set here
         startMonth: 10,
         startYear: 2026,
         timeSlot: '7:30 PM - 8:20 PM (50 mins)',
         passes: [
-          { label: '6-Week Course — £10 Intro Offer', value: '6-Week Course £10 Intro', stripeUrl: '#STRIPE_LINK_10_INTRO' },
-          { label: '6-Week Course — Full Package', value: '6-Week Course Full', stripeUrl: '#STRIPE_LINK_6_WEEK' }
+          { label: '6-Week Course — £10 Intro Offer', value: '6-Week Course £10 Intro', stripeUrl: 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' },
+          { label: '6-Week Course — Full Package', value: '6-Week Course Full', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
@@ -1769,7 +1769,7 @@
 
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i";
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e";
 
       const formData = new FormData(this);
 
@@ -1805,7 +1805,6 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
-      // Stripe link for £50 package used across Wednesday & Thursday classes
       const targetStripeUrl = 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i';
 
       const formData = new FormData(this);
