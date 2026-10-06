@@ -613,10 +613,13 @@
 
     .package-options-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 1.2rem;
       margin-top: 0.8rem;
       margin-bottom: 1.5rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .package-card {
@@ -689,7 +692,7 @@
     }
 
     @media (max-width: 600px) {
-      .location-selector-bar, .package-options-grid {
+      .location-selector-bar {
         grid-template-columns: 1fr;
       }
       .booking-screen-container {
@@ -776,7 +779,7 @@
                     <span>Wednesday & Thursday Sessions</span>
                   </div>
                   <div class="class-row-title">All Levels Pilates & Strength</div>
-                  <div class="class-row-location">West Park Primary School & Goring Methodist Church Hall (50 mins) — From £13</div>
+                  <div class="class-row-location">West Park Primary School & Goring Methodist Church Hall (50 mins) — £50 Package</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
@@ -935,15 +938,10 @@
               <!-- Package Selection (Appears after location selected) -->
               <div class="step-heading">Choose Payment Package</div>
               <div class="package-options-grid">
-                <div class="package-card" id="pkg-card-block" onclick="selectPackage('block')">
+                <div class="package-card selected-package" id="pkg-card-block" onclick="selectPackage('block')">
                   <div class="package-title">4-CLASS BLOCK</div>
                   <div class="package-price">£50</div>
                   <div class="package-desc">Purchase your 4-class package for £50.</div>
-                </div>
-                <div class="package-card" id="pkg-card-payg" onclick="selectPackage('payg')">
-                  <div class="package-title">PAY AS YOU GO</div>
-                  <div class="package-price">£13</div>
-                  <div class="package-desc">Book and pay for one individual class.</div>
                 </div>
               </div>
 
@@ -953,8 +951,8 @@
                   <input type="hidden" name="Class Name" value="All Levels Pilates & Strength">
                   <input type="hidden" id="ded-hidden-location" name="Location">
                   <input type="hidden" id="ded-hidden-date" name="Selected Class Date">
-                  <input type="hidden" id="ded-hidden-package" name="Package Selected">
-                  <input type="hidden" id="ded-hidden-price" name="Total Price">
+                  <input type="hidden" id="ded-hidden-package" name="Package Selected" value="4-Class Block">
+                  <input type="hidden" id="ded-hidden-price" name="Total Price" value="£50">
 
                   <div class="step-heading">Personal Information</div>
                   <div class="form-group">
@@ -1058,11 +1056,11 @@
                     </div>
                     <div class="booking-summary-row">
                       <span>Package</span>
-                      <span id="sum-package-text">-</span>
+                      <span id="sum-package-text">4-Class Block</span>
                     </div>
                     <div class="booking-summary-row" style="border-top: 1px solid var(--border-color); padding-top: 0.8rem; margin-top: 0.4rem;">
                       <span>Total Price</span>
-                      <span id="sum-price-text" style="color: var(--accent-green); font-size: 1.1rem;">-</span>
+                      <span id="sum-price-text" style="color: var(--accent-green); font-size: 1.1rem;">£50</span>
                     </div>
                   </div>
 
@@ -1399,17 +1397,16 @@
       month: 9,
       selectedDate: '',
       selectedDateFormatted: '',
-      packageType: null
+      packageType: 'block'
     };
 
     function openDedicatedBooking() {
       switchPage('dedicated-booking');
-      dedicatedBookingState = { location: null, targetDay: 3, year: 2026, month: 9, selectedDate: '', selectedDateFormatted: '', packageType: null };
+      dedicatedBookingState = { location: null, targetDay: 3, year: 2026, month: 9, selectedDate: '', selectedDateFormatted: '', packageType: 'block' };
       document.getElementById('loc-tab-westpark').classList.remove('active-location');
       document.getElementById('loc-tab-goring').classList.remove('active-location');
       document.getElementById('bookingWorkflowArea').style.display = 'none';
       document.getElementById('customerAndHealthSection').style.display = 'none';
-      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-package'));
     }
 
     function selectLocation(loc) {
@@ -1437,8 +1434,6 @@
       dedicatedBookingState.selectedDate = '';
       dedicatedBookingState.selectedDateFormatted = '';
       document.getElementById('ded-selected-date-display').textContent = 'No date selected yet.';
-      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-package'));
-      dedicatedBookingState.packageType = null;
 
       renderDedicatedCalendar();
     }
@@ -1508,27 +1503,12 @@
 
     function selectPackage(pkg) {
       dedicatedBookingState.packageType = pkg;
-      const blockCard = document.getElementById('pkg-card-block');
-      const paygCard = document.getElementById('pkg-card-payg');
-
-      if (pkg === 'block') {
-        blockCard.classList.add('selected-package');
-        paygCard.classList.remove('selected-package');
-        document.getElementById('ded-hidden-package').value = '4-Class Block';
-        document.getElementById('ded-hidden-price').value = '£50';
-      } else {
-        paygCard.classList.add('selected-package');
-        blockCard.classList.remove('selected-package');
-        document.getElementById('ded-hidden-package').value = 'Pay As You Go';
-        document.getElementById('ded-hidden-price').value = '£13';
-      }
-
       checkWorkflowCompletion();
     }
 
     function checkWorkflowCompletion() {
       const section = document.getElementById('customerAndHealthSection');
-      if (dedicatedBookingState.selectedDate && dedicatedBookingState.packageType) {
+      if (dedicatedBookingState.selectedDate) {
         section.style.display = 'block';
         updateBookingSummary();
         section.scrollIntoView({ behavior: 'smooth' });
@@ -1542,14 +1522,8 @@
       document.getElementById('sum-location-text').textContent = locText;
       document.getElementById('sum-time-text').textContent = timeText;
       document.getElementById('sum-date-text').textContent = dedicatedBookingState.selectedDateFormatted || '-';
-      
-      if (dedicatedBookingState.packageType === 'block') {
-        document.getElementById('sum-package-text').textContent = '4-Class Block';
-        document.getElementById('sum-price-text').textContent = '£50';
-      } else if (dedicatedBookingState.packageType === 'payg') {
-        document.getElementById('sum-package-text').textContent = 'Pay As You Go';
-        document.getElementById('sum-price-text').textContent = '£13';
-      }
+      document.getElementById('sum-package-text').textContent = '4-Class Block';
+      document.getElementById('sum-price-text').textContent = '£50';
     }
 
     function toggleDedInjuriesBox(show) {
@@ -1831,10 +1805,8 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
-      // Updated Stripe link for £50 package, and Pay As You Go fallback
-      const targetStripeUrl = dedicatedBookingState.packageType === 'block' 
-        ? 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i' 
-        : 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c';
+      // Stripe link for £50 package used across Wednesday & Thursday classes
+      const targetStripeUrl = 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i';
 
       const formData = new FormData(this);
 
