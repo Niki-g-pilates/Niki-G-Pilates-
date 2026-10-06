@@ -760,14 +760,6 @@
         </div>
       </section>
 
-      <section class="section-strip strip-stone">
-        <div class="strip-content text-center">
-          <h2 class="section-title">WELCOME TO <strong>NIKI G PILATES</strong></h2>
-          <p>I'm passionate about helping people feel stronger, healthier, and more confident through Pilates. Whether you're new to movement or looking to build consistency, you'll find a welcoming environment to move at your own pace.</p>
-          <p>With a background as a Musculoskeletal Physiotherapy Assistant at Imperial College Healthcare NHS Trust, I bring a strong understanding of movement to every class to help you feel your best, release stiffness, improve posture, and move better in everyday life.</p>
-        </div>
-      </section>
-
       <!-- MINIMALIST TIMETABLE & ROW STACK -->
       <section class="section-strip strip-white">
         <div class="strip-content">
@@ -944,9 +936,9 @@
               <div class="step-heading">Choose Payment Package</div>
               <div class="package-options-grid">
                 <div class="package-card" id="pkg-card-block" onclick="selectPackage('block')">
-                  <div class="package-title">4-CLASS BLOCK</div>
+                  <div class="package-title">4-CLASS BLOCK (THURSDAY CLASS)</div>
                   <div class="package-price">£50</div>
-                  <div class="package-desc">Purchase four classes for £50.</div>
+                  <div class="package-desc">Purchase your Thursday class package for £50.</div>
                 </div>
                 <div class="package-card" id="pkg-card-payg" onclick="selectPackage('payg')">
                   <div class="package-title">PAY AS YOU GO</div>
@@ -1687,7 +1679,6 @@
         timeSlot: '7:30 PM - 8:20 PM (50 mins)',
         passes: [
           { label: '6-Week Course — £10 Intro Offer', value: '6-Week Course £10 Intro', stripeUrl: '#STRIPE_LINK_10_INTRO' },
-          { label: 'Thursday Class 8:45 — £50', value: 'Thursday Class £50', stripeUrl: 'https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f' },
           { label: '6-Week Course — Full Package', value: '6-Week Course Full', stripeUrl: '#STRIPE_LINK_6_WEEK' }
         ]
       },
@@ -1840,8 +1831,9 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
+      // Updated your provided Stripe link here for the Thursday/All Levels block package option
       const targetStripeUrl = dedicatedBookingState.packageType === 'block' 
-        ? 'https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g' 
+        ? 'https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f' 
         : 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c';
 
       const formData = new FormData(this);
