@@ -321,6 +321,9 @@
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
     }
 
     .row-book-btn:hover {
@@ -805,7 +808,7 @@
                     <span class="tag-badge purple">Special Course</span>
                   </div>
                   <div class="class-row-title">6-Week Pilates Strength Course (Beginners)</div>
-                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — £67 Full Course</div>
+                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — Packages Available</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-course')">Details</button>
@@ -832,29 +835,7 @@
               </div>
             </div>
 
-            <!-- ROW 3: INTRO CLASS -->
-            <div class="class-row-card" id="row-intro">
-              <div class="class-row-main">
-                <div class="class-row-info">
-                  <div class="class-row-meta">
-                    <span>Taster Session</span>
-                  </div>
-                  <div class="class-row-title">Intro Class</div>
-                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — £10 Pass</div>
-                </div>
-                <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-intro')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('Intro Class')">Book</button>
-                </div>
-              </div>
-              <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>Not ready to commit to six weeks? Come and try for £10! Experience a welcoming, beginner-friendly taster session to see how classes work and feel the benefits for yourself.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- ROW 4: LOVELY BUMPS -->
+            <!-- ROW 3: LOVELY BUMPS -->
             <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -1555,7 +1536,6 @@
 
     function checkWorkflowCompletion() {
       const section = document.getElementById('customerAndHealthSection');
-      // Requires both a date and package to be selected before revealing personal info, health, waiver, and stripe summary
       if (dedicatedBookingState.selectedDate && dedicatedBookingState.packageType) {
         section.style.display = 'block';
         updateBookingSummary();
@@ -1706,16 +1686,9 @@
         startYear: 2026,
         timeSlot: '7:30 PM - 8:20 PM (50 mins)',
         passes: [
-          { label: '6-Week Course (Starts 4th November, 7:30 PM) — £67', value: '6-Week Course (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
-        ]
-      },
-      'Intro Class': {
-        targetDay: 3,
-        startMonth: 9,
-        startYear: 2026,
-        timeSlot: '6:30 PM - 7:20 PM (50 mins)',
-        passes: [
-          { label: 'Intro Pass — £10.00', value: 'Intro Pass (£10.00)', stripeUrl: 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' }
+          { label: '6-Week Course — £10 Intro Offer', value: '6-Week Course £10 Intro', stripeUrl: '#STRIPE_LINK_10_INTRO' },
+          { label: 'Thursday Class 8:45 — £50', value: 'Thursday Class £50', stripeUrl: 'https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f' },
+          { label: '6-Week Course — Full Package', value: '6-Week Course Full', stripeUrl: '#STRIPE_LINK_6_WEEK' }
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
@@ -1831,7 +1804,7 @@
 
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g";
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f";
 
       const formData = new FormData(this);
 
