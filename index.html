@@ -223,12 +223,156 @@
     .strip-content p { margin-bottom: 1.4rem; font-size: 0.98rem; font-weight: 400; }
     .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
 
+    /* VIEW SELECTOR TABS */
+    .schedule-toggle-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .view-tab-btn {
+      background: #F5F2EE;
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.7rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .view-tab-btn.active-tab {
+      background: var(--primary-dark);
+      color: #FFFFFF;
+      border-color: var(--primary-dark);
+    }
+
+    /* CALENDAR WIDGET CONTAINER */
+    .calendar-container {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.8rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .calendar-container.active-view {
+      display: block;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .calendar-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--primary-dark);
+    }
+
+    .cal-nav-btn {
+      background: #F5F2EE;
+      border: 1px solid var(--border-color);
+      padding: 0.4rem 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      text-align: center;
+    }
+
+    .calendar-weekday {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      padding-bottom: 0.5rem;
+    }
+
+    .calendar-day {
+      min-height: 70px;
+      background: #FAFAFA;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 4px;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: default;
+    }
+
+    .calendar-day.has-class {
+      background: #FFF5F4;
+      border-color: var(--primary-rose);
+      cursor: pointer;
+    }
+
+    .calendar-day.has-class:hover {
+      background: #FCE8E6;
+    }
+
+    .calendar-day .day-num {
+      font-weight: 700;
+      margin-bottom: 2px;
+      font-size: 0.8rem;
+    }
+
+    .calendar-day .class-dot {
+      background-color: var(--primary-rose);
+      color: #2D3748;
+      font-size: 0.6rem;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-top: auto;
+      margin-bottom: auto;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* SELECTED DATE CLASS LIST DRAWER */
+    .selected-date-classes {
+      margin-top: 1.5rem;
+      background: #FAFAFA;
+      border: 1px dashed var(--border-color);
+      padding: 1.2rem;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .selected-date-classes.visible {
+      display: block;
+    }
+
     /* SLEEK HORIZONTAL ROW CLASS LISTINGS */
     .classes-stack {
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
-      margin-top: 2rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .classes-stack.active-view {
+      display: flex;
     }
 
     .class-row-card {
@@ -344,7 +488,7 @@
     }
 
     .class-row-card.open .class-row-dropdown {
-      max-height: 1200px;
+      max-height: 800px;
       padding: 1.5rem 1.8rem;
       border-top: 1px solid var(--border-color);
     }
@@ -353,50 +497,6 @@
       font-size: 0.9rem;
       color: var(--text-dark);
       margin-bottom: 0.8rem;
-    }
-
-    /* MINI CALENDAR STYLING */
-    .mini-calendar-container {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 1rem;
-      margin-top: 1.2rem;
-      max-width: 320px;
-    }
-    .mini-calendar-header {
-      font-family: var(--font-heading);
-      font-size: 0.95rem;
-      text-align: center;
-      margin-bottom: 0.6rem;
-      color: var(--primary-dark);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .mini-calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
-      text-align: center;
-      font-size: 0.75rem;
-    }
-    .mini-calendar-day-name {
-      font-weight: 700;
-      color: var(--text-muted);
-      padding-bottom: 4px;
-    }
-    .mini-calendar-day {
-      padding: 6px 0;
-      border-radius: 4px;
-      color: var(--text-dark);
-    }
-    .mini-calendar-day.empty {
-      background: transparent;
-    }
-    .mini-calendar-day.active-class-day {
-      background-color: var(--primary-rose);
-      color: #FFFFFF;
-      font-weight: 700;
     }
 
     .tag-badge {
@@ -597,13 +697,44 @@
         </div>
       </section>
 
-      <!-- MINIMALIST TIMETABLE & ROW STACK -->
+      <!-- CLASSES & INTERACTIVE CALENDAR SECTION -->
       <section class="section-strip strip-white">
         <div class="strip-content">
           <h2 class="section-title">CLASSES & COURSES</h2>
-          <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Browse our weekly schedule below. Click <strong>'Details'</strong> to read about each class or book your spot directly:</p>
+          <p class="text-center" style="color: var(--text-muted); margin-bottom: 1.5rem;">Browse our weekly schedule below or switch to the interactive calendar view to pick by date:</p>
 
-          <div class="classes-stack">
+          <!-- VIEW SWITCHER TABS -->
+          <div class="schedule-toggle-bar">
+            <button class="view-tab-btn active-tab" id="tabListBtn" onclick="switchScheduleView('list')">List View</button>
+            <button class="view-tab-btn" id="tabCalBtn" onclick="switchScheduleView('calendar')">Calendar View</button>
+          </div>
+
+          <!-- CALENDAR VIEW CONTAINER -->
+          <div class="calendar-container" id="calendarViewContainer">
+            <div class="calendar-header">
+              <button class="cal-nav-btn" onclick="changeMonth(-1)">&larr; Prev</button>
+              <h3 id="calendarMonthTitle">October 2026</h3>
+              <button class="cal-nav-btn" onclick="changeMonth(1)">Next &rarr;</button>
+            </div>
+            <div class="calendar-grid" id="calendarGridHeader">
+              <div class="calendar-weekday">Mon</div>
+              <div class="calendar-weekday">Tue</div>
+              <div class="calendar-weekday">Wed</div>
+              <div class="calendar-weekday">Thu</div>
+              <div class="calendar-weekday">Fri</div>
+              <div class="calendar-weekday">Sat</div>
+              <div class="calendar-weekday">Sun</div>
+            </div>
+            <div class="calendar-grid" id="calendarGridDays" style="margin-top: 6px;"></div>
+            
+            <div class="selected-date-classes" id="selectedDateClassesBox">
+              <h4 id="selectedDateTitle" style="font-family:var(--font-heading); font-size:1rem; margin-bottom:0.6rem; color:var(--primary-dark);">Classes on this date:</h4>
+              <div id="selectedDateContentList"></div>
+            </div>
+          </div>
+
+          <!-- LIST VIEW CONTAINER -->
+          <div class="classes-stack active-view" id="listViewContainer">
 
             <!-- ROW 1: WEDNESDAY -->
             <div class="class-row-card" id="row-wed">
@@ -626,19 +757,6 @@
                   <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
                   <p>Expect a fun, energetic session featuring flowing sequences that build functional strength, boost mobility, flexibility, and balance, and gently get your heart rate up.</p>
                   <p>As a busy mum myself, I know how hard it is to prioritize yourself, find the time, This class leave feeling strong, energized</p>
-                  
-                  <div class="mini-calendar-container" data-day="3">
-                    <div class="mini-calendar-header">Class Availability (Wednesdays)</div>
-                    <div class="mini-calendar-grid">
-                      <div class="mini-calendar-day-name">M</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">W</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">F</div>
-                      <div class="mini-calendar-day-name">S</div>
-                      <div class="mini-calendar-day-name">S</div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -664,19 +782,6 @@
                   <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
                   <p>Expect a fun, energetic session featuring flowing sequences that build functional strength, boost mobility, flexibility, and balance, and gently get your heart rate up.</p>
                   <p>As a busy mum myself, I know how hard it is to prioritize yourself, find the time, This class leave feeling strong, energized</p>
-                  
-                  <div class="mini-calendar-container" data-day="4">
-                    <div class="mini-calendar-header">Class Availability (Thursdays)</div>
-                    <div class="mini-calendar-grid">
-                      <div class="mini-calendar-day-name">M</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">W</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">F</div>
-                      <div class="mini-calendar-day-name">S</div>
-                      <div class="mini-calendar-day-name">S</div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -700,19 +805,6 @@
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
-                  
-                  <div class="mini-calendar-container" data-day="2">
-                    <div class="mini-calendar-header">Course Schedule (Tuesdays)</div>
-                    <div class="mini-calendar-grid">
-                      <div class="mini-calendar-day-name">M</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">W</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">F</div>
-                      <div class="mini-calendar-day-name">S</div>
-                      <div class="mini-calendar-day-name">S</div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -735,19 +827,6 @@
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p>Not ready to commit to six weeks? Come and try for £10! Experience a welcoming, beginner-friendly taster session to see how classes work and feel the benefits for yourself.</p>
-                  
-                  <div class="mini-calendar-container" data-day="3">
-                    <div class="mini-calendar-header">Intro Availability</div>
-                    <div class="mini-calendar-grid">
-                      <div class="mini-calendar-day-name">M</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">W</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">F</div>
-                      <div class="mini-calendar-day-name">S</div>
-                      <div class="mini-calendar-day-name">S</div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -772,19 +851,6 @@
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p><em>Breathe, Focus, Energise.</em> Come join this gentle, enjoyable pregnancy class to strengthen your core, prevent pregnancy-related discomfort, and build stamina for birth and beyond.</p>
-                  
-                  <div class="mini-calendar-container" data-day="3">
-                    <div class="mini-calendar-header">Class Availability (Wednesdays)</div>
-                    <div class="mini-calendar-grid">
-                      <div class="mini-calendar-day-name">M</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">W</div>
-                      <div class="mini-calendar-day-name">T</div>
-                      <div class="mini-calendar-day-name">F</div>
-                      <div class="mini-calendar-day-name">S</div>
-                      <div class="mini-calendar-day-name">S</div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1038,53 +1104,6 @@
       row.classList.toggle('open');
     }
 
-    // Generate mini calendars dynamically
-    document.addEventListener("DOMContentLoaded", () => {
-      const containers = document.querySelectorAll('.mini-calendar-container');
-      containers.forEach(container => {
-        const targetDayOfWeek = parseInt(container.getAttribute('data-day')); // 0=Sun, 1=Mon ... 6=Sat
-        const grid = container.querySelector('.mini-calendar-grid');
-        
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = now.getMonth();
-        
-        // Month Header update
-        const headerEl = container.querySelector('.mini-calendar-header');
-        const monthName = now.toLocaleString('default', { month: 'long' });
-        headerEl.textContent = `${monthName} ${year} (${headerEl.textContent.split('(')[1] || ''}`;
-
-        const firstDayIndex = new Date(year, month, 1).getDay(); // Sunday=0
-        // Adjust for Monday start (Monday=0, Sunday=6)
-        const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
-        
-        const totalDays = new Date(year, month + 1, 0).getDate();
-
-        // Empty slots before 1st of month
-        for (let i = 0; i < adjustedFirstDay; i++) {
-          const emptyCell = document.createElement('div');
-          emptyCell.className = 'mini-calendar-day empty';
-          grid.appendChild(emptyCell);
-        }
-
-        // Days of month
-        for (let day = 1; day <= totalDays; day++) {
-          const dayCell = document.createElement('div');
-          dayCell.className = 'mini-calendar-day';
-          dayCell.textContent = day;
-
-          const currentLoopDate = new Date(year, month, day);
-          let currentLoopDayOfWeek = currentLoopDate.getDay(); // 0=Sun, 1=Mon
-
-          if (currentLoopDayOfWeek === targetDayOfWeek) {
-            dayCell.classList.add('active-class-day');
-          }
-
-          grid.appendChild(dayCell);
-        }
-      });
-    });
-
     let pageHistory = ['home'];
 
     function switchPage(pageId, event) {
@@ -1107,6 +1126,130 @@
       sideNav.classList.remove('open');
       navOverlay.classList.remove('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // SCHEDULE VIEW TOGGLE (LIST / CALENDAR)
+    function switchScheduleView(viewType) {
+      const listBtn = document.getElementById('tabListBtn');
+      const calBtn = document.getElementById('tabCalBtn');
+      const listContainer = document.getElementById('listViewContainer');
+      const calContainer = document.getElementById('calendarViewContainer');
+
+      if (viewType === 'list') {
+        listBtn.classList.add('active-tab');
+        calBtn.classList.remove('active-tab');
+        listContainer.classList.add('active-view');
+        calContainer.classList.remove('active-view');
+      } else {
+        calBtn.classList.add('active-tab');
+        listBtn.classList.remove('active-tab');
+        calContainer.classList.add('active-view');
+        listContainer.classList.remove('active-view');
+        renderCalendar();
+      }
+    }
+
+    // CALENDAR LOGIC
+    let currentCalDate = new Date(2026, 9, 1); // October 2026
+
+    const scheduledClassesData = [
+      { name: 'All levels Pilates & Strength', time: 'Wednesday • 6:30 PM', dayOfWeek: 3, type: 'weekly', classNameKey: 'All levels Pilates & Strength (Wednesday)' },
+      { name: 'LOVELY BUMPS — Pregnancy Pilates', time: 'Wednesdays • 10:00 AM', dayOfWeek: 3, type: 'weekly', classNameKey: 'LOVELY BUMPS — Pregnancy Pilates' },
+      { name: 'All levels Pilates & Strength', time: 'Thursday • 8:45 AM', dayOfWeek: 4, type: 'weekly', classNameKey: 'All levels Pilates & Strength (Thursday)' },
+      { name: '6-Week Pilates Strength Course', time: 'Nov 4th • 7:30 PM', specificDate: '2026-11-04', classNameKey: '6-Week Pilates Strength Course' },
+      { name: 'Intro Class', time: 'Flexible Taster', specificDate: '2026-10-15', classNameKey: 'Intro Class' }
+    ];
+
+    function renderCalendar() {
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      document.getElementById('calendarMonthTitle').innerText = `${monthNames[month]} ${year}`;
+
+      const gridDays = document.getElementById('calendarGridDays');
+      gridDays.innerHTML = '';
+
+      // First day of month and total days
+      const firstDayIndex = new Date(year, month, 1).getDay();
+      // Adjust Sunday (0) to end of week index (6) for Monday-start grid
+      const adjustedFirstDay = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+      const totalDays = new Date(year, month + 1, 0).getDate();
+
+      // Blank slots before start of month
+      for (let i = 0; i < adjustedFirstDay; i++) {
+        const blankCell = document.createElement('div');
+        blankCell.className = 'calendar-day';
+        blankCell.style.opacity = '0.3';
+        gridDays.appendChild(blankCell);
+      }
+
+      // Render days
+      for (let day = 1; day <= totalDays; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'calendar-day';
+
+        const dateObj = new Date(year, month, day);
+        const dayOfWeek = dateObj.getDay(); // 0 is Sun, 3 is Wed, 4 is Thu
+        const yearStr = year;
+        const monthStr = String(month + 1).padStart(2, '0');
+        const dayStr = String(day).padStart(2, '0');
+        const formattedDateStr = `${yearStr}-${monthStr}-${dayStr}`;
+
+        // Check matching classes
+        const matchingClasses = scheduledClassesData.filter(c => {
+          if (c.specificDate && c.specificDate === formattedDateStr) return true;
+          if (!c.specificDate && c.dayOfWeek === dayOfWeek) return true;
+          return false;
+        });
+
+        const numEl = document.createElement('span');
+        numEl.className = 'day-num';
+        numEl.innerText = day;
+        dayCell.appendChild(numEl);
+
+        if (matchingClasses.length > 0) {
+          dayCell.classList.add('has-class');
+          const dotEl = document.createElement('span');
+          dotEl.className = 'class-dot';
+          dotEl.innerText = `${matchingClasses.length} Class${matchingClasses.length > 1 ? 'es' : ''}`;
+          dayCell.appendChild(dotEl);
+
+          dayCell.onclick = () => showClassesForDate(formattedDateStr, matchingClasses);
+        }
+
+        gridDays.appendChild(dayCell);
+      }
+    }
+
+    function changeMonth(direction) {
+      currentCalDate.setMonth(currentCalDate.getMonth() + direction);
+      renderCalendar();
+      document.getElementById('selectedDateClassesBox').classList.remove('visible');
+    }
+
+    function showClassesForDate(dateStr, classes) {
+      const box = document.getElementById('selectedDateClassesBox');
+      const titleEl = document.getElementById('selectedDateTitle');
+      const contentList = document.getElementById('selectedDateContentList');
+
+      titleEl.innerText = `Classes scheduled for ${dateStr}:`;
+      contentList.innerHTML = '';
+
+      classes.forEach(cls => {
+        const itemDiv = document.createElement('div');
+        itemDiv.style.cssText = "background:#fff; border:1px solid var(--border-color); padding:0.8rem; margin-top:0.5rem; border-radius:4px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;";
+        itemDiv.innerHTML = `
+          <div>
+            <strong style="font-family:var(--font-heading); font-size:0.95rem; display:block;">${cls.name}</strong>
+            <span style="font-size:0.8rem; color:var(--text-muted);">${cls.time}</span>
+          </div>
+          <button class="row-book-btn" style="padding:0.4rem 1rem; font-size:0.75rem;" onclick="openBooking('${cls.classNameKey}')">Book Now</button>
+        `;
+        contentList.appendChild(itemDiv);
+      });
+
+      box.classList.add('visible');
     }
 
     const classPassOptions = {
