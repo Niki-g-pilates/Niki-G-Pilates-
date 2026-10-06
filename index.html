@@ -356,13 +356,13 @@
     }
 
     /* MINI CALENDAR WIDGET STYLING */
-    .mini-calendar-container {
+    .mini-calendar-container, .modal-calendar-container {
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 1rem;
       margin-top: 1.2rem;
-      max-width: 320px;
+      max-width: 340px;
     }
 
     .cal-header {
@@ -816,7 +816,7 @@
                 <div class="dropdown-inner">
                   <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
                   
-                  <!-- Calendar for Course (Target Day Index: 2 = Tuesday, starting Nov 4) -->
+                  <!-- Calendar for Course -->
                   <div class="mini-calendar-container" id="cal-row-course" data-target-day="2" data-start-month="10" data-start-year="2026">
                     <div class="cal-header">
                       <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
@@ -875,7 +875,7 @@
                 <div class="dropdown-inner">
                   <p><em>Breathe, Focus, Energise.</em> Come join this gentle, enjoyable pregnancy class to strengthen your core, prevent pregnancy-related discomfort, and build stamina for birth and beyond.</p>
                   
-                  <!-- Calendar for Bumps (Wednesday) -->
+                  <!-- Calendar for Bumps -->
                   <div class="mini-calendar-container" id="cal-row-bumps" data-target-day="3">
                     <div class="cal-header">
                       <button onclick="changeMonth(-1, 'cal-row-bumps')">&larr;</button>
@@ -936,7 +936,7 @@
               </div>
             </div>
 
-            <!-- DYNAMIC BOOKING FORM CONTENT CONTAINER -->
+            <!-- DYNAMIC BOOKING WORKFLOW AREA -->
             <div id="bookingWorkflowArea" style="display: none;">
               
               <!-- Location Banner & Details -->
@@ -959,7 +959,7 @@
               </div>
               <div id="ded-selected-date-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent-green); margin-bottom: 1.8rem;">No date selected yet.</div>
 
-              <!-- Package Selection -->
+              <!-- Package Selection (Appears after location selected) -->
               <div class="step-heading">Choose Payment Package</div>
               <div class="package-options-grid">
                 <div class="package-card" id="pkg-card-block" onclick="selectPackage('block')">
@@ -974,7 +974,7 @@
                 </div>
               </div>
 
-              <!-- Customer & Health Form (Initially Hidden until Date & Package selected) -->
+              <!-- Personal Info, Health Form, Waiver, & Summary Section (Revealed AFTER both Date & Package are chosen) -->
               <div id="customerAndHealthSection" style="display: none;">
                 <form id="dedicatedBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
                   <input type="hidden" name="Class Name" value="All Levels Pilates & Strength">
@@ -1358,7 +1358,7 @@
       const container = document.getElementById(containerId);
       if (!calendarState[containerId]) {
         const defaultYear = parseInt(container.dataset.startYear) || 2026;
-        const defaultMonth = parseInt(container.dataset.startMonth) !== undefined ? parseInt(container.dataset.startMonth) : 9; // 9 = October
+        const defaultMonth = parseInt(container.dataset.startMonth) !== undefined ? parseInt(container.dataset.startMonth) : 9;
         calendarState[containerId] = { year: defaultYear, month: defaultMonth };
       }
       renderCalendar(containerId);
@@ -1412,7 +1412,6 @@
       }
     }
 
-    // Initialize mini calendars on load if present
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.mini-calendar-container').forEach(el => {
         initCalendar(el.id);
@@ -1421,18 +1420,17 @@
 
     // Dedicated Booking Screen State & Logic
     let dedicatedBookingState = {
-      location: null, // 'westpark' or 'goring'
-      targetDay: 3, // 3 = Wednesday for West Park, 4 = Thursday for Goring
+      location: null,
+      targetDay: 3,
       year: 2026,
-      month: 9, // October
+      month: 9,
       selectedDate: '',
       selectedDateFormatted: '',
-      packageType: null // 'block' or 'payg'
+      packageType: null
     };
 
     function openDedicatedBooking() {
       switchPage('dedicated-booking');
-      // Reset state
       dedicatedBookingState = { location: null, targetDay: 3, year: 2026, month: 9, selectedDate: '', selectedDateFormatted: '', packageType: null };
       document.getElementById('loc-tab-westpark').classList.remove('active-location');
       document.getElementById('loc-tab-goring').classList.remove('active-location');
@@ -1557,6 +1555,7 @@
 
     function checkWorkflowCompletion() {
       const section = document.getElementById('customerAndHealthSection');
+      // Requires both a date and package to be selected before revealing personal info, health, waiver, and stripe summary
       if (dedicatedBookingState.selectedDate && dedicatedBookingState.packageType) {
         section.style.display = 'block';
         updateBookingSummary();
@@ -1702,8 +1701,8 @@
 
     const classPassOptions = {
       '6-Week Pilates Strength Course': {
-        targetDay: 2, // Tuesday
-        startMonth: 10, // November
+        targetDay: 2,
+        startMonth: 10,
         startYear: 2026,
         timeSlot: '7:30 PM - 8:20 PM (50 mins)',
         passes: [
@@ -1720,7 +1719,7 @@
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
-        targetDay: 3, // Wednesday
+        targetDay: 3,
         startMonth: 9,
         startYear: 2026,
         timeSlot: '10:00 AM - 10:50 AM (50 mins)',
@@ -1868,10 +1867,9 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
-      // Determine correct Stripe link based on package selection
       const targetStripeUrl = dedicatedBookingState.packageType === 'block' 
-        ? 'https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g' // 4-class block link
-        : 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c'; // Pay as you go link
+        ? 'https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g' 
+        : 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c';
 
       const formData = new FormData(this);
 
