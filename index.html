@@ -365,17 +365,6 @@
       max-width: 320px;
     }
 
-    .modal-calendar-container {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 1rem;
-      margin-top: 0.8rem;
-      margin-bottom: 1.2rem;
-      width: 100%;
-      max-width: 100%;
-    }
-
     .cal-header {
       display: flex;
       justify-content: space-between;
@@ -567,6 +556,145 @@
     .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
     .checkbox-group label { font-size: 0.8rem; text-transform: none; color: #000000; text-align: left; }
 
+    /* DEDICATED BOOKING SCREEN STYLING */
+    .booking-screen-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .location-selector-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .location-tab-btn {
+      background: #F5F2EE;
+      border: 2px solid var(--border-color);
+      padding: 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+    }
+
+    .location-tab-btn:hover {
+      border-color: var(--primary-rose);
+    }
+
+    .location-tab-btn.active-location {
+      background: var(--primary-rose);
+      border-color: var(--primary-rose);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(216, 167, 161, 0.3);
+    }
+
+    .location-info-banner {
+      background: #FAF6F0;
+      border-left: 4px solid var(--primary-rose);
+      padding: 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .package-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .package-card {
+      background: #FAFAFA;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1.5rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .package-card:hover {
+      border-color: var(--primary-rose);
+    }
+
+    .package-card.selected-package {
+      border-color: var(--accent-green);
+      background: #F4F9F6;
+      box-shadow: 0 0 0 2px var(--accent-green);
+    }
+
+    .package-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .package-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .package-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .booking-summary-box {
+      background: #F9F9F9;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .booking-summary-row span:first-child {
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .booking-summary-row span:last-child {
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .location-selector-bar, .package-options-grid {
+        grid-template-columns: 1fr;
+      }
+      .booking-screen-container {
+        padding: 1.2rem;
+        margin: 1rem;
+      }
+    }
+
     /* MODAL */
     .modal-overlay { 
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -645,79 +773,30 @@
 
           <div class="classes-stack">
 
-            <!-- ROW 1: WEDNESDAY -->
-            <div class="class-row-card" id="row-wed">
+            <!-- ROW 1: ALL LEVELS PILATES & STRENGTH (UPDATED BOOKING JOURNEY) -->
+            <div class="class-row-card" id="row-all-levels">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span>Wednesday • 6:30 PM</span>
+                    <span>Wednesday & Thursday Sessions</span>
                   </div>
-                  <div class="class-row-title">All levels Pilates & Strength</div>
-                  <div class="class-row-location">West Park Primary School, Goring-by-Sea (50 mins) — £50 / 4 classes</div>
+                  <div class="class-row-title">All Levels Pilates & Strength</div>
+                  <div class="class-row-location">West Park Primary School & Goring Methodist Church Hall (50 mins) — From £13</div>
                 </div>
                 <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-wed')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('All levels Pilates & Strength (Wednesday)')">Book</button>
+                  <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
+                  <button class="row-book-btn" onclick="openDedicatedBooking()">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p>This 50-minute, full-body class is designed to help you feel stronger, move better, and support your body through the real-life demands of everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply keeping up with a busy schedule.</p>
                   <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
-                  
-                  <!-- Calendar for Wednesday Class (Target Day Index: 3 = Wednesday) -->
-                  <div class="mini-calendar-container" id="cal-row-wed" data-target-day="3">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-wed')">&larr;</button>
-                      <span class="cal-title">October 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-wed')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- ROW 2: THURSDAY -->
-            <div class="class-row-card" id="row-thu">
-              <div class="class-row-main">
-                <div class="class-row-info">
-                  <div class="class-row-meta">
-                    <span>Thursday • 8:45 AM</span>
-                  </div>
-                  <div class="class-row-title">All levels Pilates & Strength</div>
-                  <div class="class-row-location">Goring Methodist Church Hall (50 mins) — £50 / 4 classes</div>
-                </div>
-                <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-thu')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('All levels Pilates & Strength (Thursday)')">Book</button>
-                </div>
-              </div>
-              <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>This 50-minute, full-body class is designed to help you feel stronger, move better, and support your body through the real-life demands of everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply keeping up with a busy schedule.</p>
-                  <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
-                  
-                  <!-- Calendar for Thursday Class (Target Day Index: 4 = Thursday) -->
-                  <div class="mini-calendar-container" id="cal-row-thu" data-target-day="4">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-thu')">&larr;</button>
-                      <span class="cal-title">October 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-thu')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- ROW 3: 6-WEEK COURSE -->
+            <!-- ROW 2: 6-WEEK COURSE -->
             <div class="class-row-card" id="row-course">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -753,7 +832,7 @@
               </div>
             </div>
 
-            <!-- ROW 4: INTRO CLASS -->
+            <!-- ROW 3: INTRO CLASS -->
             <div class="class-row-card" id="row-intro">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -775,7 +854,7 @@
               </div>
             </div>
 
-            <!-- ROW 5: LOVELY BUMPS -->
+            <!-- ROW 4: LOVELY BUMPS -->
             <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -830,6 +909,196 @@
               <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
               <div class="testimonial-author">— Elysia, Brighton</div>
             </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE VIEW: DEDICATED ALL LEVELS BOOKING SCREEN -->
+    <div id="page-dedicated-booking" class="page-view">
+      <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
+        <div class="strip-content" style="max-width: 850px;">
+          <button class="details-toggle-btn" onclick="switchPage('home', event)" style="margin-bottom: 2rem;">&larr; Back to Home</button>
+          
+          <div class="booking-screen-container">
+            <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 0.4rem; color: var(--primary-dark);">All Levels Pilates & Strength</h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">Select your preferred location below to begin booking:</p>
+
+            <!-- LOCATION SELECTOR TOP MENU -->
+            <div class="location-selector-bar">
+              <div class="location-tab-btn" id="loc-tab-westpark" onclick="selectLocation('westpark')">
+                <div style="font-size: 1.1rem; margin-bottom: 0.2rem;">WEST PARK</div>
+                <div style="font-size: 0.78rem; font-weight: 400; opacity: 0.85;">West Park Primary School, Goring</div>
+              </div>
+              <div class="location-tab-btn" id="loc-tab-goring" onclick="selectLocation('goring')">
+                <div style="font-size: 1.1rem; margin-bottom: 0.2rem;">GORING</div>
+                <div style="font-size: 0.78rem; font-weight: 400; opacity: 0.85;">Goring Methodist Church Hall</div>
+              </div>
+            </div>
+
+            <!-- DYNAMIC BOOKING FORM CONTENT CONTAINER -->
+            <div id="bookingWorkflowArea" style="display: none;">
+              
+              <!-- Location Banner & Details -->
+              <div class="location-info-banner" id="locationInfoBannerText"></div>
+
+              <!-- Calendar Section -->
+              <div class="step-heading">Select Class Date</div>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.8rem;">Click on an available highlighted date below:</p>
+              
+              <div class="modal-calendar-container" id="dedicatedCalContainer">
+                <div class="cal-header">
+                  <button type="button" onclick="changeDedicatedCalMonth(-1)">&larr;</button>
+                  <span class="ded-cal-title">October 2026</span>
+                  <button type="button" onclick="changeDedicatedCalMonth(1)">&rarr;</button>
+                </div>
+                <div class="cal-grid">
+                  <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                </div>
+                <div class="cal-grid ded-cal-days-body"></div>
+              </div>
+              <div id="ded-selected-date-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent-green); margin-bottom: 1.8rem;">No date selected yet.</div>
+
+              <!-- Package Selection -->
+              <div class="step-heading">Choose Payment Package</div>
+              <div class="package-options-grid">
+                <div class="package-card" id="pkg-card-block" onclick="selectPackage('block')">
+                  <div class="package-title">4-CLASS BLOCK</div>
+                  <div class="package-price">£50</div>
+                  <div class="package-desc">Purchase four classes for £50.</div>
+                </div>
+                <div class="package-card" id="pkg-card-payg" onclick="selectPackage('payg')">
+                  <div class="package-title">PAY AS YOU GO</div>
+                  <div class="package-price">£13</div>
+                  <div class="package-desc">Book and pay for one individual class.</div>
+                </div>
+              </div>
+
+              <!-- Customer & Health Form (Initially Hidden until Date & Package selected) -->
+              <div id="customerAndHealthSection" style="display: none;">
+                <form id="dedicatedBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+                  <input type="hidden" name="Class Name" value="All Levels Pilates & Strength">
+                  <input type="hidden" id="ded-hidden-location" name="Location">
+                  <input type="hidden" id="ded-hidden-date" name="Selected Class Date">
+                  <input type="hidden" id="ded-hidden-package" name="Package Selected">
+                  <input type="hidden" id="ded-hidden-price" name="Total Price">
+
+                  <div class="step-heading">Personal Information</div>
+                  <div class="form-group">
+                    <label for="ded-name">Full Name *</label>
+                    <input type="text" id="ded-name" name="Client Full Name" required placeholder="Jane Doe">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ded-dob">Date of Birth *</label>
+                    <input type="date" id="ded-dob" name="Date of Birth" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ded-email">Email Address *</label>
+                    <input type="email" id="ded-email" name="Client Email" required placeholder="jane@example.com">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ded-phone">Phone Number *</label>
+                    <input type="tel" id="ded-phone" name="Client Phone" required placeholder="07123 456789">
+                  </div>
+
+                  <div class="step-heading">Health & Safety Questions</div>
+
+                  <div class="form-group">
+                    <label>1. Any injuries, joint, or spinal issues? *</label>
+                    <div class="radio-group">
+                      <label><input type="radio" name="Injuries or Spinal Issues" value="No" checked onclick="toggleDedInjuriesBox(false)"> No</label>
+                      <label><input type="radio" name="Injuries or Spinal Issues" value="Yes" onclick="toggleDedInjuriesBox(true)"> Yes</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="ded-injuries-details-group" style="display: none;">
+                    <label for="ded-injuries-details">Please describe your injury or condition:</label>
+                    <textarea id="ded-injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness..."></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label>2. High blood pressure, heart condition, or dizziness? *</label>
+                    <div class="radio-group">
+                      <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
+                      <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
+                    <div class="radio-group">
+                      <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
+                      <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ded-other-health">4. Are there any other health-related issues or conditions?</label>
+                    <textarea id="ded-other-health" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma..."></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label>5. Have you done Pilates before? *</label>
+                    <div class="radio-group">
+                      <label><input type="radio" name="Done Pilates Before" value="No" checked onclick="toggleDedPilatesBox(false)"> No</label>
+                      <label><input type="radio" name="Done Pilates Before" value="Yes" onclick="toggleDedPilatesBox(true)"> Yes</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="ded-pilates-details-group" style="display: none;">
+                    <label for="ded-pilates-details">Please share a brief note on your previous Pilates experience:</label>
+                    <textarea id="ded-pilates-details" name="Pilates Experience Details" placeholder="E.g., practiced mat Pilates..."></textarea>
+                  </div>
+
+                  <div class="step-heading">Health Waiver Consent</div>
+                  <div class="form-group">
+                    <div class="waiver-box">
+                      By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury.
+                    </div>
+                    <div class="checkbox-group">
+                      <input type="checkbox" id="ded-waiver-agree" name="Waiver Agreed" value="Yes" required onchange="checkWaiverCompletion()">
+                      <label for="ded-waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
+                    </div>
+                  </div>
+
+                  <!-- SUMMARY BOX -->
+                  <div class="step-heading">Your Booking Summary</div>
+                  <div class="booking-summary-box">
+                    <div class="booking-summary-row">
+                      <span>Class</span>
+                      <span>All Levels Pilates & Strength</span>
+                    </div>
+                    <div class="booking-summary-row">
+                      <span>Location</span>
+                      <span id="sum-location-text">-</span>
+                    </div>
+                    <div class="booking-summary-row">
+                      <span>Day & Time</span>
+                      <span id="sum-time-text">-</span>
+                    </div>
+                    <div class="booking-summary-row">
+                      <span>Selected Date</span>
+                      <span id="sum-date-text">-</span>
+                    </div>
+                    <div class="booking-summary-row">
+                      <span>Package</span>
+                      <span id="sum-package-text">-</span>
+                    </div>
+                    <div class="booking-summary-row" style="border-top: 1px solid var(--border-color); padding-top: 0.8rem; margin-top: 0.4rem;">
+                      <span>Total Price</span>
+                      <span id="sum-price-text" style="color: var(--accent-green); font-size: 1.1rem;">-</span>
+                    </div>
+                  </div>
+
+                  <button type="submit" id="ded-submit-btn" class="row-book-btn" disabled style="width: 100%; padding: 1.1rem; font-size: 0.95rem; font-weight: 700; opacity: 0.5; cursor: not-allowed;">CONTINUE TO STRIPE →</button>
+                </form>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </section>
@@ -893,7 +1162,7 @@
 
   </div>
 
-  <!-- BOOKING MODAL (WITH EMBEDDED DATE SELECTOR CALENDAR) -->
+  <!-- BOOKING MODAL (FOR OTHER CLASSES) -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModalDirect()">&times;</button>
@@ -1080,16 +1349,9 @@
     function toggleRow(rowId) {
       const row = document.getElementById(rowId);
       row.classList.toggle('open');
-      if (row.classList.contains('open')) {
-        const calContainer = row.querySelector('.mini-calendar-container');
-        if (calContainer && !calContainer.dataset.rendered) {
-          initCalendar(calContainer.id);
-          calContainer.dataset.rendered = "true";
-        }
-      }
     }
 
-    // Mini Calendar Logic for Homepage Rows
+    // Mini Calendar Logic for Homepage Rows (Other Classes)
     const calendarState = {};
 
     function initCalendar(containerId) {
@@ -1150,7 +1412,198 @@
       }
     }
 
-    // Modal Calendar State & Logic
+    // Initialize mini calendars on load if present
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.mini-calendar-container').forEach(el => {
+        initCalendar(el.id);
+      });
+    });
+
+    // Dedicated Booking Screen State & Logic
+    let dedicatedBookingState = {
+      location: null, // 'westpark' or 'goring'
+      targetDay: 3, // 3 = Wednesday for West Park, 4 = Thursday for Goring
+      year: 2026,
+      month: 9, // October
+      selectedDate: '',
+      selectedDateFormatted: '',
+      packageType: null // 'block' or 'payg'
+    };
+
+    function openDedicatedBooking() {
+      switchPage('dedicated-booking');
+      // Reset state
+      dedicatedBookingState = { location: null, targetDay: 3, year: 2026, month: 9, selectedDate: '', selectedDateFormatted: '', packageType: null };
+      document.getElementById('loc-tab-westpark').classList.remove('active-location');
+      document.getElementById('loc-tab-goring').classList.remove('active-location');
+      document.getElementById('bookingWorkflowArea').style.display = 'none';
+      document.getElementById('customerAndHealthSection').style.display = 'none';
+      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-package'));
+    }
+
+    function selectLocation(loc) {
+      dedicatedBookingState.location = loc;
+      document.getElementById('bookingWorkflowArea').style.display = 'block';
+      document.getElementById('customerAndHealthSection').style.display = 'none';
+      document.getElementById('ded-hidden-location').value = loc === 'westpark' ? 'West Park Primary School' : 'Goring Methodist Church Hall';
+
+      const westParkTab = document.getElementById('loc-tab-westpark');
+      const goringTab = document.getElementById('loc-tab-goring');
+      const banner = document.getElementById('locationInfoBannerText');
+
+      if (loc === 'westpark') {
+        westParkTab.classList.add('active-location');
+        goringTab.classList.remove('active-location');
+        dedicatedBookingState.targetDay = 3; // Wednesday
+        banner.innerHTML = `<strong>WEST PARK</strong><br>Wednesday • 6:30 PM – 7:20 PM<br>West Park Primary School, Goring-by-Sea`;
+      } else {
+        goringTab.classList.add('active-location');
+        westParkTab.classList.remove('active-location');
+        dedicatedBookingState.targetDay = 4; // Thursday
+        banner.innerHTML = `<strong>GORING</strong><br>Thursday • 8:45 AM – 9:35 AM<br>Goring Methodist Church Hall`;
+      }
+
+      dedicatedBookingState.selectedDate = '';
+      dedicatedBookingState.selectedDateFormatted = '';
+      document.getElementById('ded-selected-date-display').textContent = 'No date selected yet.';
+      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-package'));
+      dedicatedBookingState.packageType = null;
+
+      renderDedicatedCalendar();
+    }
+
+    function changeDedicatedCalMonth(direction) {
+      dedicatedBookingState.month += direction;
+      if (dedicatedBookingState.month > 11) {
+        dedicatedBookingState.month = 0;
+        dedicatedBookingState.year++;
+      } else if (dedicatedBookingState.month < 0) {
+        dedicatedBookingState.month = 11;
+        dedicatedBookingState.year--;
+      }
+      renderDedicatedCalendar();
+    }
+
+    function renderDedicatedCalendar() {
+      const container = document.getElementById('dedicatedCalContainer');
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      container.querySelector('.ded-cal-title').textContent = `${monthNames[dedicatedBookingState.month]} ${dedicatedBookingState.year}`;
+
+      const daysBody = container.querySelector('.ded-cal-days-body');
+      daysBody.innerHTML = '';
+
+      const firstDayIndex = new Date(dedicatedBookingState.year, dedicatedBookingState.month, 1).getDay();
+      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+      const totalDays = new Date(dedicatedBookingState.year, dedicatedBookingState.month + 1, 0).getDate();
+
+      for (let i = 0; i < adjustedFirstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-date empty';
+        daysBody.appendChild(emptyCell);
+      }
+
+      for (let day = 1; day <= totalDays; day++) {
+        const dateCell = document.createElement('div');
+        dateCell.className = 'cal-date';
+        dateCell.textContent = day;
+
+        const currentDateObj = new Date(dedicatedBookingState.year, dedicatedBookingState.month, day);
+        const formattedDateStr = currentDateObj.toISOString().split('T')[0];
+
+        if (currentDateObj.getDay() === dedicatedBookingState.targetDay) {
+          dateCell.classList.add('highlight');
+          
+          if (dedicatedBookingState.selectedDate === formattedDateStr) {
+            dateCell.classList.add('selected-date');
+          }
+
+          dateCell.addEventListener('click', function() {
+            container.querySelectorAll('.cal-date').forEach(el => el.classList.remove('selected-date'));
+            dateCell.classList.add('selected-date');
+            dedicatedBookingState.selectedDate = formattedDateStr;
+            
+            const readableDate = currentDateObj.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            dedicatedBookingState.selectedDateFormatted = readableDate;
+            document.getElementById('ded-selected-date-display').textContent = `Selected Date: ${readableDate}`;
+            document.getElementById('ded-hidden-date').value = readableDate;
+
+            checkWorkflowCompletion();
+          });
+        }
+
+        daysBody.appendChild(dateCell);
+      }
+    }
+
+    function selectPackage(pkg) {
+      dedicatedBookingState.packageType = pkg;
+      const blockCard = document.getElementById('pkg-card-block');
+      const paygCard = document.getElementById('pkg-card-payg');
+
+      if (pkg === 'block') {
+        blockCard.classList.add('selected-package');
+        paygCard.classList.remove('selected-package');
+        document.getElementById('ded-hidden-package').value = '4-Class Block';
+        document.getElementById('ded-hidden-price').value = '£50';
+      } else {
+        paygCard.classList.add('selected-package');
+        blockCard.classList.remove('selected-package');
+        document.getElementById('ded-hidden-package').value = 'Pay As You Go';
+        document.getElementById('ded-hidden-price').value = '£13';
+      }
+
+      checkWorkflowCompletion();
+    }
+
+    function checkWorkflowCompletion() {
+      const section = document.getElementById('customerAndHealthSection');
+      if (dedicatedBookingState.selectedDate && dedicatedBookingState.packageType) {
+        section.style.display = 'block';
+        updateBookingSummary();
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function updateBookingSummary() {
+      const locText = dedicatedBookingState.location === 'westpark' ? 'West Park Primary School' : 'Goring Methodist Church Hall';
+      const timeText = dedicatedBookingState.location === 'westpark' ? 'Wednesday • 6:30 PM – 7:20 PM' : 'Thursday • 8:45 AM – 9:35 AM';
+      
+      document.getElementById('sum-location-text').textContent = locText;
+      document.getElementById('sum-time-text').textContent = timeText;
+      document.getElementById('sum-date-text').textContent = dedicatedBookingState.selectedDateFormatted || '-';
+      
+      if (dedicatedBookingState.packageType === 'block') {
+        document.getElementById('sum-package-text').textContent = '4-Class Block';
+        document.getElementById('sum-price-text').textContent = '£50';
+      } else if (dedicatedBookingState.packageType === 'payg') {
+        document.getElementById('sum-package-text').textContent = 'Pay As You Go';
+        document.getElementById('sum-price-text').textContent = '£13';
+      }
+    }
+
+    function toggleDedInjuriesBox(show) {
+      document.getElementById('ded-injuries-details-group').style.display = show ? 'block' : 'none';
+    }
+
+    function toggleDedPilatesBox(show) {
+      document.getElementById('ded-pilates-details-group').style.display = show ? 'block' : 'none';
+    }
+
+    function checkWaiverCompletion() {
+      const agreeCheckbox = document.getElementById('ded-waiver-agree');
+      const submitBtn = document.getElementById('ded-submit-btn');
+      if (agreeCheckbox.checked) {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.style.cursor = 'pointer';
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.5';
+        submitBtn.style.cursor = 'not-allowed';
+      }
+    }
+
+    // Modal Calendar State & Logic for Other Classes
     let modalCalState = { year: 2026, month: 9, targetDay: 3, selectedDateStr: '' };
 
     function initModalCalendar(targetDay, startMonth = 9, startYear = 2026) {
@@ -1248,24 +1701,6 @@
     }
 
     const classPassOptions = {
-      'All levels Pilates & Strength (Wednesday)': {
-        targetDay: 3, // Wednesday
-        startMonth: 9,
-        startYear: 2026,
-        timeSlot: '6:30 PM - 7:20 PM (50 mins)',
-        passes: [
-          { label: '4 Classes for £50', value: '4 Classes (£50.00)', stripeUrl: 'https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g' }
-        ]
-      },
-      'All levels Pilates & Strength (Thursday)': {
-        targetDay: 4, // Thursday
-        startMonth: 9,
-        startYear: 2026,
-        timeSlot: '8:45 AM - 9:35 AM (50 mins)',
-        passes: [
-          { label: '4 Classes for £50', value: '4 Classes (£50.00)', stripeUrl: 'https://buy.stripe.com/6oU9AV0nbcuk9arcqM7N60f' }
-        ]
-      },
       '6-Week Pilates Strength Course': {
         targetDay: 2, // Tuesday
         startMonth: 10, // November
@@ -1308,7 +1743,7 @@
       const passSelect = document.getElementById('pass-type');
       passSelect.innerHTML = '';
 
-      const classData = classPassOptions[className] || classPassOptions['All levels Pilates & Strength (Wednesday)'];
+      const classData = classPassOptions[className];
       
       classData.passes.forEach(opt => {
         const optionEl = document.createElement('option');
@@ -1325,7 +1760,6 @@
       timeOption.textContent = classData.timeSlot;
       timeSelect.appendChild(timeOption);
 
-      // Initialize the modal calendar with the specific class schedule rules
       initModalCalendar(classData.targetDay, classData.startMonth, classData.startYear);
 
       document.getElementById('bookingModal').style.display = 'flex';
@@ -1420,6 +1854,45 @@
         alert("Network error. Please check your connection and try again.");
         submitBtn.disabled = false;
         submitBtn.innerText = "Complete Registration & Pay via Stripe →";
+      }
+    });
+
+    document.getElementById('dedicatedBookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!validateForm(this)) {
+        alert('Please fill out all required fields outlined in red.');
+        return;
+      }
+
+      const submitBtn = document.getElementById('ded-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting & Redirecting to Stripe...";
+
+      // Determine correct Stripe link based on package selection
+      const targetStripeUrl = dedicatedBookingState.packageType === 'block' 
+        ? 'https://buy.stripe.com/cNidRb1rf7a0cmD1M87N60g' // 4-class block link
+        : 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c'; // Pay as you go link
+
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          window.location.href = targetStripeUrl;
+        } else {
+          alert("There was an issue submitting your registration. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "CONTINUE TO STRIPE →";
+        }
+      } catch (error) {
+        alert("Network error. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "CONTINUE TO STRIPE →";
       }
     });
 
