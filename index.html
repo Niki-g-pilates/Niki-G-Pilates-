@@ -445,6 +445,7 @@
 
     .tag-badge.pink { background: #FCE8E6; color: #C5221F; }
     .tag-badge.purple { background: #F3E8FF; color: #6B21A8; }
+    .tag-badge.blue { background: #E8F0FE; color: #1967D2; }
 
     /* QUALIFICATIONS BOX */
     .qualifications-box {
@@ -794,7 +795,43 @@
               </div>
             </div>
 
-            <!-- ROW 2: 6-WEEK COURSE -->
+            <!-- ROW 2: PAYG OPEN SESSION (NEWLY ADDED) -->
+            <div class="class-row-card" id="row-payg">
+              <div class="class-row-main">
+                <div class="class-row-info">
+                  <div class="class-row-meta">
+                    <span>Flexible Sessions</span>
+                    <span class="tag-badge blue">Drop-In / PAYG</span>
+                  </div>
+                  <div class="class-row-title">PAYG Open Pilates Session</div>
+                  <div class="class-row-location">Goring-by-Sea (60 mins) — £13 Single Class</div>
+                </div>
+                <div class="class-row-actions">
+                  <button class="details-toggle-btn" onclick="toggleRow('row-payg')">Details</button>
+                  <button class="row-book-btn" onclick="openBooking('PAYG Open Pilates Session')">Book</button>
+                </div>
+              </div>
+              <div class="class-row-dropdown">
+                <div class="dropdown-inner">
+                  <p>Can't commit to a full block or course? Join us on a flexible Pay-As-You-Go basis. Enjoy a complete 60-minute session focusing on mobility, breathwork, and core strengthening tailored to attendees on the day.</p>
+                  
+                  <!-- Calendar for PAYG -->
+                  <div class="mini-calendar-container" id="cal-row-payg" data-target-day="3" data-start-month="9" data-start-year="2026">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-payg')">&larr;</button>
+                      <span class="cal-title">October 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-payg')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 3: 6-WEEK COURSE -->
             <div class="class-row-card" id="row-course">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -814,7 +851,7 @@
                 <div class="dropdown-inner">
                   <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
                   
-                  <!-- Calendar for Course (Wednesday targetDay = 3) -->
+                  <!-- Calendar for Course -->
                   <div class="mini-calendar-container" id="cal-row-course" data-target-day="3" data-start-month="10" data-start-year="2026">
                     <div class="cal-header">
                       <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
@@ -830,7 +867,7 @@
               </div>
             </div>
 
-            <!-- ROW 3: LOVELY BUMPS -->
+            <!-- ROW 4: LOVELY BUMPS -->
             <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -1646,8 +1683,17 @@
     }
 
     const classPassOptions = {
+      'PAYG Open Pilates Session': {
+        targetDay: 3,
+        startMonth: 9,
+        startYear: 2026,
+        timeSlot: '9:30 AM - 10:30 AM (60 mins)',
+        passes: [
+          { label: 'PAYG Drop-In — £13', value: 'PAYG Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
+        ]
+      },
       '6-Week Pilates Strength Course': {
-        targetDay: 3, // Wednesday target day set here
+        targetDay: 3,
         startMonth: 10,
         startYear: 2026,
         timeSlot: '7:30 PM - 8:20 PM (50 mins)',
@@ -1769,7 +1815,7 @@
 
       const passSelect = document.getElementById('pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e";
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/28E28tfi57a02M33Ug7N60h";
 
       const formData = new FormData(this);
 
