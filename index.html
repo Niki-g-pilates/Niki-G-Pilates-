@@ -368,6 +368,11 @@
       background-color: #4A5568;
     }
 
+    .row-paused-btn {
+      background-color: #A0AEC0 !important;
+      cursor: not-allowed !important;
+    }
+
     /* EXPANDABLE ROW CONTENT */
     .class-row-dropdown {
       max-height: 0;
@@ -477,6 +482,7 @@
     .tag-badge.pink { background: #FCE8E6; color: #C5221F; }
     .tag-badge.purple { background: #F3E8FF; color: #6B21A8; }
     .tag-badge.blue { background: #E8F0FE; color: #1967D2; }
+    .tag-badge.gray { background: #EDF2F7; color: #4A5568; }
 
     /* QUALIFICATIONS BOX */
     .qualifications-box {
@@ -645,11 +651,11 @@
 
     .package-options-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 1.2rem;
       margin-top: 0.8rem;
       margin-bottom: 1.5rem;
-      max-width: 400px;
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -676,7 +682,7 @@
 
     .package-title {
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 0.3rem;
@@ -724,7 +730,7 @@
     }
 
     @media (max-width: 600px) {
-      .location-selector-bar {
+      .location-selector-bar, .package-options-grid {
         grid-template-columns: 1fr;
       }
       .booking-screen-container {
@@ -821,7 +827,7 @@
                     <span>Wednesday & Thursday Sessions</span>
                   </div>
                   <div class="class-row-title">All Levels Pilates & Strength</div>
-                  <div class="class-row-location">West Park Primary School & Goring Methodist Church Hall (50 mins) — £50 Package</div>
+                  <div class="class-row-location">West Park Primary School & Goring Methodist Church Hall (50 mins) — £10 Intro | £50 Package</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
@@ -872,38 +878,26 @@
               </div>
             </div>
 
-            <!-- ROW 3: 6-WEEK COURSE -->
+            <!-- ROW 3: 6-WEEK COURSE (PAUSED) -->
             <div class="class-row-card" id="row-course">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
                     <span>Starts 4th Nov • 7:30 PM</span>
-                    <span class="tag-badge purple">Special Course</span>
+                    <span class="tag-badge gray">Currently Paused</span>
                   </div>
                   <div class="class-row-title">6-Week Pilates Strength Course (Beginners)</div>
-                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — Packages Available</div>
+                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — Booking Paused</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-course')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('6-Week Pilates Strength Course')">Book</button>
+                  <button class="row-book-btn row-paused-btn" disabled>Paused</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
                   <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
-                  
-                  <!-- Calendar for Course -->
-                  <div class="mini-calendar-container" id="cal-row-course" data-target-day="3" data-start-month="10" data-start-year="2026">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
-                      <span class="cal-title">November 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-course')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
+                  <p style="color: var(--primary-rose); font-weight: 700;">* Bookings for this course are currently paused.</p>
                 </div>
               </div>
             </div>
@@ -1014,12 +1008,17 @@
               <div id="ded-selected-date-display" style="font-size: 0.9rem; font-weight: 700; color: var(--accent-green); margin-bottom: 1.8rem;">No date selected yet.</div>
 
               <!-- Package Selection -->
-              <div class="step-heading">Choose Payment Package</div>
+              <div class="step-heading">Choose Payment Option</div>
               <div class="package-options-grid">
+                <div class="package-card" id="pkg-card-intro" onclick="selectPackage('intro')">
+                  <div class="package-title">INTRO OFFER</div>
+                  <div class="package-price">£10</div>
+                  <div class="package-desc">Introductory single session pass for new clients.</div>
+                </div>
                 <div class="package-card selected-package" id="pkg-card-block" onclick="selectPackage('block')">
                   <div class="package-title">4-CLASS BLOCK</div>
                   <div class="package-price">£50</div>
-                  <div class="package-desc">Purchase your 4-class package for £50.</div>
+                  <div class="package-desc">Purchase your 4-class package block.</div>
                 </div>
               </div>
 
@@ -1581,6 +1580,19 @@
 
     function selectPackage(pkg) {
       dedicatedBookingState.packageType = pkg;
+      document.getElementById('pkg-card-intro').classList.remove('selected-package');
+      document.getElementById('pkg-card-block').classList.remove('selected-package');
+
+      if (pkg === 'intro') {
+        document.getElementById('pkg-card-intro').classList.add('selected-package');
+        document.getElementById('ded-hidden-package').value = 'Intro Offer (£10)';
+        document.getElementById('ded-hidden-price').value = '£10';
+      } else {
+        document.getElementById('pkg-card-block').classList.add('selected-package');
+        document.getElementById('ded-hidden-package').value = '4-Class Block (£50)';
+        document.getElementById('ded-hidden-price').value = '£50';
+      }
+
       checkWorkflowCompletion();
     }
 
@@ -1596,12 +1608,13 @@
     function updateBookingSummary() {
       const locText = dedicatedBookingState.location === 'westpark' ? 'West Park Primary School' : 'Goring Methodist Church Hall';
       const timeText = dedicatedBookingState.location === 'westpark' ? 'Wednesday • 6:30 PM – 7:20 PM' : 'Thursday • 8:45 AM – 9:35 AM';
-      
+      const isIntro = dedicatedBookingState.packageType === 'intro';
+
       document.getElementById('sum-location-text').textContent = locText;
       document.getElementById('sum-time-text').textContent = timeText;
       document.getElementById('sum-date-text').textContent = dedicatedBookingState.selectedDateFormatted || '-';
-      document.getElementById('sum-package-text').textContent = '4-Class Block';
-      document.getElementById('sum-price-text').textContent = '£50';
+      document.getElementById('sum-package-text').textContent = isIntro ? 'Intro Offer' : '4-Class Block';
+      document.getElementById('sum-price-text').textContent = isIntro ? '£10' : '£50';
     }
 
     function toggleDedInjuriesBox(show) {
@@ -1731,16 +1744,6 @@
         timeSlot: '9:30 AM - 10:30 AM (60 mins)',
         passes: [
           { label: 'PAYG Drop-In — £13', value: 'PAYG Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
-        ]
-      },
-      '6-Week Pilates Strength Course': {
-        targetDay: 3,
-        startMonth: 10,
-        startYear: 2026,
-        timeSlot: '7:30 PM - 8:20 PM (50 mins)',
-        passes: [
-          { label: '6-Week Course — Intro Offer', value: '6-Week Course Intro', stripeUrl: 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' },
-          { label: '6-Week Course — Full Package', value: '6-Week Course Full', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
@@ -1892,7 +1895,9 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
-      const targetStripeUrl = 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i';
+      const targetStripeUrl = dedicatedBookingState.packageType === 'intro' 
+        ? 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' 
+        : 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i';
 
       const formData = new FormData(this);
 
