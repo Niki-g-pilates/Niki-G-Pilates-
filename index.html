@@ -604,7 +604,7 @@
 
     .location-selector-bar {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 1rem;
       margin-bottom: 2rem;
     }
@@ -813,66 +813,7 @@
 
           <div class="classes-stack">
 
-            <!-- ROW 1: ALL LEVELS PILATES & STRENGTH -->
-            <div class="class-row-card" id="row-all-levels">
-              <div class="class-row-main">
-                <div class="class-row-info">
-                  <div class="class-row-meta">
-                    <span>Wednesday & Thursday Sessions</span>
-                  </div>
-                  <div class="class-row-title">All Levels Pilates & Strength</div>
-                  <div class="class-row-location">West Park Primary School & Goring Methodist Church Hall (50 mins) — £10 Intro | £50 Package</div>
-                </div>
-                <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
-                  <button class="row-book-btn" onclick="openDedicatedBooking()">Book</button>
-                </div>
-              </div>
-              <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>This 50-minute, full-body class is designed to help you feel stronger, move better, and support your body through the real-life demands of everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply keeping up with a busy schedule.</p>
-                  <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- ROW 2: PAYG OPEN SESSION (£13) -->
-            <div class="class-row-card" id="row-payg">
-              <div class="class-row-main">
-                <div class="class-row-info">
-                  <div class="class-row-meta">
-                    <span>Flexible Sessions</span>
-                    <span class="tag-badge blue">Drop-In / PAYG</span>
-                  </div>
-                  <div class="class-row-title">PAYG Open Pilates Session</div>
-                  <div class="class-row-location">Goring-by-Sea (60 mins) — £13 Single Class</div>
-                </div>
-                <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-payg')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('PAYG Open Pilates Session')">Book</button>
-                </div>
-              </div>
-              <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>Can't commit to a full block or course? Join us on a flexible Pay-As-You-Go basis. Enjoy a complete 60-minute session focusing on mobility, breathwork, and core strengthening tailored to attendees on the day.</p>
-                  
-                  <!-- Calendar for PAYG -->
-                  <div class="mini-calendar-container" id="cal-row-payg" data-target-day="3" data-start-month="9" data-start-year="2026">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-payg')">&larr;</button>
-                      <span class="cal-title">October 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-payg')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- ROW 3: 6-WEEK COURSE (ACTIVE BOOKING) -->
+            <!-- ROW 1: 6-WEEK COURSE (MOVED TO TOP) -->
             <div class="class-row-card" id="row-course">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -881,7 +822,7 @@
                     <span class="tag-badge purple">Beginners Course</span>
                   </div>
                   <div class="class-row-title">6-Week Pilates Strength Course (Beginners)</div>
-                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — £65 Full Block</div>
+                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — £67 Full Block</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-course')">Details</button>
@@ -898,6 +839,72 @@
                       <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
                       <span class="cal-title">November 2026</span>
                       <button onclick="changeMonth(1, 'cal-row-course')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 2: ALL LEVELS PILATES & STRENGTH (GORING ONLY) -->
+            <div class="class-row-card" id="row-all-levels">
+              <div class="class-row-main">
+                <div class="class-row-info">
+                  <div class="class-row-meta">
+                    <span>Thursday Sessions</span>
+                  </div>
+                  <div class="class-row-title">All Levels Pilates & Strength</div>
+                  <div class="class-row-location">Goring Methodist Church Hall (50 mins) — £8.50 Intro | £50 Package</div>
+                </div>
+                <div class="class-row-actions">
+                  <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
+                  <button class="row-book-btn" onclick="openDedicatedBooking()">Book</button>
+                </div>
+              </div>
+              <div class="class-row-dropdown">
+                <div class="dropdown-inner">
+                  <p>This 50-minute, full-body class is designed to help you feel stronger, move better, and support your body through the real-life demands of everyday life—whether that's lifting and carrying children, spending hours at a computer, or simply keeping up with a busy schedule.</p>
+                  <p>We’ll combine Pilates with functional strength movements like squats, lunges, and core work, occasional use of light weights and small equipment to challenge your whole body and iron out everyday posture aches.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 3: PAYG OPEN SESSION -->
+            <div class="class-row-card" id="row-payg">
+              <div class="class-row-main">
+                <div class="class-row-info">
+                  <div class="class-row-meta">
+                    <span class="tag-badge blue">PAYG</span>
+                  </div>
+                  <div class="class-row-title">PAYG Open Pilates Session</div>
+                  <div class="class-row-location">£13 Single Class</div>
+                </div>
+                <div class="class-row-actions">
+                  <button class="details-toggle-btn" onclick="toggleRow('row-payg')">Details</button>
+                  <button class="row-book-btn" onclick="openBooking('PAYG Open Pilates Session')">Book</button>
+                </div>
+              </div>
+              <div class="class-row-dropdown">
+                <div class="dropdown-inner">
+                  <p>Can't commit to a full block or course? Join us on a flexible Pay-As-You-Go basis. Enjoy a complete session focusing on mobility, breathwork, and core strengthening tailored to attendees on the day.</p>
+
+                  <div class="form-group" style="margin-top: 1rem; max-width: 340px;">
+                    <label for="payg-location-select">Choose Location & Session:</label>
+                    <select id="payg-location-select" onchange="updatePAYGTarget(this.value)">
+                      <option value="westpark">West Park Primary School (Wed 6:30 PM)</option>
+                      <option value="goring">Goring Methodist Church Hall (Thu 8:45 AM)</option>
+                    </select>
+                  </div>
+                  
+                  <!-- Calendar for PAYG -->
+                  <div class="mini-calendar-container" id="cal-row-payg" data-target-day="3" data-start-month="9" data-start-year="2026">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-payg')">&larr;</button>
+                      <span class="cal-title">October 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-payg')">&rarr;</button>
                     </div>
                     <div class="cal-grid">
                       <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
@@ -968,7 +975,7 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW: DEDICATED ALL LEVELS BOOKING SCREEN -->
+    <!-- PAGE VIEW: DEDICATED ALL LEVELS BOOKING SCREEN (GORING ONLY) -->
     <div id="page-dedicated-booking" class="page-view">
       <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
         <div class="strip-content" style="max-width: 850px;">
@@ -976,17 +983,12 @@
           
           <div class="booking-screen-container">
             <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 0.4rem; color: var(--primary-dark);">All Levels Pilates & Strength</h2>
-            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">Select your preferred location below to begin booking:</p>
 
-            <!-- LOCATION SELECTOR TOP MENU -->
+            <!-- LOCATION SELECTOR TOP MENU (GORING ONLY) -->
             <div class="location-selector-bar">
-              <div class="location-tab-btn" id="loc-tab-westpark" onclick="selectLocation('westpark')">
-                <div style="font-size: 1.1rem; margin-bottom: 0.2rem;">WEST PARK</div>
-                <div style="font-size: 0.78rem; font-weight: 400; opacity: 0.85;">West Park Primary School, Goring</div>
-              </div>
-              <div class="location-tab-btn" id="loc-tab-goring" onclick="selectLocation('goring')">
+              <div class="location-tab-btn active-location" id="loc-tab-goring" onclick="selectLocation('goring')">
                 <div style="font-size: 1.1rem; margin-bottom: 0.2rem;">GORING</div>
-                <div style="font-size: 0.78rem; font-weight: 400; opacity: 0.85;">Goring Methodist Church Hall</div>
+                <div style="font-size: 0.78rem; font-weight: 400; opacity: 0.85;">Goring Methodist Church Hall • Thursday 8:45 AM</div>
               </div>
             </div>
 
@@ -1018,7 +1020,7 @@
               <div class="package-options-grid">
                 <div class="package-card" id="pkg-card-intro" onclick="selectPackage('intro')">
                   <div class="package-title">INTRO OFFER</div>
-                  <div class="package-price">£10</div>
+                  <div class="package-price">£8.50</div>
                   <div class="package-desc">Introductory single session pass for new clients.</div>
                 </div>
                 <div class="package-card selected-package" id="pkg-card-block" onclick="selectPackage('block')">
@@ -1032,7 +1034,7 @@
               <div id="customerAndHealthSection" style="display: none;">
                 <form id="dedicatedBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
                   <input type="hidden" name="Class Name" value="All Levels Pilates & Strength">
-                  <input type="hidden" id="ded-hidden-location" name="Location">
+                  <input type="hidden" id="ded-hidden-location" name="Location" value="Goring Methodist Church Hall">
                   <input type="hidden" id="ded-hidden-date" name="Selected Class Date">
                   <input type="hidden" id="ded-hidden-package" name="Package Selected" value="4-Class Block">
                   <input type="hidden" id="ded-hidden-price" name="Total Price" value="£50">
@@ -1127,11 +1129,11 @@
                     </div>
                     <div class="booking-summary-row">
                       <span>Location</span>
-                      <span id="sum-location-text">-</span>
+                      <span id="sum-location-text">Goring Methodist Church Hall</span>
                     </div>
                     <div class="booking-summary-row">
                       <span>Day & Time</span>
-                      <span id="sum-time-text">-</span>
+                      <span id="sum-time-text">Thursday • 8:45 AM – 9:35 AM</span>
                     </div>
                     <div class="booking-summary-row">
                       <span>Selected Date</span>
@@ -1405,6 +1407,12 @@
       row.classList.toggle('open');
     }
 
+    function updatePAYGTarget(loc) {
+      const targetDay = loc === 'westpark' ? 3 : 4;
+      document.getElementById('cal-row-payg').dataset.targetDay = targetDay;
+      renderCalendar('cal-row-payg');
+    }
+
     // Mini Calendar Logic for Homepage Rows (Other Classes)
     const calendarState = {};
 
@@ -1472,10 +1480,10 @@
       });
     });
 
-    // Dedicated Booking Screen State & Logic
+    // Dedicated Booking Screen State & Logic (Goring Only)
     let dedicatedBookingState = {
-      location: null,
-      targetDay: 3,
+      location: 'goring',
+      targetDay: 4,
       year: 2026,
       month: 9,
       selectedDate: '',
@@ -1485,40 +1493,23 @@
 
     function openDedicatedBooking() {
       switchPage('dedicated-booking');
-      dedicatedBookingState = { location: null, targetDay: 3, year: 2026, month: 9, selectedDate: '', selectedDateFormatted: '', packageType: 'block' };
-      document.getElementById('loc-tab-westpark').classList.remove('active-location');
-      document.getElementById('loc-tab-goring').classList.remove('active-location');
-      document.getElementById('bookingWorkflowArea').style.display = 'none';
-      document.getElementById('customerAndHealthSection').style.display = 'none';
-    }
-
-    function selectLocation(loc) {
-      dedicatedBookingState.location = loc;
+      dedicatedBookingState = { location: 'goring', targetDay: 4, year: 2026, month: 9, selectedDate: '', selectedDateFormatted: '', packageType: 'block' };
       document.getElementById('bookingWorkflowArea').style.display = 'block';
       document.getElementById('customerAndHealthSection').style.display = 'none';
-      document.getElementById('ded-hidden-location').value = loc === 'westpark' ? 'West Park Primary School' : 'Goring Methodist Church Hall';
-
-      const westParkTab = document.getElementById('loc-tab-westpark');
-      const goringTab = document.getElementById('loc-tab-goring');
+      document.getElementById('ded-hidden-location').value = 'Goring Methodist Church Hall';
+      
       const banner = document.getElementById('locationInfoBannerText');
-
-      if (loc === 'westpark') {
-        westParkTab.classList.add('active-location');
-        goringTab.classList.remove('active-location');
-        dedicatedBookingState.targetDay = 3; // Wednesday
-        banner.innerHTML = `<strong>WEST PARK</strong><br>Wednesday • 6:30 PM – 7:20 PM<br>West Park Primary School, Goring-by-Sea`;
-      } else {
-        goringTab.classList.add('active-location');
-        westParkTab.classList.remove('active-location');
-        dedicatedBookingState.targetDay = 4; // Thursday
-        banner.innerHTML = `<strong>GORING</strong><br>Thursday • 8:45 AM – 9:35 AM<br>Goring Methodist Church Hall`;
-      }
+      banner.innerHTML = `<strong>GORING</strong><br>Thursday • 8:45 AM – 9:35 AM<br>Goring Methodist Church Hall`;
 
       dedicatedBookingState.selectedDate = '';
       dedicatedBookingState.selectedDateFormatted = '';
       document.getElementById('ded-selected-date-display').textContent = 'No date selected yet.';
 
       renderDedicatedCalendar();
+    }
+
+    function selectLocation(loc) {
+      openDedicatedBooking();
     }
 
     function changeDedicatedCalMonth(direction) {
@@ -1591,8 +1582,8 @@
 
       if (pkg === 'intro') {
         document.getElementById('pkg-card-intro').classList.add('selected-package');
-        document.getElementById('ded-hidden-package').value = 'Intro Offer (£10)';
-        document.getElementById('ded-hidden-price').value = '£10';
+        document.getElementById('ded-hidden-package').value = 'Intro Offer (£8.50)';
+        document.getElementById('ded-hidden-price').value = '£8.50';
       } else {
         document.getElementById('pkg-card-block').classList.add('selected-package');
         document.getElementById('ded-hidden-package').value = '4-Class Block (£50)';
@@ -1612,15 +1603,15 @@
     }
 
     function updateBookingSummary() {
-      const locText = dedicatedBookingState.location === 'westpark' ? 'West Park Primary School' : 'Goring Methodist Church Hall';
-      const timeText = dedicatedBookingState.location === 'westpark' ? 'Wednesday • 6:30 PM – 7:20 PM' : 'Thursday • 8:45 AM – 9:35 AM';
+      const locText = 'Goring Methodist Church Hall';
+      const timeText = 'Thursday • 8:45 AM – 9:35 AM';
       const isIntro = dedicatedBookingState.packageType === 'intro';
 
       document.getElementById('sum-location-text').textContent = locText;
       document.getElementById('sum-time-text').textContent = timeText;
       document.getElementById('sum-date-text').textContent = dedicatedBookingState.selectedDateFormatted || '-';
       document.getElementById('sum-package-text').textContent = isIntro ? 'Intro Offer' : '4-Class Block';
-      document.getElementById('sum-price-text').textContent = isIntro ? '£10' : '£50';
+      document.getElementById('sum-price-text').textContent = isIntro ? '£8.50' : '£50';
     }
 
     function toggleDedInjuriesBox(show) {
@@ -1743,22 +1734,22 @@
     }
 
     const classPassOptions = {
-      'PAYG Open Pilates Session': {
-        targetDay: 3,
-        startMonth: 9,
-        startYear: 2026,
-        timeSlot: '9:30 AM - 10:30 AM (60 mins)',
-        passes: [
-          { label: 'PAYG Drop-In — £13', value: 'PAYG Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
-        ]
-      },
       '6-Week Pilates Strength Course (Beginners)': {
         targetDay: 3,
         startMonth: 10,
         startYear: 2026,
         timeSlot: '6:30 PM - 7:20 PM (50 mins)',
         passes: [
-          { label: 'Full 6-Week Course — £65', value: 'Full 6-Week Course (£65)', stripeUrl: 'https://buy.stripe.com/your-stripe-link-here' }
+          { label: 'Full 6-Week Course — £67', value: 'Full 6-Week Course (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
+        ]
+      },
+      'PAYG Open Pilates Session': {
+        targetDay: 3,
+        startMonth: 9,
+        startYear: 2026,
+        timeSlot: 'Flexible Sessions',
+        passes: [
+          { label: 'PAYG Drop-In — £13', value: 'PAYG Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
@@ -1911,7 +1902,7 @@
       submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
       const targetStripeUrl = dedicatedBookingState.packageType === 'intro' 
-        ? 'https://buy.stripe.com/4gMcN7ee1dyo5Yf0I47N60c' 
+        ? 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' 
         : 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i';
 
       const formData = new FormData(this);
