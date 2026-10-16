@@ -1307,36 +1307,43 @@
       }
     };
 
+    let activeModalClassName = '';
+
     function openBooking(className) {
-      const form = document.getElementById('bookingForm');
-      form.reset();
-      clearFormErrors(form);
-
-      document.getElementById('modal-class-title').innerText = className;
-      document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
-      document.getElementById('hidden-class-name').value = className;
+      const currentClassName = document.getElementById('hidden-class-name').value;
       
-      const passSelect = document.getElementById('pass-type');
-      passSelect.innerHTML = '';
+      // If user opens a different class, reset the form. If same class, retain their form input!
+      if (currentClassName !== className) {
+        const form = document.getElementById('bookingForm');
+        form.reset();
+        clearFormErrors(form);
 
-      const classData = classPassOptions[className];
-      
-      classData.passes.forEach(opt => {
-        const optionEl = document.createElement('option');
-        optionEl.value = opt.value;
-        optionEl.textContent = opt.label;
-        optionEl.dataset.stripeUrl = opt.stripeUrl;
-        passSelect.appendChild(optionEl);
-      });
+        document.getElementById('modal-class-title').innerText = className;
+        document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
+        document.getElementById('hidden-class-name').value = className;
+        
+        const passSelect = document.getElementById('pass-type');
+        passSelect.innerHTML = '';
 
-      const timeSelect = document.getElementById('booking-time');
-      timeSelect.innerHTML = '';
-      const timeOption = document.createElement('option');
-      timeOption.value = classData.timeSlot;
-      timeOption.textContent = classData.timeSlot;
-      timeSelect.appendChild(timeOption);
+        const classData = classPassOptions[className];
+        
+        classData.passes.forEach(opt => {
+          const optionEl = document.createElement('option');
+          optionEl.value = opt.value;
+          optionEl.textContent = opt.label;
+          optionEl.dataset.stripeUrl = opt.stripeUrl;
+          passSelect.appendChild(optionEl);
+        });
 
-      initModalCalendar(classData.targetDay, classData.startMonth, classData.startYear);
+        const timeSelect = document.getElementById('booking-time');
+        timeSelect.innerHTML = '';
+        const timeOption = document.createElement('option');
+        timeOption.value = classData.timeSlot;
+        timeOption.textContent = classData.timeSlot;
+        timeSelect.appendChild(timeOption);
+
+        initModalCalendar(classData.targetDay, classData.startMonth, classData.startYear);
+      }
 
       document.getElementById('bookingModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
