@@ -872,7 +872,43 @@
               </div>
             </div>
 
-            <!-- ROW 3: LOVELY BUMPS -->
+            <!-- ROW 3: 6-WEEK COURSE (ACTIVE BOOKING) -->
+            <div class="class-row-card" id="row-course">
+              <div class="class-row-main">
+                <div class="class-row-info">
+                  <div class="class-row-meta">
+                    <span>Starts 11th Nov • 6:30 PM</span>
+                    <span class="tag-badge purple">Beginners Course</span>
+                  </div>
+                  <div class="class-row-title">6-Week Pilates Strength Course (Beginners)</div>
+                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — £65 Full Block</div>
+                </div>
+                <div class="class-row-actions">
+                  <button class="details-toggle-btn" onclick="toggleRow('row-course')">Details</button>
+                  <button class="row-book-btn" onclick="openBooking('6-Week Pilates Strength Course (Beginners)')">Book</button>
+                </div>
+              </div>
+              <div class="class-row-dropdown">
+                <div class="dropdown-inner">
+                  <p>Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week beginner course guides you safely through fundamental strength techniques.</p>
+
+                  <!-- Calendar for 6-Week Course -->
+                  <div class="mini-calendar-container" id="cal-row-course" data-target-day="3" data-start-month="10" data-start-year="2026">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
+                      <span class="cal-title">November 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-course')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 4: LOVELY BUMPS -->
             <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -1180,7 +1216,7 @@
 
   </div>
 
-  <!-- BOOKING MODAL (FOR OTHER CLASSES) -->
+  <!-- BOOKING MODAL (FOR OTHER CLASSES & COURSES) -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModalDirect()">&times;</button>
@@ -1714,6 +1750,15 @@
         timeSlot: '9:30 AM - 10:30 AM (60 mins)',
         passes: [
           { label: 'PAYG Drop-In — £13', value: 'PAYG Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
+        ]
+      },
+      '6-Week Pilates Strength Course (Beginners)': {
+        targetDay: 3,
+        startMonth: 10,
+        startYear: 2026,
+        timeSlot: '6:30 PM - 7:20 PM (50 mins)',
+        passes: [
+          { label: 'Full 6-Week Course — £65', value: 'Full 6-Week Course (£65)', stripeUrl: 'https://buy.stripe.com/your-stripe-link-here' }
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
