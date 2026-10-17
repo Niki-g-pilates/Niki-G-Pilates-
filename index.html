@@ -707,27 +707,27 @@
               </div>
             </div>
 
-            <!-- ROW 2: GORING-BY-SEA (ALL LEVELS PILATES & STRENGTH) -->
+            <!-- ROW 2: GORING-BY-SEA (CHAIR BASED PILATES) -->
             <div class="class-row-card" id="row-all-levels">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span>Thursdays • 8:45 AM</span>
+                    <span>Thursdays • 9:30 AM</span>
                   </div>
-                  <div class="class-row-title">All Levels Pilates & Strength</div>
-                  <div class="class-row-location">Goring Methodist Church Hall — £50 Block | £13 PAYG | £8.50 Intro</div>
+                  <div class="class-row-title">Chair Based Pilates</div>
+                  <div class="class-row-location">Goring Methodist Church Hall — £50 Block | £13 PAYG</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('All Levels Pilates & Strength (Goring-by-Sea)')">Book</button>
+                  <button class="row-book-btn" onclick="openBooking('Chair Based Pilates (Goring-by-Sea)')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
                 <div class="dropdown-inner">
-                  <p>Suitable for beginners and improvers. This 50-minute, full-body class is designed to help you feel stronger, move better, and support your body through everyday demands.</p>
-                  <p>We combine Pilates with functional strength movements like squats, lunges, and core work to iron out everyday posture aches.</p>
+                  <p>Chair-based Pilates is a lovely way to keep moving, build strength and improve flexibility and balance, using a combination of seated and supported standing exercises.</p>
+                  <p>🌟 No previous Pilates experience needed! Whether you're new to exercise, returning after a break or simply looking to keep active and feel stronger, the class is designed to help you work at a level that feels right for you.</p>
 
-                  <!-- Calendar for Goring -->
+                  <!-- Calendar for Goring Chair Pilates -->
                   <div class="mini-calendar-container" id="cal-row-goring" data-target-day="4" data-start-month="9" data-start-year="2026">
                     <div class="cal-header">
                       <button onclick="changeMonth(-1, 'cal-row-goring')">&larr;</button>
@@ -766,7 +766,7 @@
                     <label for="payg-location-select">Choose Location & Session:</label>
                     <select id="payg-location-select" onchange="updatePAYGTarget(this.value)">
                       <option value="westpark">West Park Primary School (Wed 6:30 PM)</option>
-                      <option value="goring">Goring Methodist Church Hall (Thu 8:45 AM)</option>
+                      <option value="goring">Goring Methodist Church Hall (Thu 9:30 AM)</option>
                     </select>
                   </div>
                   
@@ -1275,15 +1275,14 @@
           { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' }
         ]
       },
-      'All Levels Pilates & Strength (Goring-by-Sea)': {
+      'Chair Based Pilates (Goring-by-Sea)': {
         targetDay: 4,
         startMonth: 9,
         startYear: 2026,
-        timeSlot: '8:45 AM - 9:35 AM (50 mins)',
+        timeSlot: '9:30 AM - 10:20 AM (50 mins)',
         passes: [
           { label: '4-Class Block — £50', value: '4-Class Block (£50)', stripeUrl: 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i' },
-          { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' },
-          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' }
+          { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
         ]
       },
       'PAYG Open Pilates Session': {
@@ -1307,12 +1306,9 @@
       }
     };
 
-    let activeModalClassName = '';
-
     function openBooking(className) {
       const currentClassName = document.getElementById('hidden-class-name').value;
       
-      // If user opens a different class, reset the form. If same class, retain their form input!
       if (currentClassName !== className) {
         const form = document.getElementById('bookingForm');
         form.reset();
