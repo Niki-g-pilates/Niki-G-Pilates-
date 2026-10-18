@@ -311,8 +311,19 @@
     }
 
     .class-row-location {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .class-row-price {
       font-size: 0.85rem;
       color: var(--text-muted);
+      margin-top: 0.1rem;
     }
 
     .class-row-actions {
@@ -477,6 +488,18 @@
     .tag-badge.pink { background: #FCE8E6; color: #C5221F; }
     .tag-badge.purple { background: #F3E8FF; color: #6B21A8; }
     .tag-badge.blue { background: #E8F0FE; color: #1967D2; }
+
+    .loc-badge {
+      display: inline-block;
+      background: #E2DCD5;
+      color: var(--primary-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
     /* QUALIFICATIONS BOX */
     .qualifications-box {
@@ -677,10 +700,13 @@
                 <div class="class-row-info">
                   <div class="class-row-meta">
                     <span>Starts 11th Nov • 6:30 PM</span>
-                    <span class="tag-badge purple">Beginners & Improvers Block</span>
+                    <span class="tag-badge purple">Beginners & Improvers</span>
                   </div>
-                  <div class="class-row-title">6-Week Pilates Strength Block (Beginners & Improvers)</div>
-                  <div class="class-row-location">West Park Primary School, Goring-by-Sea — £67 Block | £13 PAYG | £8.50 Intro</div>
+                  <div class="class-row-title">6-Week Pilates Strength Block</div>
+                  <div class="class-row-location">
+                    <span class="loc-badge">Location</span> West Park Primary School, Goring-by-Sea
+                  </div>
+                  <div class="class-row-price">£67 Block | £13 PAYG | £8.50 Intro</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-course')">Details</button>
@@ -715,7 +741,10 @@
                     <span>Thursdays • 9:30 AM</span>
                   </div>
                   <div class="class-row-title">Chair Based Pilates</div>
-                  <div class="class-row-location">Goring Methodist Church Hall — £50 Block | £13 PAYG</div>
+                  <div class="class-row-location">
+                    <span class="loc-badge">Location</span> Goring Methodist Church Hall
+                  </div>
+                  <div class="class-row-price">£67 6-Week Block | £50 4-Class Block | £13 PAYG</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
@@ -743,7 +772,46 @@
               </div>
             </div>
 
-            <!-- ROW 3: PAYG OPEN SESSION -->
+            <!-- ROW 3: ANGMERING (GENTLE MAT PILATES) -->
+            <div class="class-row-card" id="row-angmering">
+              <div class="class-row-main">
+                <div class="class-row-info">
+                  <div class="class-row-meta">
+                    <span>Starts 6th Nov • Fridays 11:00 AM</span>
+                    <span class="tag-badge purple">Gentle Mat Class</span>
+                  </div>
+                  <div class="class-row-title">Gentle Mat Pilates</div>
+                  <div class="class-row-location">
+                    <span class="loc-badge">Location</span> Angmering Community Centre
+                  </div>
+                  <div class="class-row-price">£67 6-Week Block | £13 PAYG | £8.50 Intro</div>
+                </div>
+                <div class="class-row-actions">
+                  <button class="details-toggle-btn" onclick="toggleRow('row-angmering')">Details</button>
+                  <button class="row-book-btn" onclick="openBooking('Gentle Mat Pilates (Angmering)')">Book</button>
+                </div>
+              </div>
+              <div class="class-row-dropdown">
+                <div class="dropdown-inner">
+                  <p>Designed for anyone seeking a gentle, restorative mat Pilates session. Perfect for releasing muscle tension, improving joint alignment, building core stamina, and unwinding at your own pace.</p>
+
+                  <!-- Calendar for Angmering -->
+                  <div class="mini-calendar-container" id="cal-row-angmering" data-target-day="5" data-start-month="10" data-start-year="2026">
+                    <div class="cal-header">
+                      <button onclick="changeMonth(-1, 'cal-row-angmering')">&larr;</button>
+                      <span class="cal-title">November 2026</span>
+                      <button onclick="changeMonth(1, 'cal-row-angmering')">&rarr;</button>
+                    </div>
+                    <div class="cal-grid">
+                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+                    </div>
+                    <div class="cal-grid cal-days-body"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 4: PAYG OPEN SESSION -->
             <div class="class-row-card" id="row-payg">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -751,7 +819,10 @@
                     <span class="tag-badge blue">PAYG</span>
                   </div>
                   <div class="class-row-title">PAYG Open Pilates Session</div>
-                  <div class="class-row-location">£13 Single Class</div>
+                  <div class="class-row-location">
+                    <span class="loc-badge">Location</span> West Park Primary / Goring / Angmering
+                  </div>
+                  <div class="class-row-price">£13 Single Class</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-payg')">Details</button>
@@ -767,6 +838,7 @@
                     <select id="payg-location-select" onchange="updatePAYGTarget(this.value)">
                       <option value="westpark">West Park Primary School (Wed 6:30 PM)</option>
                       <option value="goring">Goring Methodist Church Hall (Thu 9:30 AM)</option>
+                      <option value="angmering">Angmering Community Centre (Fri 11:00 AM)</option>
                     </select>
                   </div>
                   
@@ -786,7 +858,7 @@
               </div>
             </div>
 
-            <!-- ROW 4: LOVELY BUMPS -->
+            <!-- ROW 5: LOVELY BUMPS -->
             <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -795,7 +867,10 @@
                     <span class="tag-badge pink">Pregnancy Speciality</span>
                   </div>
                   <div class="class-row-title">LOVELY BUMPS — Pregnancy Pilates</div>
-                  <div class="class-row-location">West Park Primary School — Drop-In £13 | Block £60.50</div>
+                  <div class="class-row-location">
+                    <span class="loc-badge">Location</span> West Park Primary School
+                  </div>
+                  <div class="class-row-price">Drop-In £13 | Block £60.50</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-bumps')">Details</button>
@@ -1094,7 +1169,10 @@
     }
 
     function updatePAYGTarget(loc) {
-      const targetDay = loc === 'westpark' ? 3 : 4;
+      let targetDay = 3;
+      if (loc === 'goring') targetDay = 4;
+      if (loc === 'angmering') targetDay = 5;
+      
       document.getElementById('cal-row-payg').dataset.targetDay = targetDay;
       renderCalendar('cal-row-payg');
     }
@@ -1281,8 +1359,20 @@
         startYear: 2026,
         timeSlot: '9:30 AM - 10:20 AM (50 mins)',
         passes: [
+          { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
           { label: '4-Class Block — £50', value: '4-Class Block (£50)', stripeUrl: 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i' },
           { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
+        ]
+      },
+      'Gentle Mat Pilates (Angmering)': {
+        targetDay: 5,
+        startMonth: 10,
+        startYear: 2026,
+        timeSlot: '11:00 AM - 11:50 AM (50 mins)',
+        passes: [
+          { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
+          { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' },
+          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' }
         ]
       },
       'PAYG Open Pilates Session': {
