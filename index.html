@@ -8,8 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
-  
-  <!-- Importing Glacial Indifference from Font Library CDN -->
   <link rel="stylesheet" href="https://fontlibrary.org/face/glacial-indifference" media="screen">
 
   <style>
@@ -60,7 +58,6 @@
       cursor: pointer;
     }
 
-    /* MENU TOGGLE BUTTON */
     .menu-toggle {
       display: flex;
       flex-direction: column;
@@ -82,7 +79,6 @@
       transition: all 0.3s ease;
     }
 
-    /* SIDE NAVIGATION DRAWER */
     .side-nav {
       position: fixed;
       top: 0;
@@ -100,533 +96,111 @@
     }
 
     .side-nav.open { right: 0; }
-
-    .side-nav ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-    }
-
-    .side-nav a {
-      text-decoration: none;
-      color: var(--primary-dark);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: color 0.3s ease;
-      display: block;
-      padding: 0.4rem 0;
-      cursor: pointer;
-    }
-
+    .side-nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.8rem; }
+    .side-nav a { text-decoration: none; color: var(--primary-dark); font-size: 1rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; }
     .side-nav a:hover { color: var(--primary-rose); }
 
     .nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 1050;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.4); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1050;
     }
+    .nav-overlay.active { opacity: 1; visibility: visible; }
 
-    .nav-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* PAGE VIEW CONTROLS */
     .page-view { display: none; }
     .page-view.active-page { display: block; }
 
-    /* HERO BANNER IMAGE */
-    .hero-image-banner {
-      width: 100%;
-      height: 480px;
-      position: relative;
-      overflow: hidden;
-    }
+    /* HERO BANNER */
+    .hero-image-banner { width: 100%; height: 440px; position: relative; overflow: hidden; }
+    .hero-image-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: brightness(0.85); }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.4); display: flex; justify-content: center; align-items: center; color: white; text-align: center; padding: 2rem; }
+    .hero-title { font-family: var(--font-heading); font-size: 2.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; }
+    .hero-subtitle { font-size: 1.1rem; color: #F5F2EE; }
 
-    .hero-image-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
-      filter: brightness(0.85);
-    }
+    /* INTRO SECTION */
+    .intro-section { background-color: #FFFFFF; padding: 3.5rem 1.5rem; border-bottom: 1px solid var(--border-color); text-align: center; }
+    .intro-content { max-width: 750px; margin: 0 auto; }
+    .intro-heading { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 1.2rem; text-transform: uppercase; }
+    .intro-text { font-size: 1.02rem; color: var(--text-dark); margin-bottom: 1.2rem; }
 
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(45, 55, 72, 0.4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .hero-content { max-width: 850px; margin: 0 auto; }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 2.6rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-      line-height: 1.25;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-      margin: 0 auto;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      color: #F5F2EE;
-    }
-
-    /* INTRO WELCOME SECTION STYLING */
-    .intro-section {
-      background-color: #FFFFFF;
-      padding: 3.5rem 1.5rem;
-      border-bottom: 1px solid var(--border-color);
-      text-align: center;
-    }
-
-    .intro-content {
-      max-width: 750px;
-      margin: 0 auto;
-    }
-
-    .intro-heading {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 1.2rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .intro-text {
-      font-size: 1.02rem;
-      color: var(--text-dark);
-      margin-bottom: 1.2rem;
-      line-height: 1.8;
-      font-weight: 400;
-    }
-
-    /* SECTIONS */
+    /* SECTIONS & CARDS */
     .section-strip { width: 100%; padding: 4rem 1.5rem; }
     .strip-stone { background-color: var(--bg-stone); color: var(--text-dark); }
     .strip-white { background-color: #FFFFFF; color: var(--text-dark); }
     .strip-rose { background-color: var(--primary-rose); color: var(--primary-dark); }
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
-
     .strip-content { max-width: 900px; margin: 0 auto; }
-    .strip-content.text-center { text-align: center; }
+    .section-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
 
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 2rem;
-      letter-spacing: 1px;
-    }
+    .classes-stack { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+    .class-row-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .class-row-card:hover { border-color: var(--primary-rose); box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+    .class-row-main { padding: 1.5rem 1.8rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .class-row-info { flex: 1; min-width: 260px; }
+    .class-row-meta { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-rose); margin-bottom: 0.3rem; display: flex; gap: 0.8rem; align-items: center; }
+    .class-row-title { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--primary-dark); }
+    .class-row-details { font-size: 0.92rem; color: var(--text-dark); margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.2rem; }
+    .class-row-detail-item { display: flex; align-items: center; gap: 0.5rem; }
 
-    .strip-dark .section-title { color: #FFFFFF; }
-    .strip-rose .section-title { color: var(--primary-dark); }
+    .class-row-actions { display: flex; align-items: center; gap: 0.8rem; }
+    .details-toggle-btn { background: #F5F2EE; border: 1px solid var(--border-color); color: var(--text-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; padding: 0.6rem 1rem; border-radius: 4px; cursor: pointer; }
+    .row-book-btn { background-color: var(--accent-green); color: #FFFFFF; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; padding: 0.6rem 1.4rem; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; }
+    .row-book-btn:hover { background-color: #236149; }
+    .row-waitlist-btn { background-color: #718096; }
 
-    .strip-content p { margin-bottom: 1.4rem; font-size: 0.98rem; font-weight: 400; }
-    .strip-content h3 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
+    .class-row-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #FAFAFA; padding: 0 1.8rem; }
+    .class-row-card.open .class-row-dropdown { max-height: 1200px; padding: 1.5rem 1.8rem; border-top: 1px solid var(--border-color); }
 
-    /* SLEEK HORIZONTAL ROW CLASS LISTINGS */
-    .classes-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-
-    .class-row-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    }
-
-    .class-row-card:hover {
-      border-color: var(--primary-rose);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-    }
-
-    .class-row-main {
-      padding: 1.5rem 1.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .class-row-info {
-      flex: 1;
-      min-width: 260px;
-    }
-
-    .class-row-meta {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--primary-rose);
-      margin-bottom: 0.3rem;
-      display: flex;
-      gap: 0.8rem;
-      align-items: center;
-    }
-
-    .class-row-title {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.2rem;
-    }
-
-    .class-row-location {
-      font-size: 0.95rem;
-      color: var(--primary-dark);
-      font-weight: 700;
-      margin-top: 0.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .class-row-price {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.1rem;
-    }
-
-    .class-row-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .details-toggle-btn {
-      background: #F5F2EE;
-      border: 1px solid var(--border-color);
-      color: var(--text-dark);
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 0.6rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .details-toggle-btn:hover {
-      background: #E2DCD5;
-    }
-
-    .row-book-btn {
-      background-color: var(--accent-green);
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 0.6rem 1.4rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .row-book-btn:hover {
-      background-color: #236149;
-    }
-
-    .row-waitlist-btn {
-      background-color: #718096;
-    }
-    .row-waitlist-btn:hover {
-      background-color: #4A5568;
-    }
-
-    /* EXPANDABLE ROW CONTENT */
-    .class-row-dropdown {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-      background: #FAFAFA;
-      padding: 0 1.8rem;
-    }
-
-    .class-row-card.open .class-row-dropdown {
-      max-height: 1200px;
-      padding: 1.5rem 1.8rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .dropdown-inner p {
-      font-size: 0.9rem;
-      color: var(--text-dark);
-      margin-bottom: 0.8rem;
-    }
-
-    /* MINI CALENDAR WIDGET STYLING */
-    .mini-calendar-container, .modal-calendar-container {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 1rem;
-      margin-top: 1.2rem;
-      max-width: 340px;
-    }
-
-    .cal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      font-family: var(--font-heading);
-      font-size: 0.95rem;
-      color: var(--primary-dark);
-    }
-
-    .cal-header button {
-      background: none;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      padding: 4px 10px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    .cal-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
-      text-align: center;
-    }
-
-    .cal-day-name {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      padding-bottom: 4px;
-    }
-
-    .cal-date {
-      font-size: 0.78rem;
-      padding: 8px 0;
-      border-radius: 4px;
-      color: var(--text-dark);
-    }
-
-    .cal-date.empty {
-      background: transparent;
-    }
-
-    .cal-date.highlight {
-      background-color: var(--primary-rose);
-      color: #FFFFFF;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .cal-date.highlight:hover {
-      opacity: 0.85;
-    }
-
-    .cal-date.selected-date {
-      background-color: var(--accent-green) !important;
-      color: #FFFFFF !important;
-      font-weight: 700;
-      box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--accent-green);
-    }
-
-    .tag-badge {
-      display: inline-block;
-      background: #E6F4EA;
-      color: #137333;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-
+    .tag-badge { display: inline-block; background: #E6F4EA; color: #137333; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
     .tag-badge.pink { background: #FCE8E6; color: #C5221F; }
     .tag-badge.purple { background: #F3E8FF; color: #6B21A8; }
     .tag-badge.blue { background: #E8F0FE; color: #1967D2; }
+    .loc-badge { display: inline-block; background: #E2DCD5; color: var(--primary-dark); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
 
-    .loc-badge {
-      display: inline-block;
-      background: #E2DCD5;
-      color: var(--primary-dark);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* QUALIFICATIONS BOX */
-    .qualifications-box {
-      background-color: #FAF6F0; 
-      border: 1px solid #E2DCD5;
-      padding: 1.5rem;
-      border-radius: 6px;
-      margin-top: 2rem;
-      text-align: left;
-    }
-
-    .qualifications-box h3 {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-top: 0;
-      margin-bottom: 0.8rem;
-      text-align: center;
-    }
-
-    .qualifications-box ul { list-style-type: disc; margin: 0; padding-left: 1.5rem; }
-    .qualifications-box li { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.4rem; color: var(--text-dark); font-weight: 400; }
-
-    /* PROFILE IMAGE */
-    .profile-img-container { 
-      width: 180px; 
-      height: 180px; 
-      margin: 0 auto 1.8rem auto; 
-      border-radius: 50%; 
-      overflow: hidden; 
-      border: 4px solid #FFFFFF; 
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
-    }
-    .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* TESTIMONIALS */
-    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1.5rem; }
-    .testimonial-card { background: #FFFFFF; border: 1px solid var(--border-color); padding: 2.2rem; }
-    .testimonial-card p { font-family: var(--font-heading); font-style: italic; color: var(--primary-dark); font-size: 1rem; font-weight: 700; margin-bottom: 1.2rem; line-height: 1.6; }
-    .testimonial-author { font-weight: 700; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
-
-    /* CONTACT SECTION */
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; background: #FFFFFF; padding: 3rem; border: 1px solid var(--border-color); max-width: 950px; margin: 0 auto; text-align: center; }
-    
+    /* FORM & MODAL */
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; color: #000000; text-align: left; }
-    
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="tel"],
-    .form-group input[type="date"],
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.85rem;
-      border: 1px solid var(--border-color);
-      font-family: var(--font-body);
-      background: #FAFAFA;
-      font-weight: 400;
-      font-size: 16px;
-      color: #000000;
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; color: #000; text-align: left; }
+    .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"], .form-group input[type="date"], .form-group textarea, .form-group select {
+      width: 100%; padding: 0.85rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-size: 16px; color: #000; border-radius: 4px; -webkit-appearance: none;
+    }
+    .form-group textarea { height: 90px; resize: vertical; }
+
+    /* IN-MODAL DESCRIPTION BOX */
+    .modal-class-desc-box {
+      background: #F5F2EE;
+      border-left: 3px solid var(--primary-rose);
+      padding: 0.9rem 1.1rem;
       border-radius: 4px;
-      -webkit-appearance: none;
+      margin-top: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      line-height: 1.6;
     }
 
-    .form-group textarea { height: 100px; resize: vertical; }
-
-    .form-group input.field-error, .form-group textarea.field-error, .form-group select.field-error {
-      border: 2px solid #D32F2F !important;
-      background-color: #FFF8F8 !important;
-    }
-    .checkbox-group.field-error-checkbox {
-      border: 2px solid #D32F2F !important;
-      background-color: #FFF8F8 !important;
-      padding: 0.6rem;
-      border-radius: 4px;
-    }
-
-    .step-heading {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #000000;
-      margin: 1.6rem 0 0.8rem 0;
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid var(--primary-rose);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-align: left;
-    }
-
+    .step-heading { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #000; margin: 1.6rem 0 0.8rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--primary-rose); text-align: left; }
     .radio-group { display: flex; gap: 1.5rem; margin-top: 0.4rem; }
-    .radio-group label { font-size: 0.9rem; text-transform: none; font-weight: 400; color: #000000; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+    .radio-group label { font-size: 0.9rem; font-weight: 400; color: #000; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
 
-    .waiver-box {
-      background: #FAFAFA;
-      border: 1px solid var(--border-color);
-      padding: 1rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      max-height: 120px;
-      overflow-y: auto;
-      margin-bottom: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      text-align: left;
-    }
-
+    .waiver-box { background: #FAFAFA; border: 1px solid var(--border-color); padding: 1rem; border-radius: 4px; font-size: 0.8rem; max-height: 120px; overflow-y: auto; margin-bottom: 0.8rem; color: var(--text-muted); text-align: left; }
     .checkbox-group { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.5rem; }
     .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
-    .checkbox-group label { font-size: 0.8rem; text-transform: none; color: #000000; text-align: left; }
+    .checkbox-group label { font-size: 0.8rem; color: #000; text-align: left; }
 
-    /* MODAL */
-    .modal-overlay { 
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-      background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; 
-    }
-    .modal { 
-      background: #FFFFFF; padding: 2.2rem 1.5rem; width: 100%; max-width: 650px; max-height: 92vh; 
-      overflow-y: auto; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-    }
-    .modal h3 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 0.2rem; }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
+    .modal { background: #FFFFFF; padding: 2.2rem 1.5rem; width: 100%; max-width: 650px; max-height: 92vh; overflow-y: auto; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
 
-    footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
+    /* CALENDAR */
+    .modal-calendar-container { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; margin-top: 0.8rem; max-width: 340px; }
+    .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-family: var(--font-heading); font-size: 0.95rem; }
+    .cal-header button { background: none; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px 10px; cursor: pointer; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+    .cal-day-name { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding-bottom: 4px; }
+    .cal-date { font-size: 0.78rem; padding: 8px 0; border-radius: 4px; color: var(--text-dark); }
+    .cal-date.empty { background: transparent; }
+    .cal-date.highlight { background-color: var(--primary-rose); color: #FFFFFF; font-weight: 700; cursor: pointer; }
+    .cal-date.selected-date { background-color: var(--accent-green) !important; color: #FFFFFF !important; font-weight: 700; }
+
+    footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; text-transform: uppercase; }
 
     @media (max-width: 768px) {
       .class-row-main { flex-direction: column; align-items: flex-start; }
@@ -641,16 +215,10 @@
   <header>
     <div class="nav-container">
       <a class="logo" onclick="switchPage('home', event)"><strong>Niki G Pilates</strong></a>
-      
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- SIDE NAVIGATION DRAWER -->
   <div class="nav-overlay" id="navOverlay"></div>
   <nav class="side-nav" id="sideNav">
     <ul>
@@ -661,7 +229,6 @@
     </ul>
   </nav>
 
-  <!-- MAIN WEBSITE VIEWS -->
   <div id="mainWebsiteContent">
 
     <!-- PAGE VIEW: HOME -->
@@ -676,246 +243,157 @@
         </div>
       </section>
 
-      <!-- INTRO WELCOME SECTION -->
       <section class="intro-section">
         <div class="intro-content">
           <h2 class="intro-heading">Pilates for every body</h2>
           <p class="intro-text">My classes are welcoming, friendly, tailored to you, to help you build strength, improve mobility and feel more confident in your body.</p>
-          <p class="intro-text">Whether you’re new to Pilates, returning to exercise, or looking for support during pregnancy and beyond, sessions are tailored to you and your goals.</p>
-          <p class="intro-text" style="margin-bottom: 0;">Expect a supportive, encouraging approach, with exercises that challenge you while still feeling achievable — helping you move better and feel stronger both in and out of the studio.</p>
         </div>
       </section>
 
-      <!-- MINIMALIST TIMETABLE & ROW STACK -->
+      <!-- CLASSES & SCHEDULE -->
       <section class="section-strip strip-white">
         <div class="strip-content">
           <h2 class="section-title">CLASSES & BLOCKS</h2>
-          <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Browse our weekly schedule below. Click <strong>'Details'</strong> to read about each class or book your spot directly:</p>
 
           <div class="classes-stack">
 
-            <!-- ROW 1: 6-WEEK BLOCK (WEST PARK) -->
+            <!-- CLASS 1 -->
             <div class="class-row-card" id="row-course">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span>Starts 11th Nov • 6:30 PM</span>
                     <span class="tag-badge purple">Beginners & Improvers</span>
                   </div>
                   <div class="class-row-title">6-Week Pilates Strength Block</div>
-                  <div class="class-row-location">
-                    <span class="loc-badge">Location</span> West Park Primary School, Goring-by-Sea
+                  <div class="class-row-details">
+                    <div class="class-row-detail-item">
+                      <strong>Day & Time:</strong> Wednesdays • 6:30 PM (Starts 11th Nov)
+                    </div>
+                    <div class="class-row-detail-item">
+                      <span class="loc-badge">Location</span> West Park Primary School, Goring-by-Sea
+                    </div>
                   </div>
-                  <div class="class-row-price">£67 Block | £13 PAYG | £8.50 Intro</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-course')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('6-Week Pilates Strength Block (Beginners & Improvers)')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('6-Week Pilates Strength Block (Beginners & Improvers)')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>Suitable for beginners and improvers. Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week block guides you safely through fundamental strength techniques.</p>
-
-                  <!-- Calendar for 6-Week Block -->
-                  <div class="mini-calendar-container" id="cal-row-course" data-target-day="3" data-start-month="10" data-start-year="2026">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-course')">&larr;</button>
-                      <span class="cal-title">November 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-course')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
-                </div>
+                <p>Suitable for beginners and improvers. Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 6-week block guides you safely through fundamental strength techniques.</p>
               </div>
             </div>
 
-            <!-- ROW 2: GORING-BY-SEA (CHAIR BASED PILATES) -->
-            <div class="class-row-card" id="row-all-levels">
+            <!-- CLASS 2 -->
+            <div class="class-row-card" id="row-goring">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span>Thursdays • 9:30 AM</span>
+                    <span class="tag-badge purple">Seated & Supported</span>
                   </div>
                   <div class="class-row-title">Chair Based Pilates</div>
-                  <div class="class-row-location">
-                    <span class="loc-badge">Location</span> Goring Methodist Church Hall
+                  <div class="class-row-details">
+                    <div class="class-row-detail-item">
+                      <strong>Day & Time:</strong> Thursdays • 9:30 AM
+                    </div>
+                    <div class="class-row-detail-item">
+                      <span class="loc-badge">Location</span> Goring Methodist Church Hall
+                    </div>
                   </div>
-                  <div class="class-row-price">£67 6-Week Block | £50 4-Class Block | £13 PAYG</div>
                 </div>
                 <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-all-levels')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('Chair Based Pilates (Goring-by-Sea)')">Book</button>
+                  <button class="details-toggle-btn" onclick="toggleRow('row-goring')">Details</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('Chair Based Pilates (Goring-by-Sea)')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>Chair-based Pilates is a lovely way to keep moving, build strength and improve flexibility and balance, using a combination of seated and supported standing exercises.</p>
-                  <p>🌟 No previous Pilates experience needed! Whether you're new to exercise, returning after a break or simply looking to keep active and feel stronger, the class is designed to help you work at a level that feels right for you.</p>
-
-                  <!-- Calendar for Goring Chair Pilates -->
-                  <div class="mini-calendar-container" id="cal-row-goring" data-target-day="4" data-start-month="9" data-start-year="2026">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-goring')">&larr;</button>
-                      <span class="cal-title">October 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-goring')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
-                </div>
+                <p>Chair-based Pilates is a lovely way to keep moving, build strength and improve flexibility and balance, using a combination of seated and supported standing exercises.</p>
+                <p>🌟 No previous Pilates experience needed! Whether you're new to exercise, returning after a break or simply looking to keep active and feel stronger, the class is designed to help you work at a level that feels right for you.</p>
               </div>
             </div>
 
-            <!-- ROW 3: ANGMERING (GENTLE MAT PILATES) -->
+            <!-- CLASS 3 -->
             <div class="class-row-card" id="row-angmering">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span>Starts 6th Nov • Fridays 11:00 AM</span>
                     <span class="tag-badge purple">Gentle Mat Class</span>
                   </div>
                   <div class="class-row-title">Gentle Mat Pilates</div>
-                  <div class="class-row-location">
-                    <span class="loc-badge">Location</span> Angmering Community Centre
+                  <div class="class-row-details">
+                    <div class="class-row-detail-item">
+                      <strong>Day & Time:</strong> Fridays • 11:00 AM (Starts 6th Nov)
+                    </div>
+                    <div class="class-row-detail-item">
+                      <span class="loc-badge">Location</span> Angmering Community Centre
+                    </div>
                   </div>
-                  <div class="class-row-price">£67 6-Week Block | £13 PAYG | £8.50 Intro</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-angmering')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('Gentle Mat Pilates (Angmering)')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('Gentle Mat Pilates (Angmering)')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>Designed for anyone seeking a gentle, restorative mat Pilates session. Perfect for releasing muscle tension, improving joint alignment, building core stamina, and unwinding at your own pace.</p>
-
-                  <!-- Calendar for Angmering -->
-                  <div class="mini-calendar-container" id="cal-row-angmering" data-target-day="5" data-start-month="10" data-start-year="2026">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-angmering')">&larr;</button>
-                      <span class="cal-title">November 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-angmering')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
-                </div>
+                <p>Designed for anyone seeking a gentle, restorative mat Pilates session. Perfect for releasing muscle tension, improving joint alignment, building core stamina, and unwinding at your own pace.</p>
               </div>
             </div>
 
-            <!-- ROW 4: PAYG OPEN SESSION -->
+            <!-- CLASS 4 -->
             <div class="class-row-card" id="row-payg">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span class="tag-badge blue">PAYG</span>
+                    <span class="tag-badge blue">Flexible Open Session</span>
                   </div>
                   <div class="class-row-title">PAYG Open Pilates Session</div>
-                  <div class="class-row-location">
-                    <span class="loc-badge">Location</span> West Park Primary / Goring / Angmering
+                  <div class="class-row-details">
+                    <div class="class-row-detail-item">
+                      <strong>Day & Time:</strong> Flexible Weekly Schedules
+                    </div>
+                    <div class="class-row-detail-item">
+                      <span class="loc-badge">Location</span> West Park Primary / Goring / Angmering
+                    </div>
                   </div>
-                  <div class="class-row-price">£13 Single Class</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-payg')">Details</button>
-                  <button class="row-book-btn" onclick="openBooking('PAYG Open Pilates Session')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('PAYG Open Pilates Session')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.</p>
-
-                  <div class="form-group" style="margin-top: 1rem; max-width: 340px;">
-                    <label for="payg-location-select">Choose Location & Session:</label>
-                    <select id="payg-location-select" onchange="updatePAYGTarget(this.value)">
-                      <option value="westpark">West Park Primary School (Wed 6:30 PM)</option>
-                      <option value="goring">Goring Methodist Church Hall (Thu 9:30 AM)</option>
-                      <option value="angmering">Angmering Community Centre (Fri 11:00 AM)</option>
-                    </select>
-                  </div>
-                  
-                  <!-- Calendar for PAYG -->
-                  <div class="mini-calendar-container" id="cal-row-payg" data-target-day="3" data-start-month="9" data-start-year="2026">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-payg')">&larr;</button>
-                      <span class="cal-title">October 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-payg')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
-                </div>
+                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.</p>
               </div>
             </div>
 
-            <!-- ROW 5: LOVELY BUMPS -->
+            <!-- CLASS 5 -->
             <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-meta">
-                    <span>Wednesdays</span>
                     <span class="tag-badge pink">Pregnancy Speciality</span>
                   </div>
                   <div class="class-row-title">LOVELY BUMPS — Pregnancy Pilates</div>
-                  <div class="class-row-location">
-                    <span class="loc-badge">Location</span> West Park Primary School
+                  <div class="class-row-details">
+                    <div class="class-row-detail-item">
+                      <strong>Day & Time:</strong> Wednesdays • 10:00 AM
+                    </div>
+                    <div class="class-row-detail-item">
+                      <span class="loc-badge">Location</span> West Park Primary School
+                    </div>
                   </div>
-                  <div class="class-row-price">Drop-In £13 | Block £60.50</div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-bumps')">Details</button>
-                  <button class="row-book-btn row-waitlist-btn" onclick="openWaitlist()" style="font-size:0.7rem; padding: 0.6rem 0.8rem;">Waitlist</button>
-                  <button class="row-book-btn" onclick="openBooking('LOVELY BUMPS — Pregnancy Pilates')">Book</button>
+                  <button class="row-book-btn row-waitlist-btn" onclick="openWaitlist()" style="font-size:0.7rem;">Waitlist</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('LOVELY BUMPS — Pregnancy Pilates')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <div class="dropdown-inner">
-                  <p>Suitable for all pregnancy stages. Gentle Pilates to strengthen core muscles and build stamina for birth and beyond.</p>
-                  
-                  <!-- Calendar for Bumps -->
-                  <div class="mini-calendar-container" id="cal-row-bumps" data-target-day="3">
-                    <div class="cal-header">
-                      <button onclick="changeMonth(-1, 'cal-row-bumps')">&larr;</button>
-                      <span class="cal-title">October 2026</span>
-                      <button onclick="changeMonth(1, 'cal-row-bumps')">&rarr;</button>
-                    </div>
-                    <div class="cal-grid">
-                      <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                    </div>
-                    <div class="cal-grid cal-days-body"></div>
-                  </div>
-                </div>
+                <p>Suitable for all pregnancy stages. Gentle Pilates to strengthen core muscles and build stamina for birth and beyond.</p>
               </div>
             </div>
 
-          </div>
-
-        </div>
-      </section>
-
-      <!-- TESTIMONIALS -->
-      <section class="section-strip strip-stone">
-        <div class="strip-content">
-          <h2 class="section-title">Client Stories</h2>
-          <div class="testimonial-grid">
-            <div class="testimonial-card">
-              <p>"I came to Pilates to help with a back injury, and Niki's classes have made a noticeable difference to my day-to-day mobility."</p>
-              <div class="testimonial-author">— Sue, Hove</div>
-            </div>
-            <div class="testimonial-card">
-              <p>"Niki released so much tension in my shoulders during massage sessions. She listens and adapts the pressure perfectly."</p>
-              <div class="testimonial-author">— Elysia, Brighton</div>
-            </div>
           </div>
         </div>
       </section>
@@ -923,193 +401,164 @@
 
     <!-- PAGE VIEW: ABOUT NIKI -->
     <div id="page-about-niki" class="page-view">
-      <section class="section-strip strip-rose" style="padding-top: 3.5rem;">
+      <section class="section-strip strip-rose">
         <div class="strip-content text-center">
-          <button class="details-toggle-btn" onclick="switchPage('home', event)" style="margin-bottom: 2rem;">&larr; Back to Home</button>
+          <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
           <h2 class="section-title">ABOUT ME</h2>
-          <p>Hi, I’m Niki!</p>
-          <p>I started my journey as a Musculoskeletal Physiotherapy Assistant at Imperial College Hospital London, supporting people with movement and exercise.</p>
-
-          <div class="qualifications-box">
-            <h3>Qualifications</h3>
-            <ul>
-              <li>Active IQ Level 2 Group strength training – <strong>(Present)</strong></li>
-              <li>APPI Comprehensive Pilates Matwork – <strong>2019</strong></li>
-              <li>APPI Reformer Pilates (Levels 1, 2, 3) – <strong>2021</strong></li>
-              <li>APPI Pre & Postnatal Pilates – <strong>2020</strong></li>
-              <li>ITEC Level 3 Sports & Remedial Massage – <strong>2017</strong></li>
-            </ul>
-          </div>
+          <p>Hi, I’m Niki! APPI Certified Pilates Instructor and Level 3 Sports Massage Therapist.</p>
         </div>
       </section>
     </div>
 
     <!-- PAGE VIEW: MASSAGE -->
     <div id="page-massage" class="page-view">
-      <section class="section-strip strip-dark" style="padding-top: 3.5rem;">
+      <section class="section-strip strip-dark">
         <div class="strip-content text-center">
-          <button class="details-toggle-btn" onclick="switchPage('home', event)" style="margin-bottom: 2rem; background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.3);">&larr; Back to Home</button>
-          <div class="profile-img-container">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Sports massage setup">
-          </div>
+          <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
           <h2 class="section-title">Sports & Remedial Massage</h2>
-          <p>As a certified Level 3 Sports Massage therapist, I use tailored soft tissue techniques to reduce muscle discomfort, restore joint mobility, and accelerate recovery.</p>
+          <p>Tailored soft tissue therapy to release tension and aid recovery.</p>
         </div>
       </section>
     </div>
 
     <!-- PAGE VIEW: CONTACT -->
     <div id="page-contact" class="page-view">
-      <section class="section-strip strip-stone" style="padding-top: 3.5rem;">
-        <div class="strip-content">
-          <button class="details-toggle-btn" onclick="switchPage('home', event)" style="margin-bottom: 2rem;">&larr; Back to Home</button>
+      <section class="section-strip strip-stone">
+        <div class="strip-content text-center">
+          <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
           <h2 class="section-title">Contact Us</h2>
-          
-          <div class="contact-grid" style="padding: 1.5rem;">
-            <div>
-              <h3 style="margin-bottom: 1.2rem; color: #000000; font-weight: 700; text-align: center;">Send a Message</h3>
-              <div style="width: 100%; overflow-x: auto; display: flex; justify-content: center;">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQP0zJdWX3HfBsXRw4j6I8McY80OKuUcx3MFTTJhPtuPCEmQ/viewform?embedded=true" width="100%" height="826" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
 
   </div>
 
-  <!-- BOOKING MODAL (POPUP FOR ALL CLASSES & BLOCKS) -->
-  <div class="modal-overlay" id="bookingModal">
+  <!-- SINGLE MASTER BOOKING MODAL -->
+  <div class="modal-overlay" id="masterBookingModal">
     <div class="modal">
-      <button class="close-btn" onclick="closeModalDirect()">&times;</button>
+      <button class="close-btn" onclick="closeMasterModal()">&times;</button>
       
-      <div id="bookingFormContainer">
-        <h3 id="modal-class-title">Class Booking & Health Waiver</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="modal-class-sub">Complete your details to reserve your spot</p>
+      <h3>Class Booking & Registration</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Select your session, choose your package option, and complete your waiver details once.</p>
+      
+      <form id="masterBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
         
-        <form id="bookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
-          <input type="hidden" name="Class Name" id="hidden-class-name">
+        <!-- STEP 1: CLASS SELECTOR & AUTOMATIC DESCRIPTION -->
+        <div class="step-heading">Step 1: Choose Class & Location</div>
+        <div class="form-group">
+          <label for="master-class-select">Class & Location *</label>
+          <select id="master-class-select" name="Class Selected" required onchange="handleClassChange(this.value)">
+            <option value="6-Week Pilates Strength Block (Beginners & Improvers)">6-Week Pilates Strength Block (West Park • Wed 6:30 PM)</option>
+            <option value="Chair Based Pilates (Goring-by-Sea)">Chair Based Pilates (Goring Methodist • Thu 9:30 AM)</option>
+            <option value="Gentle Mat Pilates (Angmering)">Gentle Mat Pilates (Angmering Comm. Centre • Fri 11:00 AM)</option>
+            <option value="PAYG Open Pilates Session">PAYG Open Pilates Session (Flexible Drop-In)</option>
+            <option value="LOVELY BUMPS — Pregnancy Pilates">LOVELY BUMPS — Pregnancy Pilates (West Park • Wed 10:00 AM)</option>
+          </select>
           
-          <div class="step-heading">Step 1: Choose Your Package Option & Date</div>
-          <div class="form-group">
-            <label for="pass-type">Select Package *</label>
-            <select id="pass-type" name="Pass Selected" required></select>
-          </div>
+          <!-- Dynamic Description Displayed Right Here in Modal -->
+          <div class="modal-class-desc-box" id="modal-class-desc"></div>
+        </div>
 
-          <div class="form-group">
-            <label>Select Date from Calendar *</label>
-            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem;">Click on any highlighted available date to book:</p>
-            
-            <!-- Embedded Modal Calendar -->
-            <div class="modal-calendar-container" id="modalCalContainer" data-target-day="3">
-              <div class="cal-header">
-                <button type="button" onclick="changeModalMonth(-1)">&larr;</button>
-                <span class="modal-cal-title">October 2026</span>
-                <button type="button" onclick="changeModalMonth(1)">&rarr;</button>
-              </div>
-              <div class="cal-grid">
-                <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-              </div>
-              <div class="cal-grid modal-cal-days-body"></div>
+        <!-- STEP 2: PACKAGE & DATE -->
+        <div class="step-heading">Step 2: Choose Package & Date</div>
+        <div class="form-group">
+          <label for="master-pass-type">Select Package Option *</label>
+          <select id="master-pass-type" name="Pass Selected" required></select>
+        </div>
+
+        <div class="form-group">
+          <label>Select Date from Calendar *</label>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem;">Click a highlighted available date to book:</p>
+          
+          <div class="modal-calendar-container" id="masterCalContainer">
+            <div class="cal-header">
+              <button type="button" onclick="changeMasterCalMonth(-1)">&larr;</button>
+              <span class="master-cal-title">October 2026</span>
+              <button type="button" onclick="changeMasterCalMonth(1)">&rarr;</button>
             </div>
-
-            <input type="hidden" id="selected-booking-date" name="Selected Class Date" required>
-            <div id="selected-date-display" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-green); margin-top: 0.4rem;">No date selected yet. Please click a highlighted date above.</div>
-          </div>
-
-          <div class="step-heading">Step 2: Time Slot</div>
-          <div class="form-group">
-            <label for="booking-time">Time Slot *</label>
-            <select id="booking-time" name="Class Time" required></select>
-          </div>
-
-          <div class="step-heading">Step 3: Personal Information</div>
-          <div class="form-group">
-            <label for="booking-name">Full Name *</label>
-            <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
-          </div>
-
-          <div class="form-group">
-            <label for="booking-dob">Date of Birth *</label>
-            <input type="date" id="booking-dob" name="Date of Birth" required>
-          </div>
-
-          <div class="form-group">
-            <label for="booking-email">Email Address *</label>
-            <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
-          </div>
-
-          <div class="form-group">
-            <label for="booking-phone">Contact Phone Number *</label>
-            <input type="tel" id="booking-phone" name="Client Phone" required placeholder="07123 456789">
-          </div>
-
-          <div class="step-heading">Step 4: Health Questions</div>
-
-          <div class="form-group">
-            <label>1. Any injuries, joint, or spinal issues? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Injuries or Spinal Issues" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
-              <label><input type="radio" name="Injuries or Spinal Issues" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
+            <div class="cal-grid">
+              <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
             </div>
+            <div class="cal-grid master-cal-days-body"></div>
           </div>
 
-          <div class="form-group" id="injuries-details-group" style="display: none;">
-            <label for="injuries-details">Please describe your injury or condition:</label>
-            <textarea id="injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness..."></textarea>
+          <input type="hidden" id="master-selected-date" name="Selected Class Date" required>
+          <div id="master-date-display" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-green); margin-top: 0.4rem;">No date selected yet.</div>
+        </div>
+
+        <!-- STEP 3: PERSONAL INFORMATION -->
+        <div class="step-heading">Step 3: Personal Information</div>
+        <div class="form-group">
+          <label for="booking-name">Full Name *</label>
+          <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
+        </div>
+
+        <div class="form-group">
+          <label for="booking-dob">Date of Birth *</label>
+          <input type="date" id="booking-dob" name="Date of Birth" required>
+        </div>
+
+        <div class="form-group">
+          <label for="booking-email">Email Address *</label>
+          <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="booking-phone">Contact Phone Number *</label>
+          <input type="tel" id="booking-phone" name="Client Phone" required placeholder="07123 456789">
+        </div>
+
+        <!-- STEP 4: HEALTH QUESTIONS -->
+        <div class="step-heading">Step 4: Health Questions</div>
+
+        <div class="form-group">
+          <label>1. Any injuries, joint, or spinal issues? *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="Injuries or Spinal Issues" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
+            <label><input type="radio" name="Injuries or Spinal Issues" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label>2. High blood pressure, heart condition, or dizziness? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
-              <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
-            </div>
+        <div class="form-group" id="injuries-details-group" style="display: none;">
+          <label for="injuries-details">Please describe your injury or condition:</label>
+          <textarea id="injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>2. High blood pressure, heart condition, or dizziness? *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
+            <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
-              <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
-            </div>
+        <div class="form-group">
+          <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
+            <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="other-health-issues">4. Are there any other health-related issues or conditions?</label>
-            <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma..."></textarea>
+        <div class="form-group">
+          <label for="other-health-issues">4. Are there any other health-related issues or conditions?</label>
+          <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma..."></textarea>
+        </div>
+
+        <!-- STEP 5: HEALTH WAIVER -->
+        <div class="step-heading">Step 5: Health Waiver Consent</div>
+        <div class="form-group">
+          <div class="waiver-box">
+            By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury.
           </div>
-
-          <div class="form-group">
-            <label>5. Have you done Pilates before? *</label>
-            <div class="radio-group">
-              <label><input type="radio" name="Done Pilates Before" value="No" checked onclick="togglePilatesExperienceBox(false)"> No</label>
-              <label><input type="radio" name="Done Pilates Before" value="Yes" onclick="togglePilatesExperienceBox(true)"> Yes</label>
-            </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
+            <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
           </div>
+        </div>
 
-          <div class="form-group" id="pilates-experience-details-group" style="display: none;">
-            <label for="pilates-experience-details">Please share a brief note on your previous Pilates experience:</label>
-            <textarea id="pilates-experience-details" name="Pilates Experience Details" placeholder="E.g., practiced mat Pilates..."></textarea>
-          </div>
-
-          <div class="step-heading">Step 5: Health Waiver Consent</div>
-
-          <div class="form-group">
-            <div class="waiver-box">
-              By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury.
-            </div>
-            <div class="checkbox-group">
-              <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
-              <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
-            </div>
-          </div>
-
-          <button type="submit" id="booking-submit-btn" class="row-book-btn" style="width: 100%; padding: 1.0rem; font-size: 0.9rem; font-weight: 700;">Complete Registration & Pay via Stripe &rarr;</button>
-        </form>
-      </div>
-
+        <button type="submit" id="master-submit-btn" class="row-book-btn" style="width: 100%; padding: 1rem; font-size: 0.95rem;">Complete Registration & Pay via Stripe &rarr;</button>
+      </form>
     </div>
   </div>
 
@@ -1117,31 +566,15 @@
   <div class="modal-overlay" id="waitlistModal">
     <div class="modal">
       <button class="close-btn" onclick="closeWaitlistDirect()">&times;</button>
-      
       <h3>LOVELY BUMPS — Waitlist</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-        Joining the waitlist doesn’t commit you to booking. We’ll contact you when bookings open!
-      </p>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;">We’ll contact you as soon as bookings open!</p>
 
       <form id="waitlistForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
         <input type="hidden" name="Form Type" value="Pregnancy Pilates Waitlist">
-        
-        <div class="form-group">
-          <label for="waitlist-name">Name *</label>
-          <input type="text" id="waitlist-name" name="Client Full Name" required placeholder="Jane Doe">
-        </div>
-
-        <div class="form-group">
-          <label for="waitlist-email">Email Address *</label>
-          <input type="email" id="waitlist-email" name="Client Email" required placeholder="jane@example.com">
-        </div>
-
-        <div class="form-group">
-          <label for="waitlist-phone">Mobile Number *</label>
-          <input type="tel" id="waitlist-phone" name="Client Phone" required placeholder="07123 456789">
-        </div>
-
-        <button type="submit" id="waitlist-submit-btn" class="row-book-btn" style="width: 100%; padding: 1rem; font-size: 0.9rem; font-weight: 700;">Join Waitlist</button>
+        <div class="form-group"><label>Name *</label><input type="text" name="Client Full Name" required></div>
+        <div class="form-group"><label>Email *</label><input type="email" name="Client Email" required></div>
+        <div class="form-group"><label>Phone *</label><input type="tel" name="Client Phone" required></div>
+        <button type="submit" class="row-book-btn" style="width: 100%;">Join Waitlist</button>
       </form>
     </div>
   </div>
@@ -1151,202 +584,32 @@
   </footer>
 
   <script>
+    // NAVIGATION DRAWER LOGIC
     const menuToggle = document.getElementById('menuToggle');
     const sideNav = document.getElementById('sideNav');
     const navOverlay = document.getElementById('navOverlay');
 
-    function toggleMenu() {
-      sideNav.classList.toggle('open');
-      navOverlay.classList.toggle('active');
-    }
-
+    function toggleMenu() { sideNav.classList.toggle('open'); navOverlay.classList.toggle('active'); }
     menuToggle.addEventListener('click', toggleMenu);
     navOverlay.addEventListener('click', toggleMenu);
 
-    function toggleRow(rowId) {
-      const row = document.getElementById(rowId);
-      row.classList.toggle('open');
-    }
-
-    function updatePAYGTarget(loc) {
-      let targetDay = 3;
-      if (loc === 'goring') targetDay = 4;
-      if (loc === 'angmering') targetDay = 5;
-      
-      document.getElementById('cal-row-payg').dataset.targetDay = targetDay;
-      renderCalendar('cal-row-payg');
-    }
-
-    // Mini Calendar Logic for Homepage Rows
-    const calendarState = {};
-
-    function initCalendar(containerId) {
-      const container = document.getElementById(containerId);
-      if (!calendarState[containerId]) {
-        const defaultYear = parseInt(container.dataset.startYear) || 2026;
-        const defaultMonth = parseInt(container.dataset.startMonth) !== undefined ? parseInt(container.dataset.startMonth) : 9;
-        calendarState[containerId] = { year: defaultYear, month: defaultMonth };
-      }
-      renderCalendar(containerId);
-    }
-
-    function changeMonth(direction, containerId) {
-      let state = calendarState[containerId];
-      state.month += direction;
-      if (state.month > 11) {
-        state.month = 0;
-        state.year++;
-      } else if (state.month < 0) {
-        state.month = 11;
-        state.year--;
-      }
-      renderCalendar(containerId);
-    }
-
-    function renderCalendar(containerId) {
-      const container = document.getElementById(containerId);
-      const state = calendarState[containerId];
-      const targetDay = parseInt(container.dataset.targetDay);
-
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      container.querySelector('.cal-title').textContent = `${monthNames[state.month]} ${state.year}`;
-
-      const daysBody = container.querySelector('.cal-days-body');
-      daysBody.innerHTML = '';
-
-      const firstDayIndex = new Date(state.year, state.month, 1).getDay();
-      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
-      const totalDays = new Date(state.year, state.month + 1, 0).getDate();
-
-      for (let i = 0; i < adjustedFirstDay; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'cal-date empty';
-        daysBody.appendChild(emptyCell);
-      }
-
-      for (let day = 1; day <= totalDays; day++) {
-        const dateCell = document.createElement('div');
-        dateCell.className = 'cal-date';
-        dateCell.textContent = day;
-
-        const currentDateObj = new Date(state.year, state.month, day);
-        if (currentDateObj.getDay() === targetDay) {
-          dateCell.classList.add('highlight');
-        }
-
-        daysBody.appendChild(dateCell);
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.mini-calendar-container').forEach(el => {
-        initCalendar(el.id);
-      });
-    });
-
-    // Modal Calendar State & Logic
-    let modalCalState = { year: 2026, month: 9, targetDay: 3, selectedDateStr: '' };
-
-    function initModalCalendar(targetDay, startMonth = 9, startYear = 2026) {
-      modalCalState.targetDay = targetDay;
-      modalCalState.month = startMonth;
-      modalCalState.year = startYear;
-      modalCalState.selectedDateStr = '';
-      document.getElementById('selected-booking-date').value = '';
-      document.getElementById('selected-date-display').textContent = 'No date selected yet. Please click a highlighted date above.';
-      renderModalCalendar();
-    }
-
-    function changeModalMonth(direction) {
-      modalCalState.month += direction;
-      if (modalCalState.month > 11) {
-        modalCalState.month = 0;
-        modalCalState.year++;
-      } else if (modalCalState.month < 0) {
-        modalCalState.month = 11;
-        modalCalState.year--;
-      }
-      renderModalCalendar();
-    }
-
-    function renderModalCalendar() {
-      const container = document.getElementById('modalCalContainer');
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      container.querySelector('.modal-cal-title').textContent = `${monthNames[modalCalState.month]} ${modalCalState.year}`;
-
-      const daysBody = container.querySelector('.modal-cal-days-body');
-      daysBody.innerHTML = '';
-
-      const firstDayIndex = new Date(modalCalState.year, modalCalState.month, 1).getDay();
-      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
-      const totalDays = new Date(modalCalState.year, modalCalState.month + 1, 0).getDate();
-
-      for (let i = 0; i < adjustedFirstDay; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'cal-date empty';
-        daysBody.appendChild(emptyCell);
-      }
-
-      for (let day = 1; day <= totalDays; day++) {
-        const dateCell = document.createElement('div');
-        dateCell.className = 'cal-date';
-        dateCell.textContent = day;
-
-        const currentDateObj = new Date(modalCalState.year, modalCalState.month, day);
-        const formattedDateStr = currentDateObj.toISOString().split('T')[0];
-
-        if (currentDateObj.getDay() === modalCalState.targetDay) {
-          dateCell.classList.add('highlight');
-          
-          if (modalCalState.selectedDateStr === formattedDateStr) {
-            dateCell.classList.add('selected-date');
-          }
-
-          dateCell.addEventListener('click', function() {
-            container.querySelectorAll('.cal-date').forEach(el => el.classList.remove('selected-date'));
-            dateCell.classList.add('selected-date');
-            modalCalState.selectedDateStr = formattedDateStr;
-            document.getElementById('selected-booking-date').value = formattedDateStr;
-            
-            const readableDate = currentDateObj.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById('selected-date-display').textContent = `Selected: ${readableDate}`;
-          });
-        }
-
-        daysBody.appendChild(dateCell);
-      }
-    }
-
-    let pageHistory = ['home'];
+    function toggleRow(rowId) { document.getElementById(rowId).classList.toggle('open'); }
 
     function switchPage(pageId, event) {
       if (event) event.preventDefault();
-      
-      const currentPage = pageHistory[pageHistory.length - 1];
-      if (currentPage !== pageId) {
-        pageHistory.push(pageId);
-      }
-
-      document.querySelectorAll('.page-view').forEach(view => {
-        view.classList.remove('active-page');
-      });
-
-      const targetPage = document.getElementById('page-' + pageId);
-      if (targetPage) {
-        targetPage.classList.add('active-page');
-      }
-
+      document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active-page'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active-page');
       sideNav.classList.remove('open');
       navOverlay.classList.remove('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    const classPassOptions = {
+    // MASTER CLASS DEFINITIONS WITH IN-MODAL DESCRIPTIONS & STRIPE LINKS
+    const allClassData = {
       '6-Week Pilates Strength Block (Beginners & Improvers)': {
-        targetDay: 3,
-        startMonth: 10,
-        startYear: 2026,
-        timeSlot: '6:30 PM - 7:20 PM (50 mins)',
+        description: 'Suitable for beginners and improvers. Ever wanted to try Pilates but don\'t know where to start? Or perhaps you\'ve practiced before and want to build confidence? This structured 6-week block guides you safely through fundamental strength techniques.',
+        targetDay: 3, startMonth: 10, startYear: 2026,
         passes: [
           { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
           { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' },
@@ -1354,21 +617,16 @@
         ]
       },
       'Chair Based Pilates (Goring-by-Sea)': {
-        targetDay: 4,
-        startMonth: 9,
-        startYear: 2026,
-        timeSlot: '9:30 AM - 10:20 AM (50 mins)',
+        description: 'Chair-based Pilates is a lovely way to keep moving, build strength and improve flexibility and balance, using a combination of seated and supported standing exercises.\n\n🌟 No previous Pilates experience needed! Whether you\'re new to exercise, returning after a break or simply looking to keep active and feel stronger, the class is designed to help you work at a level that feels right for you.',
+        targetDay: 4, startMonth: 9, startYear: 2026,
         passes: [
           { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
-          { label: '4-Class Block — £50', value: '4-Class Block (£50)', stripeUrl: 'https://buy.stripe.com/00wdRbee10LCcmD3Ug7N60i' },
           { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
         ]
       },
       'Gentle Mat Pilates (Angmering)': {
-        targetDay: 5,
-        startMonth: 10,
-        startYear: 2026,
-        timeSlot: '11:00 AM - 11:50 AM (50 mins)',
+        description: 'Designed for anyone seeking a gentle, restorative mat Pilates session. Perfect for releasing muscle tension, improving joint alignment, building core stamina, and unwinding at your own pace.',
+        targetDay: 5, startMonth: 10, startYear: 2026,
         passes: [
           { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
           { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' },
@@ -1376,19 +634,15 @@
         ]
       },
       'PAYG Open Pilates Session': {
-        targetDay: 3,
-        startMonth: 9,
-        startYear: 2026,
-        timeSlot: 'Flexible Sessions',
+        description: 'Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.',
+        targetDay: 3, startMonth: 9, startYear: 2026,
         passes: [
           { label: 'PAYG Drop-In — £13', value: 'PAYG Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
-        targetDay: 3,
-        startMonth: 9,
-        startYear: 2026,
-        timeSlot: '10:00 AM - 10:50 AM (50 mins)',
+        description: 'Suitable for all pregnancy stages. Gentle Pilates to strengthen core muscles and build stamina for birth and beyond.',
+        targetDay: 3, startMonth: 9, startYear: 2026,
         passes: [
           { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
           { label: '5-Week Block — £60.50', value: '5-Week Block (£60.50)', stripeUrl: 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606' }
@@ -1396,170 +650,132 @@
       }
     };
 
-    function openBooking(className) {
-      const currentClassName = document.getElementById('hidden-class-name').value;
+    let masterCalState = { year: 2026, month: 9, targetDay: 3, selectedDateStr: '' };
+
+    function openMasterBooking(defaultClass) {
+      document.getElementById('master-class-select').value = defaultClass;
+      handleClassChange(defaultClass);
+      document.getElementById('masterBookingModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMasterModal() {
+      document.getElementById('masterBookingModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function handleClassChange(className) {
+      const data = allClassData[className];
       
-      if (currentClassName !== className) {
-        const form = document.getElementById('bookingForm');
-        form.reset();
-        clearFormErrors(form);
+      // Update description text dynamically inside the modal
+      document.getElementById('modal-class-desc').innerText = data.description;
 
-        document.getElementById('modal-class-title').innerText = className;
-        document.getElementById('modal-class-sub').innerText = `Booking for ${className}`;
-        document.getElementById('hidden-class-name').value = className;
-        
-        const passSelect = document.getElementById('pass-type');
-        passSelect.innerHTML = '';
+      const passSelect = document.getElementById('master-pass-type');
+      passSelect.innerHTML = '';
 
-        const classData = classPassOptions[className];
-        
-        classData.passes.forEach(opt => {
-          const optionEl = document.createElement('option');
-          optionEl.value = opt.value;
-          optionEl.textContent = opt.label;
-          optionEl.dataset.stripeUrl = opt.stripeUrl;
-          passSelect.appendChild(optionEl);
-        });
-
-        const timeSelect = document.getElementById('booking-time');
-        timeSelect.innerHTML = '';
-        const timeOption = document.createElement('option');
-        timeOption.value = classData.timeSlot;
-        timeOption.textContent = classData.timeSlot;
-        timeSelect.appendChild(timeOption);
-
-        initModalCalendar(classData.targetDay, classData.startMonth, classData.startYear);
-      }
-
-      document.getElementById('bookingModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModalDirect() {
-      document.getElementById('bookingModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function openWaitlist() {
-      const form = document.getElementById('waitlistForm');
-      form.reset();
-      clearFormErrors(form);
-      document.getElementById('waitlistModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeWaitlistDirect() {
-      document.getElementById('waitlistModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function toggleInjuriesBox(show) {
-      document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none';
-    }
-
-    function togglePilatesExperienceBox(show) {
-      document.getElementById('pilates-experience-details-group').style.display = show ? 'block' : 'none';
-    }
-
-    function clearFormErrors(form) {
-      form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
-      form.querySelectorAll('.field-error-checkbox').forEach(el => el.classList.remove('field-error-checkbox'));
-    }
-
-    function validateForm(form) {
-      clearFormErrors(form);
-      let isValid = true;
-      const requiredInputs = form.querySelectorAll('[required]');
-
-      requiredInputs.forEach(input => {
-        if (input.type === 'checkbox') {
-          if (!input.checked) {
-            isValid = false;
-            const parent = input.closest('.checkbox-group');
-            if (parent) parent.classList.add('field-error-checkbox');
-          }
-        } else {
-          if (!input.value.trim()) {
-            isValid = false;
-            input.classList.add('field-error');
-          }
-        }
+      data.passes.forEach(opt => {
+        const optionEl = document.createElement('option');
+        optionEl.value = opt.value;
+        optionEl.textContent = opt.label;
+        optionEl.dataset.stripeUrl = opt.stripeUrl;
+        passSelect.appendChild(optionEl);
       });
-      return isValid;
+
+      masterCalState.targetDay = data.targetDay;
+      masterCalState.month = data.startMonth;
+      masterCalState.year = data.startYear;
+      masterCalState.selectedDateStr = '';
+      document.getElementById('master-selected-date').value = '';
+      document.getElementById('master-date-display').textContent = 'No date selected yet.';
+
+      renderMasterCalendar();
     }
 
-    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      if (!validateForm(this)) {
-        alert('Please fill out all required fields outlined in red, including selecting a class date from the calendar.');
-        return;
+    function changeMasterCalMonth(dir) {
+      masterCalState.month += dir;
+      if (masterCalState.month > 11) { masterCalState.month = 0; masterCalState.year++; }
+      else if (masterCalState.month < 0) { masterCalState.month = 11; masterCalState.year--; }
+      renderMasterCalendar();
+    }
+
+    function renderMasterCalendar() {
+      const container = document.getElementById('masterCalContainer');
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      container.querySelector('.master-cal-title').textContent = `${monthNames[masterCalState.month]} ${masterCalState.year}`;
+
+      const daysBody = container.querySelector('.master-cal-days-body');
+      daysBody.innerHTML = '';
+
+      const firstDayIndex = new Date(masterCalState.year, masterCalState.month, 1).getDay();
+      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+      const totalDays = new Date(masterCalState.year, masterCalState.month + 1, 0).getDate();
+
+      for (let i = 0; i < adjustedFirstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-date empty';
+        daysBody.appendChild(emptyCell);
       }
 
-      const submitBtn = document.getElementById('booking-submit-btn');
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting & Redirecting to Stripe...";
+      for (let day = 1; day <= totalDays; day++) {
+        const dateCell = document.createElement('div');
+        dateCell.className = 'cal-date';
+        dateCell.textContent = day;
 
-      const passSelect = document.getElementById('pass-type');
+        const currentDateObj = new Date(masterCalState.year, masterCalState.month, day);
+        const formattedDateStr = currentDateObj.toISOString().split('T')[0];
+
+        if (currentDateObj.getDay() === masterCalState.targetDay) {
+          dateCell.classList.add('highlight');
+          if (masterCalState.selectedDateStr === formattedDateStr) dateCell.classList.add('selected-date');
+
+          dateCell.addEventListener('click', function() {
+            container.querySelectorAll('.cal-date').forEach(el => el.classList.remove('selected-date'));
+            dateCell.classList.add('selected-date');
+            masterCalState.selectedDateStr = formattedDateStr;
+            document.getElementById('master-selected-date').value = formattedDateStr;
+            
+            const readable = currentDateObj.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('master-date-display').textContent = `Selected: ${readable}`;
+          });
+        }
+        daysBody.appendChild(dateCell);
+      }
+    }
+
+    function toggleInjuriesBox(show) { document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none'; }
+    function openWaitlist() { document.getElementById('waitlistModal').style.display = 'flex'; }
+    function closeWaitlistDirect() { document.getElementById('waitlistModal').style.display = 'none'; }
+
+    // FORM SUBMISSION & STRIPE REDIRECT
+    document.getElementById('masterBookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const passSelect = document.getElementById('master-pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
       const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/28E28tfi57a02M33Ug7N60h";
 
-      const formData = new FormData(this);
+      const submitBtn = document.getElementById('master-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting & Redirecting to Stripe...";
 
       try {
         const response = await fetch(this.action, {
           method: 'POST',
-          body: formData,
+          body: new FormData(this),
           headers: { 'Accept': 'application/json' }
         });
 
         if (response.ok) {
           window.location.href = targetStripeUrl;
         } else {
-          alert("There was an issue submitting your registration. Please try again.");
+          alert("Submission error. Please verify required fields and try again.");
           submitBtn.disabled = false;
           submitBtn.innerText = "Complete Registration & Pay via Stripe →";
         }
-      } catch (error) {
-        alert("Network error. Please check your connection and try again.");
+      } catch (err) {
+        alert("Connection error. Please try again.");
         submitBtn.disabled = false;
         submitBtn.innerText = "Complete Registration & Pay via Stripe →";
-      }
-    });
-
-    document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      if (!validateForm(this)) {
-        alert('Please fill out all required fields outlined in red.');
-        return;
-      }
-
-      const submitBtn = document.getElementById('waitlist-submit-btn');
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting...";
-
-      const formData = new FormData(this);
-
-      try {
-        const response = await fetch(this.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          alert("You have successfully joined the waitlist! We'll be in touch soon.");
-          closeWaitlistDirect();
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Join Waitlist";
-        } else {
-          alert("There was an issue submitting your details. Please try again.");
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Join Waitlist";
-        }
-      } catch (error) {
-        alert("Network error. Please check your connection and try again.");
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Join Waitlist";
       }
     });
   </script>
