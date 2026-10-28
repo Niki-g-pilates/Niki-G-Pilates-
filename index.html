@@ -150,7 +150,7 @@
     .class-row-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #FAFAFA; padding: 0 1.8rem; }
     .class-row-card.open .class-row-dropdown { max-height: 1200px; padding: 1.5rem 1.8rem; border-top: 1px solid var(--border-color); }
 
-    /* FORM & MODAL */
+    /* FORM & APP-STYLE MODAL */
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; color: #000; text-align: left; }
     .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"], .form-group input[type="date"], .form-group textarea, .form-group select {
@@ -158,17 +158,22 @@
     }
     .form-group textarea { height: 90px; resize: vertical; }
 
-    /* IN-MODAL DESCRIPTION BOX */
-    .modal-class-desc-box {
-      background: #F5F2EE;
-      border-left: 3px solid var(--primary-rose);
-      padding: 0.9rem 1.1rem;
-      border-radius: 4px;
-      margin-top: 0.6rem;
-      font-size: 0.88rem;
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
+    /* APP-STYLE HORIZONTAL DATE BAR */
+    .app-date-strip { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 12px 0; margin-bottom: 1.2rem; border-bottom: 1px solid var(--border-color); -webkit-overflow-scrolling: touch; }
+    .app-date-btn { flex: 0 0 auto; background: #F5F2EE; border: 1px solid var(--border-color); border-radius: 20px; padding: 8px 14px; text-align: center; cursor: pointer; font-size: 0.8rem; min-width: 52px; color: var(--text-dark); }
+    .app-date-btn.active { background-color: var(--accent-green); color: #FFFFFF; border-color: var(--accent-green); font-weight: 700; }
+    .app-date-day { font-size: 0.65rem; text-transform: uppercase; opacity: 0.8; }
+    .app-date-num { font-size: 0.95rem; font-weight: 700; }
+
+    /* APP-STYLE CLASS SCHEDULE LISTING IN MODAL */
+    .app-schedule-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem; max-height: 380px; overflow-y: auto; padding-right: 4px; }
+    .app-schedule-item { background: #FAFAFA; border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .app-schedule-info h4 { font-family: var(--font-heading); font-size: 1rem; color: var(--primary-dark); margin-bottom: 2px; }
+    .app-schedule-info p { font-size: 0.8rem; color: var(--text-muted); }
+    .app-schedule-time { font-size: 0.85rem; font-weight: 700; color: var(--accent-green); margin-bottom: 2px; }
+
+    /* CHOSEN CLASS BANNER IN STEP 2 */
+    .chosen-class-banner { background: #F5F2EE; border-left: 3px solid var(--primary-rose); padding: 0.9rem 1.1rem; border-radius: 4px; margin-bottom: 1.2rem; font-size: 0.88rem; color: var(--text-dark); }
 
     .step-heading { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #000; margin: 1.6rem 0 0.8rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--primary-rose); text-align: left; }
     .radio-group { display: flex; gap: 1.5rem; margin-top: 0.4rem; }
@@ -182,17 +187,6 @@
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.75); display: none; justify-content: center; align-items: center; padding: 1rem; z-index: 2000; }
     .modal { background: #FFFFFF; padding: 2.2rem 1.5rem; width: 100%; max-width: 650px; max-height: 92vh; overflow-y: auto; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
-
-    /* CALENDAR */
-    .modal-calendar-container { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; margin-top: 0.8rem; max-width: 340px; }
-    .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-family: var(--font-heading); font-size: 0.95rem; }
-    .cal-header button { background: none; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px 10px; cursor: pointer; }
-    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
-    .cal-day-name { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding-bottom: 4px; }
-    .cal-date { font-size: 0.78rem; padding: 8px 0; border-radius: 4px; color: var(--text-dark); }
-    .cal-date.empty { background: transparent; }
-    .cal-date.highlight { background-color: var(--primary-rose); color: #FFFFFF; font-weight: 700; cursor: pointer; }
-    .cal-date.selected-date { background-color: var(--accent-green) !important; color: #FFFFFF !important; font-weight: 700; }
 
     footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; text-transform: uppercase; }
 
@@ -392,132 +386,118 @@
 
   </div>
 
-  <!-- SINGLE MASTER BOOKING MODAL -->
+  <!-- APP-STYLE SCHEDULE & BOOKING MODAL -->
   <div class="modal-overlay" id="masterBookingModal">
     <div class="modal">
       <button class="close-btn" onclick="closeMasterModal()">&times;</button>
       
-      <h3>Class Booking & Registration</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Select your session, choose your package option, and complete your waiver details once.</p>
-      
-      <form id="masterBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+      <div id="modal-step-schedule">
+        <h3 style="margin-bottom: 0.4rem;">Schedule & Classes</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Choose a date at the top and select a class to book:</p>
         
-        <!-- STEP 1: CLASS SELECTOR & AUTOMATIC DESCRIPTION -->
-        <div class="step-heading">Step 1: Choose Class & Location</div>
-        <div class="form-group">
-          <label for="master-class-select">Class & Location *</label>
-          <select id="master-class-select" name="Class Selected" required onchange="handleClassChange(this.value)">
-            <option value="6-Week Pilates Strength Block (Beginners & Improvers)">6-Week Pilates Strength Block (West Park • Wed 6:30 PM)</option>
-            <option value="Chair Based Pilates (Goring-by-Sea)">Chair Based Pilates (Goring Methodist • Thu 9:30 AM)</option>
-            <option value="Gentle Mat Pilates (Angmering)">Gentle Mat Pilates (Angmering Comm. Centre • Fri 11:00 AM)</option>
-            <option value="PAYG Open Pilates Session">PAYG Open Pilates Session (Flexible Drop-In)</option>
-            <option value="LOVELY BUMPS — Pregnancy Pilates">LOVELY BUMPS — Pregnancy Pilates (West Park • Wed 10:00 AM)</option>
-          </select>
-          
-          <!-- Dynamic Description Displayed Right Here in Modal -->
-          <div class="modal-class-desc-box" id="modal-class-desc"></div>
+        <!-- App-Style Horizontal Date Strip -->
+        <div class="app-date-strip" id="appDateStrip">
+          <!-- Populated dynamically via JS -->
         </div>
 
-        <!-- STEP 2: PACKAGE & DATE -->
-        <div class="step-heading">Step 2: Choose Package & Date</div>
-        <div class="form-group">
-          <label for="master-pass-type">Select Package Option *</label>
-          <select id="master-pass-type" name="Pass Selected" required></select>
+        <!-- Schedule List for Selected Date -->
+        <div class="app-schedule-list" id="appScheduleList">
+          <!-- Populated dynamically via JS -->
         </div>
+      </div>
 
-        <div class="form-group">
-          <label>Select Date from Calendar *</label>
-          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem;">Click a highlighted available date to book:</p>
-          
-          <div class="modal-calendar-container" id="masterCalContainer">
-            <div class="cal-header">
-              <button type="button" onclick="changeMasterCalMonth(-1)">&larr;</button>
-              <span class="master-cal-title">October 2026</span>
-              <button type="button" onclick="changeMasterCalMonth(1)">&rarr;</button>
+      <!-- BOOKING & WAIVER FORM (Appears after selecting a class) -->
+      <div id="modal-step-form" style="display: none;">
+        <button type="button" class="details-toggle-btn" onclick="backToSchedule()" style="margin-bottom: 1rem;">&larr; Back to Schedule</button>
+        
+        <h3>Complete Your Booking</h3>
+        
+        <div class="chosen-class-banner" id="chosen-class-banner-text"></div>
+        <input type="hidden" id="master-class-select" name="Class Selected">
+        <input type="hidden" id="master-selected-date" name="Selected Class Date">
+
+        <form id="masterBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
+          <input type="hidden" name="Class Selected" id="form-class-input">
+          <input type="hidden" name="Selected Class Date" id="form-date-input">
+
+          <div class="step-heading">Choose Package Option</div>
+          <div class="form-group">
+            <label for="master-pass-type">Select Package *</label>
+            <select id="master-pass-type" name="Pass Selected" required></select>
+          </div>
+
+          <div class="step-heading">Personal Information</div>
+          <div class="form-group">
+            <label for="booking-name">Full Name *</label>
+            <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="booking-dob">Date of Birth *</label>
+            <input type="date" id="booking-dob" name="Date of Birth" required>
+          </div>
+
+          <div class="form-group">
+            <label for="booking-email">Email Address *</label>
+            <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="booking-phone">Contact Phone Number *</label>
+            <input type="tel" id="booking-phone" name="Client Phone" required placeholder="07123 456789">
+          </div>
+
+          <div class="step-heading">Health Questions</div>
+
+          <div class="form-group">
+            <label>1. Any injuries, joint, or spinal issues? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Injuries or Spinal Issues" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
+              <label><input type="radio" name="Injuries or Spinal Issues" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
             </div>
-            <div class="cal-grid">
-              <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
+          </div>
+
+          <div class="form-group" id="injuries-details-group" style="display: none;">
+            <label for="injuries-details">Please describe your injury or condition:</label>
+            <textarea id="injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>2. High blood pressure, heart condition, or dizziness? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
+              <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
             </div>
-            <div class="cal-grid master-cal-days-body"></div>
           </div>
 
-          <input type="hidden" id="master-selected-date" name="Selected Class Date" required>
-          <div id="master-date-display" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-green); margin-top: 0.4rem;">No date selected yet.</div>
-        </div>
-
-        <!-- STEP 3: PERSONAL INFORMATION -->
-        <div class="step-heading">Step 3: Personal Information</div>
-        <div class="form-group">
-          <label for="booking-name">Full Name *</label>
-          <input type="text" id="booking-name" name="Client Full Name" required placeholder="Jane Doe">
-        </div>
-
-        <div class="form-group">
-          <label for="booking-dob">Date of Birth *</label>
-          <input type="date" id="booking-dob" name="Date of Birth" required>
-        </div>
-
-        <div class="form-group">
-          <label for="booking-email">Email Address *</label>
-          <input type="email" id="booking-email" name="Client Email" required placeholder="jane@example.com">
-        </div>
-
-        <div class="form-group">
-          <label for="booking-phone">Contact Phone Number *</label>
-          <input type="tel" id="booking-phone" name="Client Phone" required placeholder="07123 456789">
-        </div>
-
-        <!-- STEP 4: HEALTH QUESTIONS -->
-        <div class="step-heading">Step 4: Health Questions</div>
-
-        <div class="form-group">
-          <label>1. Any injuries, joint, or spinal issues? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="Injuries or Spinal Issues" value="No" checked onclick="toggleInjuriesBox(false)"> No</label>
-            <label><input type="radio" name="Injuries or Spinal Issues" value="Yes" onclick="toggleInjuriesBox(true)"> Yes</label>
+          <div class="form-group">
+            <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
+              <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group" id="injuries-details-group" style="display: none;">
-          <label for="injuries-details">Please describe your injury or condition:</label>
-          <textarea id="injuries-details" name="Injury Details" placeholder="E.g., lower back stiffness..."></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>2. High blood pressure, heart condition, or dizziness? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="Blood Pressure / Heart Issue" value="No" checked> No</label>
-            <label><input type="radio" name="Blood Pressure / Heart Issue" value="Yes"> Yes</label>
+          <div class="form-group">
+            <label for="other-health-issues">4. Are there any other health-related issues or conditions?</label>
+            <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma..."></textarea>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label>3. Are you pregnant or given birth in last 12 weeks? *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="Pregnant or Postnatal" value="No" checked> No</label>
-            <label><input type="radio" name="Pregnant or Postnatal" value="Yes"> Yes</label>
+          <div class="step-heading">Health Waiver Consent</div>
+          <div class="form-group">
+            <div class="waiver-box">
+              By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury.
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
+              <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="other-health-issues">4. Are there any other health-related issues or conditions?</label>
-          <textarea id="other-health-issues" name="Other Health Conditions" placeholder="E.g., recent surgery, asthma..."></textarea>
-        </div>
+          <button type="submit" id="master-submit-btn" class="row-book-btn" style="width: 100%; padding: 1rem; font-size: 0.95rem;">Complete Registration & Pay via Stripe &rarr;</button>
+        </form>
+      </div>
 
-        <!-- STEP 5: HEALTH WAIVER -->
-        <div class="step-heading">Step 5: Health Waiver Consent</div>
-        <div class="form-group">
-          <div class="waiver-box">
-            By participating in Niki G Pilates classes, I confirm that I am voluntarily engaging in physical exercise. I understand that physical activity involves inherent risk of injury.
-          </div>
-          <div class="checkbox-group">
-            <input type="checkbox" id="waiver-agree" name="Waiver Agreed" value="Yes" required>
-            <label for="waiver-agree">I have read, understood, and agree to the Health Waiver statement above. *</label>
-          </div>
-        </div>
-
-        <button type="submit" id="master-submit-btn" class="row-book-btn" style="width: 100%; padding: 1rem; font-size: 0.95rem;">Complete Registration & Pay via Stripe &rarr;</button>
-      </form>
     </div>
   </div>
 
@@ -564,56 +544,67 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // MASTER CLASS DEFINITIONS WITH IN-MODAL DESCRIPTIONS & STRIPE LINKS
+    // MASTER CLASS DEFINITIONS WITH SCHEDULE & STRIPE LINKS
     const allClassData = {
       '6-Week Pilates Strength Block (Beginners & Improvers)': {
-        description: 'Suitable for beginners and improvers. Ever wanted to try Pilates but don\'t know where to start? Or perhaps you\'ve practiced before and want to build confidence? This structured 6-week block guides you safely through fundamental strength techniques.',
-        targetDay: 3, startMonth: 10, startYear: 2026,
+        dayOfWeek: 3, // Wednesday
+        time: '18:30 - 19:30',
+        venue: 'West Park Primary School, Goring-by-Sea',
+        description: 'Suitable for beginners and improvers. Structured 6-week block guiding you safely through fundamental strength techniques.',
         passes: [
-          { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
-          { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' },
+          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
+          { label: 'Pay As You Go — £12', value: 'Pay As You Go (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' },
           { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' }
         ]
       },
       'Chair Based Pilates (Goring-by-Sea)': {
-        description: 'Chair-based Pilates is a lovely way to keep moving, build strength and improve flexibility and balance, using a combination of seated and supported standing exercises.\n\n🌟 No previous Pilates experience needed! Whether you\'re new to exercise, returning after a break or simply looking to keep active and feel stronger, the class is designed to help you work at a level that feels right for you.',
-        targetDay: 4, startMonth: 9, startYear: 2026,
+        dayOfWeek: 4, // Thursday
+        time: '09:30 - 10:30',
+        venue: 'Goring Methodist Church Hall',
+        description: 'Chair-based Pilates to keep moving, build strength and improve flexibility using seated and supported standing exercises.',
         passes: [
-          { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
-          { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
+          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
+          { label: 'Pay As You Go — £12', value: 'Pay As You Go (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
         ]
       },
       'Gentle Mat Pilates (Angmering)': {
-        description: 'Designed for anyone seeking a gentle, restorative mat Pilates session. Perfect for releasing muscle tension, improving joint alignment, building core stamina, and unwinding at your own pace.',
-        targetDay: 5, startMonth: 10, startYear: 2026,
+        dayOfWeek: 5, // Friday
+        time: '11:00 - 12:00',
+        venue: 'Angmering Community Centre',
+        description: 'Gentle, restorative mat Pilates session. Perfect for releasing muscle tension and building core stamina.',
         passes: [
-          { label: '6-Week Block — £67', value: '6-Week Block (£67)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
-          { label: 'Pay As You Go — £13', value: 'Pay As You Go (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' },
+          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
+          { label: 'Pay As You Go — £12', value: 'Pay As You Go (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' },
           { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' }
         ]
       },
       'PAYG Open Pilates Session': {
-        description: 'Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.',
-        targetDay: 3, startMonth: 9, startYear: 2026,
+        dayOfWeek: 3, // Wednesday
+        time: 'Flexible Drop-In',
+        venue: 'West Park Primary / Goring / Angmering',
+        description: 'Flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.',
         passes: [
-          { label: 'PAYG Drop-In — £13', value: 'PAYG Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28E28tfi57a02M33Ug7N60h' }
+          { label: 'PAYG Drop-In — £12', value: 'PAYG Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
-        description: 'Suitable for all pregnancy stages. Gentle Pilates to strengthen core muscles and build stamina for birth and beyond.',
-        targetDay: 3, startMonth: 9, startYear: 2026,
+        dayOfWeek: 3, // Wednesday
+        time: '10:00 - 11:00',
+        venue: 'West Park Primary School',
+        description: 'Gentle Pilates to strengthen core muscles and build stamina for birth and beyond.',
         passes: [
-          { label: 'Drop-In — £13', value: 'Drop-In (£13)', stripeUrl: 'https://buy.stripe.com/28EaEZ1rf51SaevfCY7N608' },
+          { label: 'Drop-In — £12', value: 'Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' },
           { label: '5-Week Block — £60.50', value: '5-Week Block (£60.50)', stripeUrl: 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606' }
         ]
       }
     };
 
-    let masterCalState = { year: 2026, month: 9, targetDay: 3, selectedDateStr: '' };
+    let selectedDateGlobal = '';
 
     function openMasterBooking(defaultClass) {
-      document.getElementById('master-class-select').value = defaultClass;
-      handleClassChange(defaultClass);
+      document.getElementById('modal-step-schedule').style.display = 'block';
+      document.getElementById('modal-step-form').style.display = 'none';
+      buildAppDateStrip();
       document.getElementById('masterBookingModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
@@ -623,15 +614,90 @@
       document.body.style.overflow = 'auto';
     }
 
-    function handleClassChange(className) {
-      const data = allClassData[className];
+    function backToSchedule() {
+      document.getElementById('modal-step-form').style.display = 'none';
+      document.getElementById('modal-step-schedule').style.display = 'block';
+    }
+
+    // Build horizontal date strip for next 7 days
+    function buildAppDateStrip() {
+      const strip = document.getElementById('appDateStrip');
+      strip.innerHTML = '';
       
-      // Update description text dynamically inside the modal
-      document.getElementById('modal-class-desc').innerText = data.description;
+      const today = new Date();
+      for (let i = 0; i < 7; i++) {
+        const d = new Date();
+        d.setDate(today.getDate() + i);
+        
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const dayName = dayNames[d.getDay()];
+        const dateNum = d.getDate();
+        const fullDateStr = d.toISOString().split('T')[0];
+
+        const btn = document.createElement('div');
+        btn.className = 'app-date-btn' + (i === 0 ? ' active' : '');
+        if (i === 0) selectedDateGlobal = fullDateStr;
+
+        btn.innerHTML = `<div class="app-date-day">${dayName}</div><div class="app-date-num">${dateNum}</div>`;
+        
+        btn.addEventListener('click', function() {
+          strip.querySelectorAll('.app-date-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedDateGlobal = fullDateStr;
+          renderScheduleList(d.getDay(), fullDateStr);
+        });
+
+        strip.appendChild(btn);
+      }
+
+      renderScheduleList(today.getDay(), today.toISOString().split('T')[0]);
+    }
+
+    // Render classes matching the selected day of the week
+    function renderScheduleList(dayIndex, dateStr) {
+      const listContainer = document.getElementById('appScheduleList');
+      listContainer.innerHTML = '';
+
+      let found = false;
+      for (const [className, data] of Object.entries(allClassData)) {
+        if (data.dayOfWeek === dayIndex) {
+          found = true;
+          const item = document.createElement('div');
+          item.className = 'app-schedule-item';
+          item.innerHTML = `
+            <div class="app-schedule-info">
+              <div class="app-schedule-time">${data.time}</div>
+              <h4>${className}</h4>
+              <p>${data.venue}</p>
+            </div>
+            <button type="button" class="row-book-btn" onclick="selectClassForBooking('${className}', '${dateStr}')">Book</button>
+          `;
+          listContainer.appendChild(item);
+        }
+      }
+
+      if (!found) {
+        listContainer.innerHTML = `<div style="text-align:center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem;">No classes scheduled for this day. Try selecting another date above!</div>`;
+      }
+    }
+
+    // Transition from Schedule view to Booking form view
+    function selectClassForBooking(className, dateStr) {
+      document.getElementById('modal-step-schedule').style.display = 'none';
+      document.getElementById('modal-step-form').style.display = 'block';
+
+      document.getElementById('master-class-select').value = className;
+      document.getElementById('master-selected-date').value = dateStr;
+      document.getElementById('form-class-input').value = className;
+      document.getElementById('form-date-input').value = dateStr;
+
+      const data = allClassData[className];
+      const readableDate = new Date(dateStr).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      
+      document.getElementById('chosen-class-banner-text').innerHTML = `<strong>${className}</strong><br><span style="font-size:0.8rem; color:var(--accent-green);">${readableDate} • ${data.time}</span><br><span style="font-size:0.8rem;">${data.venue}</span>`;
 
       const passSelect = document.getElementById('master-pass-type');
       passSelect.innerHTML = '';
-
       data.passes.forEach(opt => {
         const optionEl = document.createElement('option');
         optionEl.value = opt.value;
@@ -639,66 +705,6 @@
         optionEl.dataset.stripeUrl = opt.stripeUrl;
         passSelect.appendChild(optionEl);
       });
-
-      masterCalState.targetDay = data.targetDay;
-      masterCalState.month = data.startMonth;
-      masterCalState.year = data.startYear;
-      masterCalState.selectedDateStr = '';
-      document.getElementById('master-selected-date').value = '';
-      document.getElementById('master-date-display').textContent = 'No date selected yet.';
-
-      renderMasterCalendar();
-    }
-
-    function changeMasterCalMonth(dir) {
-      masterCalState.month += dir;
-      if (masterCalState.month > 11) { masterCalState.month = 0; masterCalState.year++; }
-      else if (masterCalState.month < 0) { masterCalState.month = 11; masterCalState.year--; }
-      renderMasterCalendar();
-    }
-
-    function renderMasterCalendar() {
-      const container = document.getElementById('masterCalContainer');
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      container.querySelector('.master-cal-title').textContent = `${monthNames[masterCalState.month]} ${masterCalState.year}`;
-
-      const daysBody = container.querySelector('.master-cal-days-body');
-      daysBody.innerHTML = '';
-
-      const firstDayIndex = new Date(masterCalState.year, masterCalState.month, 1).getDay();
-      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
-      const totalDays = new Date(masterCalState.year, masterCalState.month + 1, 0).getDate();
-
-      for (let i = 0; i < adjustedFirstDay; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'cal-date empty';
-        daysBody.appendChild(emptyCell);
-      }
-
-      for (let day = 1; day <= totalDays; day++) {
-        const dateCell = document.createElement('div');
-        dateCell.className = 'cal-date';
-        dateCell.textContent = day;
-
-        const currentDateObj = new Date(masterCalState.year, masterCalState.month, day);
-        const formattedDateStr = currentDateObj.toISOString().split('T')[0];
-
-        if (currentDateObj.getDay() === masterCalState.targetDay) {
-          dateCell.classList.add('highlight');
-          if (masterCalState.selectedDateStr === formattedDateStr) dateCell.classList.add('selected-date');
-
-          dateCell.addEventListener('click', function() {
-            container.querySelectorAll('.cal-date').forEach(el => el.classList.remove('selected-date'));
-            dateCell.classList.add('selected-date');
-            masterCalState.selectedDateStr = formattedDateStr;
-            document.getElementById('master-selected-date').value = formattedDateStr;
-            
-            const readable = currentDateObj.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById('master-date-display').textContent = `Selected: ${readable}`;
-          });
-        }
-        daysBody.appendChild(dateCell);
-      }
     }
 
     function toggleInjuriesBox(show) { document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none'; }
@@ -711,7 +717,7 @@
       
       const passSelect = document.getElementById('master-pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/28E28tfi57a02M33Ug7N60h";
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j";
 
       const submitBtn = document.getElementById('master-submit-btn');
       submitBtn.disabled = true;
