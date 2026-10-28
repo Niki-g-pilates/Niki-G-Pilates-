@@ -131,16 +131,19 @@
     .strip-content { max-width: 900px; margin: 0 auto; }
     .section-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 1.5rem; }
 
-    /* HOMEPAGE APP-STYLE DATE BAR */
-    .home-date-container { margin-bottom: 1.8rem; }
-    .home-date-label { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 0.6rem; text-align: center; }
-    .home-date-strip { display: flex; justify-content: center; gap: 10px; overflow-x: auto; padding: 6px 0; -webkit-overflow-scrolling: touch; }
-    .home-date-btn { flex: 0 0 auto; background: #FAFAFA; border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 16px; text-align: center; cursor: pointer; transition: all 0.2s ease; min-width: 64px; color: var(--text-dark); }
-    .home-date-btn:hover { border-color: var(--primary-rose); }
-    .home-date-btn.active { background-color: var(--accent-green); color: #FFFFFF; border-color: var(--accent-green); font-weight: 700; box-shadow: 0 4px 10px rgba(46, 125, 94, 0.25); }
-    .home-date-btn.all-btn { display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
-    .home-date-day { font-size: 0.7rem; text-transform: uppercase; opacity: 0.85; }
-    .home-date-num { font-size: 1.1rem; font-weight: 700; }
+    /* COMPACT SQUARE MONTHLY CALENDAR WIDGET */
+    .home-calendar-wrapper { display: flex; justify-content: center; margin-bottom: 2rem; }
+    .home-calendar-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; width: 100%; max-width: 320px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .home-cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-family: var(--font-heading); font-size: 0.95rem; color: var(--primary-dark); }
+    .home-cal-header button { background: none; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px 10px; cursor: pointer; color: var(--text-dark); }
+    .home-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+    .home-cal-day-name { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding-bottom: 4px; }
+    .home-cal-date { font-size: 0.78rem; padding: 6px 0; border-radius: 4px; color: var(--text-dark); cursor: default; }
+    .home-cal-date.empty { background: transparent; }
+    .home-cal-date.has-class { background-color: #FCE8E6; color: var(--primary-dark); font-weight: 700; cursor: pointer; }
+    .home-cal-date.has-class:hover { background-color: var(--primary-rose); color: #FFFFFF; }
+    .home-cal-date.selected-date { background-color: var(--accent-green) !important; color: #FFFFFF !important; font-weight: 700; }
+    .home-cal-reset { display: block; width: 100%; margin-top: 0.8rem; background: #F5F2EE; border: 1px solid var(--border-color); border-radius: 4px; padding: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; color: var(--text-dark); text-align: center; }
 
     .classes-stack { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1rem; }
     .class-row-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
@@ -160,6 +163,12 @@
 
     .class-row-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #FAFAFA; padding: 0 1.8rem; }
     .class-row-card.open .class-row-dropdown { max-height: 1200px; padding: 1.5rem 1.8rem; border-top: 1px solid var(--border-color); }
+
+    /* ABOUT ME QUALIFICATIONS SECTION */
+    .qualifications-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; text-align: left; }
+    .qual-card { background: #FFFFFF; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary-dark); box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .qual-card h3 { font-family: var(--font-heading); font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 0.4rem; }
+    .qual-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
     /* FORM & MODAL */
     .form-group { margin-bottom: 1.2rem; }
@@ -200,7 +209,6 @@
       .class-row-main { flex-direction: column; align-items: flex-start; }
       .class-row-actions { width: 100%; justify-content: space-between; }
       .details-toggle-btn, .row-book-btn { flex: 1; text-align: center; }
-      .home-date-strip { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -250,11 +258,25 @@
         <div class="strip-content">
           <h2 class="section-title">CLASSES AND BOOKING</h2>
 
-          <!-- HOMEPAGE DATE STRIP FILTER -->
-          <div class="home-date-container">
-            <div class="home-date-label">Select a date to view classes:</div>
-            <div class="home-date-strip" id="homeDateStrip">
-              <!-- Populated dynamically via JavaScript -->
+          <!-- COMPACT SQUARE MONTHLY CALENDAR WIDGET -->
+          <div class="home-calendar-wrapper">
+            <div class="home-calendar-card">
+              <div class="home-cal-header">
+                <button type="button" onclick="changeHomeCalMonth(-1)">&larr;</button>
+                <span id="homeCalTitle">November 2026</span>
+                <button type="button" onclick="changeHomeCalMonth(1)">&rarr;</button>
+              </div>
+              <div class="home-cal-grid">
+                <div class="home-cal-day-name">M</div>
+                <div class="home-cal-day-name">T</div>
+                <div class="home-cal-day-name">W</div>
+                <div class="home-cal-day-name">T</div>
+                <div class="home-cal-day-name">F</div>
+                <div class="home-cal-day-name">S</div>
+                <div class="home-cal-day-name">S</div>
+              </div>
+              <div class="home-cal-grid" id="homeCalDaysBody" style="margin-top: 4px;"></div>
+              <button type="button" class="home-cal-reset" onclick="resetHomeCalendarFilter()">Show All Classes</button>
             </div>
           </div>
 
@@ -367,13 +389,37 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW: ABOUT NIKI -->
+    <!-- PAGE VIEW: ABOUT NIKI (QUALIFICATIONS RESTORED) -->
     <div id="page-about-niki" class="page-view">
       <section class="section-strip strip-rose">
         <div class="strip-content text-center">
           <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
-          <h2 class="section-title">ABOUT ME</h2>
-          <p>Hi, I’m Niki! APPI Certified Pilates Instructor and Level 3 Sports Massage Therapist.</p>
+          <h2 class="section-title" style="margin-top:1.5rem;">ABOUT NIKI</h2>
+          <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto;">Hi, I’m Niki! I am passionate about helping people move better, feel stronger, and build confidence in their bodies through tailored, accessible Pilates and clinical soft tissue therapy.</p>
+          
+          <h3 style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1rem;">Qualifications & Credentials</h3>
+          
+          <div class="qualifications-grid">
+            <div class="qual-card">
+              <h3>APPI Certified Pilates Instructor</h3>
+              <p>Fully qualified in Australian Physiotherapy & Pilates Institute (APPI) Matwork and Equipment methods, specializing in safe, clinical movement patterns.</p>
+            </div>
+            
+            <div class="qual-card">
+              <h3>Level 3 Sports & Remedial Massage</h3>
+              <p>Certified soft tissue practitioner qualified to treat muscular tightness, postural tension, and support injury recovery.</p>
+            </div>
+
+            <div class="qual-card">
+              <h3>Pre & Postnatal Specialist</h3>
+              <p>APPI Ante & Post Natal Pilates trained to guide pregnant clients and mothers safely through core and pelvic floor strength building.</p>
+            </div>
+
+            <div class="qual-card">
+              <h3>First Aid & CPR Certified</h3>
+              <p>Fully insured, first-aid certified, and registered practitioner committed to maintaining safe and supportive class environments.</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -383,8 +429,8 @@
       <section class="section-strip strip-dark">
         <div class="strip-content text-center">
           <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
-          <h2 class="section-title">Sports & Remedial Massage</h2>
-          <p>Tailored soft tissue therapy to release tension and aid recovery.</p>
+          <h2 class="section-title" style="margin-top:1.5rem;">Sports & Remedial Massage</h2>
+          <p>Tailored soft tissue therapy to release tension, relieve muscular stiffness, and aid physical recovery.</p>
         </div>
       </section>
     </div>
@@ -394,7 +440,8 @@
       <section class="section-strip strip-stone">
         <div class="strip-content text-center">
           <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
-          <h2 class="section-title">Contact Us</h2>
+          <h2 class="section-title" style="margin-top:1.5rem;">Contact Us</h2>
+          <p>Have a question about a class or booking? Get in touch with Niki today.</p>
         </div>
       </section>
     </div>
@@ -592,61 +639,76 @@
       }
     };
 
+    let homeCalState = { year: 2026, month: 10 }; // November 2026 (0-indexed month 10)
     let selectedDateGlobal = '';
 
-    // BUILD HOMEPAGE DATE STRIP FILTER
-    function buildHomeDateStrip() {
-      const strip = document.getElementById('homeDateStrip');
-      strip.innerHTML = '';
+    // RENDER HOMEPAGE SQUARE MONTHLY CALENDAR WIDGET
+    function renderHomeCalendar() {
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      document.getElementById('homeCalTitle').textContent = `${monthNames[homeCalState.month]} ${homeCalState.year}`;
 
-      // "ALL" Button
-      const allBtn = document.createElement('div');
-      allBtn.className = 'home-date-btn active all-btn';
-      allBtn.textContent = 'All Classes';
-      allBtn.addEventListener('click', function() {
-        strip.querySelectorAll('.home-date-btn').forEach(b => b.classList.remove('active'));
-        allBtn.classList.add('active');
-        filterHomepageClasses('all');
-      });
-      strip.appendChild(allBtn);
+      const daysBody = document.getElementById('homeCalDaysBody');
+      daysBody.innerHTML = '';
 
-      const today = new Date();
-      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const firstDayIndex = new Date(homeCalState.year, homeCalState.month, 1).getDay();
+      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+      const totalDays = new Date(homeCalState.year, homeCalState.month + 1, 0).getDate();
 
-      for (let i = 0; i < 7; i++) {
-        const d = new Date();
-        d.setDate(today.getDate() + i);
-
-        const dayIndex = d.getDay();
-        const dayName = dayNames[dayIndex];
-        const dateNum = d.getDate();
-        const fullDateStr = d.toISOString().split('T')[0];
-
-        const btn = document.createElement('div');
-        btn.className = 'home-date-btn';
-        btn.innerHTML = `<div class="home-date-day">${dayName}</div><div class="home-date-num">${dateNum}</div>`;
-
-        btn.addEventListener('click', function() {
-          strip.querySelectorAll('.home-date-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          selectedDateGlobal = fullDateStr;
-          filterHomepageClasses(dayIndex);
-        });
-
-        strip.appendChild(btn);
+      for (let i = 0; i < adjustedFirstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'home-cal-date empty';
+        daysBody.appendChild(emptyCell);
       }
+
+      for (let day = 1; day <= totalDays; day++) {
+        const dateCell = document.createElement('div');
+        dateCell.className = 'home-cal-date';
+        dateCell.textContent = day;
+
+        const currentDateObj = new Date(homeCalState.year, homeCalState.month, day);
+        const dayOfWeek = currentDateObj.getDay(); // 3 = Wed, 4 = Thu, 5 = Fri
+        const formattedDateStr = currentDateObj.toISOString().split('T')[0];
+
+        // Highlight days that have classes (Wednesdays, Thursdays, Fridays)
+        if (dayOfWeek === 3 || dayOfWeek === 4 || dayOfWeek === 5) {
+          dateCell.classList.add('has-class');
+          if (selectedDateGlobal === formattedDateStr) {
+            dateCell.classList.add('selected-date');
+          }
+
+          dateCell.addEventListener('click', function() {
+            document.querySelectorAll('.home-cal-date').forEach(el => el.classList.remove('selected-date'));
+            dateCell.classList.add('selected-date');
+            selectedDateGlobal = formattedDateStr;
+            filterHomepageClasses(dayOfWeek);
+          });
+        }
+
+        daysBody.appendChild(dateCell);
+      }
+    }
+
+    function changeHomeCalMonth(dir) {
+      homeCalState.month += dir;
+      if (homeCalState.month > 11) { homeCalState.month = 0; homeCalState.year++; }
+      else if (homeCalState.month < 0) { homeCalState.month = 11; homeCalState.year--; }
+      renderHomeCalendar();
+    }
+
+    function resetHomeCalendarFilter() {
+      selectedDateGlobal = '';
+      document.querySelectorAll('.home-cal-date').forEach(el => el.classList.remove('selected-date'));
+      filterHomepageClasses('all');
     }
 
     // Filter Homepage Class Stack by selected day index
     function filterHomepageClasses(dayFilter) {
       const classCards = document.querySelectorAll('.class-row-card');
-      let visibleCount = 0;
 
       classCards.forEach(card => {
         const cardDay = parseInt(card.dataset.day, 10);
         if (dayFilter === 'all' || cardDay === dayFilter) {
           card.style.display = 'block';
-          visibleCount++;
         } else {
           card.style.display = 'none';
         }
@@ -730,8 +792,8 @@
       }
     });
 
-    // Initialize Homepage Date Strip on Load
-    document.addEventListener('DOMContentLoaded', buildHomeDateStrip);
+    // Initialize Homepage Calendar on Load
+    document.addEventListener('DOMContentLoaded', renderHomeCalendar);
   </script>
 
 </body>
