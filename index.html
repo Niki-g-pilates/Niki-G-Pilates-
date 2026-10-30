@@ -129,21 +129,7 @@
     .strip-rose { background-color: var(--primary-rose); color: var(--primary-dark); }
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
     .strip-content { max-width: 900px; margin: 0 auto; }
-    .section-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 1.5rem; }
-
-    /* COMPACT SQUARE MONTHLY CALENDAR WIDGET */
-    .home-calendar-wrapper { display: flex; justify-content: center; margin-bottom: 2rem; }
-    .home-calendar-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; width: 100%; max-width: 320px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-    .home-cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-family: var(--font-heading); font-size: 0.95rem; color: var(--primary-dark); }
-    .home-cal-header button { background: none; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px 10px; cursor: pointer; color: var(--text-dark); }
-    .home-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
-    .home-cal-day-name { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding-bottom: 4px; }
-    .home-cal-date { font-size: 0.78rem; padding: 6px 0; border-radius: 4px; color: var(--text-dark); cursor: default; }
-    .home-cal-date.empty { background: transparent; }
-    .home-cal-date.has-class { background-color: #FCE8E6; color: var(--primary-dark); font-weight: 700; cursor: pointer; }
-    .home-cal-date.has-class:hover { background-color: var(--primary-rose); color: #FFFFFF; }
-    .home-cal-date.selected-date { background-color: var(--accent-green) !important; color: #FFFFFF !important; font-weight: 700; }
-    .home-cal-reset { display: block; width: 100%; margin-top: 0.8rem; background: #F5F2EE; border: 1px solid var(--border-color); border-radius: 4px; padding: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; color: var(--text-dark); text-align: center; }
+    .section-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
 
     .classes-stack { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1rem; }
     .class-row-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
@@ -248,8 +234,10 @@
 
       <section class="intro-section">
         <div class="intro-content">
-          <h2 class="intro-heading">Pilates for every body</h2>
-          <p class="intro-text">My classes are welcoming, friendly, tailored to you, to help you build strength, improve mobility and feel more confident in your body.</p>
+          <h2 class="intro-heading">Move well. Feel strong. Feel your best.</h2>
+          <p class="intro-text">I’m passionate about making movement fun, effective and accessible to everyone.</p>
+          <p class="intro-text">With experience as a Physiotherapy Assistant, teaching rehabilitation exercises to individuals and groups, and as a qualified Pilates instructor, I create fun, engaging and challenging workouts that are safe, effective and adaptable to different abilities.</p>
+          <p class="intro-text">Whether you’re recovering from injury, rebuilding strength after having a baby or wanting to stay strong and mobile for longer, my workouts offer options for every stage of life, helping you move confidently and feel your best.</p>
         </div>
       </section>
 
@@ -258,32 +246,10 @@
         <div class="strip-content">
           <h2 class="section-title">CLASSES AND BOOKING</h2>
 
-          <!-- COMPACT SQUARE MONTHLY CALENDAR WIDGET -->
-          <div class="home-calendar-wrapper">
-            <div class="home-calendar-card">
-              <div class="home-cal-header">
-                <button type="button" onclick="changeHomeCalMonth(-1)">&larr;</button>
-                <span id="homeCalTitle">November 2026</span>
-                <button type="button" onclick="changeHomeCalMonth(1)">&rarr;</button>
-              </div>
-              <div class="home-cal-grid">
-                <div class="home-cal-day-name">M</div>
-                <div class="home-cal-day-name">T</div>
-                <div class="home-cal-day-name">W</div>
-                <div class="home-cal-day-name">T</div>
-                <div class="home-cal-day-name">F</div>
-                <div class="home-cal-day-name">S</div>
-                <div class="home-cal-day-name">S</div>
-              </div>
-              <div class="home-cal-grid" id="homeCalDaysBody" style="margin-top: 4px;"></div>
-              <button type="button" class="home-cal-reset" onclick="resetHomeCalendarFilter()">Show All Classes</button>
-            </div>
-          </div>
+          <div class="classes-stack">
 
-          <div class="classes-stack" id="classesStackContainer">
-
-            <!-- CLASS 1 (WED) -->
-            <div class="class-row-card" id="row-course" data-day="3">
+            <!-- CLASS 1 -->
+            <div class="class-row-card" id="row-course">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">6-Week Pilates Strength Block</div>
@@ -302,8 +268,8 @@
               </div>
             </div>
 
-            <!-- CLASS 2 (THU) -->
-            <div class="class-row-card" id="row-goring" data-day="4">
+            <!-- CLASS 2 -->
+            <div class="class-row-card" id="row-goring">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">Chair Based Pilates</div>
@@ -323,8 +289,8 @@
               </div>
             </div>
 
-            <!-- CLASS 3 (FRI) -->
-            <div class="class-row-card" id="row-angmering" data-day="5">
+            <!-- CLASS 3 -->
+            <div class="class-row-card" id="row-angmering">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">Gentle Mat Pilates</div>
@@ -343,8 +309,8 @@
               </div>
             </div>
 
-            <!-- CLASS 4 (PAYG FLEXIBLE) -->
-            <div class="class-row-card" id="row-payg" data-day="3">
+            <!-- CLASS 4 -->
+            <div class="class-row-card" id="row-payg">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">PAYG Open Pilates Session</div>
@@ -363,8 +329,8 @@
               </div>
             </div>
 
-            <!-- CLASS 5 (PREGNANCY WED) -->
-            <div class="class-row-card" id="row-bumps" data-day="3">
+            <!-- CLASS 5 -->
+            <div class="class-row-card" id="row-bumps">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">LOVELY BUMPS — Pregnancy Pilates</div>
@@ -389,35 +355,40 @@
       </section>
     </div>
 
-    <!-- PAGE VIEW: ABOUT NIKI (QUALIFICATIONS RESTORED) -->
+    <!-- PAGE VIEW: ABOUT NIKI -->
     <div id="page-about-niki" class="page-view">
       <section class="section-strip strip-rose">
         <div class="strip-content text-center">
           <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
           <h2 class="section-title" style="margin-top:1.5rem;">ABOUT NIKI</h2>
-          <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto;">Hi, I’m Niki! I am passionate about helping people move better, feel stronger, and build confidence in their bodies through tailored, accessible Pilates and clinical soft tissue therapy.</p>
+          <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto;">Hi, I’m Niki! I am passionate about helping people move better, feel stronger, and build confidence in their bodies through tailored, accessible Pilates and soft tissue therapy.</p>
           
           <h3 style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1rem;">Qualifications & Credentials</h3>
           
           <div class="qualifications-grid">
             <div class="qual-card">
-              <h3>APPI Certified Pilates Instructor</h3>
-              <p>Fully qualified in Australian Physiotherapy & Pilates Institute (APPI) Matwork and Equipment methods, specializing in safe, clinical movement patterns.</p>
+              <h3>Active iQ</h3>
+              <p>Active iQ in group strength training.</p>
             </div>
             
             <div class="qual-card">
-              <h3>Level 3 Sports & Remedial Massage</h3>
-              <p>Certified soft tissue practitioner qualified to treat muscular tightness, postural tension, and support injury recovery.</p>
+              <h3>APPI Certified Pilates Instructor</h3>
+              <p>APPI certified Mat and Reformer Pilates instructor.</p>
             </div>
 
             <div class="qual-card">
               <h3>Pre & Postnatal Specialist</h3>
-              <p>APPI Ante & Post Natal Pilates trained to guide pregnant clients and mothers safely through core and pelvic floor strength building.</p>
+              <p>APPI certified Pre and Postnatal Pilates instructor.</p>
             </div>
 
             <div class="qual-card">
-              <h3>First Aid & CPR Certified</h3>
-              <p>Fully insured, first-aid certified, and registered practitioner committed to maintaining safe and supportive class environments.</p>
+              <h3>Sports & Remedial Massage</h3>
+              <p>Level 2 in Sports and remedial massage therapist.</p>
+            </div>
+
+            <div class="qual-card">
+              <h3>Anatomy & Physiology</h3>
+              <p>ITEC Anatomy & physiology.</p>
             </div>
           </div>
         </div>
@@ -455,7 +426,7 @@
       
       <h3 style="margin-bottom: 0.5rem;">Class Booking & Waiver</h3>
 
-      <!-- Displays exact selected class details (No options dropdown) -->
+      <!-- Displays exact selected class details -->
       <div class="chosen-class-banner" id="chosen-class-banner-text"></div>
 
       <form id="masterBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
@@ -587,7 +558,6 @@
     // MASTER CLASS DEFINITIONS WITH DESCRIPTIONS & STRIPE LINKS
     const allClassData = {
       '6-Week Pilates Strength Block (Beginners & Improvers)': {
-        dayOfWeek: 3, // Wednesday
         time: 'Wednesdays • 6:30 PM',
         venue: 'West Park Primary School, Goring-by-Sea',
         description: 'Suitable for beginners and improvers. Ever wanted to try Pilates but don\'t know where to start? Or perhaps you\'ve practiced before and want to build confidence? This structured 6-week block guides you safely through fundamental strength techniques.',
@@ -598,7 +568,6 @@
         ]
       },
       'Chair Based Pilates (Goring-by-Sea)': {
-        dayOfWeek: 4, // Thursday
         time: 'Thursdays • 9:30 AM',
         venue: 'Goring Methodist Church Hall',
         description: 'Chair-based Pilates is a lovely way to keep moving, build strength and improve flexibility and balance, using a combination of seated and supported standing exercises.',
@@ -608,7 +577,6 @@
         ]
       },
       'Gentle Mat Pilates (Angmering)': {
-        dayOfWeek: 5, // Friday
         time: 'Fridays • 11:00 AM',
         venue: 'Angmering Community Centre',
         description: 'A gentle, restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability. Perfect for unwinding at your own pace.',
@@ -619,7 +587,6 @@
         ]
       },
       'PAYG Open Pilates Session': {
-        dayOfWeek: 3, // Wednesday
         time: 'Flexible Weekly Schedule',
         venue: 'West Park Primary / Goring / Angmering',
         description: 'Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.',
@@ -628,7 +595,6 @@
         ]
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
-        dayOfWeek: 3, // Wednesday
         time: 'Wednesdays • 10:00 AM',
         venue: 'West Park Primary School',
         description: 'Suitable for all pregnancy stages. Gentle Pilates to strengthen core muscles and build stamina for birth and beyond.',
@@ -639,98 +605,18 @@
       }
     };
 
-    let homeCalState = { year: 2026, month: 10 }; // November 2026 (0-indexed month 10)
-    let selectedDateGlobal = '';
-
-    // RENDER HOMEPAGE SQUARE MONTHLY CALENDAR WIDGET
-    function renderHomeCalendar() {
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      document.getElementById('homeCalTitle').textContent = `${monthNames[homeCalState.month]} ${homeCalState.year}`;
-
-      const daysBody = document.getElementById('homeCalDaysBody');
-      daysBody.innerHTML = '';
-
-      const firstDayIndex = new Date(homeCalState.year, homeCalState.month, 1).getDay();
-      const adjustedFirstDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
-      const totalDays = new Date(homeCalState.year, homeCalState.month + 1, 0).getDate();
-
-      for (let i = 0; i < adjustedFirstDay; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'home-cal-date empty';
-        daysBody.appendChild(emptyCell);
-      }
-
-      for (let day = 1; day <= totalDays; day++) {
-        const dateCell = document.createElement('div');
-        dateCell.className = 'home-cal-date';
-        dateCell.textContent = day;
-
-        const currentDateObj = new Date(homeCalState.year, homeCalState.month, day);
-        const dayOfWeek = currentDateObj.getDay(); // 3 = Wed, 4 = Thu, 5 = Fri
-        const formattedDateStr = currentDateObj.toISOString().split('T')[0];
-
-        // Highlight days that have classes (Wednesdays, Thursdays, Fridays)
-        if (dayOfWeek === 3 || dayOfWeek === 4 || dayOfWeek === 5) {
-          dateCell.classList.add('has-class');
-          if (selectedDateGlobal === formattedDateStr) {
-            dateCell.classList.add('selected-date');
-          }
-
-          dateCell.addEventListener('click', function() {
-            document.querySelectorAll('.home-cal-date').forEach(el => el.classList.remove('selected-date'));
-            dateCell.classList.add('selected-date');
-            selectedDateGlobal = formattedDateStr;
-            filterHomepageClasses(dayOfWeek);
-          });
-        }
-
-        daysBody.appendChild(dateCell);
-      }
-    }
-
-    function changeHomeCalMonth(dir) {
-      homeCalState.month += dir;
-      if (homeCalState.month > 11) { homeCalState.month = 0; homeCalState.year++; }
-      else if (homeCalState.month < 0) { homeCalState.month = 11; homeCalState.year--; }
-      renderHomeCalendar();
-    }
-
-    function resetHomeCalendarFilter() {
-      selectedDateGlobal = '';
-      document.querySelectorAll('.home-cal-date').forEach(el => el.classList.remove('selected-date'));
-      filterHomepageClasses('all');
-    }
-
-    // Filter Homepage Class Stack by selected day index
-    function filterHomepageClasses(dayFilter) {
-      const classCards = document.querySelectorAll('.class-row-card');
-
-      classCards.forEach(card => {
-        const cardDay = parseInt(card.dataset.day, 10);
-        if (dayFilter === 'all' || cardDay === dayFilter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
     // OPEN MASTER BOOKING MODAL FOR EXACT CLASS
     function openMasterBooking(className) {
       const data = allClassData[className];
       if (!data) return;
 
       document.getElementById('form-class-input').value = className;
-      document.getElementById('form-date-input').value = selectedDateGlobal || new Date().toISOString().split('T')[0];
-
-      const readableDate = selectedDateGlobal 
-        ? new Date(selectedDateGlobal).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
-        : 'Next Available Date';
+      document.getElementById('form-date-input').value = new Date().toISOString().split('T')[0];
 
       // Set Banner Details in Modal
       document.getElementById('chosen-class-banner-text').innerHTML = `
         <h4 style="font-family: var(--font-heading); font-size:1.15rem; color:var(--primary-dark); margin-bottom:4px;">${className}</h4>
-        <div style="font-weight:700; color:var(--accent-green); margin-bottom:4px;">${data.time} • ${readableDate}</div>
+        <div style="font-weight:700; color:var(--accent-green); margin-bottom:4px;">${data.time}</div>
         <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">${data.venue}</div>
         <div style="font-size:0.85rem; border-top:1px solid var(--border-color); padding-top:6px; margin-top:6px;">${data.description}</div>
       `;
@@ -791,9 +677,6 @@
         submitBtn.innerText = "Complete Registration & Pay via Stripe →";
       }
     });
-
-    // Initialize Homepage Calendar on Load
-    document.addEventListener('DOMContentLoaded', renderHomeCalendar);
   </script>
 
 </body>
