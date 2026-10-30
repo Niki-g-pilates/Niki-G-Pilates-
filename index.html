@@ -7,8 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fontlibrary.org/face/glacial-indifference" media="screen">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -22,14 +21,16 @@
       --border-color: #E2DCD5;
       --accent-green: #2e7d5e;
       
-      --font-heading: 'GlacialIndifferenceBold', 'Glacial Indifference', sans-serif;
-      --font-body: 'GlacialIndifferenceRegular', 'Glacial Indifference', sans-serif;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
       --font-script: 'Alex Brush', cursive;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.8; font-weight: 400; background-color: var(--bg-stone); }
+
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 
     /* HEADER & BRANDING */
     header {
@@ -51,7 +52,7 @@
 
     .logo {
       font-family: var(--font-script);
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: var(--primary-rose);
       text-decoration: none;
       font-weight: 700;
@@ -97,7 +98,7 @@
 
     .side-nav.open { right: 0; }
     .side-nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.8rem; }
-    .side-nav a { text-decoration: none; color: var(--primary-dark); font-size: 1rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; }
+    .side-nav a { text-decoration: none; color: var(--primary-dark); font-size: 1rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; }
     .side-nav a:hover { color: var(--primary-rose); }
 
     .nav-overlay {
@@ -113,13 +114,13 @@
     .hero-image-banner { width: 100%; height: 440px; position: relative; overflow: hidden; }
     .hero-image-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: brightness(0.85); }
     .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45, 55, 72, 0.4); display: flex; justify-content: center; align-items: center; color: white; text-align: center; padding: 2rem; }
-    .hero-title { font-family: var(--font-heading); font-size: 2.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; }
-    .hero-subtitle { font-size: 1.1rem; color: #F5F2EE; }
+    .hero-title { font-size: 2.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.8rem; }
+    .hero-subtitle { font-size: 1.05rem; color: #F5F2EE; font-weight: 400; }
 
     /* INTRO SECTION */
     .intro-section { background-color: #FFFFFF; padding: 3.5rem 1.5rem; border-bottom: 1px solid var(--border-color); text-align: center; }
     .intro-content { max-width: 750px; margin: 0 auto; }
-    .intro-heading { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 1.2rem; text-transform: uppercase; }
+    .intro-heading { font-size: 1.8rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px; }
     .intro-text { font-size: 1.02rem; color: var(--text-dark); margin-bottom: 1.2rem; }
 
     /* SECTIONS & CARDS */
@@ -129,36 +130,36 @@
     .strip-rose { background-color: var(--primary-rose); color: var(--primary-dark); }
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
     .strip-content { max-width: 900px; margin: 0 auto; }
-    .section-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+    .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2rem; letter-spacing: 1px; }
 
     .classes-stack { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1rem; }
     .class-row-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
     .class-row-card:hover { border-color: var(--primary-rose); box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
     .class-row-main { padding: 1.5rem 1.8rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
     .class-row-info { flex: 1; min-width: 260px; }
-    .class-row-title { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.3rem; }
+    .class-row-title { font-size: 1.25rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.3rem; }
     .class-row-details { font-size: 0.95rem; color: var(--text-dark); display: flex; flex-direction: column; gap: 0.1rem; }
     .class-row-time { color: var(--primary-dark); font-weight: 600; }
     .class-row-venue { color: var(--text-muted); }
 
     .class-row-actions { display: flex; align-items: center; gap: 0.8rem; }
-    .details-toggle-btn { background: #F5F2EE; border: 1px solid var(--border-color); color: var(--text-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; padding: 0.6rem 1rem; border-radius: 4px; cursor: pointer; }
-    .row-book-btn { background-color: var(--accent-green); color: #FFFFFF; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; padding: 0.6rem 1.4rem; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; }
+    .details-toggle-btn { background: #F5F2EE; border: 1px solid var(--border-color); color: var(--text-dark); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; padding: 0.6rem 1rem; border-radius: 4px; cursor: pointer; }
+    .row-book-btn { background-color: var(--accent-green); color: #FFFFFF; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; padding: 0.6rem 1.4rem; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; }
     .row-book-btn:hover { background-color: #236149; }
     .row-waitlist-btn { background-color: #718096; }
 
     .class-row-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #FAFAFA; padding: 0 1.8rem; }
     .class-row-card.open .class-row-dropdown { max-height: 1200px; padding: 1.5rem 1.8rem; border-top: 1px solid var(--border-color); }
 
-    /* ABOUT ME QUALIFICATIONS SECTION */
-    .qualifications-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; text-align: left; }
-    .qual-card { background: #FFFFFF; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary-dark); box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-    .qual-card h3 { font-family: var(--font-heading); font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 0.4rem; }
-    .qual-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+    /* ABOUT ME QUALIFICATIONS LIST */
+    .qualifications-list { max-width: 650px; margin: 2rem auto 0 auto; text-align: left; background: #FFFFFF; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid var(--border-color); }
+    .qual-item { padding: 0.9rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem; font-size: 1.02rem; font-weight: 500; color: var(--primary-dark); }
+    .qual-item:last-child { border-bottom: none; }
+    .qual-bullet { width: 8px; height: 8px; background-color: var(--primary-dark); border-radius: 50%; flex-shrink: 0; }
 
     /* FORM & MODAL */
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; color: #000; text-align: left; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; text-transform: uppercase; color: #000; text-align: left; }
     .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"], .form-group input[type="date"], .form-group textarea, .form-group select {
       width: 100%; padding: 0.85rem; border: 1px solid var(--border-color); font-family: var(--font-body); background: #FAFAFA; font-size: 16px; color: #000; border-radius: 4px; -webkit-appearance: none;
     }
@@ -176,7 +177,7 @@
       line-height: 1.5;
     }
 
-    .step-heading { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #000; margin: 1.6rem 0 0.8rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--primary-rose); text-align: left; }
+    .step-heading { font-size: 1.05rem; font-weight: 700; color: #000; margin: 1.6rem 0 0.8rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--primary-rose); text-align: left; }
     .radio-group { display: flex; gap: 1.5rem; margin-top: 0.4rem; }
     .radio-group label { font-size: 0.9rem; font-weight: 400; color: #000; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
 
@@ -189,7 +190,7 @@
     .modal { background: #FFFFFF; padding: 2.2rem 1.5rem; width: 100%; max-width: 650px; max-height: 92vh; overflow-y: auto; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
 
-    footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; text-transform: uppercase; }
+    footer { background: #1A202C; color: var(--bg-stone); padding: 2.5rem 2rem; text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
     @media (max-width: 768px) {
       .class-row-main { flex-direction: column; align-items: flex-start; }
@@ -361,35 +362,16 @@
         <div class="strip-content text-center">
           <button class="details-toggle-btn" onclick="switchPage('home', event)">&larr; Back to Home</button>
           <h2 class="section-title" style="margin-top:1.5rem;">ABOUT NIKI</h2>
-          <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto;">Hi, I’m Niki! I am passionate about helping people move better, feel stronger, and build confidence in their bodies through tailored, accessible Pilates and soft tissue therapy.</p>
+          <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto 1.5 auto;">Hi, I’m Niki! I am passionate about helping people move better, feel stronger, and build confidence in their bodies through tailored, accessible Pilates and soft tissue therapy.</p>
           
-          <h3 style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1rem;">Qualifications & Credentials</h3>
+          <h3 style="font-size: 1.3rem; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Qualifications & Credentials</h3>
           
-          <div class="qualifications-grid">
-            <div class="qual-card">
-              <h3>Active iQ</h3>
-              <p>Active iQ in group strength training.</p>
-            </div>
-            
-            <div class="qual-card">
-              <h3>APPI Certified Pilates Instructor</h3>
-              <p>APPI certified Mat and Reformer Pilates instructor.</p>
-            </div>
-
-            <div class="qual-card">
-              <h3>Pre & Postnatal Specialist</h3>
-              <p>APPI certified Pre and Postnatal Pilates instructor.</p>
-            </div>
-
-            <div class="qual-card">
-              <h3>Sports & Remedial Massage</h3>
-              <p>Level 2 in Sports and remedial massage therapist.</p>
-            </div>
-
-            <div class="qual-card">
-              <h3>Anatomy & Physiology</h3>
-              <p>ITEC Anatomy & physiology.</p>
-            </div>
+          <div class="qualifications-list">
+            <div class="qual-item"><div class="qual-bullet"></div>Active iQ in group strength training</div>
+            <div class="qual-item"><div class="qual-bullet"></div>APPI certified Mat and Reformer Pilates instructor</div>
+            <div class="qual-item"><div class="qual-bullet"></div>APPI certified Pre and Postnatal Pilates instructor</div>
+            <div class="qual-item"><div class="qual-bullet"></div>Level 2 in Sports and remedial massage therapist</div>
+            <div class="qual-item"><div class="qual-bullet"></div>ITEC Anatomy & physiology</div>
           </div>
         </div>
       </section>
