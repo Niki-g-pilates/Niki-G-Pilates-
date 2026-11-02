@@ -328,14 +328,14 @@
               </div>
             </div>
 
-            <!-- CLASS 4 (SEPARATE SINGLE PAYG BLOCK) -->
+            <!-- CLASS 4 (SEPARATE SINGLE PAYG BLOCK WITH SELECTION DROPDOWN) -->
             <div class="class-row-card" id="row-payg" data-day="all">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">PAYG Open Pilates Session</div>
                   <div class="class-row-details">
                     <div class="class-row-time">Flexible Weekly Schedule</div>
-                    <div class="class-row-venue">Goring Methodist Church / Angmering</div>
+                    <div class="class-row-venue">Select Your Venue & Session Upon Booking</div>
                     <div class="class-row-price">£12 Single Class</div>
                   </div>
                 </div>
@@ -345,7 +345,7 @@
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go single session focusing on mobility, breathwork, and core strengthening.</p>
+                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go single session focusing on mobility, breathwork, and core strengthening. When you click 'Book', you can select which specific session you will be attending.</p>
               </div>
             </div>
 
@@ -434,6 +434,17 @@
       <form id="masterBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
         <input type="hidden" name="Class Selected" id="form-class-input">
         <input type="hidden" name="Selected Class Date" id="form-date-input">
+
+        <!-- SPECIFIC SESSION DROPDOWN (VISIBLE FOR PAYG BOOKINGS) -->
+        <div id="payg-session-selection-group" class="form-group" style="display: none;">
+          <label for="payg-specific-session">Select Specific Session & Venue *</label>
+          <select id="payg-specific-session" name="Specific Session Attending" onchange="updatePaygBanner(this.value)">
+            <option value="Tuesdays • 6:15 PM (Goring Methodist Church Hall)">Tuesday 6:15 PM — 6-Week Strength Block (Goring Methodist)</option>
+            <option value="Wednesdays • 10:00 AM (Goring Methodist Church Hall)">Wednesday 10:00 AM — Pregnancy Pilates (Goring Methodist)</option>
+            <option value="Thursdays • 9:15 AM (Goring Methodist Church Hall)">Thursday 9:15 AM — Chair Based Pilates (Goring Methodist)</option>
+            <option value="Fridays • 11:00 AM (Angmering Community Centre)">Friday 11:00 AM — Mat Pilates (Angmering Community Centre)</option>
+          </select>
+        </div>
 
         <div class="step-heading">Step 1: Choose Package Option</div>
         <div class="form-group">
@@ -604,8 +615,8 @@
       },
       'PAYG Open Pilates Session': {
         time: 'Flexible Weekly Schedule',
-        venue: 'Goring Methodist Church / Angmering',
-        description: 'Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.',
+        venue: 'Selected Class Session Below',
+        description: 'Flexible Single Drop-In Session focusing on mobility, breathwork, and core strengthening.',
         passes: [
           { label: 'PAYG Drop-In — £12', value: 'PAYG Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
         ]
@@ -621,19 +632,29 @@
       }
     };
 
+    // DYNAMIC PAYG BANNER UPDATE
+    function updatePaygBanner(sessionText) {
+      document.getElementById('form-class-input').value = 'PAYG Open Session — ' + sessionText;
+      document.getElementById('payg-banner-details').textContent = 'Selected Session: ' + sessionText;
+    }
+
     // OPEN MASTER BOOKING MODAL FOR EXACT CLASS
     function openMasterBooking(className) {
       const data = allClassData[className];
       if (!data) return;
 
-      document.getElementById('form-class-input').value = className;
+      const isPAYG = (className === 'PAYG Open Pilates Session');
+      document.getElementById('payg-session-selection-group').style.display = isPAYG ? 'block' : 'none';
+
+      document.getElementById('form-class-input').value = isPAYG ? 'PAYG Open Session — ' + document.getElementById('payg-specific-session').value : className;
       document.getElementById('form-date-input').value = new Date().toISOString().split('T')[0];
 
       // Set Banner Details in Modal
+      const dynamicDetails = isPAYG ? `<div id="payg-banner-details" style="font-weight:500; color:var(--accent-green); margin-bottom:2px;">Selected Session: ${document.getElementById('payg-specific-session').value}</div>` : `<div style="font-weight:500; color:var(--accent-green); margin-bottom:2px;">${data.time}</div><div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">${data.venue}</div>`;
+
       document.getElementById('chosen-class-banner-text').innerHTML = `
         <h4 style="font-family: var(--font-heading); font-size:1.1rem; color:var(--primary-dark); margin-bottom:2px;">${className}</h4>
-        <div style="font-weight:500; color:var(--accent-green); margin-bottom:2px;">${data.time}</div>
-        <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">${data.venue}</div>
+        ${dynamicDetails}
         <div style="font-size:0.8rem; border-top:1px solid var(--border-color); padding-top:4px; margin-top:4px;">${data.description}</div>
       `;
 
