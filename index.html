@@ -130,7 +130,12 @@
     .strip-rose { background-color: #F7EBE8; color: var(--primary-dark); }
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
     .strip-content { max-width: 850px; margin: 0 auto; }
-    .section-title { font-size: 1.7rem; font-weight: 600; text-align: center; margin-bottom: 2rem; letter-spacing: 1px; color: var(--primary-dark); }
+    .section-title { font-size: 1.7rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; letter-spacing: 1px; color: var(--primary-dark); }
+
+    /* DAY FILTER CALENDAR BAR */
+    .calendar-filter-bar { display: flex; justify-content: center; gap: 0.6rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .day-chip { background: #FFFFFF; border: 1px solid var(--border-color); padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; color: var(--primary-dark); cursor: pointer; transition: all 0.2s ease; }
+    .day-chip:hover, .day-chip.active { background: var(--primary-dark); color: #FFFFFF; border-color: var(--primary-dark); }
 
     .classes-stack { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
     .class-row-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; transition: all 0.25s ease; box-shadow: 0 1px 4px rgba(0,0,0,0.01); }
@@ -248,17 +253,26 @@
         <div class="strip-content">
           <h2 class="section-title">CLASSES AND BOOKING</h2>
 
+          <!-- CALENDAR DAY FILTER BAR -->
+          <div class="calendar-filter-bar">
+            <button class="day-chip active" onclick="filterByDay('all', this)">All Classes</button>
+            <button class="day-chip" onclick="filterByDay('tuesday', this)">Tuesday</button>
+            <button class="day-chip" onclick="filterByDay('wednesday', this)">Wednesday</button>
+            <button class="day-chip" onclick="filterByDay('thursday', this)">Thursday</button>
+            <button class="day-chip" onclick="filterByDay('friday', this)">Friday</button>
+          </div>
+
           <div class="classes-stack">
 
-            <!-- CLASS 1 -->
-            <div class="class-row-card" id="row-course">
+            <!-- CLASS 1 (TUESDAY) -->
+            <div class="class-row-card" id="row-course" data-day="tuesday">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">6-Week Pilates Strength Block</div>
                   <div class="class-row-details">
-                    <div class="class-row-time">Wednesdays • 6:30 PM (Starts 11th Nov)</div>
-                    <div class="class-row-venue">West Park Primary School, Goring-by-Sea</div>
-                    <div class="class-row-price">From £12 PAYG / £67 for 6-Week Block</div>
+                    <div class="class-row-time">Tuesdays • 6:15 PM</div>
+                    <div class="class-row-venue">Goring Methodist Church Hall, Bury Drive</div>
+                    <div class="class-row-price">1st CLASS £8.50 / £67 6-Week Block</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
@@ -271,19 +285,19 @@
               </div>
             </div>
 
-            <!-- CLASS 2 -->
-            <div class="class-row-card" id="row-goring">
+            <!-- CLASS 2 (THURSDAY) -->
+            <div class="class-row-card" id="row-chair" data-day="thursday">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">Chair Based Pilates</div>
                   <div class="class-row-details">
-                    <div class="class-row-time">Thursdays • 9:30 AM</div>
-                    <div class="class-row-venue">Goring Methodist Church Hall</div>
-                    <div class="class-row-price">From £12 PAYG / £67 for 6-Week Block</div>
+                    <div class="class-row-time">Thursdays • 9:15 AM</div>
+                    <div class="class-row-venue">Goring Methodist Church Hall, Bury Drive</div>
+                    <div class="class-row-price">1st CLASS £8.50 / £67 6-Week Block</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
-                  <button class="details-toggle-btn" onclick="toggleRow('row-goring')">Details</button>
+                  <button class="details-toggle-btn" onclick="toggleRow('row-chair')">Details</button>
                   <button class="row-book-btn" onclick="openMasterBooking('Chair Based Pilates (Goring-by-Sea)')">Book</button>
                 </div>
               </div>
@@ -293,36 +307,36 @@
               </div>
             </div>
 
-            <!-- CLASS 3 -->
-            <div class="class-row-card" id="row-angmering">
+            <!-- CLASS 3 (FRIDAY) -->
+            <div class="class-row-card" id="row-angmering" data-day="friday">
               <div class="class-row-main">
                 <div class="class-row-info">
-                  <div class="class-row-title">Gentle Mat Pilates</div>
+                  <div class="class-row-title">Mat Pilates</div>
                   <div class="class-row-details">
-                    <div class="class-row-time">Fridays • 11:00 AM (Starts 6th Nov)</div>
+                    <div class="class-row-time">Fridays • 11:00 AM</div>
                     <div class="class-row-venue">Angmering Community Centre</div>
-                    <div class="class-row-price">From £12 PAYG / £67 for 6-Week Block</div>
+                    <div class="class-row-price">1st CLASS £8.50 / £67 6-Week Block</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-angmering')">Details</button>
-                  <button class="row-book-btn" onclick="openMasterBooking('Gentle Mat Pilates (Angmering)')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('Mat Pilates (Angmering)')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <p>A gentle, restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability. Perfect for unwinding at your own pace.</p>
+                <p>A restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability. Perfect for unwinding at your own pace.</p>
               </div>
             </div>
 
-            <!-- CLASS 4 -->
-            <div class="class-row-card" id="row-payg">
+            <!-- CLASS 4 (SEPARATE SINGLE PAYG BLOCK) -->
+            <div class="class-row-card" id="row-payg" data-day="all">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">PAYG Open Pilates Session</div>
                   <div class="class-row-details">
                     <div class="class-row-time">Flexible Weekly Schedule</div>
-                    <div class="class-row-venue">West Park Primary / Goring / Angmering</div>
-                    <div class="class-row-price">£12 Drop-In</div>
+                    <div class="class-row-venue">Goring Methodist Church / Angmering</div>
+                    <div class="class-row-price">£12 Single Class</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
@@ -331,19 +345,19 @@
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.</p>
+                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go single session focusing on mobility, breathwork, and core strengthening.</p>
               </div>
             </div>
 
-            <!-- CLASS 5 -->
-            <div class="class-row-card" id="row-bumps">
+            <!-- CLASS 5 (WEDNESDAY) -->
+            <div class="class-row-card" id="row-bumps" data-day="wednesday">
               <div class="class-row-main">
                 <div class="class-row-info">
                   <div class="class-row-title">LOVELY BUMPS — Pregnancy Pilates</div>
                   <div class="class-row-details">
                     <div class="class-row-time">Wednesdays • 10:00 AM</div>
-                    <div class="class-row-venue">West Park Primary School</div>
-                    <div class="class-row-price">£12 Drop-In / £60.50 for 5-Week Block</div>
+                    <div class="class-row-venue">Goring Methodist Church Hall, Bury Drive</div>
+                    <div class="class-row-price">1st CLASS £8.50 / £60.50 5-Week Block</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
@@ -543,40 +557,54 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // CALENDAR FILTER LOGIC
+    function filterByDay(day, btn) {
+      document.querySelectorAll('.day-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.class-row-card');
+      cards.forEach(card => {
+        const cardDay = card.getAttribute('data-day');
+        if (day === 'all' || cardDay === day || cardDay === 'all') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
     // MASTER CLASS DEFINITIONS WITH DESCRIPTIONS & STRIPE LINKS
     const allClassData = {
       '6-Week Pilates Strength Block (Beginners & Improvers)': {
-        time: 'Wednesdays • 6:30 PM',
-        venue: 'West Park Primary School, Goring-by-Sea',
+        time: 'Tuesdays • 6:15 PM',
+        venue: 'Goring Methodist Church Hall, Bury Drive',
         description: 'Suitable for beginners and improvers. Ever wanted to try Pilates but don\'t know where to start? Or perhaps you\'ve practiced before and want to build confidence? This structured 6-week block guides you safely through fundamental strength techniques.',
         passes: [
-          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
-          { label: 'Pay As You Go — £12', value: 'Pay As You Go (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' },
-          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' }
+          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
+          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
         ]
       },
       'Chair Based Pilates (Goring-by-Sea)': {
-        time: 'Thursdays • 9:30 AM',
-        venue: 'Goring Methodist Church Hall',
+        time: 'Thursdays • 9:15 AM',
+        venue: 'Goring Methodist Church Hall, Bury Drive',
         description: 'Chair-based Pilates is a lovely way to keep moving, build strength and improve flexibility and balance, using a combination of seated and supported standing exercises.',
         passes: [
-          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
-          { label: 'Pay As You Go — £12', value: 'Pay As You Go (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
+          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
+          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
         ]
       },
-      'Gentle Mat Pilates (Angmering)': {
+      'Mat Pilates (Angmering)': {
         time: 'Fridays • 11:00 AM',
         venue: 'Angmering Community Centre',
-        description: 'A gentle, restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability. Perfect for unwinding at your own pace.',
+        description: 'A restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability. Perfect for unwinding at your own pace.',
         passes: [
-          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' },
-          { label: 'Pay As You Go — £12', value: 'Pay As You Go (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' },
-          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' }
+          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
+          { label: '6-Week Block — £67 (Valid for 2 months)', value: '6-Week Block (£67 - Valid for 2 months)', stripeUrl: 'https://buy.stripe.com/6oU9AVc5Tdyo9ar4Yk7N60e' }
         ]
       },
       'PAYG Open Pilates Session': {
         time: 'Flexible Weekly Schedule',
-        venue: 'West Park Primary / Goring / Angmering',
+        venue: 'Goring Methodist Church / Angmering',
         description: 'Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go session focusing on mobility, breathwork, and core strengthening.',
         passes: [
           { label: 'PAYG Drop-In — £12', value: 'PAYG Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
@@ -584,10 +612,10 @@
       },
       'LOVELY BUMPS — Pregnancy Pilates': {
         time: 'Wednesdays • 10:00 AM',
-        venue: 'West Park Primary School',
+        venue: 'Goring Methodist Church Hall, Bury Drive',
         description: 'Suitable for all pregnancy stages. Gentle Pilates to strengthen core muscles and build stamina for birth and beyond.',
         passes: [
-          { label: 'Drop-In — £12', value: 'Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' },
+          { label: 'Introductory Offer — £8.50', value: 'Introductory Offer (£8.50)', stripeUrl: 'https://buy.stripe.com/aFa3cxee1gKA4Ub2Qc7N607' },
           { label: '5-Week Block — £60.50', value: '5-Week Block (£60.50)', stripeUrl: 'https://buy.stripe.com/14A3cx3zn3XO9ar0I47N606' }
         ]
       }
