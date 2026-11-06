@@ -131,13 +131,14 @@
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
     .strip-content { max-width: 850px; margin: 0 auto; }
     .section-title { font-size: 1.7rem; font-weight: 600; text-align: center; margin-bottom: 1rem; letter-spacing: 1px; color: var(--primary-dark); }
-    
+    .subsection-title { font-size: 1.3rem; font-weight: 600; text-align: center; margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 1px; }
+
     /* PLAIN TEXT SCHEDULE INTRO */
     .schedule-text-intro {
       text-align: center;
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       font-weight: 300;
       line-height: 1.7;
       max-width: 720px;
@@ -156,7 +157,8 @@
     .badge-popular { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-rose); color: white; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.8rem; border-radius: 12px; }
     .membership-name { font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 0.5rem; }
     .membership-price { font-size: 1.8rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.2rem; }
-    .membership-cycle { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.2rem; }
+    .membership-cycle { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem; }
+    .membership-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.5; font-weight: 300; }
     .membership-features { list-style: none; margin-bottom: 1.5rem; font-size: 0.88rem; color: var(--text-dark); text-align: left; }
     .membership-features li { padding: 0.4rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.5rem; }
     .membership-features li:last-child { border-bottom: none; }
@@ -256,22 +258,29 @@
         <div class="strip-content">
           <h2 class="section-title">CLASSES AND BOOKING</h2>
           
-          <!-- PLAIN TEXT SCHEDULE EXPLANATION BEFORE BOOKING OPTIONS -->
+          <h3 class="subsection-title">My Weekly Class Schedule & Venues</h3>
+          
+          <!-- SEPARATE SCHEDULE PARAGRAPH USING "I" -->
           <div class="schedule-text-intro">
-            We run weekly 50-minute All Levels Pilates & Strength classes across our local venues. Join us on <strong>Tuesdays at 6:15 PM</strong> or <strong>Thursdays at 9:15 AM</strong> at Goring Methodist Church Hall (Bury Drive), or on <strong>Fridays at 11:00 AM</strong> at Angmering Community Centre. We also host <strong>Pregnancy Pilates on Wednesdays at 10:00 AM</strong> at Goring Methodist Church Hall. 
-            <br><br>
-            Choose your preferred course or monthly membership option below to get started.
+            I run weekly 50-minute All Levels Pilates & Strength classes across local venues. You can join me on <strong>Tuesdays at 6:15 PM</strong> or <strong>Thursdays at 9:15 AM</strong> at Goring Methodist Church Hall (Bury Drive), or on <strong>Fridays at 11:00 AM</strong> at Angmering Community Centre. I also run <strong>Pregnancy Pilates on Wednesdays at 10:00 AM</strong> at Goring Methodist Church Hall.
           </div>
+
+          <h3 class="subsection-title">Select Your Package</h3>
 
           <!-- MEMBERSHIPS & COURSE OPTIONS GRID -->
           <div class="membership-grid">
             
-            <!-- 5-WEEK INTRODUCTORY COURSE (FIRST) -->
+            <!-- 5-WEEK INTRODUCTORY COURSE (FIRST WITH DETAILED INTRO TEXT) -->
             <div class="membership-card featured">
               <div class="badge-popular">Ideal Starter</div>
-              <div class="membership-name">5-Week Intro Pilates & Strength</div>
+              <div class="membership-name">5-Week Intro Pilates & Strength Block</div>
               <div class="membership-price">£55</div>
               <div class="membership-cycle">5 Consecutive Weeks (Upfront)</div>
+              
+              <div class="membership-desc">
+                Suitable for beginners and improvers. Ever wanted to try Pilates but don't know where to start? Or perhaps you've practiced before and want to build confidence? This structured 5-week block guides you safely through fundamental strength techniques.
+              </div>
+
               <ul class="membership-features">
                 <li>Five 50-minute classes</li>
                 <li>One class per week</li>
@@ -286,6 +295,11 @@
               <div class="membership-name">Essential Membership</div>
               <div class="membership-price">£44</div>
               <div class="membership-cycle">4 Classes / Month (Recurring)</div>
+              
+              <div class="membership-desc">
+                Ideal for regular attendees wanting to secure a permanent weekly space with seamless monthly billing.
+              </div>
+
               <ul class="membership-features">
                 <li>1 class per week</li>
                 <li>Reserved regular weekly spot</li>
@@ -300,6 +314,11 @@
               <div class="membership-name">8-Week Membership</div>
               <div class="membership-price">£80</div>
               <div class="membership-cycle">Extended Block (Upfront)</div>
+              
+              <div class="membership-desc">
+                Secure your weekly place over an extended 8-week period at a great value rate.
+              </div>
+
               <ul class="membership-features">
                 <li>8 weeks of regular classes</li>
                 <li>Secured weekly space</li>
@@ -314,6 +333,11 @@
               <div class="membership-name">PAYG Drop-In</div>
               <div class="membership-price">£12</div>
               <div class="membership-cycle">Single Class</div>
+              
+              <div class="membership-desc">
+                Single drop-in session for ultimate flexibility around busy schedules.
+              </div>
+
               <ul class="membership-features">
                 <li>Flexible single session access</li>
                 <li>Ideal for irregular schedules</li>
