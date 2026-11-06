@@ -130,8 +130,8 @@
     .strip-rose { background-color: #F7EBE8; color: var(--primary-dark); }
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
     .strip-content { max-width: 850px; margin: 0 auto; }
-    .section-title { font-size: 1.7rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; letter-spacing: 1px; color: var(--primary-dark); }
-    .section-subtitle { text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-top: -1rem; margin-bottom: 2rem; font-weight: 300; }
+    .section-title { font-size: 1.7rem; font-weight: 600; text-align: center; margin-bottom: 1rem; letter-spacing: 1px; color: var(--primary-dark); }
+    .section-subtitle { text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; font-weight: 300; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 
     /* MEMBERSHIPS GRID */
     .membership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
@@ -283,7 +283,7 @@
                 <li>Develop Pilates confidence</li>
                 <li>Choice of Goring or Angmering</li>
               </ul>
-              <button class="row-book-btn" onclick="openMasterBooking('5-Week Introductory Pilates & Strength Course')">Book Course</button>
+              <button class="row-book-btn" onclick="openMasterBooking('5-Week Introductory Pilates & Strength Course')">Details / Booking</button>
             </div>
 
             <!-- ESSENTIAL MEMBERSHIP -->
@@ -297,7 +297,7 @@
                 <li>Flexible venue options</li>
                 <li>Convenient monthly auto-renew</li>
               </ul>
-              <button class="row-book-btn" onclick="openMasterBooking('Essential Monthly Membership')">Join Membership</button>
+              <button class="row-book-btn" onclick="openMasterBooking('Essential Monthly Membership')">Details / Booking</button>
             </div>
 
             <!-- 8-WEEK EXTENDED MEMBERSHIP -->
@@ -311,7 +311,7 @@
                 <li>Great value commitment</li>
                 <li>Choice of venue</li>
               </ul>
-              <button class="row-book-btn" onclick="openMasterBooking('8-Week Extended Membership')">Book 8 Weeks</button>
+              <button class="row-book-btn" onclick="openMasterBooking('8-Week Extended Membership')">Details / Booking</button>
             </div>
 
           </div>
@@ -321,8 +321,9 @@
       <!-- CLASSES & SCHEDULE -->
       <section class="section-strip strip-stone">
         <div class="strip-content">
-          <h2 class="section-title">WEEKLY CLASSES AND SCHEDULE</h2>
-          <p class="section-subtitle">50-minute All Levels Pilates & Strength classes in Goring and Angmering.</p>
+          <h2 class="section-title">CLASSES AND BOOKING</h2>
+          <!-- INTRO TEXT ADDED BELOW HEADING BEFORE BLOCKS -->
+          <p class="section-subtitle">Browse our weekly schedule below to view session details, select your venue, and reserve your place.</p>
 
           <!-- CALENDAR DAY FILTER BAR -->
           <div class="calendar-filter-bar">
@@ -348,7 +349,7 @@
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-tuesday')">Details</button>
-                  <button class="row-book-btn" onclick="openMasterBooking('Goring Tuesday Pilates & Strength')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('Goring Tuesday Pilates & Strength')">Details / Booking</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
@@ -369,7 +370,7 @@
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-thursday')">Details</button>
-                  <button class="row-book-btn" onclick="openMasterBooking('Goring Thursday Pilates & Strength')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('Goring Thursday Pilates & Strength')">Details / Booking</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
@@ -390,7 +391,7 @@
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-angmering')">Details</button>
-                  <button class="row-book-btn" onclick="openMasterBooking('Angmering Mat Pilates')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('Angmering Mat Pilates')">Details / Booking</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
@@ -411,11 +412,11 @@
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-payg')">Details</button>
-                  <button class="row-book-btn" onclick="openMasterBooking('PAYG Open Session')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('PAYG Open Session')">Details / Booking</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go single session focusing on mobility, breathwork, and core strengthening. When you click 'Book', you can select which specific session and venue you will be attending.</p>
+                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go single session focusing on mobility, breathwork, and core strengthening. When you click 'Details / Booking', you can select which specific session and venue you will be attending.</p>
               </div>
             </div>
 
@@ -433,7 +434,7 @@
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-bumps')">Details</button>
                   <button class="row-book-btn row-waitlist-btn" onclick="openWaitlist()">Waitlist</button>
-                  <button class="row-book-btn" onclick="openMasterBooking('LOVELY BUMPS — Pregnancy Pilates')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('LOVELY BUMPS — Pregnancy Pilates')">Details / Booking</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
