@@ -134,7 +134,7 @@
     .section-subtitle { text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-top: -1rem; margin-bottom: 2rem; font-weight: 300; }
 
     /* MEMBERSHIPS GRID */
-    .membership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .membership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
     .membership-card { background: #FFFFFF; border: 2px solid var(--border-color); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
     .membership-card.featured { border-color: var(--primary-rose); box-shadow: 0 4px 20px rgba(201, 157, 151, 0.2); }
     .badge-popular { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-rose); color: white; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.8rem; border-radius: 12px; }
@@ -262,43 +262,56 @@
         </div>
       </section>
 
-      <!-- MONTHLY MEMBERSHIPS SECTION -->
+      <!-- MEMBERSHIPS & INTRO COURSE SECTION -->
       <section class="section-strip strip-white">
         <div class="strip-content">
-          <h2 class="section-title">MONTHLY MEMBERSHIPS</h2>
-          <p class="section-subtitle">Become a regular member to secure your weekly spot and build long-term strength.</p>
+          <h2 class="section-title">COURSES & MONTHLY MEMBERSHIPS</h2>
+          <p class="section-subtitle">Choose our 5-week introductory course or commit to ongoing strength with monthly memberships.</p>
 
           <div class="membership-grid">
             
-            <!-- ESSENTIAL MEMBERSHIP -->
+            <!-- 5-WEEK INTRODUCTORY COURSE (LISTED FIRST) -->
             <div class="membership-card featured">
-              <div class="badge-popular">Best Value</div>
+              <div class="badge-popular">Ideal Starter</div>
+              <div class="membership-name">5-Week Intro Pilates & Strength</div>
+              <div class="membership-price">£55</div>
+              <div class="membership-cycle">5 Consecutive Weeks (Upfront)</div>
+              <ul class="membership-features">
+                <li>Five 50-minute classes</li>
+                <li>One class per week</li>
+                <li>Build strength & mobility</li>
+                <li>Develop Pilates confidence</li>
+                <li>Choice of Goring or Angmering</li>
+              </ul>
+              <button class="row-book-btn" onclick="openMasterBooking('5-Week Introductory Pilates & Strength Course')">Book Course</button>
+            </div>
+
+            <!-- ESSENTIAL MEMBERSHIP -->
+            <div class="membership-card">
               <div class="membership-name">Essential Membership</div>
               <div class="membership-price">£44</div>
-              <div class="membership-cycle">per month (Recurring)</div>
+              <div class="membership-cycle">4 Classes / Month (Recurring)</div>
               <ul class="membership-features">
-                <li>4 classes per month</li>
                 <li>1 class per week</li>
-                <li>Reserved regular weekly place</li>
-                <li>Flexible schedule options</li>
+                <li>Reserved regular weekly spot</li>
+                <li>Flexible venue options</li>
                 <li>Convenient monthly auto-renew</li>
               </ul>
               <button class="row-book-btn" onclick="openMasterBooking('Essential Monthly Membership')">Join Membership</button>
             </div>
 
-            <!-- 5-WEEK INTRODUCTORY COURSE -->
+            <!-- 8-WEEK EXTENDED MEMBERSHIP -->
             <div class="membership-card">
-              <div class="membership-name">5-Week Intro Course</div>
-              <div class="membership-price">£55</div>
-              <div class="membership-cycle">Upfront Payment</div>
+              <div class="membership-name">8-Week Membership</div>
+              <div class="membership-price">£80</div>
+              <div class="membership-cycle">Extended Block (Upfront)</div>
               <ul class="membership-features">
-                <li>5 consecutive 50-minute classes</li>
-                <li>1 class per week</li>
-                <li>Ideal intro for beginners</li>
-                <li>Build strength & mobility</li>
-                <li>Develop Pilates confidence</li>
+                <li>8 weeks of regular classes</li>
+                <li>Secured weekly space</li>
+                <li>Great value commitment</li>
+                <li>Choice of venue</li>
               </ul>
-              <button class="row-book-btn" onclick="openMasterBooking('5-Week Introductory Pilates & Strength Course')">Book Course</button>
+              <button class="row-book-btn" onclick="openMasterBooking('8-Week Extended Membership')">Book 8 Weeks</button>
             </div>
 
           </div>
@@ -330,7 +343,7 @@
                   <div class="class-row-details">
                     <div class="class-row-time">Tuesdays • 6:15 PM (50 Mins)</div>
                     <div class="class-row-venue">Goring Methodist Church Hall, Bury Drive</div>
-                    <div class="class-row-price">All Levels • Memberships & 5-Wk Course</div>
+                    <div class="class-row-price">All Levels • Memberships & 5-Week Course Available</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
@@ -351,7 +364,7 @@
                   <div class="class-row-details">
                     <div class="class-row-time">Thursdays • 9:15 AM (50 Mins)</div>
                     <div class="class-row-venue">Goring Methodist Church Hall, Bury Drive</div>
-                    <div class="class-row-price">All Levels • Memberships & 5-Wk Course</div>
+                    <div class="class-row-price">All Levels • Memberships & 5-Week Course Available</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
@@ -368,24 +381,24 @@
             <div class="class-row-card" id="row-angmering" data-day="friday">
               <div class="class-row-main">
                 <div class="class-row-info">
-                  <div class="class-row-title">Mat Pilates</div>
+                  <div class="class-row-title">Angmering Mat Pilates</div>
                   <div class="class-row-details">
-                    <div class="class-row-time">Fridays • 11:00 AM</div>
+                    <div class="class-row-time">Fridays • 11:00 AM (50 Mins)</div>
                     <div class="class-row-venue">Angmering Community Centre</div>
-                    <div class="class-row-price">5-Week Course £55 / Membership £44/mo</div>
+                    <div class="class-row-price">All Levels • Memberships & 5-Week Course Available</div>
                   </div>
                 </div>
                 <div class="class-row-actions">
                   <button class="details-toggle-btn" onclick="toggleRow('row-angmering')">Details</button>
-                  <button class="row-book-btn" onclick="openMasterBooking('Mat Pilates (Angmering)')">Book</button>
+                  <button class="row-book-btn" onclick="openMasterBooking('Angmering Mat Pilates')">Book</button>
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <p>A restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability. Perfect for unwinding at your own pace.</p>
+                <p>A restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability. Perfect for unwinding at your own pace in Angmering.</p>
               </div>
             </div>
 
-            <!-- CLASS 4 (SEPARATE SINGLE PAYG BLOCK WITH SELECTION DROPDOWN) -->
+            <!-- CLASS 4 (PAYG OPEN SESSION) -->
             <div class="class-row-card" id="row-payg" data-day="all">
               <div class="class-row-main">
                 <div class="class-row-info">
@@ -402,7 +415,7 @@
                 </div>
               </div>
               <div class="class-row-dropdown">
-                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go single session focusing on mobility, breathwork, and core strengthening. When you click 'Book', you can select which specific session you will be attending.</p>
+                <p>Suitable for beginners and improvers. Enjoy a flexible Pay-As-You-Go single session focusing on mobility, breathwork, and core strengthening. When you click 'Book', you can select which specific session and venue you will be attending.</p>
               </div>
             </div>
 
@@ -490,17 +503,20 @@
 
       <form id="masterBookingForm" action="https://formspree.io/f/xnpaqban" method="POST" novalidate>
         <input type="hidden" name="Class Selected" id="form-class-input">
-        <input type="hidden" name="Selected Class Date" id="form-date-input">
 
-        <!-- SPECIFIC SESSION DROPDOWN (VISIBLE FOR PAYG BOOKINGS) -->
-        <div id="payg-session-selection-group" class="form-group" style="display: none;">
-          <label for="payg-specific-session">Select Specific Session & Venue *</label>
-          <select id="payg-specific-session" name="Specific Session Attending" onchange="updatePaygBanner(this.value)">
-            <option value="Tuesdays • 6:15 PM (Goring Methodist Church Hall)">Tuesday 6:15 PM — Pilates & Strength (Goring Methodist)</option>
-            <option value="Wednesdays • 10:00 AM (Goring Methodist Church Hall)">Wednesday 10:00 AM — Pregnancy Pilates (Goring Methodist)</option>
-            <option value="Thursdays • 9:15 AM (Goring Methodist Church Hall)">Thursday 9:15 AM — Pilates & Strength (Goring Methodist)</option>
-            <option value="Fridays • 11:00 AM (Angmering Community Centre)">Friday 11:00 AM — Mat Pilates (Angmering Community Centre)</option>
+        <!-- VENUE SELECTION DROPDOWN -->
+        <div class="form-group">
+          <label for="booking-venue">Select Venue *</label>
+          <select id="booking-venue" name="Preferred Venue" required>
+            <option value="Goring Methodist Church Hall, Bury Drive">Goring Methodist Church Hall, Bury Drive</option>
+            <option value="Angmering Community Centre">Angmering Community Centre</option>
           </select>
+        </div>
+
+        <!-- CALENDAR DATE PICKER -->
+        <div class="form-group">
+          <label for="booking-start-date">Select Start Date / First Class Date *</label>
+          <input type="date" id="booking-start-date" name="Selected Start Date" required>
         </div>
 
         <div class="step-heading">Step 1: Choose Package Option</div>
@@ -643,49 +659,60 @@
 
     // MASTER CLASS DEFINITIONS WITH DESCRIPTIONS & STRIPE LINKS
     const allClassData = {
+      '5-Week Introductory Pilates & Strength Course': {
+        time: '5 Consecutive Weekly Classes (50 Mins Each)',
+        venue: 'Goring or Angmering',
+        description: 'An ideal introduction for anyone wanting to build strength, improve mobility and develop confidence with Pilates. Includes five 50-minute classes (one per week).',
+        passes: [
+          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
+        ]
+      },
       'Essential Monthly Membership': {
         time: '4 Classes per Month (1 per Week)',
-        venue: 'Goring Methodist Church Hall / Angmering',
+        venue: 'Goring or Angmering',
         description: 'Monthly recurring membership reserving your regular weekly spot. Ideal for maintaining ongoing physical strength and consistency.',
         passes: [
           { label: 'Essential Membership — £44/month (Recurring)', value: 'Essential Membership (£44/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' }
         ]
       },
-      '5-Week Introductory Pilates & Strength Course': {
-        time: '1 Class per Week for 5 Consecutive Weeks',
-        venue: 'Goring Methodist Church Hall, Bury Drive',
-        description: 'An ideal introduction for anyone wanting to build strength, improve mobility, and develop confidence with Pilates. Includes five 50-minute consecutive weekly classes.',
+      '8-Week Extended Membership': {
+        time: '8 Weeks of Classes',
+        venue: 'Goring or Angmering',
+        description: 'Extended regular membership package ensuring your spot is secured across 8 weeks.',
         passes: [
-          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
+          { label: '8-Week Membership — £80 (Upfront)', value: '8-Week Membership (£80)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
         ]
       },
       'Goring Tuesday Pilates & Strength': {
         time: 'Tuesdays • 6:15 PM (50 Mins)',
         venue: 'Goring Methodist Church Hall, Bury Drive',
-        description: '50-minute All Levels Pilates & Strength class designed to build functional core strength, improve flexibility, and enhance overall joint mobility.',
+        description: 'A 50-minute All Levels Pilates & Strength class designed to help you move well, release tension, and build functional core stability.',
         passes: [
+          { label: '5-Week Intro Course — £55', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
           { label: 'Essential Membership — £44/month (Recurring)', value: 'Essential Membership (£44/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' },
-          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
+          { label: '8-Week Membership — £80', value: '8-Week Membership (£80)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
           { label: 'PAYG Drop-In — £12', value: 'PAYG Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
         ]
       },
       'Goring Thursday Pilates & Strength': {
         time: 'Thursdays • 9:15 AM (50 Mins)',
         venue: 'Goring Methodist Church Hall, Bury Drive',
-        description: '50-minute All Levels Pilates & Strength session focusing on posture, joint mobility, and targeted muscle activation.',
+        description: 'A 50-minute All Levels Pilates & Strength session focusing on posture, joint mobility, and targeted muscle activation.',
         passes: [
+          { label: '5-Week Intro Course — £55', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
           { label: 'Essential Membership — £44/month (Recurring)', value: 'Essential Membership (£44/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' },
-          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
+          { label: '8-Week Membership — £80', value: '8-Week Membership (£80)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
           { label: 'PAYG Drop-In — £12', value: 'PAYG Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
         ]
       },
-      'Mat Pilates (Angmering)': {
-        time: 'Fridays • 11:00 AM',
+      'Angmering Mat Pilates': {
+        time: 'Fridays • 11:00 AM (50 Mins)',
         venue: 'Angmering Community Centre',
         description: 'A restorative mat session focusing on slow, controlled movements to release muscle tension, improve joint alignment, and build core stability.',
         passes: [
+          { label: '5-Week Intro Course — £55', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
           { label: 'Essential Membership — £44/month (Recurring)', value: 'Essential Membership (£44/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' },
-          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
+          { label: '8-Week Membership — £80', value: '8-Week Membership (£80)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' },
           { label: 'PAYG Drop-In — £12', value: 'PAYG Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
         ]
       },
@@ -708,29 +735,18 @@
       }
     };
 
-    // DYNAMIC PAYG BANNER UPDATE
-    function updatePaygBanner(sessionText) {
-      document.getElementById('form-class-input').value = 'PAYG Open Session — ' + sessionText;
-      document.getElementById('payg-banner-details').textContent = 'Selected Session: ' + sessionText;
-    }
-
     // OPEN MASTER BOOKING MODAL FOR EXACT CLASS
     function openMasterBooking(className) {
       const data = allClassData[className];
       if (!data) return;
 
-      const isPAYG = (className === 'PAYG Open Session');
-      document.getElementById('payg-session-selection-group').style.display = isPAYG ? 'block' : 'none';
-
-      document.getElementById('form-class-input').value = isPAYG ? 'PAYG Open Session — ' + document.getElementById('payg-specific-session').value : className;
-      document.getElementById('form-date-input').value = new Date().toISOString().split('T')[0];
+      document.getElementById('form-class-input').value = className;
+      document.getElementById('booking-start-date').value = new Date().toISOString().split('T')[0];
 
       // Set Banner Details in Modal
-      const dynamicDetails = isPAYG ? `<div id="payg-banner-details" style="font-weight:500; color:var(--accent-green); margin-bottom:2px;">Selected Session: ${document.getElementById('payg-specific-session').value}</div>` : `<div style="font-weight:500; color:var(--accent-green); margin-bottom:2px;">${data.time}</div><div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">${data.venue}</div>`;
-
       document.getElementById('chosen-class-banner-text').innerHTML = `
         <h4 style="font-family: var(--font-heading); font-size:1.1rem; color:var(--primary-dark); margin-bottom:2px;">${className}</h4>
-        ${dynamicDetails}
+        <div style="font-weight:500; color:var(--accent-green); margin-bottom:2px;">${data.time}</div>
         <div style="font-size:0.8rem; border-top:1px solid var(--border-color); padding-top:4px; margin-top:4px;">${data.description}</div>
       `;
 
