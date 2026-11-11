@@ -130,7 +130,18 @@
     .strip-rose { background-color: #F7EBE8; color: var(--primary-dark); }
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
     .strip-content { max-width: 850px; margin: 0 auto; }
-    .section-title { font-size: 1.7rem; font-weight: 600; text-align: center; margin-bottom: 1rem; letter-spacing: 1px; color: var(--primary-dark); }
+    
+    /* FORCED SINGLE LINE HEADING */
+    .section-title { 
+      font-size: 1.7rem; 
+      font-weight: 600; 
+      text-align: center; 
+      margin-bottom: 1.2rem; 
+      letter-spacing: 1px; 
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+
     .subsection-title { font-size: 1.3rem; font-weight: 600; text-align: center; margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 1px; }
 
     /* SCHEDULE TEXT INTRO */
@@ -140,14 +151,14 @@
       font-size: 0.95rem;
       margin-bottom: 2rem;
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.8;
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
     }
-    .schedule-text-intro strong {
+    .schedule-text-intro .bold-schedule {
       color: var(--primary-dark);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* CENTERED JOURNEY SECTION */
@@ -239,6 +250,10 @@
     .close-btn { position: absolute; top: 0.8rem; right: 1rem; font-size: 1.6rem; background: none; border: none; cursor: pointer; color: var(--text-muted); }
 
     footer { background: var(--primary-dark); color: #A0AEC0; padding: 2rem; text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; }
+
+    @media (max-width: 480px) {
+      .section-title { font-size: 1.35rem; }
+    }
   </style>
 </head>
 <body>
@@ -287,13 +302,12 @@
       <!-- CLASSES & BOOKING MAIN SECTION -->
       <section class="section-strip strip-stone">
         <div class="strip-content">
+          <!-- FORCED SINGLE LINE HEADING -->
           <h2 class="section-title">CLASSES AND BOOKING</h2>
           
-          <h3 class="subsection-title">My Weekly Class Schedule & Venues</h3>
-          
           <div class="schedule-text-intro">
-            Pilates & Strength, Tuesdays at 6:15 PM or Thursdays at 9:15 AM at Goring Methodist Church Hall (Bury Drive).<br><br>
-            Pilates Fridays at 11:00 AM at Angmering Community Centre.
+            <span class="bold-schedule">Pilates & Strength, Tuesdays at 6:15 PM or Thursdays at 9:15 AM at Goring Methodist Church Hall (Bury Drive).</span><br><br>
+            <span class="bold-schedule">Pilates Fridays at 11:00 AM at Angmering Community Centre.</span>
           </div>
 
           <!-- CENTERED JOURNEY SECTION -->
@@ -309,11 +323,11 @@
           <!-- MEMBERSHIPS & COURSE OPTIONS GRID -->
           <div class="membership-grid">
             
-            <!-- 5-WEEK INTRODUCTORY COURSE (FIRST) -->
+            <!-- 5-WEEK INTRODUCTORY COURSE (UPDATED TO £55.50) -->
             <div class="membership-card featured">
               <div class="badge-popular">Ideal Starter</div>
               <div class="membership-name">5-Week Intro Pilates & Strength</div>
-              <div class="membership-price">£55</div>
+              <div class="membership-price">£55.50</div>
               <div class="membership-cycle">5 Consecutive Weeks (Upfront)</div>
               <ul class="membership-features">
                 <li>Five 50-minute classes</li>
@@ -324,10 +338,10 @@
               <button class="row-book-btn" onclick="openMasterBooking('5-Week Introductory Pilates & Strength Course')">Details / Booking</button>
             </div>
 
-            <!-- ESSENTIAL MEMBERSHIP -->
+            <!-- ESSENTIAL MEMBERSHIP (UPDATED TO £45.50) -->
             <div class="membership-card">
               <div class="membership-name">Essential Membership</div>
-              <div class="membership-price">£44</div>
+              <div class="membership-price">£45.50</div>
               <div class="membership-cycle">4 Classes / Month (Recurring)</div>
               <ul class="membership-features">
                 <li>1 class per week</li>
@@ -555,14 +569,14 @@
         time: '5 Consecutive Weekly Classes (50 Mins Each)',
         description: 'An ideal introduction for anyone wanting to build strength, improve mobility and develop confidence with Pilates. Includes five 50-minute classes (one per week).',
         passes: [
-          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
+          { label: '5-Week Intro Course — £55.50 (Upfront)', value: '5-Week Intro Course (£55.50)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
         ]
       },
       'Essential Monthly Membership': {
         time: '4 Classes per Month (1 per Week)',
         description: 'Monthly recurring membership reserving your regular weekly spot. Ideal for maintaining ongoing physical strength and consistency.',
         passes: [
-          { label: 'Essential Membership — £44/month (Recurring)', value: 'Essential Membership (£44/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' }
+          { label: 'Essential Membership — £45.50/month (Recurring)', value: 'Essential Membership (£45.50/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' }
         ]
       },
       '8-Week Extended Membership': {
