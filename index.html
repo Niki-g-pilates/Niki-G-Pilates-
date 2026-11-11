@@ -131,7 +131,6 @@
     .strip-dark { background-color: var(--primary-dark); color: var(--text-light); }
     .strip-content { max-width: 850px; margin: 0 auto; }
     
-    /* FORCED SINGLE LINE HEADING */
     .section-title { 
       font-size: 1.7rem; 
       font-weight: 600; 
@@ -144,21 +143,24 @@
 
     .subsection-title { font-size: 1.3rem; font-weight: 600; text-align: center; margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 1px; }
 
-    /* SCHEDULE TEXT INTRO */
-    .schedule-text-intro {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      font-weight: 300;
-      line-height: 1.8;
+    /* SCHEDULE ITEM LIST FORMAT */
+    .schedule-list-container {
       max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 2rem auto;
+      text-align: center;
     }
-    .schedule-text-intro .bold-schedule {
-      color: var(--primary-dark);
+    .schedule-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .schedule-list li {
+      font-size: 0.95rem;
       font-weight: 600;
+      color: var(--primary-dark);
+      line-height: 1.5;
     }
 
     /* CENTERED JOURNEY SECTION */
@@ -302,12 +304,15 @@
       <!-- CLASSES & BOOKING MAIN SECTION -->
       <section class="section-strip strip-stone">
         <div class="strip-content">
-          <!-- FORCED SINGLE LINE HEADING -->
           <h2 class="section-title">CLASSES AND BOOKING</h2>
           
-          <div class="schedule-text-intro">
-            <span class="bold-schedule">Pilates & Strength, Tuesdays at 6:15 PM or Thursdays at 9:15 AM at Goring Methodist Church Hall (Bury Drive).</span><br><br>
-            <span class="bold-schedule">Pilates Fridays at 11:00 AM at Angmering Community Centre.</span>
+          <!-- ITEMISED SCHEDULE LIST -->
+          <div class="schedule-list-container">
+            <ul class="schedule-list">
+              <li>Pilates & Strength — Tuesdays at 6:15 PM at Goring Methodist Church Hall (Bury Drive)</li>
+              <li>Pilates — Thursdays at 9:15 AM at Goring Methodist Church Hall (Bury Drive)</li>
+              <li>Pilates — Fridays at 11:00 AM at Angmering Community Centre</li>
+            </ul>
           </div>
 
           <!-- CENTERED JOURNEY SECTION -->
@@ -323,11 +328,11 @@
           <!-- MEMBERSHIPS & COURSE OPTIONS GRID -->
           <div class="membership-grid">
             
-            <!-- 5-WEEK INTRODUCTORY COURSE (UPDATED TO £55.50) -->
+            <!-- 5-WEEK INTRODUCTORY COURSE (£55) -->
             <div class="membership-card featured">
               <div class="badge-popular">Ideal Starter</div>
               <div class="membership-name">5-Week Intro Pilates & Strength</div>
-              <div class="membership-price">£55.50</div>
+              <div class="membership-price">£55</div>
               <div class="membership-cycle">5 Consecutive Weeks (Upfront)</div>
               <ul class="membership-features">
                 <li>Five 50-minute classes</li>
@@ -338,10 +343,10 @@
               <button class="row-book-btn" onclick="openMasterBooking('5-Week Introductory Pilates & Strength Course')">Details / Booking</button>
             </div>
 
-            <!-- ESSENTIAL MEMBERSHIP (UPDATED TO £45.50) -->
+            <!-- ESSENTIAL MEMBERSHIP (£45) -->
             <div class="membership-card">
               <div class="membership-name">Essential Membership</div>
-              <div class="membership-price">£45.50</div>
+              <div class="membership-price">£45</div>
               <div class="membership-cycle">4 Classes / Month (Recurring)</div>
               <ul class="membership-features">
                 <li>1 class per week</li>
@@ -352,15 +357,15 @@
               <button class="row-book-btn" onclick="openMasterBooking('Essential Monthly Membership')">Details / Booking</button>
             </div>
 
-            <!-- 8-WEEK EXTENDED MEMBERSHIP -->
+            <!-- 8-WEEK EXTENDED MEMBERSHIP (£88 VALID 10 WEEKS) -->
             <div class="membership-card">
               <div class="membership-name">8-Week Membership</div>
-              <div class="membership-price">£80</div>
-              <div class="membership-cycle">Extended Block (Upfront)</div>
+              <div class="membership-price">£88</div>
+              <div class="membership-cycle">8 Classes (Valid 10 Weeks)</div>
               <ul class="membership-features">
-                <li>8 weeks of regular classes</li>
+                <li>8 classes to use over 10 weeks</li>
                 <li>Secured weekly space</li>
-                <li>Great value commitment</li>
+                <li>Added flexibility for missed weeks</li>
                 <li>Choice of venue</li>
               </ul>
               <button class="row-book-btn" onclick="openMasterBooking('8-Week Extended Membership')">Details / Booking</button>
@@ -447,9 +452,9 @@
         <div class="form-group">
           <label for="booking-venue">Select Venue & Session Time *</label>
           <select id="booking-venue" name="Preferred Venue and Time" required>
-            <option value="Goring Tuesday 6:15 PM (Methodist Church Hall)">Goring Methodist Church Hall — Tuesdays at 6:15 PM</option>
-            <option value="Goring Thursday 9:15 AM (Methodist Church Hall)">Goring Methodist Church Hall — Thursdays at 9:15 AM</option>
-            <option value="Angmering Friday 11:00 AM (Community Centre)">Angmering Community Centre — Fridays at 11:00 AM</option>
+            <option value="Goring Tuesday 6:15 PM (Methodist Church Hall)">Goring Methodist Church Hall — Tuesdays at 6:15 PM (Pilates & Strength)</option>
+            <option value="Goring Thursday 9:15 AM (Methodist Church Hall)">Goring Methodist Church Hall — Thursdays at 9:15 AM (Pilates)</option>
+            <option value="Angmering Friday 11:00 AM (Community Centre)">Angmering Community Centre — Fridays at 11:00 AM (Pilates)</option>
             <option value="Goring Wednesday 10:00 AM (Pregnancy Pilates)">Goring Methodist Church Hall — Wednesdays at 10:00 AM (Pregnancy)</option>
           </select>
         </div>
@@ -569,21 +574,21 @@
         time: '5 Consecutive Weekly Classes (50 Mins Each)',
         description: 'An ideal introduction for anyone wanting to build strength, improve mobility and develop confidence with Pilates. Includes five 50-minute classes (one per week).',
         passes: [
-          { label: '5-Week Intro Course — £55.50 (Upfront)', value: '5-Week Intro Course (£55.50)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
+          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
         ]
       },
       'Essential Monthly Membership': {
         time: '4 Classes per Month (1 per Week)',
         description: 'Monthly recurring membership reserving your regular weekly spot. Ideal for maintaining ongoing physical strength and consistency.',
         passes: [
-          { label: 'Essential Membership — £45.50/month (Recurring)', value: 'Essential Membership (£45.50/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' }
+          { label: 'Essential Membership — £45/month (Recurring)', value: 'Essential Membership (£45/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' }
         ]
       },
       '8-Week Extended Membership': {
-        time: '8 Weeks of Classes',
-        description: 'Extended regular membership package ensuring your spot is secured across 8 weeks.',
+        time: '8 Classes (Valid for 10 Weeks)',
+        description: 'Extended regular membership package providing 8 class credits valid over 10 weeks.',
         passes: [
-          { label: '8-Week Membership — £80 (Upfront)', value: '8-Week Membership (£80)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
+          { label: '8-Week Membership — £88 (Valid 10 Weeks)', value: '8-Week Membership (£88)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
         ]
       },
       'PAYG Single Drop-In': {
