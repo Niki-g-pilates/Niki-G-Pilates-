@@ -117,11 +117,71 @@
     .hero-title { font-size: 2.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: #FFFFFF; }
     .hero-subtitle { font-size: 0.95rem; color: #FAF8F5; font-weight: 300; letter-spacing: 0.5px; }
 
-    /* INTRO SECTION */
-    .intro-section { background-color: #FFFFFF; padding: 3rem 1.5rem; border-bottom: 1px solid var(--border-color); text-align: center; }
-    .intro-content { max-width: 680px; margin: 0 auto; }
-    .intro-heading { font-size: 1.8rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 1rem; letter-spacing: 0.5px; }
-    .intro-text { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+    /* INTRO SECTION (STYLED TO MATCH WEBSITE THEME) */
+    .intro-section { background-color: #FFFFFF; padding: 3.5rem 1.5rem; border-bottom: 1px solid var(--border-color); text-align: center; }
+    .intro-content { max-width: 720px; margin: 0 auto; }
+    
+    .intro-brand-script {
+      font-family: var(--font-script);
+      font-size: 2.6rem;
+      color: var(--primary-rose);
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .intro-heading { 
+      font-size: 1.75rem; 
+      font-weight: 600; 
+      color: var(--primary-dark); 
+      margin-bottom: 1.5rem; 
+      letter-spacing: 0.5px; 
+    }
+
+    .intro-text { 
+      font-size: 0.96rem; 
+      color: var(--text-dark); 
+      margin-bottom: 1.15rem; 
+      line-height: 1.75; 
+      font-weight: 300; 
+    }
+
+    .intro-subblock {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .intro-subheading {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--primary-rose);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .intro-cta-heading {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-top: 2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .intro-start-here {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-green);
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 2px solid var(--primary-rose);
+      margin-top: 0.2rem;
+    }
 
     /* SECTIONS & CARDS */
     .section-strip { width: 100%; padding: 3.5rem 1.5rem; }
@@ -146,53 +206,33 @@
     /* SCHEDULE ITEM LIST FORMAT */
     .schedule-list-container {
       max-width: 720px;
-      margin: 0 auto 2rem auto;
+      margin: 0 auto 2.2rem auto;
       text-align: center;
+      padding: 1.4rem 1.2rem;
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    .schedule-list-label {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--primary-rose);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .schedule-list {
       list-style: none;
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: 0.75rem;
     }
     .schedule-list li {
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--primary-dark);
       line-height: 1.5;
-    }
-
-    /* CENTERED JOURNEY SECTION */
-    .journey-section {
-      text-align: center;
-      max-width: 720px;
-      margin: 2.5rem auto;
-      padding: 2rem 1.5rem;
-      background: #FFFFFF;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    }
-    .journey-section h3 {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      color: var(--primary-dark);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .journey-section p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      font-weight: 300;
-      margin-bottom: 0.8rem;
-    }
-    .journey-section p:last-child {
-      margin-bottom: 0;
-      font-weight: 400;
-      color: var(--primary-dark);
     }
 
     /* MEMBERSHIPS GRID */
@@ -292,22 +332,50 @@
         </div>
       </section>
 
+      <!-- UPDATED INTRO SECTION (EXACT WORDING PRESERVED) -->
       <section class="intro-section">
         <div class="intro-content">
-          <h2 class="intro-heading">Move well. Feel strong. Feel your best.</h2>
-          <p class="intro-text">I’m passionate about making movement fun, effective and accessible to everyone.</p>
-          <p class="intro-text">With experience as a Physiotherapy Assistant, teaching rehabilitation exercises to individuals and groups, and as a qualified Pilates instructor, I create fun, engaging and challenging workouts that are safe, effective and adaptable to different abilities.</p>
-          <p class="intro-text">Whether you’re recovering from injury, rebuilding strength after having a baby or wanting to stay strong and mobile for longer, my workouts offer options for every stage of life, helping you move confidently and feel your best.</p>
+          <div class="intro-brand-script">Niki G Pilates</div>
+          <h2 class="intro-heading">Feel stronger, move better and feel more confident in your body.</h2>
+          
+          <p class="intro-text">My name is Niki. My classes are made for real bodies, real women and real life. Whether you're struggling with an achy back, stiff hips, tight shoulders or just don't feel as strong or flexible as you used to, these classes will help you feel better, move better and build strength for everyday life!</p>
+          
+          <p class="intro-text">As a mum to a five-year-old, navigating life in my mid-40s, I've realised how important it is to take care of yourself, look after your body and invest in your long-term health. And most importantly, to make time for YOU!</p>
+          
+          <p class="intro-text">I run friendly group classes in Goring, combining my experience as a Pilates instructor with strength training to bring you a unique approach to movement. But don't worry, we won't be lifting heavy!</p>
+          
+          <p class="intro-text">We use light hand weights, combining the core principles of Pilates – control, flow, precision and breath – with low-impact resistance training to help build strength, improve mobility for everyday living, and support longevity and bone health.</p>
+          
+          <p class="intro-text">It's all about helping to make everyday tasks easier, whether that's picking up the kids, carrying shopping bags or simply getting out of bed in the morning!</p>
+          
+          <p class="intro-text">Trust me, your back, hips and shoulders will thank you!</p>
+          
+          <p class="intro-text">My classes are fun, friendly and supportive, no matter where you are on your journey. You're free to move at your own pace. But who doesn't like a challenge?!</p>
+
+          <div class="intro-subblock">
+            <h3 class="intro-subheading">Why join?</h3>
+            <p class="intro-text">If you want to have fun, move better and reduce everyday aches and pains, you'll find a warm, welcoming and non-judgemental space here.</p>
+          </div>
+
+          <div class="intro-subblock">
+            <h3 class="intro-subheading">Your commitment</h3>
+            <p class="intro-text">You'll begin with an introductory block where I'll guide you through the Pilates fundamentals and introduce you to using light weights. You'll become familiar with the exercises, allowing you to build confidence while gradually progressing the challenge as you get stronger!</p>
+            <p class="intro-text">Once you've completed the introductory block, you'll be offered a monthly recurring membership to help you stay consistent, stay on track and keep enjoying the benefits of Pilates and strength training.</p>
+          </div>
+
+          <h3 class="intro-cta-heading">Interested in joining?</h3>
+          <a href="#classes-booking" class="intro-start-here">Start here.</a>
         </div>
       </section>
 
       <!-- CLASSES & BOOKING MAIN SECTION -->
-      <section class="section-strip strip-stone">
+      <section id="classes-booking" class="section-strip strip-stone">
         <div class="strip-content">
           <h2 class="section-title">CLASSES AND BOOKING</h2>
           
-          <!-- ITEMISED SCHEDULE LIST -->
+          <!-- WEEKLY CLASS SCHEDULE LIST (PLACED RIGHT AFTER "START HERE.") -->
           <div class="schedule-list-container">
+            <div class="schedule-list-label">Weekly Class Schedule</div>
             <ul class="schedule-list">
               <li>Pilates & Strength — Tuesdays at 6:15 PM at Goring Methodist Church Hall (Bury Drive)</li>
               <li>Pilates — Thursdays at 9:15 AM at Goring Methodist Church Hall (Bury Drive)</li>
@@ -315,20 +383,12 @@
             </ul>
           </div>
 
-          <!-- CENTERED JOURNEY SECTION -->
-          <div class="journey-section">
-            <h3>Your Pilates Journey</h3>
-            <p>New to Pilates & Strength? Start with our 5-week introductory programme, designed to help you build confidence, develop strength and learn the fundamentals.</p>
-            <p>Once you've completed your introduction, you can continue your journey with one of our monthly memberships.</p>
-            <p>Simple, supportive and a great way to make movement part of your lifestyle.</p>
-          </div>
-
           <h3 class="subsection-title">Select Your Package</h3>
 
-          <!-- MEMBERSHIPS & COURSE OPTIONS GRID -->
+          <!-- MEMBERSHIPS & COURSE OPTIONS GRID (5-WEEK BLOCK FIRST) -->
           <div class="membership-grid">
             
-            <!-- 5-WEEK INTRODUCTORY COURSE (£55) -->
+            <!-- 5-WEEK INTRODUCTORY COURSE (FIRST) -->
             <div class="membership-card featured">
               <div class="badge-popular">Ideal Starter</div>
               <div class="membership-name">5-Week Intro Pilates & Strength</div>
