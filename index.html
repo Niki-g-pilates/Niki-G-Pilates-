@@ -403,7 +403,7 @@
               <button class="row-book-btn" onclick="openMasterBooking('5-Week Introductory Pilates & Strength Course')">Details / Booking</button>
             </div>
 
-            <!-- ESSENTIAL MEMBERSHIP (£45) -->
+            <!-- ESSENTIAL MEMBERSHIP (£45 MONTHLY RECURRING) -->
             <div class="membership-card">
               <div class="membership-name">Essential Membership</div>
               <div class="membership-price">£45</div>
@@ -431,18 +431,18 @@
               <button class="row-book-btn" onclick="openMasterBooking('8-Week Extended Membership')">Details / Booking</button>
             </div>
 
-            <!-- PAYG SINGLE DROP-IN -->
+            <!-- FIRST CLASS FREE -->
             <div class="membership-card">
-              <div class="membership-name">PAYG Drop-In</div>
-              <div class="membership-price">£12</div>
-              <div class="membership-cycle">Single Class</div>
+              <div class="membership-name">First Class Free</div>
+              <div class="membership-price">Free</div>
+              <div class="membership-cycle">Introductory Taster Session</div>
               <ul class="membership-features">
-                <li>Flexible single session access</li>
-                <li>Ideal for irregular schedules</li>
+                <li>Try a 50-minute class for free</li>
+                <li>Experience Pilates & strength first-hand</li>
                 <li>Choice of Goring or Angmering</li>
                 <li>Subject to space availability</li>
               </ul>
-              <button class="row-book-btn" onclick="openMasterBooking('PAYG Single Drop-In')">Details / Booking</button>
+              <button class="row-book-btn" onclick="openMasterBooking('First Class Free')">Details / Booking</button>
             </div>
 
           </div>
@@ -528,7 +528,7 @@
         <div class="step-heading">Step 1: Choose Package Option</div>
         <div class="form-group">
           <label for="master-pass-type">Select Package *</label>
-          <select id="master-pass-type" name="Pass Selected" required></select>
+          <select id="master-pass-type" name="Pass Selected" required onchange="updateSubmitButtonText()"></select>
         </div>
 
         <div class="step-heading">Step 2: Personal Information</div>
@@ -628,20 +628,20 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // MASTER CLASS DEFINITIONS WITH DESCRIPTIONS & STRIPE LINKS
+    // MASTER CLASS DEFINITIONS WITH DESCRIPTIONS & PAYMENT LINKS
     const allClassData = {
       '5-Week Introductory Pilates & Strength Course': {
         time: '5 Consecutive Weekly Classes (50 Mins Each)',
         description: 'An ideal introduction for anyone wanting to build strength, improve mobility and develop confidence with Pilates. Includes five 50-minute classes (one per week).',
         passes: [
-          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
+          { label: '5-Week Intro Course — £55 (Upfront)', value: '5-Week Intro Course (£55)', stripeUrl: 'https://buy.stripe.com/5kQ3cxd9X3XOfyP0I47N60m' }
         ]
       },
       'Essential Monthly Membership': {
         time: '4 Classes per Month (1 per Week)',
         description: 'Monthly recurring membership reserving your regular weekly spot. Ideal for maintaining ongoing physical strength and consistency.',
         passes: [
-          { label: 'Essential Membership — £45/month (Recurring)', value: 'Essential Membership (£45/mo)', stripeUrl: 'https://buy.stripe.com/8x2bJ3fi59i80DVduQ7N60l' }
+          { label: 'Essential Membership — £45/month (Recurring)', value: 'Essential Membership (£45/mo)', stripeUrl: 'https://buy.stripe.com/cNi28tc5Tcuk4Ub0I47N60n' }
         ]
       },
       '8-Week Extended Membership': {
@@ -651,14 +651,24 @@
           { label: '8-Week Membership — £88 (Valid 10 Weeks)', value: '8-Week Membership (£88)', stripeUrl: 'https://buy.stripe.com/9B63cx0nb3XO4Ub9eA7N60k' }
         ]
       },
-      'PAYG Single Drop-In': {
-        time: 'Single Session',
-        description: 'Flexible Single Drop-In Session focusing on mobility, breathwork, and core strengthening.',
+      'First Class Free': {
+        time: 'Single Introductory Session (50 Mins)',
+        description: 'Enjoy your first class free with no payment required upfront.',
         passes: [
-          { label: 'PAYG Drop-In — £12', value: 'PAYG Drop-In (£12)', stripeUrl: 'https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j' }
+          { label: 'First Class Free — £0 (No Payment Link)', value: 'First Class Free (£0)', stripeUrl: '' }
         ]
       }
     };
+
+    function updateSubmitButtonText() {
+      const passSelect = document.getElementById('master-pass-type');
+      const selectedOption = passSelect.options[passSelect.selectedIndex];
+      const submitBtn = document.getElementById('master-submit-btn');
+      const hasStripe = selectedOption && selectedOption.dataset.stripeUrl;
+      submitBtn.innerText = hasStripe
+        ? "Complete Registration & Pay via Stripe →"
+        : "Complete Free Class Registration →";
+    }
 
     // OPEN MASTER BOOKING MODAL FOR EXACT PACKAGE
     function openMasterBooking(className) {
@@ -686,6 +696,8 @@
         passSelect.appendChild(optionEl);
       });
 
+      updateSubmitButtonText();
+
       document.getElementById('masterBookingModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
@@ -697,17 +709,19 @@
 
     function toggleInjuriesBox(show) { document.getElementById('injuries-details-group').style.display = show ? 'block' : 'none'; }
 
-    // FORM SUBMISSION & STRIPE REDIRECT
+    // FORM SUBMISSION & OPTIONAL STRIPE REDIRECT
     document.getElementById('masterBookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const passSelect = document.getElementById('master-pass-type');
       const selectedOption = passSelect.options[passSelect.selectedIndex];
-      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "https://buy.stripe.com/5kQ5kF3zn2TK4UbgH27N60j";
+      const targetStripeUrl = selectedOption ? selectedOption.dataset.stripeUrl : "";
 
       const submitBtn = document.getElementById('master-submit-btn');
       submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting & Redirecting to Stripe...";
+      submitBtn.innerText = targetStripeUrl
+        ? "Submitting & Redirecting to Stripe..."
+        : "Submitting Registration...";
 
       try {
         const response = await fetch(this.action, {
@@ -717,16 +731,23 @@
         });
 
         if (response.ok) {
-          window.location.href = targetStripeUrl;
+          if (targetStripeUrl) {
+            window.location.href = targetStripeUrl;
+          } else {
+            alert("Thank you! Your registration for your First Class Free has been submitted.");
+            this.reset();
+            submitBtn.disabled = false;
+            closeMasterModal();
+          }
         } else {
           alert("Submission error. Please verify required fields and try again.");
           submitBtn.disabled = false;
-          submitBtn.innerText = "Complete Registration & Pay via Stripe →";
+          updateSubmitButtonText();
         }
       } catch (err) {
         alert("Connection error. Please try again.");
         submitBtn.disabled = false;
-        submitBtn.innerText = "Complete Registration & Pay via Stripe →";
+        updateSubmitButtonText();
       }
     });
   </script>
